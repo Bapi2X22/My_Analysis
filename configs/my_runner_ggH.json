@@ -1,0 +1,15 @@
+{
+    "samplejson": "samples_local_ggH.json",
+    "workflow": "HtoBBGG_ggH",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "ggH_M15-Run3Summer2022NanoAODv12": ["2022"],
+        "ggH_M20-Run3Summer2022NanoAODv12": ["2022"],
+        "ggH_M30-Run3Summer2022NanoAODv12": ["2022"],
+        "ggH_M45-Run3Summer2022NanoAODv12": ["2022"],
+        "ggH_M60-Run3Summer2022NanoAODv12": ["2022"]
+    },  
+    "corrections": {},
+    "systematics": {}
+}

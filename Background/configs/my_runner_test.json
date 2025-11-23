@@ -1,0 +1,12 @@
+{
+    "samplejson": "sample_local.JSON",
+    "workflow": "My_first_processor",
+    "metaconditions": "Era2018_legacy_mine",
+    "taggers": [],
+    "year": {
+        "TTGJets_20UL16MiniAODAPV": ["2016APV"]
+    },
+    "corrections": {},
+    "systematics": {}
+}
+

@@ -1,0 +1,12 @@
+{
+    "samplejson": "samples_local.json",
+    "workflow": "base",
+    "metaconditions": "Era2018_legacy_v1",
+    "taggers": [],
+    "year": {
+        "M20_RunIISummer20UL18NanoAODv9": ["2018"],
+        "M60_RunIISummer20UL18NanoAODv9": ["2018"]
+    },
+    "corrections": {},
+    "systematics": {}
+}

@@ -1,0 +1,12 @@
+{
+    "samplejson": "BKG_ALL.json",
+    "workflow": "HtoBBGG_bkg",
+    "metaconditions": "Era2022_v1",
+    "taggers": [],
+    "year": {
+        "WGtoLNuG-1Jets_PTG-10to100_22SummerRun3": ["2022"]
+    },
+    "corrections": {},
+    "systematics": {}
+}
+

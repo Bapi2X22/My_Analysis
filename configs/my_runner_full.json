@@ -1,0 +1,118 @@
+{
+    "samplejson": "samples_local_full.json",
+    "workflow": "My_first_processor_beta",
+    "metaconditions": "Era2018_legacy_mine",
+    "taggers": [],
+    "year": {
+        "WH_M20-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M20-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M20-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M20-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M25-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M25-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M25-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M25-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M30-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M30-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M30-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M30-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M35-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M35-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M35-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M35-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M40-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M40-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M40-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M40-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M45-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M45-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M45-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M45-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M50-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M50-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M50-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M50-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M55-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M55-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M55-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M55-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ],
+        "WH_M60-RunIISummer20UL16NanoAODAPVv2": [
+            "2016APV"
+        ],
+        "WH_M60-RunIISummer20UL16NanoAODv2": [
+            "2016"
+        ],
+        "WH_M60-RunIISummer20UL17NanoAODv2": [
+            "2017"
+        ],
+        "WH_M60-RunIISummer20UL18NanoAODv2": [
+            "2018"
+        ]
+    },
+    "corrections": {},
+    "systematics": {}
+}

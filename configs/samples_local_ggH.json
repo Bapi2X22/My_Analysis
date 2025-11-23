@@ -1,0 +1,17 @@
+{
+  "ggH_M15-Run3Summer2022NanoAODv12": [
+    "/eos/user/b/bbapi/MC_contacts/ggH_Run3_private_sample/CMSSW_13_0_13/src/HAHM_Nano_15_2022.root"
+  ],
+  "ggH_M20-Run3Summer2022NanoAODv12": [
+    "/eos/user/b/bbapi/MC_contacts/ggH_Run3_private_sample/CMSSW_13_0_13/src/HAHM_Nano_20_2022.root"
+  ],
+  "ggH_M30-Run3Summer2022NanoAODv12": [
+    "/eos/user/b/bbapi/MC_contacts/ggH_Run3_private_sample/CMSSW_13_0_13/src/HAHM_Nano_30_2022.root"
+  ],
+  "ggH_M45-Run3Summer2022NanoAODv12": [
+    "/eos/user/b/bbapi/MC_contacts/ggH_Run3_private_sample/CMSSW_13_0_13/src/HAHM_Nano_45_2022.root"
+  ],
+  "ggH_M60-Run3Summer2022NanoAODv12": [
+    "/eos/user/b/bbapi/MC_contacts/ggH_Run3_private_sample/CMSSW_13_0_13/src/HAHM_Nano_60_2022.root"
+  ]
+}

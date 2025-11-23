@@ -1,0 +1,46 @@
+# Ignore ROOT files
+*.root
+
+# Ignore Parquet files
+*.parquet
+
+# Ignore image files
+*.png
+
+# Ignore PDF files
+*.pdf
+
+# Ignore CSV files
+*.csv
+
+*.tar
+
+*.tar.xz
+
+*.log
+
+*.pl
+
+tagger_pngs/
+root_files/
+process/
+NTuples_test/
+InputCards/
+genfragments/
+M15/
+NTuples_2_files/
+NTuples_full/
+NTuples_ggH/
+NTuples_ggH_v15/
+NTuples_new/
+NTuples_pretest_full/
+NTuples_pretest_full_csvv2/
+
+
+process/
+
+mgbasedir/
+
+InputCards/
+
+decay_chains.txt
