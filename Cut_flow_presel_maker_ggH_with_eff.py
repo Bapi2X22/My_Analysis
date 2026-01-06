@@ -22,15 +22,19 @@ full_files = args.base
 add_eff = args.eff
 out_csv = args.output
 
+# cut_dirs = [
+#     "without_presel_trigger",
+#     "without_presel",
+#     "lead_pt_cut",
+#     "sublead_pt_cut",
+#     "eta_cut",
+#     "photon_mva",
+#     "photon_pixel_seed",
+#     "Jet_pt_eta_cut",
+#     "btagged"
+# ]
+
 cut_dirs = [
-    "without_presel_trigger",
-    "without_presel",
-    "lead_pt_cut",
-    "sublead_pt_cut",
-    "eta_cut",
-    "photon_mva",
-    "photon_pixel_seed",
-    "Jet_pt_eta_cut",
     "btagged"
 ]
 
@@ -46,7 +50,8 @@ manual_totals = {
 # ------------------------------------------------------
 # Discover and process
 # ------------------------------------------------------
-ref_dir = os.path.join(full_files, "without_presel")
+# ref_dir = os.path.join(full_files, "without_presel")
+ref_dir = os.path.join(full_files, "btagged")
 mass_years = sorted(
     [d for d in os.listdir(ref_dir) if d.startswith("ggH_M") and "Run3Summer20" in d]
 )
@@ -61,19 +66,36 @@ for my in tqdm(mass_years, desc="Processing mass–year samples", unit="sample")
         row = {"Year": year, "Mass": mass}
 
         for cut in cut_dirs:
-            path = os.path.join(full_files, cut, my, "nominal/bgg3")
+            path = os.path.join(full_files, cut, my, "nominal/")
 
             if not os.path.exists(path):
                 row[cut] = None
                 continue
 
+            # try:
+            #     arr = ak.from_parquet(path+"/*.parquet")
+            #     row[cut] = len(arr)
+            #     del arr
+            # except Exception as e:
+            #     print(f"Error loading {path}: {e}")
+            #     row[cut] = None
             try:
-                arr = ak.from_parquet(path+"/*.parquet")
+                # find ANY parquet file
+                import glob
+                files = glob.glob(os.path.join(path, "*parquet"))
+
+                if not files:
+                    raise FileNotFoundError(f"No .parquet files in {path}")
+
+                # load the (single) file
+                arr = ak.from_parquet(files[0])
                 row[cut] = len(arr)
                 del arr
+
             except Exception as e:
                 print(f"Error loading {path}: {e}")
                 row[cut] = None
+
 
         cutflow_data.append(row)
 

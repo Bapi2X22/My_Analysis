@@ -1,0 +1,12 @@
+{
+    "samplejson": "samples_local.json",
+    "workflow": "My_first_processor_beta",
+    "metaconditions": "Era2018_legacy_mine",
+    "taggers": [],
+    "year": {
+        "M20-RunIISummer20UL16NanoAODAPVv2": ["2016"],
+        "M20-RunIISummer20UL16NanoAODv2": ["2016"]
+    },  
+    "corrections": {},
+    "systematics": {}
+}

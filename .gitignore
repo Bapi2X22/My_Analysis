@@ -35,6 +35,10 @@ NTuples_ggH_v15/
 NTuples_new/
 NTuples_pretest_full/
 NTuples_pretest_full_csvv2/
+NTuples_BKG_2/
+NTuples_BKG_lepton_presel/
+NTuples_BKG_ptcut_first/
+NTuples_bbgg/
 
 
 process/

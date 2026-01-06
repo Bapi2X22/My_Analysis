@@ -1,6 +1,6 @@
 {
     "samplejson": "samples_local_ggH_v15.json",
-    "workflow": "HtoBBGG_ggH",
+    "workflow": "HtoBBGG_ggH_with_cat",
     "metaconditions": "Era2022_v1_mine",
     "taggers": [],
     "year": {

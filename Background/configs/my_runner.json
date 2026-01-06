@@ -1,10 +1,11 @@
 {
     "samplejson": "BKG_ALL.json",
-    "workflow": "HtoBBGG_bkg",
-    "metaconditions": "Era2022_v1",
+    "workflow": "My_first_processor_beta",
+    "metaconditions": "Era2022_v1_mine",
     "taggers": [],
     "year": {
-        "WGtoLNuG-1Jets_PTG-10to100_22SummerRun3": ["2022"]
+        "TTto2L2Nu_24SummerRun3": ["2024"],
+        "TTtoLNu2Q_24SummerRun3":["2024"]
     },
     "corrections": {},
     "systematics": {}
