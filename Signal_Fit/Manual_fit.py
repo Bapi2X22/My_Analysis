@@ -41,6 +41,56 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+def find_free_legend_position_roohist(
+    roo_hist,
+    xmin=None,
+    xmax=None
+):
+    n = roo_hist.GetN()
+    xs = roo_hist.GetX()
+    ys = roo_hist.GetY()
+
+    # X range
+    if xmin is None:
+        xmin = min(xs[i] for i in range(n))
+    if xmax is None:
+        xmax = max(xs[i] for i in range(n))
+
+    # Y range
+    ymax = max(ys[i] for i in range(n))
+    ymid = 0.35 * ymax      # <-- important: keep legend below peak
+    xmid = 0.5 * (xmin + xmax)
+
+    regions = {
+        "TL": [],
+        "TR": [],
+        "BL": [],
+        "BR": [],
+    }
+
+    for i in range(n):
+        x, y = xs[i], ys[i]
+        if y <= 0:
+            continue
+
+        if x < xmid and y < ymid:
+            regions["BL"].append(y)
+        elif x < xmid and y >= ymid:
+            regions["TL"].append(y)
+        elif x >= xmid and y < ymid:
+            regions["BR"].append(y)
+        else:
+            regions["TR"].append(y)
+
+    scores = {k: sum(v) if v else 0.0 for k, v in regions.items()}
+    best = min(scores, key=scores.get)
+
+    # Tuned NDC positions (rectangular canvas friendly)
+    if best == "BL": return (0.18, 0.30, 0.42, 0.52)
+    if best == "BR": return (0.58, 0.30, 0.82, 0.52)
+    if best == "TL": return (0.18, 0.62, 0.42, 0.84)
+    if best == "TR": return (0.58, 0.62, 0.82, 0.84)
+
 
 pLUT = od()
 pLUT['DCB'] = od()
@@ -194,12 +244,12 @@ MHPolyOrder = args.mh_poly_order
 proc        = "WHM60Y2018"
 cat         = "DiPho_pt"
 
-PDF = buildNGaussians(3, _recursive=True)
-
-PDF.Print('v')
-
 
 N_GAUSS = args.n_gauss   # <-- change n here
+
+PDF = buildNGaussians(N_GAUSS, _recursive=True)
+
+PDF.Print('v')
 
 frame = xvar.frame(ROOT.RooFit.Title(f"Sum of {N_GAUSS} Gaussians"))
 
@@ -269,7 +319,13 @@ for i in range(N_GAUSS):
 #----------------------------------
 # Now create canvas + draw frame
 #----------------------------------
-c = ROOT.TCanvas("c", f"{N_GAUSS}G Fit", 900, 700)
+# c = ROOT.TCanvas("c", f"{N_GAUSS}G Fit", 900, 700)
+c = ROOT.TCanvas("c", f"{N_GAUSS}G Fit", 1100, 700)
+c.SetLeftMargin(0.12)
+c.SetRightMargin(0.35)   # <-- reserve space for info box
+c.SetBottomMargin(0.12)
+c.SetTopMargin(0.10)
+
 frame.Draw()
 
 data_hist_name = None
@@ -318,11 +374,16 @@ print(f"NDF      = {ndf}")
 print(f"chi^2 / NDF = {chi2}")
 
 
+# legend placement
+legend_coords = find_free_legend_position_roohist(
+    roo_hist,
+    xmin=fit_lo,
+    xmax=fit_hi
+)
+legend = ROOT.TLegend(*legend_coords)
+# legend.Draw()
 
-#----------------------------------
-# Build legend from drawn objects
-#----------------------------------
-legend = ROOT.TLegend(0.60, 0.60, 0.88, 0.88)
+
 legend.SetBorderSize(0)
 legend.SetFillStyle(0)
 legend.SetTextSize(0.030)
@@ -340,14 +401,16 @@ for i in range(N_GAUSS):
 
 legend.Draw()
 
-info = ROOT.TPaveText(0.60, 0.25, 0.88, 0.58, "NDC")
+# info = ROOT.TPaveText(ix1, iy1, ix2, iy2, "NDC")
+
+info = ROOT.TPaveText(0.68, 0.15, 0.98, 0.88, "NDC")
 info.SetFillStyle(0)
 info.SetBorderSize(0)
+info.SetTextAlign(12)
 info.SetTextSize(0.028)
 
-info.AddText(f"#chi^2 / NDF = {chi2:.3f}")
+info.AddText(f"#chi^{{2}} / NDF = {chi2:.3f}")
 info.AddText(f"NDF = {ndf}")
-
 info.AddText("")
 info.AddText("Fit parameters:")
 
