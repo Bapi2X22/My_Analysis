@@ -1,5 +1,10 @@
 import ROOT
 from collections import OrderedDict as od
+import scipy
+import numpy as np
+from array import array
+import ctypes
+import os
 
 
 import argparse
@@ -90,6 +95,94 @@ def find_free_legend_position_roohist(
     if best == "BR": return (0.58, 0.30, 0.82, 0.52)
     if best == "TL": return (0.18, 0.62, 0.42, 0.84)
     if best == "TR": return (0.58, 0.62, 0.82, 0.84)
+
+
+def poisson_interval(x,eSumW2,level=0.68):
+  print("Poisson interval: ", "x: ", x, "eSumW2: ", eSumW2)
+  neff = x**2/(eSumW2**2)
+  scale = abs(x)/neff
+  print("neff: ", neff, "scale: ", scale)
+  l = scipy.stats.gamma.interval(level, neff, scale=scale,)[0]
+  u = scipy.stats.gamma.interval(level, neff+1, scale=scale,)[1]
+  print("l_full: ", scipy.stats.gamma.interval(level, neff, scale=scale,))
+  print("u_full: ", scipy.stats.gamma.interval(level, neff+1, scale=scale,))
+  print("l: ", l, "u: ", u)
+  # protect against no effective entries
+  l[neff==0] = 0.
+  # protect against no variance
+  l[eSumW2==0.] = 0.
+  u[eSumW2==0.] = np.inf
+  print("After protection l: ", l, "u: ", u)
+  # convert to upper and lower errors
+  eLo, eHi = abs(l-x),abs(u-x)
+  print("eLo: ", eLo, "eHi: ", eHi)
+  return eLo, eHi
+
+
+def calcChi2(x,pdf,d,errorType="Poisson",_verbose=False,fitRange=[50,70], storeErrors=False):
+
+  k = 0. # number of non empty bins (for calc degrees of freedom)
+  normFactor = d.sumEntries()
+  print("normFactor =",normFactor)
+  
+  # Using numpy and poisson error
+  bins, nPdf, nData, eDataSumW2 = [], [],[],[]
+  print("Number of entries in data hist =",d.numEntries())
+  for i in range(d.numEntries()):
+    p = d.get(i)
+    print("p: ", p.getRealValue(x.GetName()))
+    x.setVal(p.getRealValue(x.GetName()))
+    if( x.getVal() < fitRange[0] )|( x.getVal() > fitRange[1] ): continue
+    ndata = d.weight()
+    if ndata*ndata == 0: continue
+    print("binVolume: ", d.binVolume())
+    npdf = pdf.getVal(ROOT.RooArgSet(x))*normFactor*d.binVolume()
+    eLo, eHi = ctypes.c_double(), ctypes.c_double()
+    #eLo, eHi = ROOT.Double(), ROOT.Double()
+    d.weightError(eLo,eHi,ROOT.RooAbsData.SumW2)
+    bins.append(i)
+    nPdf.append(npdf)
+    nData.append(ndata)
+    eDataSumW2.append(eHi) if npdf>ndata else eDataSumW2.append(eLo)
+    k += 1
+
+  # Convert to numpy array
+  nPdf = np.asarray(nPdf)
+  nData = np.asarray(nData)
+  eDataSumW2 = np.asarray([e.value for e in eDataSumW2], dtype=float)
+  print("nPdf: ", nPdf)
+  print("nData: ", nData)
+  print("eDataSumW2: ", eDataSumW2)
+  #eDataSumW2 = np.asarray(eDataSumW2)
+
+  if errorType == 'Poisson':
+    # Change error to poisson intervals: take max interval as error
+    eLo,eHi = poisson_interval(nData,eDataSumW2,level=0.68)
+    eLoArr = np.asarray(eLo)
+    eHiArr = np.asarray(eHi)
+    #eDataPoisson = 0.5*(eHi+eLo)
+    eDataPoisson = np.maximum(eHi,eLo) 
+    #eDataPoisson = (nPdf>nData)*eHi + (nPdf<=nData)*eLo 
+    print("Final eDataPoisson (Poisson Interval): ", eDataPoisson)
+    e = eDataPoisson
+    # Calculate chi2 terms
+    terms = (nPdf-nData)**2/(eDataPoisson**2)
+   
+  # If verbose: print to screen
+  if _verbose:
+    for i in range(len(terms)):
+      print(" --> [DEBUG] Bin %g : nPdf = %.6f, nData = %.6f, e(%s) = %.6f --> chi2 term = %.6f"%(bins[i],nPdf[i],nData[i],errorType,e[i],terms[i]))
+
+  # Sum terms
+  result = terms.sum()
+
+  if storeErrors:
+    return result, k, eLoArr, eHiArr
+
+  return result,k
+
+
+
 
 
 pLUT = od()
@@ -346,32 +439,49 @@ print("Model curve:", curve_name)
 
 nParams = fit_result.floatParsFinal().getSize()
 
-chi2 = frame.chiSquare(
-    curve_name,
-    data_hist_name,
-    nParams
+# chi2 = frame.chiSquare(
+#     curve_name,
+#     data_hist_name,
+#     nParams
+# )
+
+chi2_val, nUsedBins = calcChi2(
+    xvar,
+    PDF,
+    DataHists,
+    errorType="Poisson",
+    _verbose=True,
+    fitRange=[fit_lo, fit_hi]
 )
+
+ndof = nUsedBins - fit_result.floatParsFinal().getSize()
+chi2ndf = chi2_val / ndof
+
+print(f"Chi2 = {chi2_val:.3f}")
+print(f"NDOF = {ndof}")
+print(f"Chi2/NDOF = {chi2ndf:.3f}")
+
 
 # # ndf = int(frame.GetNbinsX()) - nParams
 
 roo_hist = frame.findObject(data_hist_name)
 
-fit_min, fit_max = fit_lo, fit_hi
+# fit_min, fit_max = fit_lo, fit_hi
 
-fit_min, fit_max = fit_lo, fit_hi
+# fit_min, fit_max = fit_lo, fit_hi
 
-N_used = 0
+# N_used = 0
 
-for i in range(roo_hist.GetN()):
-    x = roo_hist.GetX()[i]
-    if x >= fit_min and x <= fit_max:
-        N_used += 1
+# for i in range(roo_hist.GetN()):
+#     x = roo_hist.GetX()[i]
+#     if x >= fit_min and x <= fit_max:
+#         N_used += 1
 
-ndf = N_used - nParams
+# ndf = N_used - nParams
 
-print(f"chi^2       = {chi2 * ndf}")
-print(f"NDF      = {ndf}")
-print(f"chi^2 / NDF = {chi2}")
+# print(f"chi^2       = {chi2 * ndf}")
+# print(f"NDF      = {ndf}")
+# print(f"chi^2 / NDF = {chi2}")
 
 
 # legend placement
@@ -409,8 +519,8 @@ info.SetBorderSize(0)
 info.SetTextAlign(12)
 info.SetTextSize(0.028)
 
-info.AddText(f"#chi^{{2}} / NDF = {chi2:.3f}")
-info.AddText(f"NDF = {ndf}")
+info.AddText(f"#chi^{{2}} / NDF = {chi2ndf:.3f}")
+info.AddText(f"NDF = {ndof}")
 info.AddText("")
 info.AddText("Fit parameters:")
 
@@ -422,3 +532,38 @@ info.Draw()
 c.Update()
 
 c.SaveAs(f"Manual_GaussFit_{N_GAUSS}G.png")
+
+
+# ============================================================
+# Make a ZOOMED copy (50–70 GeV) — does NOT touch the fit
+# ============================================================
+
+plot_lo = args.mh - 10
+plot_hi = args.mh + 10
+
+# Clone the RooPlot (contains data + PDFs already)
+frame_zoom = frame.Clone(f"{frame.GetName()}_zoom")
+frame_zoom.SetTitle(f"{frame.GetTitle()}  (Zoomed version)")
+
+
+# Zoom the x-axis only
+frame_zoom.GetXaxis().SetLimits(plot_lo, plot_hi)
+
+# Create second canvas
+c_zoom = ROOT.TCanvas("c_zoom", f"{N_GAUSS}G Fit (50–70 GeV)", 1100, 700)
+c_zoom.SetLeftMargin(0.12)
+c_zoom.SetRightMargin(0.35)
+c_zoom.SetBottomMargin(0.12)
+c_zoom.SetTopMargin(0.10)
+
+frame_zoom.Draw()
+
+# Re-draw legend (reuse same one)
+legend.Draw()
+
+# Re-draw info box
+info.Draw()
+
+c_zoom.Update()
+c_zoom.SaveAs(f"Manual_GaussFit_{N_GAUSS}G_ZOOM.png")
+
