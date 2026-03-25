@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 11, in <module>
+    import uproot
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/__init__.py", line 78, in <module>
+    import uproot.extras
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/extras.py", line 15, in <module>
+    import pkg_resources
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pkg_resources/__init__.py", line 33, in <module>
+    import email.parser
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/email/parser.py", line 12, in <module>
+    from email.feedparser import FeedParser, BytesFeedParser
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/email/feedparser.py", line 27, in <module>
+    from email._policybase import compat32
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/email/_policybase.py", line 9, in <module>
+    from email.utils import _has_surrogates
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/email/utils.py", line 29, in <module>
+    import socket
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/socket.py", line 550, in <module>
+    import array
+ImportError: /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/array.cpython-311-x86_64-linux-gnu.so: cannot read file data: Input/output error

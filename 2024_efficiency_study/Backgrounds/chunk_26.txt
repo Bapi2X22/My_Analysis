@@ -1,0 +1,10 @@
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/ecfe1f7c-481c-467f-9d4a-1dc912acef78.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/d8c0bc9a-6de7-4d4e-87f6-e8830a9b7889.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/3af86758-80cc-4627-b0fe-24bd6b41aae3.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/7715377d-7a15-487c-a194-845d6d9facc1.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/c501dfb1-c054-4f32-8d42-0219704ac530.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/a010b7b6-89cd-4e4d-8ffd-06a1b9f5b500.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/cfab4921-a716-41d6-855f-c915cc49f087.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/341573ad-0df8-4a11-b025-8506f7735e4e.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/ee5bc9ad-19f4-49a8-8ddc-7957b9bdee36.root
+root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/f06c1ed2-997a-4d16-963d-727d964734bb.root

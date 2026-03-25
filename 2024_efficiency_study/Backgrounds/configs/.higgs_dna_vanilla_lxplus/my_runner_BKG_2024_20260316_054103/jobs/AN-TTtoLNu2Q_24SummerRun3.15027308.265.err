@@ -1,0 +1,53 @@
+Error processing line 1 of /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/sphinxcontrib_jsmath-1.0.1-py3.9-nspkg.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+    File "<frozen importlib._bootstrap>", line 980, in exec_module
+    File "<frozen importlib.util>", line 14, in <module>
+    File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/contextlib.py", line 6, in <module>
+      from collections import deque
+    File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+    File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+    File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+    File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+    File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+    File "<frozen importlib._bootstrap_external>", line 1131, in get_data
+  OSError: [Errno 5] Input/output error
+
+Remainder of file ignored
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:195: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml': [08:45:08] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x14d5a5a5f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x14d5a6d91fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x14d5a6d7975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x14d5a59b3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x14d5dc8b6d8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x14d5dc8b61cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x14d5dc8b691d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x14d5db9e92c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x14d5db9e87ee]
+
+. Skipping.
+  self.photonid_mva_EB = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:201: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml': [08:45:08] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x14d5a5a5f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x14d5a6d91fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x14d5a6d7975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x14d5a59b3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x14d5dc8b6d8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x14d5dc8b61cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x14d5dc8b691d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x14d5db9e92c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x14d5db9e87ee]
+
+. Skipping.
+  self.photonid_mva_EE = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/xgb_loader.py:26: UserWarning: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(repr(fnferr))
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/XRootD/client/finalize.py:46: FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead
+  if isinstance(obj, File) and obj.is_open():

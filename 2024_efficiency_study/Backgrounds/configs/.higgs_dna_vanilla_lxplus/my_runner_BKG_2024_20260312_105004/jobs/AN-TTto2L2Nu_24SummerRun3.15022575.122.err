@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 15, in <module>
+    from dask.distributed import Client, Worker, WorkerPlugin
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/dask/distributed.py", line 13, in <module>
+    from distributed import *
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/distributed/__init__.py", line 4, in <module>
+    from distributed import config  # load distributed configuration first
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/distributed/config.py", line 4, in <module>
+    import logging.config
+ModuleNotFoundError: No module named 'logging.config'

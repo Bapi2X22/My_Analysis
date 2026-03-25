@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+ModuleNotFoundError: No module named 'higgs_dna'

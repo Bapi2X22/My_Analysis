@@ -1,0 +1,18 @@
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/cpu.py:99: UserWarning: Numba extension module 'vector' failed to load due to 'OSError([Errno 5] Input/output error)'.
+  numba.core.entrypoints.init_all()
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 6, in <module>
+    from higgs_dna.tools.gen_helpers import get_fiducial_flag
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/gen_helpers.py", line 3, in <module>
+    from higgs_dna.selections.HHbbgg_selections import DeltaR
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/selections/HHbbgg_selections.py", line 5, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/vector/__init__.py", line 202, in register_awkward
+    awkward.behavior.update(vector.backends.awkward.behavior)
+                            ^^^^^^^^^^^^^^^
+AttributeError: module 'vector' has no attribute 'backends'

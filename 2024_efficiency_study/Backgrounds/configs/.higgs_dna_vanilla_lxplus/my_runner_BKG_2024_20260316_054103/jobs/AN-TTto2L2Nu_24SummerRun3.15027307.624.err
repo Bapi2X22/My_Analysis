@@ -1,0 +1,19 @@
+[0;93m2026-03-16 09:32:01.426612449 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:2418 CreateInferencePybindStateModule] Init provider bridge failed.[m
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 7, in <module>
+    from higgs_dna.workflows.Zmmy import ZmmyProcessor, ZmmyHist, ZmmyZptHist
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/Zmmy.py", line 32, in <module>
+    import hist
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/hist/__init__.py", line 11, in <module>
+    from . import accumulators, axis, numpy, storage, tag
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1131, in get_data
+OSError: [Errno 5] Input/output error

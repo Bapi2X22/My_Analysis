@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 14, in <module>
+    from higgs_dna.utils.dumping_utils import (
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/utils/dumping_utils.py", line 8, in <module>
+    import pyarrow.parquet as pq
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pyarrow/parquet/__init__.py", line 20, in <module>
+    from .core import *
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pyarrow/parquet/core.py", line 34, in <module>
+    raise ImportError(
+ImportError: The pyarrow installation is not built with support for the Parquet file format (/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pyarrow/_parquet.cpython-311-x86_64-linux-gnu.so: cannot read file data: Input/output error)

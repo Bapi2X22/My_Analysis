@@ -1,0 +1,30 @@
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/cpu.py:99: UserWarning: Numba extension module 'awkward.numba' failed to load due to 'ModuleNotFoundError(No module named 'awkward._connect._numba.arrayview')'.
+  numba.core.entrypoints.init_all()
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 7, in <module>
+    from higgs_dna.workflows.Zmmy import ZmmyProcessor, ZmmyHist, ZmmyZptHist
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/Zmmy.py", line 32, in <module>
+    import hist
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/hist/__init__.py", line 11, in <module>
+    from . import accumulators, axis, numpy, storage, tag
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/hist/accumulators.py", line 3, in <module>
+    from boost_histogram.accumulators import Mean, Sum, WeightedMean, WeightedSum
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/boost_histogram/__init__.py", line 3, in <module>
+    from . import accumulators, axis, numpy, storage
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/boost_histogram/numpy.py", line 19, in <module>
+    from .histogram import Histogram
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/boost_histogram/histogram.py", line 29, in <module>
+    from . import serialization
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/boost_histogram/serialization/__init__.py", line 10, in <module>
+    from ._storage import _data_from_dict, _storage_from_dict, _storage_to_dict
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1049, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1131, in get_data
+OSError: [Errno 5] Input/output error

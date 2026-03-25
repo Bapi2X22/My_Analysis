@@ -1,0 +1,43 @@
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/cpu.py:99: UserWarning: Numba extension module 'awkward.numba' failed to load due to 'ModuleNotFoundError(No module named 'awkward._connect._numba.arrayview')'.
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 5, in <module>
+    from higgs_dna.tools.EcalBadCalibCrystal_events import remove_EcalBadCalibCrystal_events
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/EcalBadCalibCrystal_events.py", line 2, in <module>
+    from higgs_dna.selections.object_selections import delta_phi_mask
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/selections/object_selections.py", line 3, in <module>
+    from coffea.nanoevents.methods import vector
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/nanoevents/methods/vector.py", line 51, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/decorators.py", line 131, in wrap
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/dufunc.py", line 272, in add
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_lock.py", line 35, in _acquire_compile_lock
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/dufunc.py", line 346, in _compile_for_argtys
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/ufuncbuilder.py", line 175, in _compile_element_wise_function
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/ufuncbuilder.py", line 123, in compile
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/np/ufunc/ufuncbuilder.py", line 156, in _compile_core
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 744, in compile_extra
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 438, in compile_extra
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 506, in _compile_bytecode
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 481, in _compile_core
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 472, in _compile_core
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_machinery.py", line 364, in run
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_machinery.py", line 356, in run
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_lock.py", line 35, in _acquire_compile_lock
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_machinery.py", line 311, in _runPass
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler_machinery.py", line 273, in check
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/typed_passes.py", line 468, in run_pass
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 187, in lower
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 226, in lower_normal_function
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 256, in lower_function_body
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 270, in lower_block
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 448, in lower_inst
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 690, in lower_assign
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/lowering.py", line 1560, in incref
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/functools.py", line 1001, in __get__
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/base.py", line 338, in nrt
+ModuleNotFoundError: No module named 'numba.core.runtime.context'

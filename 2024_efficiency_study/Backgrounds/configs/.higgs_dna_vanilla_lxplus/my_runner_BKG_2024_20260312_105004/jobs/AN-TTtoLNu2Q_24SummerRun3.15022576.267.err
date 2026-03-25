@@ -1,0 +1,93 @@
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:195: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml': [14:01:39] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x1460d065f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x1460d1991fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x1460d197975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x1460d05b3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x146107b32d8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x146107b321cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x146107b3291d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x146107b412c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x146107b407ee]
+
+. Skipping.
+  self.photonid_mva_EB = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:201: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml': [14:01:39] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x1460d065f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x1460d1991fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x1460d197975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x1460d05b3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x146107b32d8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x146107b321cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x146107b3291d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x146107b412c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x146107b407ee]
+
+. Skipping.
+  self.photonid_mva_EE = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/xgb_loader.py:26: UserWarning: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(repr(fnferr))
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 306, in main
+    run_executor(args, executor, sample_dict, processor_instance)
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 87, in run_executor
+    output = run(
+             ^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1885, in __call__
+    wrapped_out = self.run(fileset, processor_instance, treename)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1967, in run
+    chunks = self.preprocess(fileset, treename)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1919, in preprocess
+    self._preprocess_fileset(fileset)
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1646, in _preprocess_fileset
+    out, _ = pre_executor(to_get, closure, out)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 858, in __call__
+    accumulate(
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/accumulator.py", line 100, in accumulate
+    accum = iadd(accum, next(gen))
+                        ^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/accumulator.py", line 92, in <genexpr>
+    gen = (x for x in items if x is not None)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/rich/progress.py", line 1231, in track
+    for value in sequence:
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1552, in automatic_retries
+    raise e
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1522, in automatic_retries
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1602, in metadata_fetcher
+    with uproot.open({item.filename: None}, timeout=xrootdtimeout) as file:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/reading.py", line 141, in open
+    file = ReadOnlyFile(
+           ^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/reading.py", line 580, in __init__
+    self._source = Source(
+                   ^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/source/xrootd.py", line 272, in __init__
+    self._open()
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/source/xrootd.py", line 275, in _open
+    self._resource = XRootDResource(self._file_path, self._timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/source/xrootd.py", line 83, in __init__
+    self._open()
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/source/xrootd.py", line 86, in _open
+    XRootD_client = uproot.extras.XRootD_client()
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/extras.py", line 75, in XRootD_client
+    import XRootD.client
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/XRootD/client/__init__.py", line 3, in <module>
+    from .glob_funcs import glob, iglob
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/XRootD/client/glob_funcs.py", line 26, in <module>
+    from XRootD.client.filesystem import FileSystem
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/XRootD/client/filesystem.py", line 26, in <module>
+    from pyxrootd import client
+ImportError: /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pyxrootd/../../../libXrdUtils.so.3: cannot read file data: Input/output error

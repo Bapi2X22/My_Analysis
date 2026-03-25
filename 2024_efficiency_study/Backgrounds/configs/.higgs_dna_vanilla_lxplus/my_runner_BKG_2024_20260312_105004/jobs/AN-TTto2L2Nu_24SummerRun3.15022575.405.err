@@ -1,0 +1,32 @@
+AttributeError: partially initialized module 'pandas' has no attribute '_pandas_datetime_CAPI' (most likely due to a circular import)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 14, in <module>
+    from higgs_dna.utils.dumping_utils import (
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/utils/dumping_utils.py", line 4, in <module>
+    import pandas
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/__init__.py", line 49, in <module>
+    from pandas.core.api import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/core/api.py", line 1, in <module>
+    from pandas._libs import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/_libs/__init__.py", line 18, in <module>
+    from pandas._libs.interval import Interval
+  File "pandas/_libs/interval.pyx", line 1, in init pandas._libs.interval
+  File "pandas/_libs/hashtable.pyx", line 1, in init pandas._libs.hashtable
+  File "pandas/_libs/missing.pyx", line 1, in init pandas._libs.missing
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/_libs/tslibs/__init__.py", line 40, in <module>
+    from pandas._libs.tslibs.conversion import localize_pydatetime
+  File "pandas/_libs/tslibs/conversion.pyx", line 1, in init pandas._libs.tslibs.conversion
+  File "pandas/_libs/tslibs/offsets.pyx", line 1, in init pandas._libs.tslibs.offsets
+  File "pandas/_libs/tslibs/timestamps.pyx", line 1, in init pandas._libs.tslibs.timestamps
+  File "pandas/_libs/tslibs/timedeltas.pyx", line 86, in init pandas._libs.tslibs.timedeltas
+  File "pandas/_libs/tslibs/fields.pyx", line 140, in init pandas._libs.tslibs.fields
+SystemError: <class 'pandas._libs.tslibs.fields.__pyx_defaults'> returned a result with an exception set

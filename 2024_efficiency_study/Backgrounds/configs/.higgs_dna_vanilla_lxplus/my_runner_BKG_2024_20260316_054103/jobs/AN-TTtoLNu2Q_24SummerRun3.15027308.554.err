@@ -1,0 +1,13 @@
+Error processing line 1 of /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/sphinxcontrib_jsmath-1.0.1-py3.9-nspkg.pth:
+
+  Traceback (most recent call last):
+    File "<frozen site>", line 195, in addpackage
+    File "<string>", line 1, in <module>
+    File "<frozen importlib._bootstrap>", line 570, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+ModuleNotFoundError: No module named 'higgs_dna'

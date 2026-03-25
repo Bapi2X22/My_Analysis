@@ -37,6 +37,9 @@ parser.add_argument("--proc", type=str, default="WHM60Y2018",
 parser.add_argument("--cat", type=str, default="DiPho_pt",
                     help="Category name used in PDF name suffix")
 
+parser.add_argument("--Poisson_chi2", action='store_true',
+                    help="Use Poisson intervals for chi2 calculation")
+
 parser.add_argument(
     "--xbins",
     type=int,
@@ -46,55 +49,125 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+# def find_free_legend_position_roohist(
+#     roo_hist,
+#     xmin=None,
+#     xmax=None
+# ):
+#     n = roo_hist.GetN()
+#     xs = roo_hist.GetX()
+#     ys = roo_hist.GetY()
+
+#     # X range
+#     if xmin is None:
+#         xmin = min(xs[i] for i in range(n))
+#     if xmax is None:
+#         xmax = max(xs[i] for i in range(n))
+
+#     # Y range
+#     ymax = max(ys[i] for i in range(n))
+#     ymid = 0.35 * ymax      # <-- important: keep legend below peak
+#     xmid = 0.5 * (xmin + xmax)
+
+#     regions = {
+#         "TL": [],
+#         "TR": [],
+#         "BL": [],
+#         "BR": [],
+#     }
+
+#     for i in range(n):
+#         x, y = xs[i], ys[i]
+#         if y <= 0:
+#             continue
+
+#         if x < xmid and y < ymid:
+#             regions["BL"].append(y)
+#         elif x < xmid and y >= ymid:
+#             regions["TL"].append(y)
+#         elif x >= xmid and y < ymid:
+#             regions["BR"].append(y)
+#         else:
+#             regions["TR"].append(y)
+
+#     scores = {k: sum(v) if v else 0.0 for k, v in regions.items()}
+#     best = min(scores, key=scores.get)
+
+#     # Tuned NDC positions (rectangular canvas friendly)
+#     if best == "BL": return (0.18, 0.30, 0.42, 0.52)
+#     if best == "BR": return (0.58, 0.30, 0.82, 0.52)
+#     if best == "TL": return (0.18, 0.62, 0.42, 0.84)
+#     if best == "TR": return (0.58, 0.62, 0.82, 0.84)
+
 def find_free_legend_position_roohist(
     roo_hist,
     xmin=None,
-    xmax=None
+    xmax=None,
+    nxbins=50,
+    nybins=50,
 ):
+    """
+    Robust legend placement for RooHist with narrow peaks.
+    Returns (x1, y1, x2, y2) in NDC.
+    """
+
+    # Extract points
     n = roo_hist.GetN()
     xs = roo_hist.GetX()
     ys = roo_hist.GetY()
 
-    # X range
+    # X/Y ranges
     if xmin is None:
         xmin = min(xs[i] for i in range(n))
     if xmax is None:
         xmax = max(xs[i] for i in range(n))
-
-    # Y range
     ymax = max(ys[i] for i in range(n))
-    ymid = 0.35 * ymax      # <-- important: keep legend below peak
-    xmid = 0.5 * (xmin + xmax)
 
-    regions = {
-        "TL": [],
-        "TR": [],
-        "BL": [],
-        "BR": [],
-    }
+    # Safety
+    if xmax <= xmin or ymax <= 0:
+        return (0.60, 0.65, 0.88, 0.88)
+
+    # Build 2D occupancy grid (x normalized, y normalized)
+    grid = [[0.0 for _ in range(nybins)] for _ in range(nxbins)]
 
     for i in range(n):
         x, y = xs[i], ys[i]
         if y <= 0:
             continue
 
-        if x < xmid and y < ymid:
-            regions["BL"].append(y)
-        elif x < xmid and y >= ymid:
-            regions["TL"].append(y)
-        elif x >= xmid and y < ymid:
-            regions["BR"].append(y)
-        else:
-            regions["TR"].append(y)
+        ix = int((x - xmin) / (xmax - xmin) * nxbins)
+        iy = int(y / ymax * nybins)
 
-    scores = {k: sum(v) if v else 0.0 for k, v in regions.items()}
+        if 0 <= ix < nxbins and 0 <= iy < nybins:
+            grid[ix][iy] += y
+
+    # Candidate legend boxes (NDC)
+    candidates = {
+        "TL": (0.15, 0.62, 0.42, 0.88),
+        "TR": (0.58, 0.62, 0.88, 0.88),
+        "BL": (0.15, 0.20, 0.42, 0.45),
+        "BR": (0.58, 0.20, 0.88, 0.45),
+    }
+
+    # Score each box by integrated occupancy
+    scores = {}
+    for key, (x1, y1, x2, y2) in candidates.items():
+        ix1 = int(x1 * nxbins)
+        ix2 = int(x2 * nxbins)
+        iy1 = int(y1 * nybins)
+        iy2 = int(y2 * nybins)
+
+        score = 0.0
+        for ix in range(max(ix1, 0), min(ix2, nxbins)):
+            for iy in range(max(iy1, 0), min(iy2, nybins)):
+                score += grid[ix][iy]
+
+        scores[key] = score
+
+    # Pick least-occupied region
     best = min(scores, key=scores.get)
+    return candidates[best]
 
-    # Tuned NDC positions (rectangular canvas friendly)
-    if best == "BL": return (0.18, 0.30, 0.42, 0.52)
-    if best == "BR": return (0.58, 0.30, 0.82, 0.52)
-    if best == "TL": return (0.18, 0.62, 0.42, 0.84)
-    if best == "TR": return (0.58, 0.62, 0.82, 0.84)
 
 
 def poisson_interval(x,eSumW2,level=0.68):
@@ -439,11 +512,11 @@ print("Model curve:", curve_name)
 
 nParams = fit_result.floatParsFinal().getSize()
 
-# chi2 = frame.chiSquare(
-#     curve_name,
-#     data_hist_name,
-#     nParams
-# )
+chi2 = frame.chiSquare(
+    curve_name,
+    data_hist_name,
+    nParams
+)
 
 chi2_val, nUsedBins = calcChi2(
     xvar,
@@ -457,6 +530,10 @@ chi2_val, nUsedBins = calcChi2(
 ndof = nUsedBins - fit_result.floatParsFinal().getSize()
 chi2ndf = chi2_val / ndof
 
+print("ndof: ", ndof)
+print("nUsedBins: ", nUsedBins)
+print("nParams: ", fit_result.floatParsFinal().getSize())
+
 print(f"Chi2 = {chi2_val:.3f}")
 print(f"NDOF = {ndof}")
 print(f"Chi2/NDOF = {chi2ndf:.3f}")
@@ -466,22 +543,22 @@ print(f"Chi2/NDOF = {chi2ndf:.3f}")
 
 roo_hist = frame.findObject(data_hist_name)
 
-# fit_min, fit_max = fit_lo, fit_hi
+fit_min, fit_max = fit_lo, fit_hi
 
-# fit_min, fit_max = fit_lo, fit_hi
+fit_min, fit_max = fit_lo, fit_hi
 
-# N_used = 0
+N_used = 0
 
-# for i in range(roo_hist.GetN()):
-#     x = roo_hist.GetX()[i]
-#     if x >= fit_min and x <= fit_max:
-#         N_used += 1
+for i in range(roo_hist.GetN()):
+    x = roo_hist.GetX()[i]
+    if x >= fit_min and x <= fit_max:
+        N_used += 1
 
-# ndf = N_used - nParams
+ndf = N_used - nParams
 
-# print(f"chi^2       = {chi2 * ndf}")
-# print(f"NDF      = {ndf}")
-# print(f"chi^2 / NDF = {chi2}")
+print(f"chi^2       = {chi2 * ndf}")
+print(f"NDF      = {ndf}")
+print(f"chi^2 / NDF = {chi2}")
 
 
 # legend placement
@@ -519,10 +596,16 @@ info.SetBorderSize(0)
 info.SetTextAlign(12)
 info.SetTextSize(0.028)
 
-info.AddText(f"#chi^{{2}} / NDF = {chi2ndf:.3f}")
-info.AddText(f"NDF = {ndof}")
-info.AddText("")
-info.AddText("Fit parameters:")
+if args.Poisson_chi2:
+    info.AddText(f"#chi^{{2}} / NDF (Poisson) = {chi2ndf:.3f}")
+    info.AddText(f"NDF = {ndof}")
+    info.AddText("")
+    info.AddText("Fit parameters:")
+else:
+    info.AddText(f"#chi^{{2}} / NDF = {chi2:.3f}")
+    info.AddText(f"NDF = {ndf}")
+    info.AddText("")
+    info.AddText("Fit parameters:")
 
 for t in params_text:
     info.AddText(t)
@@ -531,7 +614,11 @@ info.Draw()
 
 c.Update()
 
-c.SaveAs(f"Manual_GaussFit_{N_GAUSS}G.png")
+
+if args.Poisson_chi2:
+    c.SaveAs(f"Manual_GaussFit_{N_GAUSS}G_Poisson.png")
+else:
+    c.SaveAs(f"Manual_GaussFit_{N_GAUSS}G.png")
 
 
 # ============================================================
@@ -565,5 +652,7 @@ legend.Draw()
 info.Draw()
 
 c_zoom.Update()
-c_zoom.SaveAs(f"Manual_GaussFit_{N_GAUSS}G_ZOOM.png")
-
+if args.Poisson_chi2:
+    c_zoom.SaveAs(f"Manual_GaussFit_{N_GAUSS}G_ZOOM_Poisson.png")
+else:
+    c_zoom.SaveAs(f"Manual_GaussFit_{N_GAUSS}G_ZOOM.png")

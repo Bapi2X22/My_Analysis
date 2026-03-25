@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 22, in <module>
+    from higgs_dna.tools.flow_corrections import apply_flow_corrections_to_photons
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/flow_corrections.py", line 2, in <module>
+    import torch
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/__init__.py", line 2240, in <module>
+    from torch import quantization as quantization  # usort: skip
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/quantization/__init__.py", line 2, in <module>
+    from .fake_quantize import *  # noqa: F403
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/quantization/fake_quantize.py", line 10, in <module>
+    from torch.ao.quantization.fake_quantize import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/ao/quantization/__init__.py", line 12, in <module>
+    from .pt2e._numeric_debugger import (  # noqa: F401
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/ao/quantization/pt2e/_numeric_debugger.py", line 9, in <module>
+    from torch.ao.quantization.pt2e.graph_utils import bfs_trace_with_node_process
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/ao/quantization/pt2e/graph_utils.py", line 9, in <module>
+    from torch.export import ExportedProgram
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/export/__init__.py", line 58, in <module>
+    import torch.export.custom_ops
+ModuleNotFoundError: No module named 'torch.export.custom_ops'

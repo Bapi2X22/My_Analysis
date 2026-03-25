@@ -1,0 +1,17 @@
+executable = /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs/.higgs_dna_vanilla_lxplus/my_runner_BKG_2024_20260312_105004/jobs/AN-TTto2L2Nu_24SummerRun3.sh
+arguments = $(ProcId)
+output = AN-TTto2L2Nu_24SummerRun3.$(ClusterId).$(ProcId).out
+error = AN-TTto2L2Nu_24SummerRun3.$(ClusterId).$(ProcId).err
+log = /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs/.higgs_dna_vanilla_lxplus/my_runner_BKG_2024_20260312_105004/jobs/AN-TTto2L2Nu_24SummerRun3.$(ClusterId).log
+output_destination = root://eosuser.cern.ch//eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs/.higgs_dna_vanilla_lxplus/my_runner_BKG_2024_20260312_105004/jobs
+request_memory = 10GB
+getenv = True
+when_to_transfer_output = ON_EXIT_OR_EVICT
+transfer_output_files=""
++JobFlavour = "workday"
+on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+periodic_release = (NumJobStarts < 3) && ((CurrentTime - EnteredCurrentStatus) > 600)
+max_retries = 3
+requirements = Machine =!= LastRemoteHost
+queue 780

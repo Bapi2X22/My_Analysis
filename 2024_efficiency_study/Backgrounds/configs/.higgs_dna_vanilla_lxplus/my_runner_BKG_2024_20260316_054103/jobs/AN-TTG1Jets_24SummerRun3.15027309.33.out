@@ -1,0 +1,41 @@
+INFO     Start production                                    run_analysis.py:122
+INFO     Corrections: {'TTG1Jets_24SummerRun3':              run_analysis.py:144
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF'], 'TTto2L2Nu_24SummerRun3':                                
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF'], 'TTtoLNu2Q_24SummerRun3':                                
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF']}                                                          
+INFO     Systematics: {'TTG1Jets_24SummerRun3':              run_analysis.py:145
+         ['ScaleEB2G_IJazZ', 'ScaleEE2G_IJazZ',                                 
+         'Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                          
+         'Material', 'Pileup', 'SF_photon_ID',                                  
+         'ElectronVetoSF', 'PreselSF', 'TriggerSF',                             
+         'AlphaS', 'PartonShower', 'LHEScale', 'LHEPdf'],                       
+         'TTto2L2Nu_24SummerRun3': ['ScaleEB2G_IJazZ',                          
+         'ScaleEE2G_IJazZ', 'Smearing2G_IJazZ',                                 
+         'energyErrShift', 'FNUF', 'Material', 'Pileup',                        
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF', 'AlphaS', 'PartonShower', 'LHEScale',                     
+         'LHEPdf'], 'TTtoLNu2Q_24SummerRun3':                                   
+         ['ScaleEB2G_IJazZ', 'ScaleEE2G_IJazZ',                                 
+         'Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                          
+         'Material', 'Pileup', 'SF_photon_ID',                                  
+         'ElectronVetoSF', 'PreselSF', 'TriggerSF',                             
+         'AlphaS', 'PartonShower', 'LHEScale', 'LHEPdf']}                       
+INFO     Year: {'TTG1Jets_24SummerRun3': ['2024'],           run_analysis.py:146
+         'TTto2L2Nu_24SummerRun3': ['2024'],                                    
+         'TTtoLNu2Q_24SummerRun3': ['2024']}                                    
+INFO     The following datasets are present in the analysis  run_analysis.py:163
+         but not in the sample json and will be ignored:                        
+         ['TTto2L2Nu_24SummerRun3',                                             
+         'TTtoLNu2Q_24SummerRun3']                                              
+INFO     Skipping Mass resolution decorrelation as required      skeleton.py:172
+INFO     Skipping CQR as required                                skeleton.py:186
+Preprocessing 100% ━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 [ 0:02:23 < 0:00:00 | ? file/s ]

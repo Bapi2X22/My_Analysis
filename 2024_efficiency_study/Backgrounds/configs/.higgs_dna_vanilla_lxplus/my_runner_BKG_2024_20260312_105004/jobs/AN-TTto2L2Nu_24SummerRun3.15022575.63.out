@@ -1,0 +1,691 @@
+INFO     Start production                                    run_analysis.py:122
+INFO     Corrections: {'TTG1Jets_24SummerRun3':              run_analysis.py:144
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF'], 'TTto2L2Nu_24SummerRun3':                                
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF'], 'TTtoLNu2Q_24SummerRun3':                                
+         ['Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                         
+         'Material', 'jec_jet_syst', 'Pileup',                                  
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF']}                                                          
+INFO     Systematics: {'TTG1Jets_24SummerRun3':              run_analysis.py:145
+         ['ScaleEB2G_IJazZ', 'ScaleEE2G_IJazZ',                                 
+         'Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                          
+         'Material', 'Pileup', 'SF_photon_ID',                                  
+         'ElectronVetoSF', 'PreselSF', 'TriggerSF',                             
+         'AlphaS', 'PartonShower', 'LHEScale', 'LHEPdf'],                       
+         'TTto2L2Nu_24SummerRun3': ['ScaleEB2G_IJazZ',                          
+         'ScaleEE2G_IJazZ', 'Smearing2G_IJazZ',                                 
+         'energyErrShift', 'FNUF', 'Material', 'Pileup',                        
+         'SF_photon_ID', 'ElectronVetoSF', 'PreselSF',                          
+         'TriggerSF', 'AlphaS', 'PartonShower', 'LHEScale',                     
+         'LHEPdf'], 'TTtoLNu2Q_24SummerRun3':                                   
+         ['ScaleEB2G_IJazZ', 'ScaleEE2G_IJazZ',                                 
+         'Smearing2G_IJazZ', 'energyErrShift', 'FNUF',                          
+         'Material', 'Pileup', 'SF_photon_ID',                                  
+         'ElectronVetoSF', 'PreselSF', 'TriggerSF',                             
+         'AlphaS', 'PartonShower', 'LHEScale', 'LHEPdf']}                       
+INFO     Year: {'TTG1Jets_24SummerRun3': ['2024'],           run_analysis.py:146
+         'TTto2L2Nu_24SummerRun3': ['2024'],                                    
+         'TTtoLNu2Q_24SummerRun3': ['2024']}                                    
+INFO     The following datasets are present in the analysis  run_analysis.py:163
+         but not in the sample json and will be ignored:                        
+         ['TTG1Jets_24SummerRun3', 'TTtoLNu2Q_24SummerRun3']                    
+INFO     Skipping Mass resolution decorrelation as required      skeleton.py:172
+INFO     Skipping CQR as required                                skeleton.py:186
+Preprocessing 100% ━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 [ 0:00:02 < 0:00:00 | ? file/s ]
+Dataset TTto2L2Nu_24SummerRun3: 475310 events
+after trigger: Dataset TTto2L2Nu_24SummerRun3: 475310 events
+s_or_s_applied:  True
+s_or_s_ele_applied:  True
+Adding pt_raw to photons
+Photon_fields ['cutBased', 'electronVeto', 'hasConversionTracks', 'isScEtaEB', 'isScEtaEE', 'mvaID_WP80', 'mvaID_WP90', 'pixelSeed', 'seedGain', 'electronIdx', 'jetIdx', 'seediEtaOriX', 'seediPhiOriY', 'vidNestedWPBitmap', 'ecalPFClusterIso', 'energyErr', 'energyRaw', 'esEffSigmaRR', 'esEnergyOverRawE', 'eta', 'etaWidth', 'haloTaggerMVAVal', 'hcalPFClusterIso', 'hoe', 'hoe_PUcorr', 'hoe_Tower', 'mvaID', 'pfChargedIso', 'pfChargedIsoPFPV', 'pfChargedIsoWorstVtx', 'pfPhoIso03', 'pfRelIso03_all_quadratic', 'pfRelIso03_chg_quadratic', 'phi', 'phiWidth', 'pt', 'r9', 's4', 'sieie', 'sieip', 'sipip', 'superclusterEta', 'trkSumPtHollowConeDR03', 'trkSumPtSolidConeDR04', 'x_calo', 'y_calo', 'z_calo', 'genPartFlav', 'genPartIdx', 'electronIdxG', 'genPartIdxG', 'jetIdxG', 'ScEta', 'pt_raw']
+Electron_fields ['convVeto', 'cutBased', 'cutBased_HEEP', 'isEB', 'isEcalDriven', 'isPFcand', 'jetNDauCharged', 'lostHits', 'mvaIso_WP80', 'mvaIso_WP90', 'mvaIso_WPHZZ', 'mvaNoIso_WP80', 'mvaNoIso_WP90', 'seedGain', 'tightCharge', 'jetIdx', 'photonIdx', 'seediEtaOriX', 'seediPhiOriY', 'svIdx', 'fsrPhotonIdx', 'charge', 'pdgId', 'vidNestedWPBitmap', 'vidNestedWPBitmapHEEP', 'PreshowerEnergy', 'deltaEtaSC', 'dr03EcalRecHitSumEt', 'dr03HcalDepth1TowerSumEt', 'dr03TkSumPt', 'dr03TkSumPtHEEP', 'dxy', 'dxyErr', 'dz', 'dzErr', 'eInvMinusPInv', 'ecalEnergy', 'ecalEnergyError', 'energyErr', 'eta', 'fbrem', 'gsfTrketaMode', 'gsfTrkpMode', 'gsfTrkpModeErr', 'gsfTrkphiMode', 'hoe', 'ip3d', 'jetDF', 'jetPtRelv2', 'jetRelIso', 'mass', 'miniPFRelIso_all', 'miniPFRelIso_chg', 'mvaHZZIso', 'mvaIso', 'mvaNoIso', 'pfRelIso03_all', 'pfRelIso03_chg', 'pfRelIso04_all', 'phi', 'pt', 'r9', 'rawEnergy', 'scEtOverPt', 'sieie', 'sip3d', 'superclusterEta', 'promptMVA', 'genPartFlav', 'genPartIdx', 'IPx', 'IPy', 'IPz', 'ipLengthSig', 'genPartIdxG', 'jetIdxG', 'photonIdxG', 'pt_raw']
+INFO     Applying correction Smearing2G_IJazZ to     HtoAAtobbgg_BKG_2024.py:228
+         dataset TTto2L2Nu_24SummerRun3                                         
+INFO     Applying correction energyErrShift to       HtoAAtobbgg_BKG_2024.py:228
+         dataset TTto2L2Nu_24SummerRun3                                         
+INFO     Applying correction FNUF to dataset         HtoAAtobbgg_BKG_2024.py:228
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  You selected the year_string 2024, which is a  photon_systematics.py:95
+         Run 3 era.                                                             
+                                 FNUF was not                                   
+         re-derived for Run 3 yet, but we fall back to                          
+         the Run 2 2018 values.                                                 
+                                 These values only                              
+         constitute up/down variations, no correction                           
+         is applied.                                                            
+                                 The values are the                             
+         averaged corrections from Run 2, turned into a                         
+         systematic and inflated by 25%.                                        
+                                 Please make sure that                          
+         this is what you want. You have been warned.                           
+INFO     Applying correction Material to dataset     HtoAAtobbgg_BKG_2024.py:228
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  You selected the year_string 2024, which is a photon_systematics.py:208
+         Run 3 era.                                                             
+                           Material was not rederived                           
+         for Run 3 yet, but we fall back to the Run 2                           
+         2018 values.                                                           
+                           Please make sure that this                           
+         is what you want. You have been warned.                                
+INFO     Applying correction jec_jet_syst to dataset HtoAAtobbgg_BKG_2024.py:228
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Current 2024 JER is preliminary,            jet_systematics_json.py:124
+         2023PostBPix is used! These ntuples should                             
+         not be used for a final physics result!                                
+Number of photons:  475310
+INFO     Adding systematic ScaleEB2G_IJazZ to        HtoAAtobbgg_BKG_2024.py:255
+         photons collection of dataset                                          
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using conservative scale uncertainties of 1%  EGM_SS_systematics.py:286
+         to cover electron/photon energy scale                                  
+         discrepancies for Run3 samples                                         
+                                                                                
+INFO     Adding systematic ScaleEE2G_IJazZ to        HtoAAtobbgg_BKG_2024.py:255
+         photons collection of dataset                                          
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using conservative scale uncertainties of 1%  EGM_SS_systematics.py:286
+         to cover electron/photon energy scale                                  
+         discrepancies for Run3 samples                                         
+                                                                                
+INFO     Adding systematic Smearing2G_IJazZ to       HtoAAtobbgg_BKG_2024.py:255
+         photons collection of dataset                                          
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic energyErrShift to photons HtoAAtobbgg_BKG_2024.py:255
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic FNUF to photons           HtoAAtobbgg_BKG_2024.py:255
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  You selected the year_string 2024, which is a  photon_systematics.py:95
+         Run 3 era.                                                             
+                                 FNUF was not                                   
+         re-derived for Run 3 yet, but we fall back to                          
+         the Run 2 2018 values.                                                 
+                                 These values only                              
+         constitute up/down variations, no correction                           
+         is applied.                                                            
+                                 The values are the                             
+         averaged corrections from Run 2, turned into a                         
+         systematic and inflated by 25%.                                        
+                                 Please make sure that                          
+         this is what you want. You have been warned.                           
+INFO     Adding systematic Material to photons       HtoAAtobbgg_BKG_2024.py:255
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  You selected the year_string 2024, which is a photon_systematics.py:208
+         Run 3 era.                                                             
+                           Material was not rederived                           
+         for Run 3 yet, but we fall back to the Run 2                           
+         2018 values.                                                           
+                           Please make sure that this                           
+         is what you want. You have been warned.                                
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[{btagUParTAK4probbb: 0.00162, muonSubtrDeltaPhi: 0, ... mass: 5.99}]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[{btagUParTAK4probbb: 0.00162, muonSubtrDeltaPhi: 0, ... mass: 6.15}]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Number of events before preselection: 475310
+selected_electrons 141203
+selected_muons 208169
+selected_leptons 309788
+selected Electrons 141203
+selected Muons 208169
+selected_b_jets:  [[Jet, Jet], [Jet, Jet], [Jet, Jet], [], ... [Jet], [], [Jet, Jet], [Jet, Jet]]
+Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos2: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos3: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+Pos4: Dataset TTto2L2Nu_24SummerRun3: 475310 Diphotons
+INFO     Adding correction Pileup to weight          HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding correction ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding correction PreselSF to weight        HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding correction TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:754
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic Pileup to weight          HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic SF_photon_ID to weight    HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+Photon fields in the SF_photon_ID:  ['pho_lead', 'pho_sublead', 'pt', 'dipho_pt', 'eta', 'phi', 'mass', 'charge', 'n_photons', 'rapidity', 'first_jet_pt', 'first_jet_eta', 'first_jet_phi', 'first_jet_mass', 'first_jet_charge', 'first_jet_B', 'first_jet_probb', 'first_jet_probbb', 'second_jet_pt', 'second_jet_eta', 'second_jet_phi', 'second_jet_mass', 'second_jet_charge', 'second_jet_B', 'second_jet_probb', 'second_jet_probbb', 'leadGenPho_pt', 'subleadGenPho_pt', 'leadGenPho_eta', 'subleadGenPho_eta', 'leadGenPho_phi', 'subleadGenPho_phi', 'n_jets']
+WARNING  Using 2023postBPix SFs for 2024 as a     event_weight_systematics.py:53
+         placeholder until 2024 SFs are                                         
+         available! These NTuples cannot be used                                
+         for a final physics result.                                            
+INFO     Adding systematic ElectronVetoSF to weight  HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic PreselSF to weight        HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+WARNING  Using 2023postBPix Preselection SFs for event_weight_systematics.py:450
+         2024 as a placeholder until 2024 SFs                                   
+         are available! These NTuples cannot be                                 
+         used for a final physics result.                                       
+INFO     Adding systematic TriggerSF to weight       HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic AlphaS to weight          HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic PartonShower to weight    HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic LHEScale to weight        HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic LHEPdf to weight          HtoAAtobbgg_BKG_2024.py:774
+         collection of dataset                                                  
+         TTto2L2Nu_24SummerRun3                                                 
+INFO     Adding systematic weight variations to      HtoAAtobbgg_BKG_2024.py:827
+         nominal output file.                                                   
+Processing 100% ━━━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 [ 0:06:30 < 0:00:00 | ? chunk/s ]

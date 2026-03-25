@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 10, in <module>
+    import numpy as np
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numpy/__init__.py", line 140, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numpy/core/__init__.py", line 71, in <module>
+    from . import numerictypes as nt
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numpy/core/numerictypes.py", line 100, in <module>
+    from ._string_helpers import (
+ModuleNotFoundError: No module named 'numpy.core._string_helpers'

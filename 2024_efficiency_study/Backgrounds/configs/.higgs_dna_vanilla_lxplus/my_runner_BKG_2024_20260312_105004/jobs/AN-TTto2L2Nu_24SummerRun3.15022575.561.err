@@ -1,0 +1,31 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 27, in <module>
+    from higgs_dna.systematics import object_systematics as available_object_systematics
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/systematics/__init__.py", line 3, in <module>
+    from .factories import add_jme_corr_syst
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/systematics/factories.py", line 3, in <module>
+    from .jet_systematics_json import jerc_jet
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/systematics/jet_systematics_json.py", line 5, in <module>
+    from correctionlib.schemav2 import Correction, CorrectionSet
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/correctionlib/schemav2.py", line 5, in <module>
+    from pydantic import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pydantic/__init__.py", line 413, in <module>
+    _getattr_migration = getattr_migration(__name__)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pydantic/_migration.py", line 260, in getattr_migration
+    from .errors import PydanticImportError
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pydantic/errors.py", line 11, in <module>
+    from pydantic._internal import _repr
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1131, in get_data
+OSError: [Errno 5] Input/output error

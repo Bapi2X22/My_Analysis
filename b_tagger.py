@@ -136,18 +136,50 @@ def photon_preselections_ggH_BBGG(
     return filtered_photons, filtered_jets, gen_bquark
 
 
+# def extract_info_from_path(input_file):
+#     # Extract just the file name and directory name
+#     filename = os.path.basename(input_file)
+#     dirname = os.path.basename(os.path.dirname(input_file))
+#     combined_name = f"{dirname}_{filename}"
+
+#     # --- Extract mass point ---
+#     m = re.search(r'(?:M|_)(\d+)', combined_name)
+#     mass_point = f"M{m.group(1)}" if m else "UnknownMass"
+
+#     # --- Extract year (e.g. UL16APV, UL18, 2022, 2023, etc.) ---
+#     y = re.search(r'(UL)?(16|17|18|2016|2017|2018|2022|2023|2024|2025)(APV)?', combined_name, re.IGNORECASE)
+#     if y:
+#         prefix = "20" if len(y.group(2)) == 2 else ""
+#         apv = "APV" if y.group(3) else ""
+#         year = f"{prefix}{y.group(2)}{apv}"
+#     else:
+#         year = "UnknownYear"
+
+#     # --- Energy label ---
+#     if any(x in year for x in ["2016", "2017", "2018"]):
+#         energy_label = "13 TeV"
+#     else:
+#         energy_label = "13.6 TeV"
+
+#     return mass_point, year, energy_label
+
 def extract_info_from_path(input_file):
-    # Extract just the file name and directory name
+    import os, re
+
     filename = os.path.basename(input_file)
-    dirname = os.path.basename(os.path.dirname(input_file))
+    dirname  = os.path.basename(os.path.dirname(input_file))
     combined_name = f"{dirname}_{filename}"
 
-    # --- Extract mass point ---
-    m = re.search(r'(?:M|_)(\d+)', combined_name)
+    # --- Extract mass point ONLY from "_M<number>" ---
+    m = re.search(r'_M(\d+)', combined_name)
     mass_point = f"M{m.group(1)}" if m else "UnknownMass"
 
-    # --- Extract year (e.g. UL16APV, UL18, 2022, 2023, etc.) ---
-    y = re.search(r'(UL)?(16|17|18|2016|2017|2018|2022|2023|2024|2025)(APV)?', combined_name, re.IGNORECASE)
+    # --- Extract year ---
+    y = re.search(
+        r'(UL)?(16|17|18|2016|2017|2018|2022|2023|2024|2025)(APV)?',
+        combined_name,
+        re.IGNORECASE,
+    )
     if y:
         prefix = "20" if len(y.group(2)) == 2 else ""
         apv = "APV" if y.group(3) else ""
@@ -162,42 +194,102 @@ def extract_info_from_path(input_file):
         energy_label = "13.6 TeV"
 
     return mass_point, year, energy_label
+
+
 import ROOT
 import os
 
-def plot_njets(jets, outdir="./plots", outname="NJets", title="Jet Multiplicity", logy=False):
-    """
-    Plot the number of jets per event.
+# def plot_njets(jets, mass_point, outdir="./plots", outname="NJets", title="Jet Multiplicity", logy=False):
+#     """
+#     Plot the number of jets per event.
 
-    Parameters
-    ----------
-    jets : ak.Array
-        Awkward Array containing jets per event (e.g. from events.Jet).
-    outdir : str, optional
-        Output directory for saving the plot.
-    outname : str, optional
-        Base name for the output file (without extension).
-    title : str, optional
-        Histogram title.
-    logy : bool, optional
-        If True, sets y-axis to log scale.
-    """
+#     Parameters
+#     ----------
+#     jets : ak.Array
+#         Awkward Array containing jets per event (e.g. from events.Jet).
+#     outdir : str, optional
+#         Output directory for saving the plot.
+#     outname : str, optional
+#         Base name for the output file (without extension).
+#     title : str, optional
+#         Histogram title.
+#     logy : bool, optional
+#         If True, sets y-axis to log scale.
+#     """
+#     import awkward as ak
+#     import numpy as np
+
+#     # if not os.path.exists(outdir):
+#     #     os.makedirs(outdir)
+
+#     # --- Compute number of jets per event ---
+#     nJets = ak.num(jets)
+#     nJets_np = ak.to_numpy(nJets)
+
+#     # --- Create ROOT histogram ---
+#     nbins = 10
+#     xmin, xmax = 0, 10
+#     h_njets = ROOT.TH1F("h_njets", f"{title};N_{jets} [M = {mass_point} GeV];Events", nbins, xmin, xmax)
+
+#     for n in nJets_np:
+#         h_njets.Fill(n)
+
+#     # --- Style ---
+#     h_njets.SetLineWidth(2)
+#     h_njets.SetLineColor(ROOT.kBlue + 1)
+#     h_njets.SetFillColorAlpha(ROOT.kBlue - 9, 0.35)
+
+#     # --- Draw ---
+#     c = ROOT.TCanvas("c_njets", "", 800, 700)
+#     if logy:
+#         c.SetLogy()
+#     h_njets.Draw("HIST")
+#     h_njets.SetTitle(title)
+#     h_njets.GetXaxis().SetTitle("Number of jets")
+#     h_njets.GetYaxis().SetTitle("Events")
+
+#     output_dir = os.path.dirname(os.path.abspath(outdir))
+
+#     # --- Save ---
+#     outpath_png = os.path.join(output_dir, f"NJet_{mass_point}.png")
+#     # outpath_pdf = os.path.join(output_dir, f"{outname}.pdf")
+#     outpath_pdf = os.path.join(output_dir, f"NJet_{mass_point}.pdf")
+#     c.SaveAs(outpath_png)
+#     c.SaveAs(outpath_pdf)
+#     # print(f"Saved plot: {outpath_png}")
+#     return h_njets
+
+def plot_njets(
+    jets,
+    mass_point,
+    outdir="./plots",
+    outname="NJet",
+    title="Jet Multiplicity",
+    logy=False,
+):
     import awkward as ak
-    import numpy as np
+    import os
+    import ROOT
 
-    # if not os.path.exists(outdir):
-    #     os.makedirs(outdir)
+    # --- Ensure output directory exists ---
+    outdir = os.path.abspath(outdir)
+    os.makedirs(outdir, exist_ok=True)
 
     # --- Compute number of jets per event ---
-    nJets = ak.num(jets)
-    nJets_np = ak.to_numpy(nJets)
+    nJets = ak.to_numpy(ak.num(jets))
 
     # --- Create ROOT histogram ---
     nbins = 10
     xmin, xmax = 0, 10
-    h_njets = ROOT.TH1F("h_njets", f"{title};N_{jets};Events", nbins, xmin, xmax)
+    h_njets = ROOT.TH1F(
+        "h_njets",
+        f"{title};N_{{jets}};Events",
+        nbins,
+        xmin,
+        xmax,
+    )
 
-    for n in nJets_np:
+    for n in nJets:
         h_njets.Fill(n)
 
     # --- Style ---
@@ -209,25 +301,38 @@ def plot_njets(jets, outdir="./plots", outname="NJets", title="Jet Multiplicity"
     c = ROOT.TCanvas("c_njets", "", 800, 700)
     if logy:
         c.SetLogy()
-    h_njets.Draw("HIST")
-    h_njets.SetTitle(title)
-    h_njets.GetXaxis().SetTitle("Number of jets")
-    h_njets.GetYaxis().SetTitle("Events")
 
-    output_dir = os.path.dirname(os.path.abspath(outdir))
+    h_njets.Draw("HIST")
+
+    # --- CMS-style mass label ---
+    tex = ROOT.TLatex()
+    tex.SetNDC()
+    tex.SetTextFont(42)
+    tex.SetTextSize(0.045)
+    tex.DrawLatex(0.15, 0.85, f"m(A) = {mass_point} GeV")
 
     # --- Save ---
-    outpath_png = os.path.join(output_dir, f"{outname}.png")
-    outpath_pdf = os.path.join(output_dir, f"{outname}.pdf")
-    c.SaveAs(outpath_png)
-    c.SaveAs(outpath_pdf)
-    # print(f"Saved plot: {outpath_png}")
+
+    out_png = os.path.join(outdir, f"{outname}_{mass_point}.png")
+    out_pdf = os.path.join(outdir, f"{outname}_{mass_point}.pdf")
+
+
+    c.SaveAs(out_png)
+    c.SaveAs(out_pdf)
+
+    print(f"NJet plot saved → {out_png}")
+
     return h_njets
 
 
+
 def draw_performance_curves(taggers, effs, mistags, input_file, output):
+
+    outdir = os.path.dirname(os.path.abspath(output))
+    if outdir:
+        os.makedirs(outdir, exist_ok=True)
     # Create output directory if not present
-    os.makedirs(os.path.dirname(output), exist_ok=True)
+    # os.makedirs(os.path.dirname(output), exist_ok=True)
 
     mass_point, year, energy_label = extract_info_from_path(input_file)
 
@@ -288,6 +393,15 @@ def draw_performance_curves(taggers, effs, mistags, input_file, output):
     texEnergy.SetTextSize(0.045)
     texEnergy.SetTextAlign(31)  # right aligned
     texEnergy.DrawLatex(0.94, 0.88, energy_label)  # e.g. "√s = 13 TeV"
+
+    # --- Mass point label ---
+    texMass = ROOT.TLatex()
+    texMass.SetNDC()
+    texMass.SetTextFont(42)
+    texMass.SetTextSize(0.045)
+    texMass.SetTextAlign(13)  # left-top alignment
+    texMass.DrawLatex(0.13, 0.82, f"m(A) = {mass_point} GeV")
+
 
     # # --- Additional note ---
     # texNote = ROOT.TLatex()
@@ -527,13 +641,21 @@ def compute_eff(events, tagger, thr):
     return float(success_rate), float(efficiency)
 
 
-def compute_eff_miss_tag_rate_after_sel(events, tagger, thr, outdir):
+def compute_eff_miss_tag_rate_after_sel(events, tagger, thr, outdir, mass_point, do_plot=False):
 
     photons = events.Photon
 
     photons, jets , gen_b_from_a = photon_preselections_ggH_BBGG(photons, events)
 
-    plot_njets(jets, outdir)
+    if do_plot:
+        # plot_njets(jets, outdir, mass_point)
+        plot_njets(
+        jets,
+        mass_point=mass_point,
+        outdir=outdir
+    )
+
+    # plot_njets(jets, outdir)
 
     gen_b_from_a = gen_b_from_a[ak.argsort(gen_b_from_a.pt, axis=1, ascending=False)]
 
@@ -555,7 +677,6 @@ def compute_eff_miss_tag_rate_after_sel(events, tagger, thr, outdir):
 
 
     conflict = lead_min_idx == sublead_min_idx
-
 
 
     keep_first = dr_after_lead < dr_after_sublead
@@ -668,12 +789,33 @@ def main():
 
     all_effs, all_mistags = [], []
 
+    mass_point, _, _ = extract_info_from_path(args.input)
+
+    # --- produce NJet plot ONCE ---
+    _,_ = compute_eff_miss_tag_rate_after_sel(
+        events,
+        tagger=args.taggers[0],   # any tagger is fine
+        thr=thresholds[0],        # any threshold is fine
+        outdir=output_dir,
+        mass_point=mass_point,
+        do_plot=True
+    )
+
+
     for tagger in args.taggers:
         print(f"\nRunning scan for tagger: {tagger}")
         effs, mistags = [], []
         for thr in thresholds:
             # e, m = compute_eff_miss_tag_rate(events, tagger, thr)
-            e, m = compute_eff_miss_tag_rate_after_sel(events, tagger, thr, args.output)
+            # e, m = compute_eff_miss_tag_rate_after_sel(events, tagger, thr, args.output)
+            e, m = compute_eff_miss_tag_rate_after_sel(
+                events,
+                tagger,
+                thr,
+                output_dir,
+                mass_point,
+                do_plot=False   # ⬅ NO plotting
+            )
             effs.append(e)
             mistags.append(m)
             print(f"thr={thr:.2f} : eff={e:.3f}, mistag={m:.3f}")

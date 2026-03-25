@@ -1,0 +1,10 @@
+{
+    "NOMINAL": "nominal",
+    "FNUFUp":"FNUF_up",
+    "FNUFDown":"FNUF_down",
+    "MaterialUp":"Material_up",
+    "MaterialDown":"Material_down",
+    "jecsystTotalUp":"jec_syst_Total_up",
+    "jecsystTotalDown":"jec_syst_Total_down"
+
+}

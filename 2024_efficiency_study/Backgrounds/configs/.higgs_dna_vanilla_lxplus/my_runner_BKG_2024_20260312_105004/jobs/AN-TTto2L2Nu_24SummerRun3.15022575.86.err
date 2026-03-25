@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 12, in <module>
+    from coffea import processor
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/__init__.py", line 10, in <module>
+    from .executor import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 871, in <module>
+    class FuturesExecutor(ExecutorBase):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 922, in FuturesExecutor
+    ] = concurrent.futures.ProcessPoolExecutor  # fmt: skip
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/concurrent/futures/__init__.py", line 44, in __getattr__
+    from .process import ProcessPoolExecutor as pe
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/concurrent/futures/process.py", line 51, in <module>
+    import multiprocessing as mp
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/multiprocessing/__init__.py", line 16, in <module>
+    from . import context
+ImportError: cannot import name 'context' from partially initialized module 'multiprocessing' (most likely due to a circular import) (/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/multiprocessing/__init__.py)

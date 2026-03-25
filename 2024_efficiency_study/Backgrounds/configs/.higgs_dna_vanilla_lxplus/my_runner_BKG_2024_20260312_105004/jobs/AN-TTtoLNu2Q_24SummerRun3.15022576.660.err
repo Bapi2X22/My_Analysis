@@ -1,0 +1,50 @@
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:195: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml': [13:54:24] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_barrel_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x1493acc5f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x1493adf91fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x1493adf7975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x1493acbb3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x1493e2cdad8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x1493e2cda1cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x1493e2cda91d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x1493e2ce92c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x1493e2ce87ee]
+
+. Skipping.
+  self.photonid_mva_EB = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py:201: UserWarning: Could not load photonid MVA model from '/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml': [13:54:24] /home/conda/feedstock_root/build_artifacts/xgboost-split_1757348053364/work/dmlc-core/src/io/local_filesys.cc:210: Check failed: allow_null:  LocalFileSystem::Open "/eos/home-b/bbapi/HiggsDNA/higgs_dna/metaconditions/photon_id_mva_weights/flashgg/MicroAOD/data/HggPhoId_94X_endcap_BDT_v2.weights.xml": No such file or directory
+Stack trace:
+  [bt] (0) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::LogMessageFatal::~LogMessageFatal()+0x6e) [0x1493acc5f0fe]
+  [bt] (1) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::io::LocalFileSystem::Open(dmlc::io::URI const&, char const*, bool)+0x235) [0x1493adf91fc5]
+  [bt] (2) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(dmlc::Stream::Create(char const*, char const*, bool)+0x29a) [0x1493adf7975a]
+  [bt] (3) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/libxgboost.so(XGBoosterLoadModel+0x329) [0x1493acbb3b79]
+  [bt] (4) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x6d8a) [0x1493e2cdad8a]
+  [bt] (5) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(+0x61cd) [0x1493e2cda1cd]
+  [bt] (6) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/../../libffi.so.8(ffi_call+0xcd) [0x1493e2cda91d]
+  [bt] (7) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x92c9) [0x1493e2ce92c9]
+  [bt] (8) /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so(+0x87ee) [0x1493e2ce87ee]
+
+. Skipping.
+  self.photonid_mva_EE = load_photonid_mva(
+/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/xgb_loader.py:26: UserWarning: FileNotFoundError(2, 'No such file or directory')
+  warnings.warn(repr(fnferr))
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py:1530: UserWarning: Failed processing file: WorkItem(dataset='TTtoLNu2Q_24SummerRun3', filename='root://xrootd-cms.infn.it///store/mc/RunIII2024Summer24NanoAODv15/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2520000/88ce1bde-7d3d-40a1-b92a-a7bfd64cfde6.root', treename='Events', entrystart=0, entrystop=508530, fileuuid=b'\xca\x04\xbe\xf4\x1cV\x11\xf0\xb0\xd0\xe6\xd1\xb9\xbc\xbe\xef', usermeta={})
+  warnings.warn(str(e))
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 306, in main
+    run_executor(args, executor, sample_dict, processor_instance)
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 87, in run_executor
+    output = run(
+             ^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 1885, in __call__
+    wrapped_out = self.run(fileset, processor_instance, treename)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/executor.py", line 2037, in run
+    raise ValueError(
+ValueError: No chunks returned results, verify ``processor`` instance structure.
+                if you used skipbadfiles=True, it is possible all your files are bad.
+/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/XRootD/client/finalize.py:46: FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead
+  if isinstance(obj, File) and obj.is_open():

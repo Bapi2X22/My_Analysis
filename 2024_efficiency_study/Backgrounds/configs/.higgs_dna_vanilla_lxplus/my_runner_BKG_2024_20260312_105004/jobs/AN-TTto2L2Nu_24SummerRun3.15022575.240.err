@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 1, in <module>
+    from higgs_dna.workflows.skeleton import HggSkeletonProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py", line 6, in <module>
+    from higgs_dna.tools.xgb_loader import load_bdt
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/xgb_loader.py", line 5, in <module>
+    import xgboost
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/__init__.py", line 6, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/tracker.py", line 9, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/core.py", line 37, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/__init__.py", line 315, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/csgraph/__init__.py", line 187, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/csgraph/_laplacian.py", line 7, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/linalg/__init__.py", line 131, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/__init__.py", line 4, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/linalg/_isolve/iterative.py", line 5, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/linalg/__init__.py", line 215, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/linalg/_matfuncs.py", line 18, in <module>
+ModuleNotFoundError: No module named 'scipy.linalg._matfuncs_sqrtm'

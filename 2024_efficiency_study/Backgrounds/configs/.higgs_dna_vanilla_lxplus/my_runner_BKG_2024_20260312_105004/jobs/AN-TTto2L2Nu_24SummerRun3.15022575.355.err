@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 22, in <module>
+    from higgs_dna.tools.flow_corrections import apply_flow_corrections_to_photons
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/flow_corrections.py", line 2, in <module>
+    import torch
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/__init__.py", line 2169, in <module>
+    from torch import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/nested/__init__.py", line 21, in <module>
+    from ._internal.nested_tensor import _rebuild_njt, NestedTensor as _NestedTensor
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/nested/_internal/nested_tensor.py", line 7, in <module>
+    from torch.nested._internal.nested_int import NestedIntNode
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/nested/_internal/nested_int.py", line 4, in <module>
+    from torch.fx.experimental._constant_symnode import ConstantIntNode
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/fx/__init__.py", line 87, in <module>
+    from torch.fx import immutable_collections
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/fx/immutable_collections.py", line 16, in <module>
+    from ._compatibility import compatibility
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1073, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1131, in get_data
+OSError: [Errno 5] Input/output error

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 22, in <module>
+    from higgs_dna.tools.flow_corrections import apply_flow_corrections_to_photons
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/flow_corrections.py", line 2, in <module>
+    import torch
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/__init__.py", line 2611, in <module>
+    from torch import _meta_registrations
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/_meta_registrations.py", line 12, in <module>
+    from torch._decomp import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/_decomp/__init__.py", line 276, in <module>
+    import torch._decomp.decompositions
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/_decomp/decompositions.py", line 16, in <module>
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/torch/_prims/__init__.py", line 31, in <module>
+    from torch._prims_common.wrappers import backwards_not_supported
+ModuleNotFoundError: No module named 'torch._prims_common.wrappers'

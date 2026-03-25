@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 1, in <module>
+    from higgs_dna.workflows.skeleton import HggSkeletonProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/skeleton.py", line 6, in <module>
+    from higgs_dna.tools.xgb_loader import load_bdt
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/tools/xgb_loader.py", line 5, in <module>
+    import xgboost
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/__init__.py", line 6, in <module>
+    from . import tracker  # noqa
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/tracker.py", line 9, in <module>
+    from .core import _LIB, _check_call, _deprecate_positional_args, make_jcargs
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/xgboost/core.py", line 37, in <module>
+    import scipy.sparse
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/__init__.py", line 315, in <module>
+    from . import csgraph
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/csgraph/__init__.py", line 198, in <module>
+    from ._matching import (
+ImportError: /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/scipy/sparse/csgraph/_matching.cpython-311-x86_64-linux-gnu.so: cannot read file data: Input/output error

@@ -1,0 +1,21 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 12, in <module>
+    from coffea import processor
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/__init__.py", line 9, in <module>
+    from .helpers import Weights, PackedSelection
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/helpers.py", line 1, in <module>
+    from coffea.util import deprecate
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/util.py", line 8, in <module>
+    import numba
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/__init__.py", line 105, in <module>
+    from numba import experimental
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/experimental/__init__.py", line 1, in <module>
+    from .jitclass import jitclass
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/experimental/jitclass/__init__.py", line 2, in <module>
+    from numba.experimental.jitclass import boxing  # Has import-time side effect
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/experimental/jitclass/boxing.py", line 14, in <module>
+    from numba.experimental.jitclass import _box
+ImportError: /eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/experimental/jitclass/_box.cpython-311-x86_64-linux-gnu.so: cannot read file data: Input/output error

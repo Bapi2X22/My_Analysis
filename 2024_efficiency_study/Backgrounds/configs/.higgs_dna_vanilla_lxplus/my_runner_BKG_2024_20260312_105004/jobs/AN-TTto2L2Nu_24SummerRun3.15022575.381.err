@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 12, in <module>
+    from coffea import processor
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/__init__.py", line 9, in <module>
+    from .helpers import Weights, PackedSelection
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/processor/helpers.py", line 1, in <module>
+    from coffea.util import deprecate
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/coffea/util.py", line 8, in <module>
+    import numba
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/__init__.py", line 92, in <module>
+    from numba.core.decorators import (cfunc, jit, njit, stencil,
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/decorators.py", line 12, in <module>
+    from numba.stencils.stencil import stencil
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/stencils/stencil.py", line 11, in <module>
+    from numba.core import types, typing, utils, ir, config, ir_utils, registry
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/registry.py", line 6, in <module>
+    from numba.core import utils, typing, dispatcher, cpu
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/dispatcher.py", line 14, in <module>
+    from numba.core import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/compiler.py", line 6, in <module>
+    from numba.core import (utils, errors, interpreter, bytecode, postproc, config,
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/cpu.py", line 9, in <module>
+    from numba.core import (utils, types, config, cgutils, callconv, codegen,
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/numba/core/codegen.py", line 6, in <module>
+    import html
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/html/__init__.py", line 6, in <module>
+    from html.entities import html5 as _html5
+ModuleNotFoundError: No module named 'html.entities'

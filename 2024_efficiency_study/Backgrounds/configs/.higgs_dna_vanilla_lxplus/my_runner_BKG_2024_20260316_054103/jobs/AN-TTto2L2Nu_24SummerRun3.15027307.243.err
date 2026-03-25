@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 3, in <module>
+    from importlib import resources
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/importlib/resources/__init__.py", line 3, in <module>
+    from ._common import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/importlib/resources/_common.py", line 9, in <module>
+    from typing import Union, Optional
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/typing.py", line 25, in <module>
+    import collections.abc
+ModuleNotFoundError: No module named 'collections.abc'

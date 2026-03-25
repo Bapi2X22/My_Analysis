@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 11, in <module>
+    import uproot
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/__init__.py", line 78, in <module>
+    import uproot.extras
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/extras.py", line 17, in <module>
+    from uproot._util import parse_version
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/uproot/_util.py", line 20, in <module>
+    import setuptools
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/setuptools/__init__.py", line 18, in <module>
+    from setuptools.dist import Distribution
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/setuptools/dist.py", line 37, in <module>
+    import setuptools.command
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/setuptools/command/__init__.py", line 1, in <module>
+    from distutils.command.bdist import bdist
+ModuleNotFoundError: No module named 'distutils.command.bdist'

@@ -1,0 +1,15 @@
+{
+    "samplejson": "samples_local_WH_v15.json",
+    "workflow": "My_first_processor_WH_Cat1",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WH-2024M60": ["2024"],
+        "WH-2024M45": ["2024"],
+        "WH-2024M30": ["2024"],
+        "WH-2024M20": ["2024"],
+        "WH-2024M15": ["2024"]
+    },
+    "corrections": {},
+    "systematics": {}
+}

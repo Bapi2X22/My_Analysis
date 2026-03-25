@@ -1,0 +1,31 @@
+Python path configuration:
+  PYTHONHOME = (not set)
+  PYTHONPATH = '$PYTHONPATH:/eos/home-b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs'
+  program name = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/python3.11'
+  isolated = 0
+  environment = 1
+  user site = 1
+  safe_path = 0
+  import site = 1
+  is in build tree = 0
+  stdlib dir = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11'
+  sys._base_executable = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/python3.11'
+  sys.base_prefix = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new'
+  sys.base_exec_prefix = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new'
+  sys.platlibdir = 'lib'
+  sys.executable = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/python3.11'
+  sys.prefix = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new'
+  sys.exec_prefix = '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new'
+  sys.path = [
+    '/pool/condor/dir_1355103/$PYTHONPATH',
+    '/eos/home-b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs',
+    '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python311.zip',
+    '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11',
+    '/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/lib-dynload',
+  ]
+Fatal Python error: init_fs_encoding: failed to get the Python codec of the filesystem encoding
+Python runtime state: core initialized
+ModuleNotFoundError: No module named 'encodings'
+
+Current thread 0x0000152ef9de3740 (most recent call first):
+  <no Python frame>

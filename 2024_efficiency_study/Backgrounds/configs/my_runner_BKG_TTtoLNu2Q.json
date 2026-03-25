@@ -1,0 +1,11 @@
+{
+    "samplejson": "sample_2L2Nu.json",
+    "workflow": "HtoAAtobbgg_BKG_2024",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "TTtoLNu2Q_24SummerRun3": ["2024"]
+    },
+    "corrections": {},
+    "systematics": {}
+}

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 14, in <module>
+    from higgs_dna.utils.dumping_utils import (
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/utils/dumping_utils.py", line 4, in <module>
+    import pandas
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/__init__.py", line 139, in <module>
+    from pandas import testing
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/testing.py", line 6, in <module>
+    from pandas._testing import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/_testing/__init__.py", line 405, in <module>
+    cython_table = pd.core.common._cython_table.items()
+                   ^^^^^^^
+AttributeError: partially initialized module 'pandas' has no attribute 'core' (most likely due to a circular import)

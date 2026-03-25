@@ -1,0 +1,22 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 18, in <module>
+    from higgs_dna.workflows import workflows
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/__init__.py", line 1, in <module>
+    from higgs_dna.workflows.base import HggBaseProcessor
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/workflows/base.py", line 14, in <module>
+    from higgs_dna.utils.dumping_utils import (
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/utils/dumping_utils.py", line 4, in <module>
+    import pandas
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/__init__.py", line 138, in <module>
+    from pandas import api, arrays, errors, io, plotting, tseries
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/api/__init__.py", line 2, in <module>
+    from pandas.api import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/api/typing/__init__.py", line 31, in <module>
+    from pandas.io.json._json import JsonReader
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/io/json/__init__.py", line 1, in <module>
+    from pandas.io.json._json import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/site-packages/pandas/io/json/_json.py", line 71, in <module>
+    from pandas.io.parsers.readers import validate_integer
+ModuleNotFoundError: No module named 'pandas.io.parsers.readers'

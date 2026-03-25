@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 3, in <module>
+    from higgs_dna.scripts.run_analysis import main
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 3, in <module>
+    from importlib import resources
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/importlib/resources/__init__.py", line 3, in <module>
+    from ._common import (
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/importlib/resources/_common.py", line 3, in <module>
+    import tempfile
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/tempfile.py", line 46, in <module>
+    from random import Random as _Random
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/random.py", line 49, in <module>
+    from math import log as _log, exp as _exp, pi as _pi, e as _e, ceil as _ceil
+ModuleNotFoundError: No module named 'math'

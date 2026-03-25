@@ -1,0 +1,108 @@
+{
+    "samplejson": "/eos/home-b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/configs/.higgs_dna_vanilla_lxplus/my_runner_BKG_2024_20260312_105004/inputs/TTto2L2Nu_24SummerRun3-a135b786-95e2-4f25-b3ba-499c86df383e.json",
+    "workflow": "HtoAAtobbgg_BKG_2024",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "TTG1Jets_24SummerRun3": [
+            "2024"
+        ],
+        "TTto2L2Nu_24SummerRun3": [
+            "2024"
+        ],
+        "TTtoLNu2Q_24SummerRun3": [
+            "2024"
+        ]
+    },
+    "corrections": {
+        "TTG1Jets_24SummerRun3": [
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "jec_jet_syst",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF"
+        ],
+        "TTto2L2Nu_24SummerRun3": [
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "jec_jet_syst",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF"
+        ],
+        "TTtoLNu2Q_24SummerRun3": [
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "jec_jet_syst",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF"
+        ]
+    },
+    "systematics": {
+        "TTG1Jets_24SummerRun3": [
+            "ScaleEB2G_IJazZ",
+            "ScaleEE2G_IJazZ",
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF",
+            "AlphaS",
+            "PartonShower",
+            "LHEScale",
+            "LHEPdf"
+        ],
+        "TTto2L2Nu_24SummerRun3": [
+            "ScaleEB2G_IJazZ",
+            "ScaleEE2G_IJazZ",
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF",
+            "AlphaS",
+            "PartonShower",
+            "LHEScale",
+            "LHEPdf"
+        ],
+        "TTtoLNu2Q_24SummerRun3": [
+            "ScaleEB2G_IJazZ",
+            "ScaleEE2G_IJazZ",
+            "Smearing2G_IJazZ",
+            "energyErrShift",
+            "FNUF",
+            "Material",
+            "Pileup",
+            "SF_photon_ID",
+            "ElectronVetoSF",
+            "PreselSF",
+            "TriggerSF",
+            "AlphaS",
+            "PartonShower",
+            "LHEScale",
+            "LHEPdf"
+        ]
+    }
+}

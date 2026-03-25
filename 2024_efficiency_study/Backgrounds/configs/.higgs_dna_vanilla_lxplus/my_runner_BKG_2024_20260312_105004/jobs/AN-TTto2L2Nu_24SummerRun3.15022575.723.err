@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/bin/run_analysis.py", line 7, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/higgs_dna/scripts/run_analysis.py", line 127, in main
+    analysis = json.load(f)
+               ^^^^^^^^^^^^
+  File "/eos/home-b/bbapi/HiggsDNA/micromamba_dir/envs/higgs-dna-new/lib/python3.11/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+                 ^^^^^^^^^
+OSError: [Errno 5] Input/output error
