@@ -5,7 +5,7 @@ from coffea.nanoevents import NanoEventsFactory, NanoAODSchema
 import ROOT
 
 
-Plot_dir = "/eos/user/b/bbapi/www/Background_study_2024/stack_plots/"
+Plot_dir = "/eos/user/b/bbapi/www/Background_study_2024/stack_plots/updated_presel/"
 
 def draw_side_statboxes(canvas, hists,
                         x1=0.80, x2=0.98,
@@ -156,60 +156,61 @@ def get_mgg(one_photon, category_mask):
 lumi = 109  # fb^-1
 
 # cross sections in pb
-xsec1 = 4.1
+xsec1 = 4.634
 xsec2 = 98.04
 xsec3 = 405.87
 
-dir_2L2Nu = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_condor/merged/TTto2L2Nu_24SummerRun3/nominal/diphoton/DiPho_pt_merged.parquet'
-events_2L2Nu = ak.from_parquet(dir_2L2Nu)
-dir_LNu2Q = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_condor/merged/TTtoLNu2Q_24SummerRun3/nominal/diphoton/DiPho_pt_merged.parquet'
-events_LNu2Q = ak.from_parquet(dir_LNu2Q)
-dir_G1Jets = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_condor/merged/TTG1Jets_24SummerRun3/nominal/diphoton/DiPho_pt_merged.parquet'
-events_G1Jets = ak.from_parquet(dir_G1Jets)
+dir_2L2Nu_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTto2L2Nu_24SummerRun3/nominal/diphoton/CAT1_merged.parquet"
+dir_2L2Nu_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTto2L2Nu_24SummerRun3/nominal/diphoton/CAT2_merged.parquet"
+dir_2L2Nu_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTto2L2Nu_24SummerRun3/nominal/diphoton/CAT3_merged.parquet"
+events_2L2Nu_cat1 = ak.from_parquet(dir_2L2Nu_cat1)
+events_2L2Nu_cat2 = ak.from_parquet(dir_2L2Nu_cat2)
+events_2L2Nu_cat3 = ak.from_parquet(dir_2L2Nu_cat3)
 
-cat1_2L2Nu = events_2L2Nu.n_jets >= 2
-# cat2_2L2Nu = (events_2L2Nu.n_jets == 1) & (events_2L2Nu.first_jet_probbb > events_2L2Nu.first_jet_probb)
-# cat3_2L2Nu = (events_2L2Nu.n_jets == 1) & (events_2L2Nu.first_jet_probb > events_2L2Nu.first_jet_probbb)
+dir_LNu2Q_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTtoLNu2Q_24SummerRun3/nominal/diphoton/CAT1_merged.parquet"
+dir_LNu2Q_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTtoLNu2Q_24SummerRun3/nominal/diphoton/CAT2_merged.parquet"
+dir_LNu2Q_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTtoLNu2Q_24SummerRun3/nominal/diphoton/CAT3_merged.parquet"
+events_LNu2Q_cat1 = ak.from_parquet(dir_LNu2Q_cat1)
+events_LNu2Q_cat2 = ak.from_parquet(dir_LNu2Q_cat2)
+events_LNu2Q_cat3 = ak.from_parquet(dir_LNu2Q_cat3)
 
-cat1_LNu2Q = events_LNu2Q.n_jets >= 2
-# cat2_LNu2Q = (events_LNu2Q.n_jets == 1) & (events_LNu2Q.first_jet_probbb > events_LNu2Q.first_jet_probb)
-# cat3_LNu2Q = (events_LNu2Q.n_jets == 1) & (events_LNu2Q.first_jet_probb > events_LNu2Q.first_jet_probbb)
+dir_G1Jets_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTG1Jets_24SummerRun3/nominal/diphoton/CAT1_merged.parquet"
+dir_G1Jets_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTG1Jets_24SummerRun3/nominal/diphoton/CAT2_merged.parquet"
+dir_G1Jets_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_final_good_selections/merged/TTG1Jets_24SummerRun3/nominal/diphoton/CAT3_merged.parquet"
+events_G1Jets_cat1 = ak.from_parquet(dir_G1Jets_cat1)
+events_G1Jets_cat2 = ak.from_parquet(dir_G1Jets_cat2)
+events_G1Jets_cat3 = ak.from_parquet(dir_G1Jets_cat3)
 
-cat1_G1Jets = events_G1Jets.n_jets >= 2
-# cat2_G1Jets = (events_G1Jets.n_jets == 1) & (events_G1Jets.first_jet_probbb > events_G1Jets.first_jet_probb)
-# cat3_G1Jets = (events_G1Jets.n_jets == 1) & (events_G1Jets.first_jet_probb > events_G1Jets.first_jet_probbb)
 
-mgg_bkg1 = events_G1Jets.mass
-mgg_bkg2 = events_2L2Nu.mass
-mgg_bkg3 = events_LNu2Q.mass
+mgg_bkg1_cat1 = events_G1Jets_cat1.mass
+mgg_bkg1_cat2 = events_G1Jets_cat2.mass
+mgg_bkg1_cat3 = events_G1Jets_cat3.mass
+mgg_bkg2_cat1 = events_2L2Nu_cat1.mass
+mgg_bkg2_cat2 = events_2L2Nu_cat2.mass
+mgg_bkg2_cat3 = events_2L2Nu_cat3.mass
+mgg_bkg3_cat1 = events_LNu2Q_cat1.mass
+mgg_bkg3_cat2 = events_LNu2Q_cat2.mass
+mgg_bkg3_cat3 = events_LNu2Q_cat3.mass
 
-w_bkg1 = events_G1Jets.weight
-w_bkg2 = events_2L2Nu.weight
-w_bkg3 = events_LNu2Q.weight
+w_bkg1_cat1 = events_G1Jets_cat1.weight
+w_bkg1_cat2 = events_G1Jets_cat2.weight
+w_bkg1_cat3 = events_G1Jets_cat3.weight
+w_bkg2_cat1 = events_2L2Nu_cat1.weight
+w_bkg2_cat2 = events_2L2Nu_cat2.weight
+w_bkg2_cat3 = events_2L2Nu_cat3.weight
+w_bkg3_cat1 = events_LNu2Q_cat1.weight
+w_bkg3_cat2 = events_LNu2Q_cat2.weight
+w_bkg3_cat3 = events_LNu2Q_cat3.weight
 
-mgg_bkg1_cat1 = events_G1Jets.mass[cat1_G1Jets]
-# mgg_bkg1_cat2 = events_G1Jets.mass[cat2_G1Jets]
-# mgg_bkg1_cat3 = events_G1Jets.mass[cat3_G1Jets]
-mgg_bkg2_cat1 = events_2L2Nu.mass[cat1_2L2Nu]
-# mgg_bkg2_cat2 = events_2L2Nu.mass[cat2_2L2Nu]
-# mgg_bkg2_cat3 = events_2L2Nu.mass[cat3_2L2Nu]
-mgg_bkg3_cat1 = events_LNu2Q.mass[cat1_LNu2Q]
-# mgg_bkg3_cat2 = events_LNu2Q.mass[cat2_LNu2Q]
-# mgg_bkg3_cat3 = events_LNu2Q.mass[cat3_LNu2Q]
-
-# number of generated events
-Ngen1 = 571416
-Ngen2 = 470123263
-Ngen3 = 484475057
-Ngen1_cat1 = 571416
-Ngen1_cat2 = 571416
-Ngen1_cat3 = 571416
-Ngen2_cat1 = 470123263
-Ngen2_cat2 = 470123263
-Ngen2_cat3 = 470123263
-Ngen3_cat1 = 484475057
-Ngen3_cat2 = 484475057
-Ngen3_cat3 = 484475057
+mgg_bkg1_cat1 = events_G1Jets_cat1.mass
+mgg_bkg1_cat2 = events_G1Jets_cat2.mass
+mgg_bkg1_cat3 = events_G1Jets_cat3.mass
+mgg_bkg2_cat1 = events_2L2Nu_cat1.mass
+mgg_bkg2_cat2 = events_2L2Nu_cat2.mass
+mgg_bkg2_cat3 = events_2L2Nu_cat3.mass
+mgg_bkg3_cat1 = events_LNu2Q_cat1.mass
+mgg_bkg3_cat2 = events_LNu2Q_cat2.mass    
+mgg_bkg3_cat3 = events_LNu2Q_cat3.mass
 
 # ==============================
 # HISTOGRAM SETTINGS
@@ -218,38 +219,22 @@ nbins = 70
 xmin = 10
 xmax = 70
 
-h1 = ROOT.TH1F("h1", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-h2 = ROOT.TH1F("h2", "", nbins, xmin, xmax)
-h3 = ROOT.TH1F("h3", "", nbins, xmin, xmax)
+# h1 = ROOT.TH1F("h1", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+# h2 = ROOT.TH1F("h2", "", nbins, xmin, xmax)
+# h3 = ROOT.TH1F("h3", "", nbins, xmin, xmax)
 h1_cat1 = ROOT.TH1F("h1_cat1", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h1_cat2 = ROOT.TH1F("h1_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h1_cat3 = ROOT.TH1F("h1_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+h1_cat2 = ROOT.TH1F("h1_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+h1_cat3 = ROOT.TH1F("h1_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
 h2_cat1 = ROOT.TH1F("h2_cat1", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h2_cat2 = ROOT.TH1F("h2_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h2_cat3 = ROOT.TH1F("h2_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+h2_cat2 = ROOT.TH1F("h2_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+h2_cat3 = ROOT.TH1F("h2_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
 h3_cat1 = ROOT.TH1F("h3_cat1", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h3_cat2 = ROOT.TH1F("h3_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-# h3_cat3 = ROOT.TH1F("h3_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
-
-# h1.SetMinimum(0.01)
-# h2.SetMinimum(0.01)
-# h3.SetMinimum(0.01)
-# h1_cat1.SetMinimum(0.01)
-# h1_cat2.SetMinimum(0.01)
-# h1_cat3.SetMinimum(0.01)
-# h2_cat1.SetMinimum(0.01)
-# h2_cat2.SetMinimum(0.01)
-# h2_cat3.SetMinimum(0.01)
-# h3_cat1.SetMinimum(0.01)
-# h3_cat2.SetMinimum(0.01)
-# h3_cat3.SetMinimum(0.01)    
+h3_cat2 = ROOT.TH1F("h3_cat2", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)
+h3_cat3 = ROOT.TH1F("h3_cat3", ";m_{#gamma#gamma} [GeV];Events", nbins, xmin, xmax)   
 
 # ==============================
 # SCALE TO LUMI
 # ==============================
-w1 = xsec1 * lumi * 1000.0
-w2 = xsec2 * lumi * 1000.0
-w3 = xsec3 * lumi * 1000.0
 
 w1_cat1 = xsec1 * lumi * 1000.0
 w1_cat2 = xsec1 * lumi * 1000.0
@@ -261,139 +246,65 @@ w3_cat1 = xsec3 * lumi * 1000.0
 w3_cat2 = xsec3 * lumi * 1000.0
 w3_cat3 = xsec3 * lumi * 1000.0
 
-# h1.Scale(w1)
-# h2.Scale(w2)
-# h3.Scale(w3)
-# h1_cat1.Scale(w1_cat1)
-# h1_cat2.Scale(w1_cat2)
-# h1_cat3.Scale(w1_cat3)
-# h2_cat1.Scale(w2_cat1)
-# h2_cat2.Scale(w2_cat2)
-# h2_cat3.Scale(w2_cat3)
-# h3_cat1.Scale(w3_cat1)
-# h3_cat2.Scale(w3_cat2)
-# h3_cat3.Scale(w3_cat3)
 
-# ==============================
-# FILL HISTOGRAMS
-# ==============================
-# for x in mgg_bkg1:
-#     h1.Fill(x, w1)
-
-# for x in mgg_bkg2:
-#     h2.Fill(x, w2)
-
-# for x in mgg_bkg3:
-#     h3.Fill(x, w3)
-
-
-for x, w in zip(mgg_bkg1_cat1, w_bkg1):
+for x, w in zip(mgg_bkg1_cat1, w_bkg1_cat1):
     h1_cat1.Fill(x, w1_cat1 * w)
-for x, w in zip(mgg_bkg2_cat1, w_bkg2):
+for x, w in zip(mgg_bkg1_cat2, w_bkg1_cat2):
+    h1_cat2.Fill(x, w1_cat2 * w)
+for x, w in zip(mgg_bkg1_cat3, w_bkg1_cat3):
+    h1_cat3.Fill(x, w1_cat3 * w)
+for x, w in zip(mgg_bkg2_cat1, w_bkg2_cat1):
     h2_cat1.Fill(x, w2_cat1 * w)
-for x, w in zip(mgg_bkg3_cat1, w_bkg3):
+for x, w in zip(mgg_bkg2_cat2, w_bkg2_cat2):
+    h2_cat2.Fill(x, w2_cat2 * w)
+for x, w in zip(mgg_bkg2_cat3, w_bkg2_cat3):
+    h2_cat3.Fill(x, w2_cat3 * w)
+for x, w in zip(mgg_bkg3_cat1, w_bkg3_cat1):
     h3_cat1.Fill(x, w3_cat1 * w)
-
-
-# for x in mgg_bkg1_cat1:
-#     h1_cat1.Fill(x, w1_cat1)
-# for x in mgg_bkg1_cat2:
-#     h1_cat2.Fill(x, w1_cat2)
-# for x in mgg_bkg1_cat3:
-#     h1_cat3.Fill(x, w1_cat3)
-# for x in mgg_bkg2_cat1:
-#     h2_cat1.Fill(x, w2_cat1)
-# for x in mgg_bkg2_cat2:
-#     h2_cat2.Fill(x, w2_cat2)
-# for x in mgg_bkg2_cat3:
-#     h2_cat3.Fill(x, w2_cat3)
-# for x in mgg_bkg3_cat1:
-#     h3_cat1.Fill(x, w3_cat1)
-# for x in mgg_bkg3_cat2:
-#     h3_cat2.Fill(x, w3_cat2)
-# for x in mgg_bkg3_cat3:
-#     h3_cat3.Fill(x, w3_cat3)
+for x, w in zip(mgg_bkg3_cat2, w_bkg3_cat2):
+    h3_cat2.Fill(x, w3_cat2 * w)
+for x, w in zip(mgg_bkg3_cat3, w_bkg3_cat3):
+    h3_cat3.Fill(x, w3_cat3 * w)
 
 # ==============================
 # STYLE
 # ==============================
-# h1.SetFillColor(ROOT.kRed+1)
-# h2.SetFillColor(ROOT.kBlue+1)
-# h3.SetFillColor(ROOT.kGreen+2)
-
-# h1.SetLineColor(ROOT.kBlack)
-# h2.SetLineColor(ROOT.kBlack)
-# h3.SetLineColor(ROOT.kBlack)
 
 h1_cat1.SetFillColor(ROOT.kRed+1)
-# h1_cat2.SetFillColor(ROOT.kRed+1)
-# h1_cat3.SetFillColor(ROOT.kRed+1)
+h1_cat2.SetFillColor(ROOT.kRed+1)
+h1_cat3.SetFillColor(ROOT.kRed+1)
 h2_cat1.SetFillColor(ROOT.kBlue+1)
-# h2_cat2.SetFillColor(ROOT.kBlue+1)
-# h2_cat3.SetFillColor(ROOT.kBlue+1)
+h2_cat2.SetFillColor(ROOT.kBlue+1)
+h2_cat3.SetFillColor(ROOT.kBlue+1)
 h3_cat1.SetFillColor(ROOT.kGreen+2)
-# h3_cat2.SetFillColor(ROOT.kGreen+2)
-# h3_cat3.SetFillColor(ROOT.kGreen+2)
+h3_cat2.SetFillColor(ROOT.kGreen+2)
+h3_cat3.SetFillColor(ROOT.kGreen+2)
 h1_cat1.SetLineColor(ROOT.kBlack)
-# h1_cat2.SetLineColor(ROOT.kBlack)
-# h1_cat3.SetLineColor(ROOT.kBlack)
+h1_cat2.SetLineColor(ROOT.kBlack)
+h1_cat3.SetLineColor(ROOT.kBlack)
 h2_cat1.SetLineColor(ROOT.kBlack)
-# h2_cat2.SetLineColor(ROOT.kBlack)
-# h2_cat3.SetLineColor(ROOT.kBlack)
+h2_cat2.SetLineColor(ROOT.kBlack)
+h2_cat3.SetLineColor(ROOT.kBlack)
 h3_cat1.SetLineColor(ROOT.kBlack)
-# h3_cat2.SetLineColor(ROOT.kBlack)
-# h3_cat3.SetLineColor(ROOT.kBlack)   
+h3_cat2.SetLineColor(ROOT.kBlack)
+h3_cat3.SetLineColor(ROOT.kBlack)   
 
 # ==============================
 # STACK
 # ==============================
-stack = ROOT.THStack("stack", ";m_{#gamma#gamma} [GeV];Events")
 stack_cat1 = ROOT.THStack("stack_cat1", ";m_{#gamma#gamma} [GeV];Events")
-# stack_cat2 = ROOT.THStack("stack_cat2", ";m_{#gamma#gamma} [GeV];Events")
-# stack_cat3 = ROOT.THStack("stack_cat3", ";m_{#gamma#gamma} [GeV];Events")
+stack_cat2 = ROOT.THStack("stack_cat2", ";m_{#gamma#gamma} [GeV];Events")
+stack_cat3 = ROOT.THStack("stack_cat3", ";m_{#gamma#gamma} [GeV];Events")
 
-# stack.Add(h1)
-# stack.Add(h2)
-# stack.Add(h3)
 stack_cat1.Add(h1_cat1)
 stack_cat1.Add(h2_cat1)
 stack_cat1.Add(h3_cat1)
-# stack_cat2.Add(h1_cat2)
-# stack_cat2.Add(h2_cat2)
-# stack_cat2.Add(h3_cat2)
-# stack_cat3.Add(h1_cat3)
-# stack_cat3.Add(h2_cat3)
-# stack_cat3.Add(h3_cat3)
-
-# ==============================
-# DRAW
-# ==============================
-# c = ROOT.TCanvas("c","",800,700)
-# c.SetLeftMargin(0.12)
-# c.SetLogy()
-# stack.Draw("hist")
-# stack.SetMinimum(0.1)
-# stack.SetMaximum(1000)
-
-# leg = ROOT.TLegend(0.70,0.75,0.92,0.91)
-# leg.AddEntry(h1, "TTG1Jets", "f")
-# leg.AddEntry(h2, "TTto2L2Nu", "f")
-# leg.AddEntry(h3, "TTtoLNu2Q", "f")
-# leg.SetFillStyle(0) 
-# leg.SetBorderSize(0)
-# leg.Draw()
-
-# latex = ROOT.TLatex()
-# latex.SetNDC()              # normalized (0–1) coords
-# latex.SetTextSize(0.03)
-# latex.SetTextFont(42)
-# latex.DrawLatex(0.15, 0.87, "Category inclusive")
-
-# c.Update()
-
-# CMS_label(c)
-
-# c.SaveAs(Plot_dir + "stacked_mgg_inclusive.png")
+stack_cat2.Add(h1_cat2)
+stack_cat2.Add(h2_cat2)
+stack_cat2.Add(h3_cat2)
+stack_cat3.Add(h1_cat3)
+stack_cat3.Add(h2_cat3)
+stack_cat3.Add(h3_cat3)
 
 
 c_cat1 = ROOT.TCanvas("c_cat1","",800,700)
@@ -427,62 +338,62 @@ CMS_label(c_cat1)
 c_cat1.SaveAs(Plot_dir + "stacked_mgg_cat1_new.png")
 
 
-# c_cat2 = ROOT.TCanvas("c_cat2","",800,700)
-# c_cat2.SetLeftMargin(0.12)
-# c_cat2.SetLogy()
-# stack_cat2.Draw("hist")
-# stack_cat2.SetMinimum(0.1)
-# stack_cat2.SetMaximum(1000)
+c_cat2 = ROOT.TCanvas("c_cat2","",800,700)
+c_cat2.SetLeftMargin(0.12)
+c_cat2.SetLogy()
+stack_cat2.Draw("hist")
+stack_cat2.SetMinimum(0.1)
+stack_cat2.SetMaximum(1000)
 
-# c_cat2.Modified()
-# c_cat2.Update()
+c_cat2.Modified()
+c_cat2.Update()
 
-# leg = ROOT.TLegend(0.70,0.75,0.92,0.91)
-# leg.AddEntry(h1_cat2, "TTG1Jets", "f")
-# leg.AddEntry(h2_cat2, "TTto2L2Nu", "f")
-# leg.AddEntry(h3_cat2, "TTtoLNu2Q", "f")
-# leg.SetFillStyle(0) 
-# leg.SetBorderSize(0)
-# leg.Draw()
+leg = ROOT.TLegend(0.70,0.75,0.92,0.91)
+leg.AddEntry(h1_cat2, "TTG1Jets", "f")
+leg.AddEntry(h2_cat2, "TTto2L2Nu", "f")
+leg.AddEntry(h3_cat2, "TTtoLNu2Q", "f")
+leg.SetFillStyle(0) 
+leg.SetBorderSize(0)
+leg.Draw()
 
-# latex = ROOT.TLatex()
-# latex.SetNDC()              # normalized (0–1) coords
-# latex.SetTextSize(0.03)
-# latex.SetTextFont(42)
-# latex.DrawLatex(0.15, 0.87, "Category 2")
+latex = ROOT.TLatex()
+latex.SetNDC()              # normalized (0–1) coords
+latex.SetTextSize(0.03)
+latex.SetTextFont(42)
+latex.DrawLatex(0.15, 0.87, "Category 2")
 
-# c_cat2.Update()
+c_cat2.Update()
 
-# CMS_label(c_cat2)
+CMS_label(c_cat2)
 
-# c_cat2.SaveAs(Plot_dir + "stacked_mgg_cat2.png")   
+c_cat2.SaveAs(Plot_dir + "stacked_mgg_cat2.png")   
 
-# c_cat3 = ROOT.TCanvas("c_cat3","",800,700)
-# c_cat3.SetLeftMargin(0.12)
-# c_cat3.SetLogy()
-# stack_cat3.Draw("hist")
-# stack_cat3.SetMinimum(0.1)
-# stack_cat3.SetMaximum(1000)
+c_cat3 = ROOT.TCanvas("c_cat3","",800,700)
+c_cat3.SetLeftMargin(0.12)
+c_cat3.SetLogy()
+stack_cat3.Draw("hist")
+stack_cat3.SetMinimum(0.1)
+stack_cat3.SetMaximum(1000)
 
-# c_cat3.Modified()
-# c_cat3.Update()
+c_cat3.Modified()
+c_cat3.Update()
 
-# leg = ROOT.TLegend(0.70,0.75,0.92,0.91)
-# leg.AddEntry(h1_cat3, "TTG1Jets", "f")
-# leg.AddEntry(h2_cat3, "TTto2L2Nu", "f")
-# leg.AddEntry(h3_cat3, "TTtoLNu2Q", "f")
-# leg.SetFillStyle(0) 
-# leg.SetBorderSize(0)
-# leg.Draw()
+leg = ROOT.TLegend(0.70,0.75,0.92,0.91)
+leg.AddEntry(h1_cat3, "TTG1Jets", "f")
+leg.AddEntry(h2_cat3, "TTto2L2Nu", "f")
+leg.AddEntry(h3_cat3, "TTtoLNu2Q", "f")
+leg.SetFillStyle(0) 
+leg.SetBorderSize(0)
+leg.Draw()
 
-# latex = ROOT.TLatex()
-# latex.SetNDC()              # normalized (0–1) coords
-# latex.SetTextSize(0.03)
-# latex.SetTextFont(42)
-# latex.DrawLatex(0.15, 0.87, "Category 3")
+latex = ROOT.TLatex()
+latex.SetNDC()              # normalized (0–1) coords
+latex.SetTextSize(0.03)
+latex.SetTextFont(42)
+latex.DrawLatex(0.15, 0.87, "Category 3")
 
-# c_cat3.Update()
+c_cat3.Update()
 
-# CMS_label(c_cat3)
+CMS_label(c_cat3)
 
-# c_cat3.SaveAs(Plot_dir + "stacked_mgg_cat3.png")
+c_cat3.SaveAs(Plot_dir + "stacked_mgg_cat3.png")

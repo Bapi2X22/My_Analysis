@@ -1,0 +1,46 @@
+
+{
+    "samplejson": "sample_WH_v15.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WH-2024M60": ["2024"],
+        "WH-2024M55": ["2024"],
+        "WH-2024M50": ["2024"],
+        "WH-2024M45": ["2024"],
+        "WH-2024M40": ["2024"],
+        "WH-2024M35": ["2024"],
+        "WH-2024M30": ["2024"],
+        "WH-2024M25": ["2024"],
+        "WH-2024M20": ["2024"],
+        "WH-2024M15": ["2024"],
+        "WH-2024M12": ["2024"]
+    },
+    "corrections": {
+        "WH-2024M60": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M55": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M50": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M45": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M40": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M35": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M30": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M25": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M20": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M15": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
+        "WH-2024M12": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"]
+    },
+    "systematics": {
+        "WH-2024M60": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M55": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M50": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],    
+        "WH-2024M45": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M40": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M35": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M30": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M25": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M20": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M15": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
+        "WH-2024M12": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"]
+    }
+}

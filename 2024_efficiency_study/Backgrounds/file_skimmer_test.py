@@ -17,12 +17,7 @@ def photon_preselections(
     jets: ak.Array,
     electrons: ak.Array,
     muons: ak.Array,
-    events: ak.Array,
-    electron_veto=True,
-    revert_electron_veto=False,
-    year="2018",
-    wp_medium=0.2783,
-    IsFlag=False):
+    events: ak.Array):
     """
     Apply full preselection on leptons, jets, and photons.
     Finally return only photons from events that pass all criteria.
@@ -33,19 +28,7 @@ def photon_preselections(
     # ------------------------
     # Lepton selection
     # ------------------------
-    if year.startswith("2016"):
-        ele_pt_cut, mu_pt_cut = 27, 26
-    elif year == "2017":
-        ele_pt_cut, mu_pt_cut = 33, 29
-    elif year == "2018":
-        # ele_pt_cut, mu_pt_cut = 33, 26
-        ele_pt_cut, mu_pt_cut = 33, 26
-    elif year == "2024":
-        # ele_pt_cut, mu_pt_cut = 33, 26
-        ele_pt_cut, mu_pt_cut = 30, 24
-
-    else:
-        raise ValueError(f"Unknown year {year}")
+    ele_pt_cut, mu_pt_cut = 30, 24
 
     # electrons = events.Electron
 
@@ -66,16 +49,10 @@ def photon_preselections(
     one_ele = ak.num(electrons[good_electrons]) == 1
     one_mu = ak.num(muons[good_muons]) == 1
     lepton_channel_mask = one_ele | one_mu
-    # lepton_channel_mask = one_mu
 
     selected_electrons = electrons[good_electrons]
-    print("selected_electrons", len(selected_electrons[ak.num(selected_electrons.pt)>0]))
     selected_muons = muons[good_muons]
-    print("selected_muons", len(selected_muons[ak.num(selected_muons.pt)>0]))
     selected_leptons = ak.concatenate([selected_electrons, selected_muons], axis=1)
-    print("selected_leptons", len(selected_leptons[ak.num(selected_leptons.pt)>0]))
-    print("selected Electrons", len(selected_leptons[ak.num(selected_leptons[abs(selected_leptons.pdgId)==11])>0]))
-    print("selected Muons", len(selected_leptons[ak.num(selected_leptons[abs(selected_leptons.pdgId)==13])>0]))
 
     # ------------------------
     # Jet selection
@@ -87,8 +64,8 @@ def photon_preselections(
     )
     selected_bjets = jets[good_jets] 
     print("selected_b_jets: ", selected_bjets)
-    at_least_one_bjets = ak.num(selected_bjets) >= 1
-    # at_least_two_bjets = ak.num(selected_bjets) >= 2
+    # at_least_one_bjets = ak.num(selected_bjets) >= 1
+    at_least_two_bjets = ak.num(selected_bjets) >= 2
 
     # keep top 2 by DeepJet score
     # top2_bjets = selected_jets[ak.argsort(selected_jets.btagDeepFlavB, ascending=False)][:, :2]
