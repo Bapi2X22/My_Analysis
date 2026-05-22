@@ -433,11 +433,11 @@ for obs_name, obs_cfg in observables.items():
         c = ROOT.TCanvas(f"c_{obs_name}_{cat}", "", 1000, 700)
         c.SetLeftMargin(0.12)
         c.SetRightMargin(0.15)
-        c.SetLogy()
+        # c.SetLogy()
 
         stack.Draw("hist")
-        stack.SetMinimum(0.1)
-        stack.SetMaximum(10000)
+        # stack.SetMinimum(0.1)
+        # stack.SetMaximum(10000)
 
         # ------------------------------
         # SIGNAL OVERLAY
@@ -598,5 +598,5 @@ for obs_name, obs_cfg in observables.items():
         # SAVE
         # ------------------------------
         print(f"Saving {obs_name}, {cat}")
-        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}.png")
-        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}.pdf")
+        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.png")
+        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.pdf")
