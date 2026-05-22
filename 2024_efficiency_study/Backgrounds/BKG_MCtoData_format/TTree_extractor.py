@@ -20,7 +20,7 @@ out_ws = ROOT.RooWorkspace("cms_hgg_13TeV")
 # Loop over categories
 # ---------------------------------------------------------
 
-for cat in ["CAT1", "CAT2"]:
+for cat in ["CAT1", "CAT2", "CAT3"]:
 
     print(f"\n================ {cat} ================\n")
 
