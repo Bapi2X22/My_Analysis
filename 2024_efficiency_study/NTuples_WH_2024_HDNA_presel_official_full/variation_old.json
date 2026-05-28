@@ -1,0 +1,17 @@
+{
+    "NOMINAL": "nominal",
+    "FNUFUp":"FNUF_up",
+    "FNUFDown":"FNUF_down",
+    "MaterialUp":"Material_up",
+    "MaterialDown":"Material_down",
+    "jecsystTotalUp":"jec_syst_Total_up",
+    "jecsystTotalDown":"jec_syst_Total_down",
+    "ScaleEB2GIJazZUp":"ScaleEB_Zmmg_up",
+    "ScaleEB2GIJazZDown": "ScaleEB_Zmmg_down",
+    "ScaleEE2GIJazZUp":"ScaleEE_Zmmg_up",
+    "ScaleEE2GIJazZDown":"ScaleEE_Zmmg_down",
+    "Smearing2GIJazZUp":"Smearing_up",
+    "Smearing2GIJazZDown":"Smearing_down",
+    "energyErrShiftUp":"energyErrShift_up",
+    "energyErrShiftDown":"energyErrShift_down"
+}

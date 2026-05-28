@@ -15,23 +15,23 @@
 
     },
     "corrections": {
-        "TTG1Jets_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "TTto2L2Nu_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "TTtoLNu2Q_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "WGtoLNuG_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "DYto2E10_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "DYto2E50_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "DYto2Mu10_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"],
-        "DYto2Mu50_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"]
+        "TTG1Jets_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "TTto2L2Nu_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "TTtoLNu2Q_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "WGtoLNuG_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2E10_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2E50_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu10_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu50_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
     },
     "systematics": {
-        "TTG1Jets_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "TTto2L2Nu_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "TTtoLNu2Q_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "WGtoLNuG_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "DYto2E10_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "DYto2E50_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "DYto2Mu10_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"],
-        "DYto2Mu50_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"]
+        "TTG1Jets_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "TTto2L2Nu_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "TTtoLNu2Q_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "WGtoLNuG_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "DYto2E10_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "DYto2E50_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "DYto2Mu10_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
+        "DYto2Mu50_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
 }
 }

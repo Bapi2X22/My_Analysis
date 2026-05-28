@@ -8,19 +8,25 @@ xsecs = {
     "TTto2L2Nu": 98.04,
     "TTtoLNu2Q": 405.87,
     "WGtoLNuG": 671.5,
+    "DYto2Mu50": 2230.0,
+    "DYto2E50": 2244.0,
 }
 
 process_map = {
     "TTG1Jets": 0,
     "TTto2L2Nu": 1,
     "TTtoLNu2Q": 2,
-    "WGtoLNuG": 3
+    "WGtoLNuG": 3,
+    "DYto2Mu50": 4,
+    "DYto2E50": 5,
 }
 
 all_arrays = []
 total_sumw = 0.0
 
 files = sorted(glob.glob("Background/output_*root"))
+
+print(files)
 
 # ---------------- first pass ----------------
 for fname in files:
@@ -40,10 +46,13 @@ for fname in files:
 
     f = uproot.open(fname)
 
+    print(f.keys())
+
     # get nominal CAT1 tree automatically
     tree_key = [k for k in f.keys(recursive=True)
                 if ("CAT1" in k)
                 and ("sigma" not in k)][0]
+
 
     tree = f[tree_key]
 

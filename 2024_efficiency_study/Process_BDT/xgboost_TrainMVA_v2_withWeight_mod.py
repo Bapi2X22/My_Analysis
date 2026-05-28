@@ -46,8 +46,10 @@ def loadSignal(inputVars):
   if 'evt_wgt' not in vars:
     vars.insert(0,'evt_wgt')
     
-  dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars,library='pd')
-  df_sig = dataset_Sig[vars]
+  # dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars,library='pd')
+  dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars)
+  df_sig = ak.to_dataframe(dataset_Sig)
+  # df_sig = dataset_Sig[vars]
 
   return df_sig
 
@@ -57,8 +59,11 @@ def loadMCBackground(inputVars, inputVarsMC):
   if 'evt_wgt' not in vars:
     vars.insert(0,'evt_wgt')
    
-  dataset_Bkg = uproot.open('merged_bkg_withMass.root')['DiphotonTree'].arrays(inputVars,library='pd')
-  df_bkg = dataset_Bkg
+  # dataset_Bkg = uproot.open('merged_bkg_withMass.root')['DiphotonTree'].arrays(inputVars,library='pd')
+  dataset_Bkg = uproot.open('merged_bkg_withMass.root')['DiphotonTree'].arrays(inputVars)
+
+  df_bkg = ak.to_dataframe(dataset_Bkg)
+  # df_bkg = dataset_Bkg
 
   renames = {}
   keys = inputVarsMC
@@ -204,8 +209,8 @@ if __name__ == '__main__':
   # inputVars =   ["leppt","lepeta","b1eta","b2eta","pT1_by_mbb","pT2_by_mbb","Njets","pho1eta","pho2eta","pT1_by_mgg","pT2_by_mgg","leadbdeepjet","subleadbdeepjet","leadgMVA","subleadgMVA","delphi_gg","delphi_bb","delphi_bbgg","delphi_ggMET","true_mass"]
   # inputVarsMC = ["leppt","lepeta","b1eta","b2eta","pT1_by_mbb","pT2_by_mbb","Njets","pho1eta","pho2eta","pT1_by_mgg","pT2_by_mgg","leadbdeepjet","subleadbdeepjet","leadgMVA","subleadgMVA","delphi_gg","delphi_bb","delphi_bbgg","delphi_ggMET","true_mass"]
   
-  inputVars =   ["first_jet_eta","second_jet_eta","n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID","mass_point", "evt_wgt"]
-  inputVarsMC = ["first_jet_eta","second_jet_eta","n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID","mass_point", "evt_wgt"]
+  inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "mass_point", "evt_wgt"]
+  inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "mass_point", "evt_wgt"]
 
   print("Loading Signal...")
   df_sig = loadSignal(inputVars)
@@ -225,30 +230,9 @@ if __name__ == '__main__':
 
 
 #   #Deal with negative weights (set to 1 and rescale accordingly)
-#   sig_sum = df_sig.sum(0)['evt_wgt']
-#   #df_sig['weight'] = df_sig['weight'].abs()
-#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x if x>=0. else np.abs(x))
-#   sig_sum_abs = df_sig.sum(0)['evt_wgt']
-#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(sig_sum/sig_sum_abs))
-#   sig_sum = df_sig.sum(0)['evt_wgt']
-#   print(sig_sum)
-
-#   #Deal with negative weights (set to 1 and rescale accordingly)
-#   bkg_sum = df_bkg.sum(0)['evt_wgt']
-#   #df_bkg['weight'] = df_bkg['weight'].abs()
-#   df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x if x>=0. else np.abs(x))
-#   bkg_sum_abs = df_bkg.sum(0)['evt_wgt']
-#   df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(bkg_sum/bkg_sum_abs))
-#   bkg_sum = df_bkg.sum(0)['evt_wgt']
-# #  df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(sig_sum/bkg_sum))
-#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(bkg_sum/sig_sum))
-#   print(df_bkg['evt_wgt'])
-#   print(bkg_sum)
-
-  #Deal with negative weights (set to 1 and rescale accordingly)
   sig_sum = df_sig.sum(0)['evt_wgt']
   #df_sig['weight'] = df_sig['weight'].abs()
-  df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x if x>=0. else 1)
+  df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x if x>=0. else np.abs(x))
   sig_sum_abs = df_sig.sum(0)['evt_wgt']
   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(sig_sum/sig_sum_abs))
   sig_sum = df_sig.sum(0)['evt_wgt']
@@ -257,7 +241,7 @@ if __name__ == '__main__':
   #Deal with negative weights (set to 1 and rescale accordingly)
   bkg_sum = df_bkg.sum(0)['evt_wgt']
   #df_bkg['weight'] = df_bkg['weight'].abs()
-  df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x if x>=0. else 1)
+  df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x if x>=0. else np.abs(x))
   bkg_sum_abs = df_bkg.sum(0)['evt_wgt']
   df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(bkg_sum/bkg_sum_abs))
   bkg_sum = df_bkg.sum(0)['evt_wgt']
@@ -265,6 +249,27 @@ if __name__ == '__main__':
   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(bkg_sum/sig_sum))
   print(df_bkg['evt_wgt'])
   print(bkg_sum)
+
+  #Deal with negative weights (set to 1 and rescale accordingly)
+#   sig_sum = df_sig.sum(0)['evt_wgt']
+#   #df_sig['weight'] = df_sig['weight'].abs()
+#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x if x>=0. else 1)
+#   sig_sum_abs = df_sig.sum(0)['evt_wgt']
+#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(sig_sum/sig_sum_abs))
+#   sig_sum = df_sig.sum(0)['evt_wgt']
+#   print(sig_sum)
+
+#   #Deal with negative weights (set to 1 and rescale accordingly)
+#   bkg_sum = df_bkg.sum(0)['evt_wgt']
+#   #df_bkg['weight'] = df_bkg['weight'].abs()
+#   df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x if x>=0. else 1)
+#   bkg_sum_abs = df_bkg.sum(0)['evt_wgt']
+#   df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(bkg_sum/bkg_sum_abs))
+#   bkg_sum = df_bkg.sum(0)['evt_wgt']
+# #  df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(sig_sum/bkg_sum))
+#   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(bkg_sum/sig_sum))
+#   print(df_bkg['evt_wgt'])
+#   print(bkg_sum)
 
   print("Loading done!...")
   
@@ -291,13 +296,15 @@ if __name__ == '__main__':
 #  test_size = 0.001
   X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=seed, shuffle=True)
   
-  W_train = X_train['evt_wgt'].values
+  W_train = X_train['evt_wgt'].values *(10**6)
   X_train = X_train.drop('evt_wgt',axis=1).values
   Y_train = Y_train.values
-  W_test  = X_test['evt_wgt'].values
+  W_test  = X_test['evt_wgt'].values *(10**6)
   X_test = X_test.drop('evt_wgt',axis=1).values
   Y_test = Y_test.values
 
+  print("W_train :",W_train)
+  print("W_test :",W_test)
 
   params = {
     'booster': 'gbtree',
@@ -311,6 +318,9 @@ if __name__ == '__main__':
   
   training = xgb.DMatrix(X_train,label=Y_train, weight=W_train,feature_names=inputVars)
   testing  = xgb.DMatrix(X_test, label=Y_test , weight=W_test, feature_names=inputVars) 
+
+  # training = xgb.DMatrix(X_train,label=Y_train,feature_names=inputVars)
+  # testing  = xgb.DMatrix(X_test, label=Y_test, feature_names=inputVars) 
   
 
   if loadModel:

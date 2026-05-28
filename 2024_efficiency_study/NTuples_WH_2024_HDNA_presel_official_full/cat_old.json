@@ -1,0 +1,7 @@
+{
+"CAT1": {"cat_filter": [["n_bJets", ">=", 2]]},
+"CAT2": {"cat_filter": [["n_bJets", "==", 1],
+                        ["diff_first_jet_probb_probbb", "<", 0.0]]},
+"CAT3": {"cat_filter": [["n_bJets", "==", 1],
+                        ["diff_first_jet_probb_probbb", ">", 0.0]]}
+}

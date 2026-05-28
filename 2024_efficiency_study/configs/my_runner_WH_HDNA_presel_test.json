@@ -8,9 +8,9 @@
         "WH-2024M30": ["2024"]
     },
     "corrections": {
-        "WH-2024M30": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID", "ElectronVetoSF", "PreselSF"]
+        "WH-2024M30": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID", "ElectronVetoSF", "PreselSF"]
     },
     "systematics": {
-        "WH-2024M30": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "ElectronVetoSF", "PreselSF", "AlphaS", "PartonShower", "LHEScale", "LHEPdf"]
+        "WH-2024M30": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "ElectronVetoSF", "PreselSF", "AlphaS", "PartonShower"]
     }
 }

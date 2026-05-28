@@ -7,9 +7,9 @@
         "WGtoLNuG_24SummerRun3": ["2024"]
     },
     "corrections": {
-        "WGtoLNuG_24SummerRun3": ["Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup", "SF_photon_ID"]
+        "WGtoLNuG_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
     },
     "systematics": {
-        "WGtoLNuG_24SummerRun3": ["ScaleEB2G_IJazZ", "ScaleEE2G_IJazZ", "Smearing2G_IJazZ", "energyErrShift", "FNUF", "Material", "Pileup", "SF_photon_ID", "AlphaS", "PartonShower"]
+        "WGtoLNuG_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
 }
 }

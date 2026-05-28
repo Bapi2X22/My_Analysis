@@ -48,4 +48,6 @@ mgbasedir/
 
 InputCards/
 
+python3.13/
+
 decay_chains.txt
