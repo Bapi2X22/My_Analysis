@@ -9,7 +9,7 @@ import pyarrow.parquet as pq
 # Base merged background directory
 # =========================================================
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old"
 
 # Allowed signal mass points
 mass_points = np.array([12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60])

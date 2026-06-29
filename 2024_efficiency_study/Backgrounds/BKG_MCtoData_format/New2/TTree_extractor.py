@@ -5,7 +5,7 @@ files = [
     ("output_TTG1Jets_13p6TeV_amcatnlo_pythia8_TTG1Jets.root", 4.634),
     ("output_TTtoLNu2Q_13p6TeV_powheg_TTtoLNu2Q.root", 405.87),
     ("output_TTto2L2Nu_13p6TeV_powheg_TTto2L2Nu.root", 98.04),
-    ("output_WGtoLNuG_13p6TeV_amcatnlo_pythia8_WGtoLNuG.root", 671.5)
+    ("output_WGtoLNuG_13p6TeV_amcatnlo_pythia8_WGtoLNuG.root", 671.5),
     # ("output_DYto2Mu50_13p6TeV_amcatnlo_pythia8_DYto2Mu50.root", 2230.0),
     # ("output_DYto2E50_13p6TeV_amcatnlo_pythia8_DYto2E50.root", 2244.0)
 ]

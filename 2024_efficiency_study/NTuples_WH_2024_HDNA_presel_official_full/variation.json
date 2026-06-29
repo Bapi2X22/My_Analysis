@@ -1,3 +1,20 @@
 {
-    "NOMINAL": "nominal"
+    "var_dict": {
+        "NOMINAL": "nominal",
+        "FNUFUp":"FNUF_up",
+        "FNUFDown":"FNUF_down",
+        "MaterialUp":"Material_up",
+        "MaterialDown":"Material_down",
+        "ScaleEBZmmgdown":"ScaleEB_Zmmg_down",
+        "ScaleEBZmmgup":"ScaleEB_Zmmg_up",
+        "ScaleEEZmmgdown":"ScaleEE_Zmmg_down",
+        "ScaleEEZmmgup":"ScaleEE_Zmmg_up",
+        "Smearingdown":"Smearing_down",
+        "Smearingup":"Smearing_up",
+        "energyErrShiftdown":"energyErrShift_down",
+        "energyErrShiftup":"energyErrShift_up",
+        "jecsystTotaldown": "jec_syst_Total_down",
+        "jecsystTotalup": "jec_syst_Total_up"
+
+    }
 }

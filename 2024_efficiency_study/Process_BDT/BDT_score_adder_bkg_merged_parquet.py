@@ -37,7 +37,7 @@ inputVars = [
 # Base merged background directory
 # =========================================================
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old"
 
 # =========================================================
 # Find all background datasets

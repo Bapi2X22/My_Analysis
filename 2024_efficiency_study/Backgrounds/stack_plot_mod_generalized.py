@@ -161,60 +161,60 @@ xsec7 = 21190.0
 
 
 dir_2L2Nu_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTto2L2Nu-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_2L2Nu_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTto2L2Nu-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_2L2Nu_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTto2L2Nu-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_2L2Nu_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTto2L2Nu-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_2L2Nu_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTto2L2Nu-24SummerRun3/nominal/CAT3_merged.parquet"
 events_2L2Nu_cat1 = ak.from_parquet(dir_2L2Nu_cat1)
-# events_2L2Nu_cat2 = ak.from_parquet(dir_2L2Nu_cat2)
-# events_2L2Nu_cat3 = ak.from_parquet(dir_2L2Nu_cat3)
+events_2L2Nu_cat2 = ak.from_parquet(dir_2L2Nu_cat2)
+events_2L2Nu_cat3 = ak.from_parquet(dir_2L2Nu_cat3)
 
 dir_LNu2Q_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTtoLNu2Q-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_LNu2Q_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTtoLNu2Q-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_LNu2Q_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTtoLNu2Q-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_LNu2Q_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTtoLNu2Q-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_LNu2Q_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTtoLNu2Q-24SummerRun3/nominal/CAT3_merged.parquet"
 events_LNu2Q_cat1 = ak.from_parquet(dir_LNu2Q_cat1)
-# events_LNu2Q_cat2 = ak.from_parquet(dir_LNu2Q_cat2)
-# events_LNu2Q_cat3 = ak.from_parquet(dir_LNu2Q_cat3)
+events_LNu2Q_cat2 = ak.from_parquet(dir_LNu2Q_cat2)
+events_LNu2Q_cat3 = ak.from_parquet(dir_LNu2Q_cat3)
 
 dir_G1Jets_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTG1Jets-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_G1Jets_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTG1Jets-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_G1Jets_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/TTG1Jets-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_G1Jets_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTG1Jets-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_G1Jets_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/TTG1Jets-24SummerRun3/nominal/CAT3_merged.parquet"
 events_G1Jets_cat1 = ak.from_parquet(dir_G1Jets_cat1)
-# events_G1Jets_cat2 = ak.from_parquet(dir_G1Jets_cat2)
-# events_G1Jets_cat3 = ak.from_parquet(dir_G1Jets_cat3)
+events_G1Jets_cat2 = ak.from_parquet(dir_G1Jets_cat2)
+events_G1Jets_cat3 = ak.from_parquet(dir_G1Jets_cat3)
 
 dir_WGtoLNuG_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/WGtoLNuG-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_WGtoLNuG_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/WGtoLNuG-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_WGtoLNuG_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/WGtoLNuG-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_WGtoLNuG_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/WGtoLNuG-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_WGtoLNuG_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/WGtoLNuG-24SummerRun3/nominal/CAT3_merged.parquet"
 events_WGtoLNuG_cat1 = ak.from_parquet(dir_WGtoLNuG_cat1)
-# events_WGtoLNuG_cat2 = ak.from_parquet(dir_WGtoLNuG_cat2)
-# events_WGtoLNuG_cat3 = ak.from_parquet(dir_WGtoLNuG_cat3)
+events_WGtoLNuG_cat2 = ak.from_parquet(dir_WGtoLNuG_cat2)
+events_WGtoLNuG_cat3 = ak.from_parquet(dir_WGtoLNuG_cat3)
 
 dir_DYto2Mu50_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2Mu50-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_DYto2Mu50_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu50-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_DYto2Mu50_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu50-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_DYto2Mu50_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2Mu50-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_DYto2Mu50_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2Mu50-24SummerRun3/nominal/CAT3_merged.parquet"
 events_DYto2Mu50_cat1 = ak.from_parquet(dir_DYto2Mu50_cat1)
-# events_DYto2Mu50_cat2 = ak.from_parquet(dir_DYto2Mu50_cat2)
-# events_DYto2Mu50_cat3 = ak.from_parquet(dir_DYto2Mu50_cat3)
+events_DYto2Mu50_cat2 = ak.from_parquet(dir_DYto2Mu50_cat2)
+events_DYto2Mu50_cat3 = ak.from_parquet(dir_DYto2Mu50_cat3)
 
 
 dir_DYto2E50_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2E50-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_DYto2E50_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E50-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_DYto2E50_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E50-24SummerRun3/nominal/CAT3_merged.parquet"
+dir_DYto2E50_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2E50-24SummerRun3/nominal/CAT2_merged.parquet"
+dir_DYto2E50_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged_old/DYto2E50-24SummerRun3/nominal/CAT3_merged.parquet"
 events_DYto2E50_cat1 = ak.from_parquet(dir_DYto2E50_cat1)
-# events_DYto2E50_cat2 = ak.from_parquet(dir_DYto2E50_cat2)
-# events_DYto2E50_cat3 = ak.from_parquet(dir_DYto2E50_cat3)
+events_DYto2E50_cat2 = ak.from_parquet(dir_DYto2E50_cat2)
+events_DYto2E50_cat3 = ak.from_parquet(dir_DYto2E50_cat3)
 
 
-dir_DYto2E10_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_DYto2E10_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_DYto2E10_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT3_merged.parquet"
-events_DYto2E10_cat1 = ak.from_parquet(dir_DYto2E10_cat1)
+# dir_DYto2E10_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT1_merged.parquet"
+# dir_DYto2E10_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT2_merged.parquet"
+# dir_DYto2E10_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT3_merged.parquet"
+# events_DYto2E10_cat1 = ak.from_parquet(dir_DYto2E10_cat1)
 # events_DYto2E10_cat2 = ak.from_parquet(dir_DYto2E10_cat2)
 # events_DYto2E10_cat3 = ak.from_parquet(dir_DYto2E10_cat3)
 
-dir_DYto2Mu10_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT1_merged.parquet"
-dir_DYto2Mu10_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT2_merged.parquet"
-dir_DYto2Mu10_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT3_merged.parquet"
-events_DYto2Mu10_cat1 = ak.from_parquet(dir_DYto2Mu10_cat1)
+# dir_DYto2Mu10_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT1_merged.parquet"
+# dir_DYto2Mu10_cat2 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT2_merged.parquet"
+# dir_DYto2Mu10_cat3 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2Mu10-24SummerRun3/nominal/CAT3_merged.parquet"
+# events_DYto2Mu10_cat1 = ak.from_parquet(dir_DYto2Mu10_cat1)
 # events_DYto2Mu10_cat2 = ak.from_parquet(dir_DYto2Mu10_cat2)
 # events_DYto2Mu10_cat3 = ak.from_parquet(dir_DYto2Mu10_cat3)
 
@@ -346,96 +346,114 @@ observables = {
 # ==============================
 # Categories
 # ==============================
-# categories = ["cat1", "cat2", "cat3"]
-categories = ["cat1"]
+categories = ["cat1", "cat2", "cat3"]
+# categories = ["cat1"]
 
 # ==============================
 # Processes (BACKGROUND)
 # ==============================
-# processes = {
-#     "WGtoLNuG": {
-#         "events": {
-#             "cat1": events_WGtoLNuG_cat1,
-#             "cat2": events_WGtoLNuG_cat2,
-#             "cat3": events_WGtoLNuG_cat3,
-#         },
-#         "xsec": xsec0,
-#         "color": ROOT.kMagenta+1
-#     },
-#     "TTG1Jets": {
-#         "events": {
-#             "cat1": events_G1Jets_cat1,
-#             "cat2": events_G1Jets_cat2,
-#             "cat3": events_G1Jets_cat3,
-#         },
-#         "xsec": xsec1,
-#         "color": ROOT.kRed+1
-#     },
-#     "TTto2L2Nu": {
-#         "events": {
-#             "cat1": events_2L2Nu_cat1,
-#             "cat2": events_2L2Nu_cat2,
-#             "cat3": events_2L2Nu_cat3,
-#         },
-#         "xsec": xsec2,
-#         "color": ROOT.kBlue+1
-#     },
-#     "TTtoLNu2Q": {
-#         "events": {
-#             "cat1": events_LNu2Q_cat1,
-#             "cat2": events_LNu2Q_cat2,
-#             "cat3": events_LNu2Q_cat3,
-#         },
-#         "xsec": xsec3,
-#         "color": ROOT.kGreen+2
-#     }
-# }
-
-
 processes = {
     "DYto2Mu": {
         "events": {
-            "cat1": events_DYto2Mu50_cat1
+            "cat1": events_DYto2Mu50_cat1,
+            "cat3": events_DYto2Mu50_cat2,
+            "cat2": events_DYto2Mu50_cat3,
         },
         "xsec": xsec4,
         "color": ROOT.kCyan+1
     },
     "DYto2E": {
         "events": {
-            "cat1": events_DYto2E50_cat1
+            "cat1": events_DYto2E50_cat1,
+            "cat3": events_DYto2E50_cat2,
+            "cat2": events_DYto2E50_cat3,
         },
         "xsec": xsec5,
         "color": ROOT.kOrange+7
     },
     "WGtoLNuG": {
         "events": {
-            "cat1": events_WGtoLNuG_cat1
+            "cat1": events_WGtoLNuG_cat1,
+            "cat3": events_WGtoLNuG_cat2,
+            "cat2": events_WGtoLNuG_cat3,
         },
         "xsec": xsec0,
         "color": ROOT.kMagenta+1
     },
     "TTG1Jets": {
         "events": {
-            "cat1": events_G1Jets_cat1
+            "cat1": events_G1Jets_cat1,
+            "cat3": events_G1Jets_cat2,
+            "cat2": events_G1Jets_cat3,
         },
         "xsec": xsec1,
         "color": ROOT.kRed+1
     },
     "TTto2L2Nu": {
         "events": {
-            "cat1": events_2L2Nu_cat1
+            "cat1": events_2L2Nu_cat1,
+            "cat3": events_2L2Nu_cat2,
+            "cat2": events_2L2Nu_cat3,
         },
         "xsec": xsec2,
         "color": ROOT.kBlue+1
     },
     "TTtoLNu2Q": {
         "events": {
-            "cat1": events_LNu2Q_cat1
+            "cat1": events_LNu2Q_cat1,
+            "cat3": events_LNu2Q_cat2,
+            "cat2": events_LNu2Q_cat3,
         },
         "xsec": xsec3,
         "color": ROOT.kGreen+2
     }
 }
+
+
+# processes = {
+#     "DYto2Mu": {
+#         "events": {
+#             "cat1": events_DYto2Mu50_cat1
+#         },
+#         "xsec": xsec4,
+#         "color": ROOT.kCyan+1
+#     },
+#     "DYto2E": {
+#         "events": {
+#             "cat1": events_DYto2E50_cat1
+#         },
+#         "xsec": xsec5,
+#         "color": ROOT.kOrange+7
+#     },
+#     "WGtoLNuG": {
+#         "events": {
+#             "cat1": events_WGtoLNuG_cat1
+#         },
+#         "xsec": xsec0,
+#         "color": ROOT.kMagenta+1
+#     },
+#     "TTG1Jets": {
+#         "events": {
+#             "cat1": events_G1Jets_cat1
+#         },
+#         "xsec": xsec1,
+#         "color": ROOT.kRed+1
+#     },
+#     "TTto2L2Nu": {
+#         "events": {
+#             "cat1": events_2L2Nu_cat1
+#         },
+#         "xsec": xsec2,
+#         "color": ROOT.kBlue+1
+#     },
+#     "TTtoLNu2Q": {
+#         "events": {
+#             "cat1": events_LNu2Q_cat1
+#         },
+#         "xsec": xsec3,
+#         "color": ROOT.kGreen+2
+#     }
+# }
 
 # ==============================
 # SIGNAL
@@ -453,10 +471,13 @@ signal_colors = {
 
 signal_samples = {}
 
+signal_cats = ["CAT1", "CAT3", "CAT2"]
+
+
 for m in signal_masses:
     signal_samples[m] = {}
-    for i, cat in enumerate(categories, start=1):
-        path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_official_full/merged_old/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
+    for cat, CAT in zip(categories, signal_cats):
+        path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_official_full/merged_old/WH-2024M{m}/nominal/{CAT}_merged.parquet"
         signal_samples[m][cat] = ak.from_parquet(path)
 
 # ==============================
@@ -569,7 +590,13 @@ for obs_name, obs_cfg in observables.items():
         # c.SetLogy()
 
         stack.Draw("hist")
-        stack.SetMaximum(stack.GetMaximum() * 1.3)
+        print("cat", cat)
+        print("obs_name", obs_name)
+        if (cat == "cat3") & (obs_name == "mass"):
+            stack.SetMaximum(stack.GetMaximum() *5.0)
+        else:
+            stack.SetMaximum(stack.GetMaximum() * 1.4)
+        print("stack max", stack.GetMaximum())
         # stack.SetMinimum(0.1)
         # stack.SetMaximum(10000)
 
