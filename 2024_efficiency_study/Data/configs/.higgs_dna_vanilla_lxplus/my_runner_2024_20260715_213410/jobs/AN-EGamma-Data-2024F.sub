@@ -1,0 +1,17 @@
+executable = /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Data/configs/.higgs_dna_vanilla_lxplus/my_runner_2024_20260715_213410/jobs/AN-EGamma-Data-2024F.sh
+arguments = $(ProcId)
+output = AN-EGamma-Data-2024F.$(ClusterId).$(ProcId).out
+error = AN-EGamma-Data-2024F.$(ClusterId).$(ProcId).err
+log = /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Data/configs/.higgs_dna_vanilla_lxplus/my_runner_2024_20260715_213410/jobs/AN-EGamma-Data-2024F.$(ClusterId).log
+output_destination = root://eosuser.cern.ch//eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Data/configs/.higgs_dna_vanilla_lxplus/my_runner_2024_20260715_213410/jobs
+RequestMemory = ifThenElse(isUndefined(MemoryUsage), 10240, int(MemoryUsage * 1.1))
+getenv = True
++JobFlavour = "workday"
+on_exit_remove = (ExitBySignal == False) && (ExitCode == 0)
+on_exit_hold = (ExitBySignal == True) || (ExitCode != 0)
+periodic_hold = ( JobStatus == 7 ) && ((CurrentTime - EnteredCurrentStatus) > 300)
+periodic_hold_reason = "Job stuck suspended >5m — requeueing"
+periodic_release = ( JobStatus == 5 ) && ((CurrentTime - EnteredCurrentStatus) > 60)
+max_retries = 10
+requirements = Machine =!= LastRemoteHost
+queue 1466

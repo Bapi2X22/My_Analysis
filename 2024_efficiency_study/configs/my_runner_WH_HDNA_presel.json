@@ -1,6 +1,6 @@
 
 {
-    "samplejson": "sample_WH_v15.json",
+    "samplejson": "unprocessed_files.json",
     "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
     "metaconditions": "Era2022_v1_mine",
     "taggers": [],

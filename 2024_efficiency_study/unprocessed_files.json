@@ -1,0 +1,8 @@
+{
+    "WH-2024M12": [
+        "root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/WHToAA-AToBB-AToGG_Par-M-12_TuneCP5_13p6TeV_madgraph-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/120000/07f7d0b0-b1b3-4fb9-8861-362f6658ed6c.root"
+    ],
+    "WH-2024M45": [
+        "root://cms-xrd-global.cern.ch//store/mc/RunIII2024Summer24NanoAODv15/WHToAA-AToBB-AToGG_Par-M-45_TuneCP5_13p6TeV_madgraph-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v2/2820000/481099c0-aa59-4301-8a1a-0904d15874d3.root"
+    ]
+}

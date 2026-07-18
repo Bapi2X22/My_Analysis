@@ -1,0 +1,30 @@
+{
+    "samplejson": "/eos/home-b/bbapi/My_Analysis/2024_efficiency_study/Data/configs/.higgs_dna_vanilla_lxplus/my_runner_2024_20260715_213410/inputs/EGamma-Data-2024F-499.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "EGamma-Data-2024F": [
+            "2024"
+        ],
+        "Muon-Data-2024F": [
+            "2024"
+        ]
+    },
+    "corrections": {
+        "EGamma-Data-2024F": [
+            "ScaleEB_Zmmg",
+            "ScaleEE_Zmmg",
+            "jec_Data2024"
+        ],
+        "Muon-Data-2024F": [
+            "ScaleEB_Zmmg",
+            "ScaleEE_Zmmg",
+            "jec_Data2024"
+        ]
+    },
+    "systematics": {
+        "EGamma-Data-2024F": [],
+        "Muon-Data-2024F": []
+    }
+}

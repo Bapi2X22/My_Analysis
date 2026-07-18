@@ -1,0 +1,21 @@
+{
+    "samplejson": "/eos/home-b/bbapi/My_Analysis/2024_efficiency_study/Data/configs/.higgs_dna_vanilla_lxplus/my_runner_2024_20260713_151204/inputs/Data-2024F-676.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "Data-2024F": [
+            "2024"
+        ]
+    },
+    "corrections": {
+        "Data-2024F": [
+            "ScaleEB_Zmmg",
+            "ScaleEE_Zmmg",
+            "jec_Data2024"
+        ]
+    },
+    "systematics": {
+        "Data-2024F": []
+    }
+}

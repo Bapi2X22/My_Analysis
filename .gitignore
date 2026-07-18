@@ -51,3 +51,8 @@ InputCards/
 python3.13/
 
 decay_chains.txt
+
+NTuples_WH_2024_cat1/
+WHM60-RunIISummer20UL18NanoAODv2_backup/
+python3.13/
+NTuples_pretest_full_copy/

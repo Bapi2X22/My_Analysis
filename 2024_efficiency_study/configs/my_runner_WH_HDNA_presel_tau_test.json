@@ -1,0 +1,16 @@
+
+{
+    "samplejson": "sample_WH_v15.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel_test",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WH-2024M30": ["2024"]
+    },
+    "corrections": {
+        "WH-2024M30": []
+    },
+    "systematics": {
+        "WH-2024M30": []
+    }
+}

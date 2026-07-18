@@ -1,0 +1,6 @@
+/eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/workflows/My_first_processor_WH_Cat1_HDNA_presel.py:271: UserWarning: Could not process correction ScaleEB_Zmmg.
+  warnings.warn(f"Could not process correction {correction_name}.")
+/eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/workflows/My_first_processor_WH_Cat1_HDNA_presel.py:271: UserWarning: Could not process correction ScaleEE_Zmmg.
+  warnings.warn(f"Could not process correction {correction_name}.")
+/cvmfs/sft.cern.ch/lcg/views/LCG_109/x86_64-el9-gcc15-opt/lib/python3.13/site-packages/XRootD/client/finalize.py:46: FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead
+  if isinstance(obj, File) and obj.is_open():

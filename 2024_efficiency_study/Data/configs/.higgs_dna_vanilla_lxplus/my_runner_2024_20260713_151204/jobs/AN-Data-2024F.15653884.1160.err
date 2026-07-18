@@ -1,0 +1,12 @@
+INFO:higgs_dna.workflows.My_first_processor_WH_Cat1_HDNA_presel:Year: 2024 GoldenJson: /eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/selections/../metaconditions/CAF/certification/Collisions24/Cert_Collisions2024_378981_386951_Golden.json
+/eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/workflows/My_first_processor_WH_Cat1_HDNA_presel.py:271: UserWarning: Could not process correction ScaleEB_Zmmg.
+  warnings.warn(f"Could not process correction {correction_name}.")
+/eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/workflows/My_first_processor_WH_Cat1_HDNA_presel.py:271: UserWarning: Could not process correction ScaleEE_Zmmg.
+  warnings.warn(f"Could not process correction {correction_name}.")
+INFO:higgs_dna.workflows.My_first_processor_WH_Cat1_HDNA_presel:Applying correction jec_Data2024 to dataset Data-2024F
+WARNING:higgs_dna.systematics.jet_systematics_json:Current 2024 and 2025 JER are preliminary, 2023PostBPix is used! These ntuples should not be used for a final physics result!
+INFO:higgs_dna.workflows.My_first_processor_WH_Cat1_HDNA_presel:Year: 2024 GoldenJson: /eos/home-b/bbapi/HiggsDNA_220526/HiggsDNA/higgs_dna/selections/../metaconditions/CAF/certification/Collisions24/Cert_Collisions2024_378981_386951_Golden.json
+INFO:higgs_dna.workflows.My_first_processor_WH_Cat1_HDNA_presel:Applying correction jec_Data2024 to dataset Data-2024F
+WARNING:higgs_dna.systematics.jet_systematics_json:Current 2024 and 2025 JER are preliminary, 2023PostBPix is used! These ntuples should not be used for a final physics result!
+/cvmfs/sft.cern.ch/lcg/views/LCG_109/x86_64-el9-gcc15-opt/lib/python3.13/site-packages/XRootD/client/finalize.py:46: FutureWarning: `torch.distributed.reduce_op` is deprecated, please use `torch.distributed.ReduceOp` instead
+  if isinstance(obj, File) and obj.is_open():

@@ -1,0 +1,16 @@
+{
+    "samplejson": "sample_BKG_2024.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WGtoLNuG_24SummerRun3": ["2024"]
+
+    },
+    "corrections": {
+        "WGtoLNuG_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
+    },
+    "systematics": {
+        "WGtoLNuG_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
+}
+}
