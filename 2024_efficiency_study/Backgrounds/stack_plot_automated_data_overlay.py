@@ -3,34 +3,23 @@ import matplotlib.pyplot as plt
 import awkward as ak
 from coffea.nanoevents import NanoEventsFactory, NanoAODSchema
 import ROOT
-import argparse
-import os
-import shutil
+from glob import glob
 
 ROOT.gROOT.SetBatch(True)   # (you are saving files → good practice)
 ROOT.gStyle.SetOptStat(1110)
 ROOT.gROOT.ForceStyle()
 
-parser = argparse.ArgumentParser()
+# Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/Before_BDT/"
+# Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/After_BDT/"
 
-parser.add_argument(
-    "--BDT",
-    action="store_true",
-    help="Use BDT-processed samples (merged instead of merged_old)"
-)
-
-args = parser.parse_args()
-
-BDT = args.BDT
-
-Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/10GeV/Before_BDT/"
-Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/10GeV/After_BDT/"
+Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/variables_check/"
 
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/After_BDT/"
 
 def CMS_label(pad,
-              lumi="109 fb^{-1}",
+            #   lumi="39.05 fb^{-1}",
+              lumi=109.0,
               year="2024",
               energy="13.6 TeV",
               status="Simulation Preliminary",
@@ -59,7 +48,7 @@ def CMS_label(pad,
     latex.SetTextFont(42)
     latex.SetTextSize(0.045)
     latex.SetTextAlign(31)
-    lumi_text = f"{year} ({lumi})"
+    lumi_text = f"{year} ({lumi} fb^{{-1}})"
     latex.DrawLatex(0.88, y, lumi_text)
 
 
@@ -169,7 +158,8 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color):
 # ==============================
 # INPUTS
 # ==============================
-lumi = 109  # fb^-1
+lumi = 39.05  # fb^-1
+# lumi = 32.05  # fb^-1
 
 # cross sections in pb
 xsec0 = 671.5
@@ -182,28 +172,30 @@ xsec6 = 21140.0
 xsec7 = 21190.0
 
 
-variables_list = ['Njets', 'delphi_bb', 'delphi_bbgg', 'delphi_gg', 'diff_first_jet_probb_probbb', 'dipho_pt', 'electron_eta', 'electron_phi', 'electron_pt', 'first_jet_B', 'first_jet_eta', 'first_jet_phi', 'first_jet_probb', 'first_jet_probbb', 'first_jet_pt', 'lepeta', 'leppt', 'mass','muon_eta', 'muon_phi', 'muon_pt', 'n_bJets', 'pT1_by_mbb', 'pT1_by_mgg', 'pT2_by_mbb', 'pT2_by_mgg', 'pholead_ScEta', 'pholead_ecalPFClusterIso', 'pholead_eta', 'pholead_hoe', 'pholead_mvaID', 'pholead_pfRelIso03_all_quadratic', 'pholead_pfRelIso03_chg_quadratic', 'pholead_phi', 'pholead_pt', 'pholead_r9', 'pholead_s4', 'pholead_sieie', 'pholead_sieip', 'pholead_sipip', 'pholead_superclusterEta', 'pholead_trkSumPtHollowConeDR03', 'pholead_trkSumPtSolidConeDR04', 'phosublead_ScEta', 'phosublead_ecalPFClusterIso', 'phosublead_eta', 'phosublead_hoe','phosublead_mvaID', 'phosublead_pfRelIso03_all_quadratic', 'phosublead_pfRelIso03_chg_quadratic', 'phosublead_phi', 'phosublead_pt', 'phosublead_r9', 'phosublead_s4', 'phosublead_sieie', 'phosublead_sieip', 'phosublead_sipip', 'phosublead_superclusterEta', 'phosublead_trkSumPtHollowConeDR03', 'phosublead_trkSumPtSolidConeDR04','second_jet_B', 'second_jet_eta', 'second_jet_phi', 'second_jet_probb', 'second_jet_probbb', 'second_jet_pt', 'BDT_score', 'mass_point']
+variables_list = ['electron_eta', 'electron_phi', 'electron_pt','first_jet_eta', 'first_jet_phi', 'first_jet_pt', 'lepeta', 'leppt', 'muon_eta', 'muon_phi', 'muon_pt', 'pholead_ScEta', 'pholead_eta', 'pholead_mvaID', 'pholead_phi', 'pholead_pt', 'phosublead_ScEta', 'phosublead_eta','phosublead_mvaID', 'phosublead_phi', 'phosublead_pt', 'phosublead_superclusterEta','second_jet_eta', 'second_jet_phi', 'second_jet_pt']
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_pho10/"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_pho15"
 
-if BDT:
-    base_dir += "/merged"
-else:
-    base_dir += "/merged_old"
+base_dir += "/merged"
 
-# dir_2L2Nu_cat1    = f"{base_dir}/TTto2L2Nu-24SummerRun3/nominal/CAT1_merged.parquet"
-# dir_LNu2Q_cat1    = f"{base_dir}/TTtoLNu2Q-24SummerRun3/nominal/CAT1_merged.parquet"
-# dir_G1Jets_cat1   = f"{base_dir}/TTG1Jets-24SummerRun3/nominal/CAT1_merged.parquet"
-# dir_WGtoLNuG_cat1 = f"{base_dir}/WGtoLNuG-24SummerRun3/nominal/CAT1_merged.parquet"
-# dir_DYto2Mu50_cat1 = f"{base_dir}/DYto2Mu50-24SummerRun3/nominal/CAT1_merged.parquet"
-# dir_DYto2E50_cat1  = f"{base_dir}/DYto2E50-24SummerRun3/nominal/CAT1_merged.parquet"
+dir_2L2Nu_cat1    = f"{base_dir}/TTto2L2Nu_24SummerRun3/CAT1_merged.parquet"
+dir_LNu2Q_cat1    = f"{base_dir}/TTtoLNu2Q_24SummerRun3/CAT1_merged.parquet"
+dir_G1Jets_cat1   = f"{base_dir}/TTG1Jets_24SummerRun3/CAT1_merged.parquet"
+dir_WGtoLNuG_cat1 = f"{base_dir}/WGtoLNuG_24SummerRun3/CAT1_merged.parquet"
+dir_DYto2Mu50_cat1 = f"{base_dir}/DYto2Mu50_24SummerRun3/CAT1_merged.parquet"
+dir_DYto2E50_cat1  = f"{base_dir}/DYto2E50_24SummerRun3/CAT1_merged.parquet"
 
-# events_2L2Nu_cat1    = ak.from_parquet(dir_2L2Nu_cat1)
-# events_LNu2Q_cat1    = ak.from_parquet(dir_LNu2Q_cat1)
-# events_G1Jets_cat1   = ak.from_parquet(dir_G1Jets_cat1)
-# events_WGtoLNuG_cat1 = ak.from_parquet(dir_WGtoLNuG_cat1)
-# events_DYto2Mu50_cat1 = ak.from_parquet(dir_DYto2Mu50_cat1)
-# events_DYto2E50_cat1  = ak.from_parquet(dir_DYto2E50_cat1)
+events_2L2Nu_cat1    = ak.from_parquet(dir_2L2Nu_cat1)
+events_LNu2Q_cat1    = ak.from_parquet(dir_LNu2Q_cat1)
+events_G1Jets_cat1   = ak.from_parquet(dir_G1Jets_cat1)
+events_WGtoLNuG_cat1 = ak.from_parquet(dir_WGtoLNuG_cat1)
+events_DYto2Mu50_cat1 = ak.from_parquet(dir_DYto2Mu50_cat1)
+events_DYto2E50_cat1  = ak.from_parquet(dir_DYto2E50_cat1)
+
+file_pattern = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Data/NTuples_2024_HDNA_presel/merged/Data_*-Data-2024*/*-Data-2024*_CAT1_merged.parquet"
+
+files = sorted(glob(file_pattern))
+Data = ak.from_parquet(files)
 
 
 # dir_DYto2E10_cat1 = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_official_full/merged/DYto2E10-24SummerRun3/nominal/CAT1_merged.parquet"
@@ -220,72 +212,61 @@ else:
 # events_DYto2Mu10_cat2 = ak.from_parquet(dir_DYto2Mu10_cat2)
 # events_DYto2Mu10_cat3 = ak.from_parquet(dir_DYto2Mu10_cat3)
 
-
-categories = [
-    "M12", "M15", "M20", "M25", "M30",
-    "M35", "M40", "M45", "M50", "M55", "M60", "CAT1"
-]
-
-process_dirs = {
-    "TTto2L2Nu": "TTto2L2Nu-24SummerRun3",
-    "TTtoLNu2Q": "TTtoLNu2Q-24SummerRun3",
-    "TTG1Jets": "TTG1Jets-24SummerRun3",
-    "WGtoLNuG": "WGtoLNuG-24SummerRun3",
-    "DYto2Mu": "DYto2Mu50-24SummerRun3",
-    "DYto2E": "DYto2E50-24SummerRun3",
-}
-
-process_events = {}
-
-for proc, dirname in process_dirs.items():
-    process_events[proc] = {}
-    for cat in categories:
-        path = f"{base_dir}/{dirname}/{cat}_merged.parquet"
-        process_events[proc][cat] = ak.from_parquet(path)
-
 # ==============================
 # HISTOGRAM SETTINGS
 # ==============================
-nbins = 60
+nbins = 20
 xmin = 10
 xmax = 70
 
 # ==============================
 # Categories
 # ==============================
-cat_sig = ["cat1"]
+categories = ["cat1"]
 
 # ==============================
 # Processes (BACKGROUND)
 # ==============================
 processes = {
     "DYto2Mu": {
-        "events": process_events["DYto2Mu"],
+        "events": {
+            "cat1": events_DYto2Mu50_cat1
+        },
         "xsec": xsec4,
         "color": ROOT.kCyan+1
     },
     "DYto2E": {
-        "events": process_events["DYto2E"],
+        "events": {
+            "cat1": events_DYto2E50_cat1
+        },
         "xsec": xsec5,
         "color": ROOT.kOrange+7
     },
     "WGtoLNuG": {
-        "events": process_events["WGtoLNuG"],
+        "events": {
+            "cat1": events_WGtoLNuG_cat1
+        },
         "xsec": xsec0,
         "color": ROOT.kMagenta+1
     },
     "TTG1Jets": {
-        "events": process_events["TTG1Jets"],
+        "events": {
+            "cat1": events_G1Jets_cat1
+        },
         "xsec": xsec1,
         "color": ROOT.kRed+1
     },
     "TTto2L2Nu": {
-        "events": process_events["TTto2L2Nu"],
+        "events": {
+            "cat1": events_2L2Nu_cat1
+        },
         "xsec": xsec2,
         "color": ROOT.kBlue+1
     },
     "TTtoLNu2Q": {
-        "events": process_events["TTtoLNu2Q"],
+        "events": {
+            "cat1": events_LNu2Q_cat1
+        },
         "xsec": xsec3,
         "color": ROOT.kGreen+2
     }
@@ -295,7 +276,7 @@ processes = {
 # SIGNAL
 # ==============================
 signal_masses = [20, 35, 55]
-signal_xsec = 1.457*0.22  # pb
+signal_xsec = 0.48081  # pb
 Br_frac = 0.01
 
 #Add different colours than background
@@ -309,11 +290,8 @@ signal_samples = {}
 
 for m in signal_masses:
     signal_samples[m] = {}
-    for i, cat in enumerate(cat_sig, start=1):
-        if BDT:
-            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_pho10/merged/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
-        else:
-            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_pho10/merged_old/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
+    for i, cat in enumerate(categories, start=1):
+        path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_latest_with_BDT_score/merged/WH-2024M{m}/CAT{i}_merged.parquet"
         signal_samples[m][cat] = ak.from_parquet(path)
 
 
@@ -324,7 +302,7 @@ def make_hist(name, xmin, xmax):
     h = ROOT.TH1F(
         name,
         f";{name};Events",
-        25,
+        nbins,
         xmin,
         xmax
     )
@@ -376,7 +354,6 @@ for obs_name in variables_list:
         elif "pt" in obs_lower:
             xminG, xmaxG = 0, 200
             use_logy = True
-        if ("BDT_score" in obs_name) & (BDT==False):
             signal_boost = 10
 
         print(f"{obs_name} ({cat}) : [{xminG:.2f}, {xmaxG:.2f}]")
@@ -421,18 +398,18 @@ for obs_name in variables_list:
             # and renormalize
             # ----------------------------------------
 
-            sum_original = np.sum(weights)
+            # sum_original = np.sum(weights)
 
-            abs_weights = np.abs(weights)
+            # abs_weights = np.abs(weights)
 
-            sum_abs = np.sum(abs_weights)
+            # sum_abs = np.sum(abs_weights)
 
-            if sum_abs > 0:
-                renorm = abs(sum_original) / sum_abs
-            else:
-                renorm = 1.0
+            # if sum_abs > 0:
+            #     renorm = sum_original / sum_abs
+            # else:
+            #     renorm = 1.0
 
-            weights = abs_weights * renorm
+            # weights = abs_weights * renorm
 
             scale = proc["xsec"] * lumi * 1000.0
 
@@ -452,6 +429,27 @@ for obs_name in variables_list:
 
             bkg_hists.append(h)
 
+
+        data_values = np.asarray(getattr(Data, obs_name))
+        data_weights = np.asarray(getattr(Data, "weight"))
+
+        mask = (data_values != -999.)
+
+        data_values = data_values[mask]
+        data_weights = data_weights[mask]
+
+        hData = make_hist(
+            f"data_{obs_name}_{cat}",
+            xminG,
+            xmaxG
+        )
+
+        fill_hist(hData, data_values, data_weights, scale=1.0)
+
+        hData.SetMarkerStyle(20)
+        hData.SetMarkerColor(ROOT.kBlack)
+        hData.SetLineColor(ROOT.kBlack)
+
         # ==============================
         # DRAW
         # ==============================
@@ -465,10 +463,12 @@ for obs_name in variables_list:
         stack.Draw("hist")
         if use_logy:
             stack.SetMinimum(0.1)
-        if (BDT) and ("mass" in obs_name):
+        if ("mass" in obs_name):
             stack.SetMaximum(stack.GetMaximum() * 1.65)
         else:
             stack.SetMaximum(stack.GetMaximum() * 1.4)
+
+        hData.Draw("PE SAME")
 
         stat_boxes = []
         signal_hists = []
@@ -478,7 +478,7 @@ for obs_name in variables_list:
         # ------------------------------
         for i, m in enumerate(signal_masses):
 
-            sig_events = signal_samples[m][cat_sig[0]]
+            sig_events = signal_samples[m][cat]
 
             values = np.asarray(getattr(sig_events, obs_name))
             # obs_func = observables[obs_name]["func"]
@@ -507,7 +507,7 @@ for obs_name in variables_list:
 
             h_sig.Draw("hist same")
 
-            legend.AddEntry(h_sig, f"WH M{m} (0.32 pb, Br = {Br_frac})", "l")
+            legend.AddEntry(h_sig, f"WH M{m} (1.53 pb)", "l")
 
             signal_hists.append(h_sig)
 
@@ -539,9 +539,9 @@ for obs_name in variables_list:
         latex.SetNDC()
         latex.SetTextSize(0.035)
         latex.SetTextFont(42)
-        latex.DrawLatex(0.15, 0.87, f"{obs_name}, {cat} GeV MHypothesis")
+        latex.DrawLatex(0.15, 0.87, f"{obs_name}, Category {cat[-1]}, binWidth = {(xmaxG - xminG)/nbins:.2f}")
 
-        CMS_label(c)
+        CMS_label(c, lumi = lumi )
 
         c.Modified()
         c.Update()
@@ -550,38 +550,5 @@ for obs_name in variables_list:
         # SAVE
         # ------------------------------
         print(f"Saving {obs_name}, {cat}")
-        # if BDT:
-        #     c.SaveAs(f"{Plot_dir_BDT}/stacked_{obs_name}_{cat}_linear.png")
-        #     c.SaveAs(f"{Plot_dir_BDT}/stacked_{obs_name}_{cat}_linear.pdf")
-        # else:
-        #     c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.png")
-        #     c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.pdf")
-
-
-        if BDT:
-            outdir = os.path.join(Plot_dir_BDT, cat)
-            parent_dir = Plot_dir_BDT
-        else:
-            outdir = os.path.join(Plot_dir, cat)
-            parent_dir = Plot_dir
-
-        # Create category directory
-        os.makedirs(outdir, exist_ok=True)
-
-        # Copy index.php
-        index_src = os.path.join(parent_dir, "index.php")
-        index_dst = os.path.join(outdir, "index.php")
-
-        if os.path.exists(index_src) and not os.path.exists(index_dst):
-            shutil.copy2(index_src, index_dst)
-
-        # Copy res directory
-        res_src = os.path.join(parent_dir, "res")
-        res_dst = os.path.join(outdir, "res")
-
-        if os.path.exists(res_src) and not os.path.exists(res_dst):
-            shutil.copytree(res_src, res_dst)
-
-        # Save plots
-        c.SaveAs(os.path.join(outdir, f"stacked_{obs_name}_linear.png"))
-        c.SaveAs(os.path.join(outdir, f"stacked_{obs_name}_linear.pdf"))
+        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.png")
+        c.SaveAs(f"{Plot_dir}/stacked_{obs_name}_{cat}_linear.pdf")

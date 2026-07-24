@@ -5,18 +5,15 @@
     "taggers": [],
     "year": {
         "TTtoLNu2Q_24SummerRun3": ["2024"],
-        "WGtoLNuG_24SummerRun3": ["2024"],
-        "DYto2Mu50_24SummerRun3": ["2024"]
+        "WGtoLNuG_24SummerRun3": ["2024"]
 
     },
     "corrections": {
         "TTtoLNu2Q_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
-        "WGtoLNuG_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
-        "DYto2Mu50_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
+        "WGtoLNuG_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
     },
     "systematics": {
         "TTtoLNu2Q_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
-        "WGtoLNuG_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"],
-        "DYto2Mu50_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
+        "WGtoLNuG_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
 }
 }

@@ -5,15 +5,15 @@
     "metaconditions": "Era2022_v1_mine",
     "taggers": [],
     "year": {
-        "EGamma-Data-2024F": ["2024"],
-        "Muon-Data-2024F": ["2024"]
+        "EGamma-Data-2024E": ["2024"],
+        "Muon-Data-2024E": ["2024"]
     },
     "corrections": {
-        "EGamma-Data-2024F": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"],
-        "Muon-Data-2024F": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"]
+        "EGamma-Data-2024E": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"],
+        "Muon-Data-2024E": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"]
     },
     "systematics": {
-        "EGamma-Data-2024F": [],
-        "Muon-Data-2024F": []
+        "EGamma-Data-2024E": [],
+        "Muon-Data-2024E": []
     }
 }

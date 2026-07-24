@@ -1,4 +1,3 @@
 {
-"CAT1": {"cat_filter": [["n_bJets", ">=", 2],
-                        ["BDT_score", ">", 0.7]]}
+"CAT1": {"cat_filter": [["n_bJets", ">=", 2]]}
 }

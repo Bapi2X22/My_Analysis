@@ -5,7 +5,7 @@ import pandas as pd
 # ==========================================
 # User input
 # ==========================================
-parquet_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/tau_test/WH-2024M30/nominal/"
+parquet_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_tau_test/WH-2024M30/nominal/"
 
 # ==========================================
 # Read metadata from all parquet files
@@ -51,8 +51,8 @@ df = (
 print(df.to_string(index=False))
 
 # Optional: save
-df.to_csv("merged_metadata_summary.csv", index=False)
-df.to_excel("merged_metadata_summary.xlsx", index=False)
+df.to_csv("merged_metadata_summary_updated.csv", index=False)
+df.to_excel("merged_metadata_summary_updated.xlsx", index=False)
 
 print("\nSaved:")
 print("  merged_metadata_summary.csv")
