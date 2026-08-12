@@ -2,22 +2,22 @@ import os
 import glob
 import awkward as ak
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_latest_with_BDT_score/merged/"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged_BDT_AMS/"
 
 lumi = 109.0  # fb^-1
 
 xsecs = {
-    "WH-2024M12": 0.32054,  # pb
-    "WH-2024M15": 0.32054,  # pb
-    "WH-2024M20": 0.32054,  # pb
-    "WH-2024M25": 0.32054,  # pb
-    "WH-2024M30": 0.32054,  # pb
-    "WH-2024M35": 0.32054,  # pb
-    "WH-2024M40": 0.32054,  # pb
-    "WH-2024M45": 0.32054,  # pb
-    "WH-2024M50": 0.32054,  # pb
-    "WH-2024M55": 0.32054,  # pb
-    "WH-2024M60": 0.32054,  # pb
+    "WH-2024M12": 0.48081,  # pb
+    "WH-2024M15": 0.48081,  # pb
+    "WH-2024M20": 0.48081,  # pb
+    "WH-2024M25": 0.48081,  # pb
+    "WH-2024M30": 0.48081,  # pb
+    "WH-2024M35": 0.48081,  # pb
+    "WH-2024M40": 0.48081,  # pb
+    "WH-2024M45": 0.48081,  # pb
+    "WH-2024M50": 0.48081,  # pb
+    "WH-2024M55": 0.48081,  # pb
+    "WH-2024M60": 0.48081,  # pb
 }
 
 print(f"{'Process':30s} {'Events':>10s} {'Σweight':>15s} {'Yield':>15s}")
@@ -25,7 +25,7 @@ print("-"*75)
 
 for proc, xsec in xsecs.items():
 
-    files = glob.glob(os.path.join(base_dir, proc, "nominal", "*.parquet"))
+    files = glob.glob(os.path.join(base_dir, proc, "nominal", "CAT1_merged.parquet"))
 
     if not files:
         print(f"{proc:30s} No parquet files found.")

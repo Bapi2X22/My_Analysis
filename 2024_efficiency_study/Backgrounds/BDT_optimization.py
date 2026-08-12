@@ -161,6 +161,220 @@ def discover_backgrounds(background_dir):
 
     return out
 
+import ROOT
+import numpy as np
+import os
+
+ROOT.gROOT.SetBatch(True)
+
+BKG_COLORS = {
+    "DYto2E10": ROOT.kAzure + 7,
+    "DYto2E50": ROOT.kAzure + 1,
+    "DYto2Mu10": ROOT.kCyan + 2,
+    "DYto2Mu50": ROOT.kBlue - 7,
+    "TTtoLNu2Q": ROOT.kOrange + 7,
+    "TTto2L2Nu": ROOT.kOrange - 2,
+    "TTG1Jets": ROOT.kGreen + 2,
+    "WGtoLNuG": ROOT.kMagenta + 1,
+}
+
+
+def make_mass_histogram_root(
+    sig,
+    backgrounds,
+    masspoint,
+    cut,
+    low,
+    high,
+    output_dir,
+):
+
+    SIGNAL_SCALE = 0.01
+
+    branch = f"BDT_{masspoint}"
+
+    for use_abs_weights in [False, True]:
+
+        tag = "absScaled" if use_abs_weights else "nominal"
+
+        stack = ROOT.THStack(
+            f"stack_{tag}",
+            ";m_{#gamma#gamma} (GeV);Expected Events"
+        )
+
+        legend = ROOT.TLegend(0.63, 0.52, 0.89, 0.89)
+        legend.SetBorderSize(0)
+        legend.SetFillStyle(0)
+
+        total_bkg = ROOT.TH1D(
+            f"total_bkg_{tag}",
+            "",
+            60,
+            10,
+            70,
+        )
+        total_bkg.Sumw2()
+
+        ####################################################
+        # Backgrounds
+        ####################################################
+
+        for bkg in backgrounds:
+
+            sample = bkg["sample"]
+            display_name = sample.replace("_24SummerRun3", "")
+
+            h = ROOT.TH1D(
+                f"{display_name}_{tag}",
+                "",
+                60,
+                10,
+                70,
+            )
+            h.Sumw2()
+
+            mask = bkg[branch] > cut
+
+            masses = bkg["mass"][mask]
+
+            weights = (
+                bkg["weight"][mask]
+                * bkg["xsec"]
+                * LUMI
+            )
+
+            if use_abs_weights:
+
+                signed_yield = np.sum(weights)
+
+                weights = np.abs(weights)
+
+                abs_yield = np.sum(weights)
+
+                if abs_yield > 0:
+                    weights *= signed_yield / abs_yield
+
+            for m, w in zip(masses, weights):
+                h.Fill(m, w)
+                total_bkg.Fill(m, w)
+
+            color = BKG_COLORS.get(display_name, ROOT.kGray)
+
+            h.SetFillColor(color)
+            h.SetLineColor(ROOT.kBlack)
+
+            stack.Add(h)
+
+            legend.AddEntry(
+                h,
+                f"{display_name} ({h.Integral():.1f})",
+                "f",
+            )
+
+        ####################################################
+        # Signal
+        ####################################################
+
+        hsig = ROOT.TH1D(
+            f"signal_{tag}",
+            "",
+            60,
+            10,
+            70,
+        )
+
+        mask = sig["bdt"] > cut
+
+        masses = sig["mass"][mask]
+
+        weights = (
+            sig["weight"][mask]
+            * SIG_XSEC
+            * LUMI
+            * SIGNAL_SCALE
+        )
+
+        for m, w in zip(masses, weights):
+            hsig.Fill(m, w)
+
+        hsig.SetLineColor(ROOT.kRed + 1)
+        hsig.SetLineWidth(3)
+        hsig.SetFillStyle(0)
+
+        legend.AddEntry(
+            hsig,
+            f"Signal #times {SIGNAL_SCALE:g} ({hsig.Integral():.1f})",
+            "l",
+        )
+
+        ####################################################
+        # Draw
+        ####################################################
+
+        c = ROOT.TCanvas(f"c_{tag}", "", 900, 700)
+
+        stack.Draw("HIST")
+
+        ymax = max(
+            stack.GetStack().Last().GetMaximum(),
+            hsig.GetMaximum()
+        ) * 1.5
+
+        stack.SetMaximum(ymax)
+
+        box = ROOT.TBox(low, 0, high, ymax)
+        box.SetFillColorAlpha(ROOT.kRed, 0.15)
+        box.SetLineColor(ROOT.kRed)
+        box.Draw()
+
+        stack.Draw("HIST SAME")
+        hsig.Draw("HIST SAME")
+        legend.Draw()
+
+        latex = ROOT.TLatex()
+        latex.SetNDC()
+        latex.SetTextSize(0.04)
+        latex.DrawLatex(0.16,0.92,"#bf{CMS} Preliminary")
+        latex.DrawLatex(0.60,0.92,f"{LUMI/1000:.1f} fb^{{-1}} (13.6 TeV)")
+        latex.DrawLatex(0.18,0.84,f"m_{{A}} = {masspoint} GeV")
+        latex.DrawLatex(0.18,0.79,f"BDT > {cut:.3f}")
+
+        if use_abs_weights:
+            latex.DrawLatex(0.18,0.74,"Absolute weights (rescaled)")
+
+        c.SaveAs(
+            os.path.join(
+                output_dir,
+                f"M{masspoint}_BDT_{cut:.3f}_{tag}_linear.pdf"
+            )
+        )
+
+        c.SaveAs(
+            os.path.join(
+                output_dir,
+                f"M{masspoint}_BDT_{cut:.3f}_{tag}_linear.png"
+            )
+        )
+
+        c.SetLogy()
+        stack.SetMinimum(1e-3)
+
+        c.SaveAs(
+            os.path.join(
+                output_dir,
+                f"M{masspoint}_BDT_{cut:.3f}_{tag}_log.pdf"
+            )
+        )
+
+        c.SaveAs(
+            os.path.join(
+                output_dir,
+                f"M{masspoint}_BDT_{cut:.3f}_{tag}_log.png"
+            )
+        )
+
+        c.Close()
+
 def make_mass_histogram(
         sig,
         backgrounds,
@@ -171,7 +385,7 @@ def make_mass_histogram(
         output_dir,
 ):
 
-    branch = f"bdt_{masspoint}"
+    branch = f"BDT_{masspoint}"
 
     sig_mask = sig["bdt"] > cut
 
@@ -286,7 +500,7 @@ def load_signal(fname):
 
     return {
         "mass": ak.to_numpy(arr.mass),
-        "bdt": ak.to_numpy(arr.bdt_score),
+        "bdt": ak.to_numpy(arr.BDT_score),
         "weight": ak.to_numpy(arr.weight),
     }
 
@@ -294,6 +508,39 @@ def load_signal(fname):
 # ============================================================
 # Load backgrounds
 # ============================================================
+
+# def load_backgrounds(backgrounds):
+
+#     loaded = []
+
+#     print("\nLoading backgrounds...\n")
+
+#     for b in tqdm(backgrounds):
+
+#         arr = ak.from_parquet(b["file"])
+
+#         loaded.append(
+#             {
+#                 "sample": b["sample"],
+#                 "xsec": b["xsec"],
+#                 "mass": ak.to_numpy(arr.mass),
+#                 "weight": ak.to_numpy(arr.weight),
+
+#                 "BDT_12": ak.to_numpy(arr.BDT_12),
+#                 "BDT_15": ak.to_numpy(arr.BDT_15),
+#                 "BDT_20": ak.to_numpy(arr.BDT_20),
+#                 "BDT_25": ak.to_numpy(arr.BDT_25),
+#                 "BDT_30": ak.to_numpy(arr.BDT_30),
+#                 "BDT_35": ak.to_numpy(arr.BDT_35),
+#                 "BDT_40": ak.to_numpy(arr.BDT_40),
+#                 "BDT_45": ak.to_numpy(arr.BDT_45),
+#                 "BDT_50": ak.to_numpy(arr.BDT_50),
+#                 "BDT_55": ak.to_numpy(arr.BDT_55),
+#                 "BDT_60": ak.to_numpy(arr.BDT_60),
+#             }
+#         )
+
+#     return loaded
 
 def load_backgrounds(backgrounds):
 
@@ -305,24 +552,40 @@ def load_backgrounds(backgrounds):
 
         arr = ak.from_parquet(b["file"])
 
+        weight = ak.to_numpy(arr.weight)
+
+        # Global rescaling factor for this sample
+        scale = np.sum(weight) / np.sum(np.abs(weight))
+
+        print(
+            f"{b['sample']:20s} "
+            f"scale = {scale:.6f} "
+            f"neg_frac = {np.mean(weight < 0):.4f}"
+        )
+
+        # Replace with globally rescaled absolute weights
+        # weight = np.abs(weight) * scale
+
         loaded.append(
             {
                 "sample": b["sample"],
                 "xsec": b["xsec"],
                 "mass": ak.to_numpy(arr.mass),
-                "weight": ak.to_numpy(arr.weight),
+                "weight": weight,
+                "weight_abs": np.abs(weight) * scale,
 
-                "bdt_12": ak.to_numpy(arr.bdt_12),
-                "bdt_15": ak.to_numpy(arr.bdt_15),
-                "bdt_20": ak.to_numpy(arr.bdt_20),
-                "bdt_25": ak.to_numpy(arr.bdt_25),
-                "bdt_30": ak.to_numpy(arr.bdt_30),
-                "bdt_35": ak.to_numpy(arr.bdt_35),
-                "bdt_40": ak.to_numpy(arr.bdt_40),
-                "bdt_45": ak.to_numpy(arr.bdt_45),
-                "bdt_50": ak.to_numpy(arr.bdt_50),
-                "bdt_55": ak.to_numpy(arr.bdt_55),
-                "bdt_60": ak.to_numpy(arr.bdt_60),
+
+                "BDT_12": ak.to_numpy(arr.BDT_12),
+                "BDT_15": ak.to_numpy(arr.BDT_15),
+                "BDT_20": ak.to_numpy(arr.BDT_20),
+                "BDT_25": ak.to_numpy(arr.BDT_25),
+                "BDT_30": ak.to_numpy(arr.BDT_30),
+                "BDT_35": ak.to_numpy(arr.BDT_35),
+                "BDT_40": ak.to_numpy(arr.BDT_40),
+                "BDT_45": ak.to_numpy(arr.BDT_45),
+                "BDT_50": ak.to_numpy(arr.BDT_50),
+                "BDT_55": ak.to_numpy(arr.BDT_55),
+                "BDT_60": ak.to_numpy(arr.BDT_60),
             }
         )
 
@@ -340,8 +603,7 @@ def signal_yield(sig, low, high, cut):
         &
         (sig["mass"] <= high)
         &
-        (sig["bdt"] > cut)
-    )
+        (sig["bdt"] > cut))
 
     if np.sum(mask) == 0:
         return 0.0
@@ -365,9 +627,19 @@ def background_yield(backgrounds,
 
     total = 0.0
 
-    branch = f"bdt_{masspoint}"
+    branch = f"BDT_{masspoint}"
 
-    for b in backgrounds:
+    for b in backgrounds:   
+
+        print("type(b):", type(b))
+        print("branch:", branch)
+
+        if hasattr(b, "fields"):
+            print("fields:", b.fields)
+        elif hasattr(b, "keys"):
+            print("keys:", list(b.keys()))
+        else:
+            print("dir:", dir(b))
 
         bdt = b[branch]
 
@@ -383,12 +655,13 @@ def background_yield(backgrounds,
             continue
 
         total += np.sum(
-            b["weight"][mask]
+            b["weight_abs"][mask]
             * b["xsec"]
             * LUMI
         )
 
     return total
+
 
 
 # ============================================================
@@ -475,7 +748,7 @@ def scan_masspoint(
             ams = AMS(s, b)
 
         if plot_mode == "all":
-            make_mass_histogram(
+            make_mass_histogram_root(
                 sig=sig,
                 backgrounds=backgrounds,
                 masspoint=masspoint,
@@ -506,7 +779,7 @@ def scan_masspoint(
     ######################################################
 
     if plot_mode == "best":
-        make_mass_histogram(
+        make_mass_histogram_root(
             sig=sig,
             backgrounds=backgrounds,
             masspoint=masspoint,

@@ -1,0 +1,16 @@
+{
+    "samplejson": "sample_test_skim.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "TTto2L2Nu_24SummerRun3": ["2024"]
+
+    },
+    "corrections": {
+        "TTto2L2Nu_24SummerRun3": ["Smearing", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
+    },
+    "systematics": {
+        "TTto2L2Nu_24SummerRun3": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower"]
+}
+}

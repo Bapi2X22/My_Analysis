@@ -12,8 +12,8 @@ ROOT.gROOT.ForceStyle()
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/After_BDT/"
 
-Plot_dir_ele = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/variables_check/ele/"
-Plot_dir_mu = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/variables_check/mu/"
+Plot_dir_ele = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/variables_check_New/ele/"
+Plot_dir_mu = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/variables_check_New/mu/"
 
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/After_BDT/"
@@ -25,7 +25,7 @@ def CMS_label(pad,
               energy="13.6 TeV",
               status="Simulation Preliminary",
               x=0.12,
-              y=0.92):
+              y=0.95):
 
     pad.cd()
 
@@ -203,9 +203,9 @@ xsec7 = 21190.0
 
 variables_list = ['electron_eta', 'electron_phi', 'electron_pt','first_jet_eta', 'first_jet_phi', 'first_jet_pt', 'lepeta', 'leppt', 'muon_eta', 'muon_phi', 'muon_pt', 'pholead_ScEta', 'pholead_eta', 'pholead_mvaID', 'pholead_phi', 'pholead_pt', 'phosublead_ScEta', 'phosublead_eta','phosublead_mvaID', 'phosublead_phi', 'phosublead_pt', 'phosublead_superclusterEta','second_jet_eta', 'second_jet_phi', 'second_jet_pt']
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_pho15"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_latest_pho15"
 
-base_dir += "/merged"
+base_dir += "/merged_full"
 
 dir_2L2Nu_cat1    = f"{base_dir}/TTto2L2Nu_24SummerRun3/CAT1_merged.parquet"
 dir_LNu2Q_cat1    = f"{base_dir}/TTtoLNu2Q_24SummerRun3/CAT1_merged.parquet"
@@ -311,7 +311,7 @@ processes = {
 # ==============================
 signal_masses = [20, 35, 55]
 signal_xsec = 0.48081  # pb
-Br_frac = 0.01
+Br_frac = 0.1
 
 #Add different colours than background
 signal_colors = {
@@ -325,7 +325,7 @@ signal_samples = {}
 for m in signal_masses:
     signal_samples[m] = {}
     for i, cat in enumerate(categories, start=1):
-        path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_latest_with_BDT_score/merged/WH-2024M{m}/CAT{i}_merged.parquet"
+        path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged_full/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
         signal_samples[m][cat] = ak.from_parquet(path)
 
 
@@ -345,9 +345,22 @@ def make_hist(name, xmin, xmax):
     return h
 
 
-def fill_hist(hist, values, weights, scale):
-    # ROOT.gStyle.SetOptStat(1111111)
+# def fill_hist(hist, values, weights, scale):
+#     # ROOT.gStyle.SetOptStat(1111111)
+#     for x, w in zip(values, weights):
+#         hist.Fill(float(x), float(scale * w))
+
+
+def fill_hist(hist, values, weights, scale, overflow=False):
+
+    xmax = hist.GetXaxis().GetXmax()
+    eps = 1e-6  # stay inside the last bin
+
     for x, w in zip(values, weights):
+
+        if overflow and x >= xmax:
+            x = xmax - eps
+
         hist.Fill(float(x), float(scale * w))
 
 
@@ -360,6 +373,8 @@ channels = ["electron", "muon"]
 for channel in channels:
 
     for obs_name in variables_list:
+
+        overflow = "pt" in obs_name.lower()
 
         for cat in categories:
 
@@ -393,7 +408,10 @@ for channel in channels:
             elif "pt" in obs_lower:
                 xminG, xmaxG = 0, 200
                 use_logy = True
-                signal_boost = 10
+                # signal_boost = 10
+
+            elif ("eta" in obs_lower) or ("phi" in obs_lower) or ("mvaid" in obs_lower):
+                use_logy = True
 
             print(f"{obs_name} ({cat}) : [{xminG:.2f}, {xmaxG:.2f}]")
 
@@ -466,10 +484,11 @@ for channel in channels:
                     xmaxG
                 )
 
-                fill_hist(h, values, weights, scale)
+                fill_hist(h, values, weights, scale, overflow = overflow)
 
                 h.SetFillColor(proc["color"])
-                h.SetLineColor(ROOT.kBlack)
+                h.SetLineColor(0)
+                h.SetLineWidth(0)
 
                 stack.Add(h)
                 legend.AddEntry(h, proc_name, "f")
@@ -496,7 +515,7 @@ for channel in channels:
                 xmaxG
             )
 
-            fill_hist(hData, data_values, data_weights, scale=1.0)
+            fill_hist(hData, data_values, data_weights, scale=1.0, overflow = overflow)
 
             hData.SetMarkerStyle(20)
             hData.SetMarkerColor(ROOT.kBlack)
@@ -505,17 +524,46 @@ for channel in channels:
             # ==============================
             # DRAW
             # ==============================
-            c = ROOT.TCanvas(f"c_{obs_name}_{cat}", "", 1000, 700)
+            # c = ROOT.TCanvas(f"c_{obs_name}_{cat}", "", 1000, 700)
+            # if use_logy:
+            #     c.SetLogy()
+            # c.SetLeftMargin(0.12)
+            # c.SetRightMargin(0.15)
+
+            c = ROOT.TCanvas(f"c_{obs_name}_{cat}", "", 1000, 800)
+
+            pad1 = ROOT.TPad("pad1", "pad1", 0.0, 0.30, 1.0, 1.0)
+            pad2 = ROOT.TPad("pad2", "pad2", 0.0, 0.00, 1.0, 0.30)
+
+            pad1.SetBottomMargin(0.02)
+            pad1.SetLeftMargin(0.12)
+            pad1.SetRightMargin(0.15)
+
+            pad2.SetTopMargin(0.05)
+            pad2.SetBottomMargin(0.35)
+            pad2.SetLeftMargin(0.12)
+            pad2.SetRightMargin(0.15)
+            pad2.SetGridy()
+
             if use_logy:
-                c.SetLogy()
-            c.SetLeftMargin(0.12)
-            c.SetRightMargin(0.15)
+                pad1.SetLogy()
+
+            pad1.Draw()
+            pad2.Draw()
+
             # c.SetLogy()
 
+            pad1.cd()
+
             stack.Draw("hist")
+
+            stack.GetXaxis().SetLabelSize(0)
+            stack.GetXaxis().SetTitleSize(0)
+
             if use_logy:
                 stack.SetMinimum(0.1)
-            if ("mass" in obs_name):
+                stack.SetMaximum(stack.GetMaximum() * 10.0)
+            elif ("mass" in obs_name):
                 stack.SetMaximum(stack.GetMaximum() * 1.65)
             else:
                 stack.SetMaximum(stack.GetMaximum() * 1.4)
@@ -525,6 +573,24 @@ for channel in channels:
             stat_boxes = []
 
             hData.Draw("PE SAME")
+
+            # ratio = hData.Clone(f"ratio_{channel}_{obs_name}_{cat}")
+            # ratio.Divide(hBkg)
+
+            ratio = hData.Clone(f"ratio_{channel}_{obs_name}_{cat}")
+
+            ratio.SetStats(0)
+
+            for i in range(1, ratio.GetNbinsX()+1):
+                d = hData.GetBinContent(i)
+                m = hBkg.GetBinContent(i)
+
+                if m > 0:
+                    ratio.SetBinContent(i, d/m)
+                    ratio.SetBinError(i, hData.GetBinError(i)/m)
+                else:
+                    ratio.SetBinContent(i, 0)
+                    ratio.SetBinError(i, 0)
 
             signal_hists = []
 
@@ -561,7 +627,7 @@ for channel in channels:
                     xmaxG
                 )
 
-                fill_hist(h_sig, values, weights, scale)
+                fill_hist(h_sig, values, weights, scale, overflow = overflow)
 
                 h_sig.SetLineColor(signal_colors[m])
                 h_sig.SetLineWidth(3)
@@ -570,7 +636,7 @@ for channel in channels:
 
                 h_sig.Draw("hist same")
 
-                legend.AddEntry(h_sig, f"WH M{m} (1.53 pb)", "l")
+                legend.AddEntry(h_sig, f"WH M{m} ({signal_xsec:.2f} pb, Br = {Br_frac:.2f})", "l")
 
                 signal_hists.append(h_sig)
 
@@ -630,6 +696,40 @@ for channel in channels:
             latex.DrawLatex(0.15, 0.87, f"{obs_name}, Category {cat[-1]}, binWidth = {(xmaxG - xminG)/nbins:.2f}")
 
             CMS_label(c, lumi = lumi )
+
+            pad2.cd()
+
+            ratio.SetTitle("")
+
+            ratio.GetYaxis().SetTitle("Data/MC")
+            ratio.GetYaxis().CenterTitle()
+
+            ratio.GetYaxis().SetNdivisions(505)
+            ratio.GetYaxis().SetTitleSize(0.09)
+            ratio.GetYaxis().SetTitleOffset(0.45)
+            ratio.GetYaxis().SetLabelSize(0.08)
+
+            ratio.GetXaxis().SetTitle(obs_name)
+            ratio.GetXaxis().SetTitleSize(0.12)
+            ratio.GetXaxis().SetLabelSize(0.10)
+
+            ratio.SetMinimum(0.0)
+            ratio.SetMaximum(2.0)
+
+            ratio.SetMarkerStyle(20)
+            ratio.SetLineColor(ROOT.kBlack)
+
+            ratio.Draw("PE")
+
+            line = ROOT.TLine(
+                ratio.GetXaxis().GetXmin(),
+                1.0,
+                ratio.GetXaxis().GetXmax(),
+                1.0,
+            )
+            line.SetLineStyle(2)
+            line.SetLineWidth(2)
+            line.Draw("same")
 
             c.Modified()
             c.Update()

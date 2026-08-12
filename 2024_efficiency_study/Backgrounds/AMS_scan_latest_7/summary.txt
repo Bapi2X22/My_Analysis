@@ -1,0 +1,66 @@
+Mass = 12
+Best cut : 0.780
+Signal : 16.535004
+Background : 4.095004
+AMS : 5.800566
+
+Mass = 15
+Best cut : 0.890
+Signal : 16.916866
+Background : 0.111509
+AMS : 11.722704
+
+Mass = 20
+Best cut : 0.820
+Signal : 93.330445
+Background : 1.215261
+AMS : 25.232254
+
+Mass = 25
+Best cut : 0.740
+Signal : 191.245312
+Background : 2.436632
+AMS : 36.227876
+
+Mass = 30
+Best cut : 0.930
+Signal : 191.316281
+Background : 0.234653
+AMS : 46.754567
+
+Mass = 35
+Best cut : 0.920
+Signal : 210.798214
+Background : 0.686344
+AMS : 44.746394
+
+Mass = 40
+Best cut : 0.920
+Signal : 195.314796
+Background : 0.030417
+AMS : 55.088657
+
+Mass = 45
+Best cut : 0.850
+Signal : 218.603236
+Background : 1.951320
+AMS : 40.598007
+
+Mass = 50
+Best cut : 0.760
+Signal : 236.116496
+Background : 4.131377
+AMS : 38.471421
+
+Mass = 55
+Best cut : 0.650
+Signal : 252.270271
+Background : 7.313008
+AMS : 36.723078
+
+Mass = 60
+Best cut : 0.690
+Signal : 238.038804
+Background : 4.314046
+AMS : 38.426141
+

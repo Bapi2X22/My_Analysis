@@ -1,17 +1,17 @@
 import os
 import awkward as ak
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_pho10/merged"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_latest_pho15/merged"
 
 lumi = 109.0  # fb^-1
 
 xsecs = {
-    "TTG1Jets-24SummerRun3":   4.634,
-    "DYto2Mu50-24SummerRun3": 2230.0,
-    "DYto2E50-24SummerRun3":  2244.0,
-    "TTto2L2Nu-24SummerRun3":   98.04,
-    "TTtoLNu2Q-24SummerRun3":  405.87,
-    "WGtoLNuG-24SummerRun3":   671.5,
+    "TTG1Jets_24SummerRun3":   4.634,
+    "DYto2Mu50_24SummerRun3": 2124.08,
+    "DYto2E50_24SummerRun3":  2124.08,
+    "TTto2L2Nu_24SummerRun3":   98.04,
+    "TTtoLNu2Q_24SummerRun3":  405.87,
+    "WGtoLNuG_24SummerRun3":   671.5,
 }
 
 # Get the list of merged files from the first process directory

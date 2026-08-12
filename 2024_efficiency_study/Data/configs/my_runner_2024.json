@@ -1,19 +1,19 @@
 
 {
-    "samplejson": "samples_2024.json",
-    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "samplejson": "unprocessed_files_H.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel_DATAMC_debug",
     "metaconditions": "Era2022_v1_mine",
     "taggers": [],
     "year": {
-        "EGamma-Data-2024E": ["2024"],
-        "Muon-Data-2024E": ["2024"]
+        "EGamma-Data-2024H": ["2024"],
+        "Muon-Data-2024H": ["2024"]
     },
     "corrections": {
-        "EGamma-Data-2024E": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"],
-        "Muon-Data-2024E": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "jec_Data2024"]
+        "EGamma-Data-2024H": [],
+        "Muon-Data-2024H": []
     },
     "systematics": {
-        "EGamma-Data-2024E": [],
-        "Muon-Data-2024E": []
+        "EGamma-Data-2024H": [],
+        "Muon-Data-2024H": []
     }
 }

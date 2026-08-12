@@ -1,0 +1,16 @@
+
+{
+    "samplejson": "sample_ZH_v15.json",
+    "workflow": "My_first_processor_ZH_Cat1_HDNA_presel_test",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "ZH-2024M30": ["2024"]
+    },
+    "corrections": {
+        "ZH-2024M30": []
+    },
+    "systematics": {
+        "ZH-2024M30": []
+    }
+}

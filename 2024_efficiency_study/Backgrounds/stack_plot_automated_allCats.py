@@ -19,12 +19,21 @@ parser.add_argument(
     help="Use BDT-processed samples (merged instead of merged_old)"
 )
 
+parser.add_argument(
+    "--Br_frac",
+    type=float,
+    default=0.01,
+    dest="Br_frac",
+    help="Branching fraction"
+)
+
 args = parser.parse_args()
 
 BDT = args.BDT
+Br_frac = args.Br_frac
 
-Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/10GeV/Before_BDT/"
-Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/10GeV/After_BDT/"
+Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/15GeV_AMS/Before_BDT/"
+Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/15GeV_AMS/After_BDT/"
 
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/After_BDT/"
@@ -138,7 +147,34 @@ def get_mgg(one_photon, category_mask):
     return ak.to_numpy(diphoton.mass)
 
 
-def draw_statbox_manual(hist, x1, y1, x2, y2, color):
+# def draw_statbox_manual(hist, x1, y1, x2, y2, color):
+
+#     stats = ROOT.TPaveText(x1, y1, x2, y2, "NDC")
+#     stats.SetFillColor(0)
+#     stats.SetBorderSize(1)
+#     stats.SetTextColor(color)
+#     stats.SetTextFont(42)
+#     stats.SetTextSize(0.02)
+
+#     nbins = hist.GetNbinsX()
+
+#     underflow = hist.GetBinContent(0)
+#     overflow  = hist.GetBinContent(nbins + 1)
+
+#     integral = hist.Integral(1, nbins)  # excludes under/overflow
+#     # If you want to include them:
+#     # integral = hist.Integral(0, nbins + 1)
+
+#     stats.AddText(f"Entries = {int(hist.GetEntries())}")
+#     stats.AddText(f"Underflow = {underflow:.2f}")
+#     stats.AddText(f"Overflow = {overflow:.2f}")
+#     stats.AddText(f"Integral = {integral:.2f}")
+
+#     stats.Draw()
+
+#     return stats
+
+def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None):
 
     stats = ROOT.TPaveText(x1, y1, x2, y2, "NDC")
     stats.SetFillColor(0)
@@ -152,9 +188,10 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color):
     underflow = hist.GetBinContent(0)
     overflow  = hist.GetBinContent(nbins + 1)
 
-    integral = hist.Integral(1, nbins)  # excludes under/overflow
-    # If you want to include them:
-    # integral = hist.Integral(0, nbins + 1)
+    integral = hist.Integral(1, nbins)
+
+    if label is not None:
+        stats.AddText(label)
 
     stats.AddText(f"Entries = {int(hist.GetEntries())}")
     stats.AddText(f"Underflow = {underflow:.2f}")
@@ -182,14 +219,14 @@ xsec6 = 21140.0
 xsec7 = 21190.0
 
 
-variables_list = ['Njets', 'delphi_bb', 'delphi_bbgg', 'delphi_gg', 'diff_first_jet_probb_probbb', 'dipho_pt', 'electron_eta', 'electron_phi', 'electron_pt', 'first_jet_B', 'first_jet_eta', 'first_jet_phi', 'first_jet_probb', 'first_jet_probbb', 'first_jet_pt', 'lepeta', 'leppt', 'mass','muon_eta', 'muon_phi', 'muon_pt', 'n_bJets', 'pT1_by_mbb', 'pT1_by_mgg', 'pT2_by_mbb', 'pT2_by_mgg', 'pholead_ScEta', 'pholead_ecalPFClusterIso', 'pholead_eta', 'pholead_hoe', 'pholead_mvaID', 'pholead_pfRelIso03_all_quadratic', 'pholead_pfRelIso03_chg_quadratic', 'pholead_phi', 'pholead_pt', 'pholead_r9', 'pholead_s4', 'pholead_sieie', 'pholead_sieip', 'pholead_sipip', 'pholead_superclusterEta', 'pholead_trkSumPtHollowConeDR03', 'pholead_trkSumPtSolidConeDR04', 'phosublead_ScEta', 'phosublead_ecalPFClusterIso', 'phosublead_eta', 'phosublead_hoe','phosublead_mvaID', 'phosublead_pfRelIso03_all_quadratic', 'phosublead_pfRelIso03_chg_quadratic', 'phosublead_phi', 'phosublead_pt', 'phosublead_r9', 'phosublead_s4', 'phosublead_sieie', 'phosublead_sieip', 'phosublead_sipip', 'phosublead_superclusterEta', 'phosublead_trkSumPtHollowConeDR03', 'phosublead_trkSumPtSolidConeDR04','second_jet_B', 'second_jet_eta', 'second_jet_phi', 'second_jet_probb', 'second_jet_probbb', 'second_jet_pt', 'BDT_score', 'mass_point']
+variables_list = ['Njets', 'delphi_bb', 'delphi_bbgg', 'delphi_gg', 'diff_first_jet_probb_probbb', 'dipho_pt', 'electron_eta', 'electron_phi', 'electron_pt', 'first_jet_B', 'first_jet_eta', 'first_jet_phi', 'first_jet_probb', 'first_jet_probbb', 'first_jet_pt', 'lepeta', 'leppt', 'mass','muon_eta', 'muon_phi', 'muon_pt', 'n_bJets', 'pT1_by_mbb', 'pT1_by_mgg', 'pT2_by_mbb', 'pT2_by_mgg', 'pholead_ScEta', 'pholead_ecalPFClusterIso', 'pholead_eta', 'pholead_hoe', 'pholead_mvaID', 'pholead_pfRelIso03_all_quadratic', 'pholead_pfRelIso03_chg_quadratic', 'pholead_phi', 'pholead_pt', 'pholead_r9', 'pholead_s4', 'pholead_sieie', 'pholead_sieip', 'pholead_sipip', 'pholead_superclusterEta', 'pholead_trkSumPtHollowConeDR03', 'pholead_trkSumPtSolidConeDR04', 'phosublead_ScEta', 'phosublead_ecalPFClusterIso', 'phosublead_eta', 'phosublead_hoe','phosublead_mvaID', 'phosublead_pfRelIso03_all_quadratic', 'phosublead_pfRelIso03_chg_quadratic', 'phosublead_phi', 'phosublead_pt', 'phosublead_r9', 'phosublead_s4', 'phosublead_sieie', 'phosublead_sieip', 'phosublead_sipip', 'phosublead_superclusterEta', 'phosublead_trkSumPtHollowConeDR03', 'phosublead_trkSumPtSolidConeDR04','second_jet_B', 'second_jet_eta', 'second_jet_phi', 'second_jet_probb', 'second_jet_probbb', 'second_jet_pt', 'BDT_score', 'mass_point', 'BDT_12', 'BDT_15', 'BDT_20', 'BDT_25', 'BDT_30', 'BDT_35', 'BDT_40', 'BDT_45', 'BDT_50', 'BDT_55', 'BDT_60']
 
-base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_pho10/"
+base_dir = "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/NTuples_BKG_2024_HDNA_presel_pBDT_score_latest_pho15/"
 
 if BDT:
     base_dir += "/merged"
 else:
-    base_dir += "/merged_old"
+    base_dir += "/merged_all_cats"
 
 # dir_2L2Nu_cat1    = f"{base_dir}/TTto2L2Nu-24SummerRun3/nominal/CAT1_merged.parquet"
 # dir_LNu2Q_cat1    = f"{base_dir}/TTtoLNu2Q-24SummerRun3/nominal/CAT1_merged.parquet"
@@ -221,19 +258,31 @@ else:
 # events_DYto2Mu10_cat3 = ak.from_parquet(dir_DYto2Mu10_cat3)
 
 
-categories = [
-    "M12", "M15", "M20", "M25", "M30",
-    "M35", "M40", "M45", "M50", "M55", "M60", "CAT1"
-]
 
-process_dirs = {
-    "TTto2L2Nu": "TTto2L2Nu-24SummerRun3",
-    "TTtoLNu2Q": "TTtoLNu2Q-24SummerRun3",
-    "TTG1Jets": "TTG1Jets-24SummerRun3",
-    "WGtoLNuG": "WGtoLNuG-24SummerRun3",
-    "DYto2Mu": "DYto2Mu50-24SummerRun3",
-    "DYto2E": "DYto2E50-24SummerRun3",
-}
+if BDT:
+    process_dirs = {
+        "TTto2L2Nu": "TTto2L2Nu-24SummerRun3",
+        "TTtoLNu2Q": "TTtoLNu2Q-24SummerRun3",
+        "TTG1Jets": "TTG1Jets-24SummerRun3",
+        "WGtoLNuG": "WGtoLNuG-24SummerRun3",
+        "DYto2Mu": "DYto2Mu50-24SummerRun3",
+        "DYto2E": "DYto2E50-24SummerRun3",
+    }
+else:
+    process_dirs = {
+        "TTto2L2Nu": "TTto2L2Nu_24SummerRun3",
+        "TTtoLNu2Q": "TTtoLNu2Q_24SummerRun3",
+        "TTG1Jets": "TTG1Jets_24SummerRun3",
+        "WGtoLNuG": "WGtoLNuG_24SummerRun3",
+        "DYto2Mu": "DYto2Mu50_24SummerRun3",
+        "DYto2E": "DYto2E50_24SummerRun3",
+    }
+
+if BDT:
+    categories = ["M12", "M15", "M20", "M25", "M30",
+    "M35", "M40", "M45", "M50", "M55", "M60"]
+else:
+    categories = ["CAT1", "CAT2", "CAT3"]
 
 process_events = {}
 
@@ -246,14 +295,17 @@ for proc, dirname in process_dirs.items():
 # ==============================
 # HISTOGRAM SETTINGS
 # ==============================
-nbins = 60
+nbins = 30
 xmin = 10
 xmax = 70
 
 # ==============================
 # Categories
 # ==============================
-cat_sig = ["cat1"]
+if BDT:
+    cat_sig = ["cat1"]
+else: 
+    cat_sig = ["cat1", "cat2", "cat3"]
 
 # ==============================
 # Processes (BACKGROUND)
@@ -295,14 +347,21 @@ processes = {
 # SIGNAL
 # ==============================
 signal_masses = [20, 35, 55]
-signal_xsec = 1.457*0.22  # pb
-Br_frac = 0.01
+signal_xsec = 1.457*0.33  # pb
 
 #Add different colours than background
 signal_colors = {
-    20: ROOT.kBlack,
-    35: ROOT.kViolet+1,
-    55: ROOT.kPink+7
+    12: ROOT.kRed + 1,
+    15: ROOT.kOrange + 7,
+    20: ROOT.kBlack,      # same as before
+    25: ROOT.kBlue + 1,
+    30: ROOT.kGreen + 2,
+    35: ROOT.kViolet + 1, # same as before
+    40: ROOT.kAzure + 2,
+    45: ROOT.kCyan + 2,
+    50: ROOT.kMagenta + 1,
+    55: ROOT.kPink + 7,   # same as before
+    60: ROOT.kGray + 2,
 }
 
 signal_samples = {}
@@ -311,9 +370,9 @@ for m in signal_masses:
     signal_samples[m] = {}
     for i, cat in enumerate(cat_sig, start=1):
         if BDT:
-            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_pho10/merged/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
+            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
         else:
-            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_pho10/merged_old/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
+            path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged_all_cats/WH-2024M{m}/nominal/CAT{i}_merged.parquet"
         signal_samples[m][cat] = ak.from_parquet(path)
 
 
@@ -324,7 +383,7 @@ def make_hist(name, xmin, xmax):
     h = ROOT.TH1F(
         name,
         f";{name};Events",
-        25,
+        nbins,
         xmin,
         xmax
     )
@@ -344,7 +403,7 @@ def fill_hist(hist, values, weights, scale):
 # ==============================
 for obs_name in variables_list:
 
-    for cat in categories:
+    for k, cat in enumerate(categories):
 
         use_logy = False
 
@@ -373,8 +432,9 @@ for obs_name in variables_list:
         if "mass" in obs_lower:
             xminG, xmaxG = 0, 70
 
-        elif "pt" in obs_lower:
+        elif ("pt" in obs_lower) and ("by_mgg" not in obs_lower) and ("by_mbb" not in obs_lower):
             xminG, xmaxG = 0, 200
+        if ("pt" in obs_lower) or ("delphi" in obs_lower) or ("eta" in obs_lower) or ("mvaid" in obs_lower) or ("jet_b" in obs_lower) or ("njets" in obs_lower) or ("bdt" in obs_lower):
             use_logy = True
         if ("BDT_score" in obs_name) & (BDT==False):
             signal_boost = 10
@@ -385,9 +445,14 @@ for obs_name in variables_list:
         bkg_hists = []
         signal_hists = []
 
+        xlabel = obs_name
+
+        if obs_name.lower() == "mass":
+            xlabel = "m_{#gamma#gamma} (GeV)"
+
         stack = ROOT.THStack(
             f"stack_{obs_name}_{cat}",
-            f";{obs_name};Events"
+            f";{xlabel};Events"
         )
 
         legend = ROOT.TLegend(0.64, 0.70, 0.86, 0.90)
@@ -445,7 +510,8 @@ for obs_name in variables_list:
             fill_hist(h, values, weights, scale)
 
             h.SetFillColor(proc["color"])
-            h.SetLineColor(ROOT.kBlack)
+            h.SetLineWidth(0)
+            h.SetLineColor(0)
 
             stack.Add(h)
             legend.AddEntry(h, proc_name, "f")
@@ -465,10 +531,23 @@ for obs_name in variables_list:
         stack.Draw("hist")
         if use_logy:
             stack.SetMinimum(0.1)
-        if (BDT) and ("mass" in obs_name):
+            stack.SetMaximum(stack.GetMaximum() * 10.0)
+
+        elif BDT and ("mass" in obs_name):
             stack.SetMaximum(stack.GetMaximum() * 1.65)
+
+        elif (not BDT) and ("mass" in obs_name):
+            if cat == "CAT2":
+                stack.SetMaximum(stack.GetMaximum() * 1.8)
+            elif cat == "CAT3":
+                stack.SetMaximum(stack.GetMaximum() * 2.5)
+            else:
+                stack.SetMaximum(stack.GetMaximum() * 1.4)
+
         else:
             stack.SetMaximum(stack.GetMaximum() * 1.4)
+
+        hBkg = stack.GetStack().Last().Clone(f"hBkg_{obs_name}_{cat}")    
 
         stat_boxes = []
         signal_hists = []
@@ -476,13 +555,53 @@ for obs_name in variables_list:
         # ------------------------------
         # DRAW SIGNALS
         # ------------------------------
-        for i, m in enumerate(signal_masses):
+        # for i, m in enumerate(signal_masses):
 
-            sig_events = signal_samples[m][cat_sig[0]]
+        #     if BDT:
+        #         sig_events = signal_samples[m][cat_sig[0]]
+        #     else:
+        #         sig_events = signal_samples[m][cat_sig[k]]
 
-            values = np.asarray(getattr(sig_events, obs_name))
-            # obs_func = observables[obs_name]["func"]
-            # values = np.asarray(obs_func(sig_events))
+        #     obs_name_sig = obs_name
+
+        #     if ("bdt" in obs_lower):
+        #         obs_name_sig = "BDT_score"
+
+        # ------------------------------
+        # DRAW SIGNALS
+        # ------------------------------
+
+        selected_mass = None
+        if obs_name.startswith("BDT_") and obs_name != "BDT_score":
+            selected_mass = int(obs_name.split("_")[1])
+
+        # Use preloaded signals for non-BDT plots
+        if selected_mass is None:
+            masses_to_draw = signal_masses
+        else:
+            masses_to_draw = [selected_mass]
+
+        for m in masses_to_draw:
+
+            # ---------- Get signal events ----------
+            if selected_mass is None:
+                # Already loaded
+                if BDT:
+                    sig_events = signal_samples[m][cat_sig[0]]
+                else:
+                    sig_events = signal_samples[m][cat_sig[k]]
+            else:
+                # Load only this mass point on demand
+                if BDT:
+                    path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged/WH-2024M{m}/nominal/CAT1_merged.parquet"
+                else:
+                    path = f"/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/NTuples_WH_2024_HDNA_presel_with_latest_BDT_score/merged_all_cats/WH-2024M{m}/nominal/CAT{k+1}_merged.parquet"
+
+                sig_events = ak.from_parquet(path)
+
+            obs_name_sig = "BDT_score" if selected_mass is not None else obs_name
+
+            values = np.asarray(getattr(sig_events, obs_name_sig))
             weights = np.asarray(getattr(sig_events, "weight"))
 
             mask = (values != -999.0)
@@ -490,7 +609,12 @@ for obs_name in variables_list:
             values = values[mask]
             weights = weights[mask]
 
-            scale = signal_xsec * lumi * 1000.0 * Br_frac * signal_boost
+            br = Br_frac
+
+            if cat == "CAT3":
+                br = 0.01
+
+            scale = signal_xsec * lumi * 1000.0 * br * signal_boost
 
             h_sig = make_hist(
                 f"sig_M{m}_{obs_name}_{cat}_{id(sig_events)}",
@@ -501,13 +625,13 @@ for obs_name in variables_list:
             fill_hist(h_sig, values, weights, scale)
 
             h_sig.SetLineColor(signal_colors[m])
-            h_sig.SetLineWidth(3)
+            h_sig.SetLineWidth(4)
             h_sig.SetFillStyle(0)
-            h_sig.SetLineStyle(2) 
+            h_sig.SetLineStyle(1) 
 
             h_sig.Draw("hist same")
 
-            legend.AddEntry(h_sig, f"WH M{m} (0.32 pb, Br = {Br_frac})", "l")
+            legend.AddEntry(h_sig, f"WH M{m} ({signal_xsec:.2f} pb, Br = {br:.2f})", "l")
 
             signal_hists.append(h_sig)
 
@@ -515,7 +639,7 @@ for obs_name in variables_list:
         # DRAW STAT BOXES (AFTER DRAWING ALL HISTS)
         # ------------------------------
         y_top = 0.90
-        height = 0.1
+        height = 0.15
 
         for i, h_sig in enumerate(signal_hists):
 
@@ -525,10 +649,22 @@ for obs_name in variables_list:
                 y_top - (i+1)*height,
                 0.99,
                 y_top - i*height,
-                h_sig.GetLineColor()
+                h_sig.GetLineColor(),
+                label = f"WH M{signal_masses[i]}"
             )
 
             stat_boxes.append(box)   # prevent garbage collection
+
+        box = draw_statbox_manual(
+            hBkg,
+            0.85,
+            y_top - (len(signal_hists)+1)*height,
+            0.99,
+            y_top - len(signal_hists)*height,
+            ROOT.kBlue,
+            label="Background"
+        )
+        stat_boxes.append(box)
 
         # ------------------------------
         # FINAL DRAWING
@@ -539,7 +675,13 @@ for obs_name in variables_list:
         latex.SetNDC()
         latex.SetTextSize(0.035)
         latex.SetTextFont(42)
-        latex.DrawLatex(0.15, 0.87, f"{obs_name}, {cat} GeV MHypothesis")
+        if BDT:
+            latex.DrawLatex(0.15, 0.87, f"{obs_name}, {cat} GeV MHypothesis")
+        else:
+            latex.DrawLatex(0.15, 0.87, f"{obs_name}, {cat}")
+        latex.DrawLatex(0.15, 0.84, f"binWidth = {(xmaxG - xminG)/nbins:.2f}")
+
+        
 
         CMS_label(c)
 

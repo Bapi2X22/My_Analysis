@@ -1,0 +1,15 @@
+{
+    "EGamma-Data-2024H": [
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/EGamma0/NANOAOD/MINIv6NANOv15-v2/2520000/37cf667c-24db-481f-8420-cdff0882ce4c.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/EGamma0/NANOAOD/MINIv6NANOv15-v2/100000/d63a959e-97ff-4aa3-8ec9-624e32e4ee57.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/EGamma0/NANOAOD/MINIv6NANOv15-v2/2520000/f5e49278-44d1-4c15-9aa2-68d45edace1b.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/EGamma0/NANOAOD/MINIv6NANOv15-v2/100000/23c0184e-05f2-4330-9a7f-23efd9812d6f.root"
+    ],
+    "Muon-Data-2024H": [
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/Muon1/NANOAOD/MINIv6NANOv15-v2/2810000/8bbcec2a-7d2d-48a5-a889-e488f695d76f.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/Muon1/NANOAOD/MINIv6NANOv15-v2/2810000/4bf17592-b1ab-4f01-98f2-537622da8049.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/Muon1/NANOAOD/MINIv6NANOv15-v2/90000/bf977948-6c9b-41e9-8f64-0a8463eedf23.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/Muon1/NANOAOD/MINIv6NANOv15-v2/90000/862abb80-b2ad-456f-9797-7ce7ca0926d5.root",
+        "root://cms-xrd-global.cern.ch//store/data/Run2024H/Muon1/NANOAOD/MINIv6NANOv15-v2/90000/c7e9077f-96eb-473c-9e5e-cec696c64ef5.root"
+    ]
+}
