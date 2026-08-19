@@ -7,6 +7,13 @@ class NanoReader:
 
         self.tree = uproot.open(filename)["Events"]
 
+    def drop_fields(self, obj, fields):
+        for field in fields:
+            if field in obj.fields:
+                obj = ak.without_field(obj, field)
+
+        return obj
+
     def read_scalar(self, branch):
 
         return self.tree[branch].array(library="ak")

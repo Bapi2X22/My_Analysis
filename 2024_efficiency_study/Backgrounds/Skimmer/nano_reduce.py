@@ -38,10 +38,24 @@ parser.add_argument(
     help="Disable event selection.",
 )
 
+parser.add_argument(
+    "--data",
+    action="store_true",
+    help="Process data instead of MC.",
+)
+
 args = parser.parse_args()
+
+if args.data:
+    from core import config_data as config
+    data_kind = "data"
+else:
+    from core import config as config
+    data_kind = "mc"
 
 store = NanoReducer(
     args.input,
+    config=config,
     jet_selection=not args.no_jet_selection,
     electron_selection=not args.no_electron_selection,
     muon_selection=not args.no_muon_selection,
@@ -49,4 +63,4 @@ store = NanoReducer(
     event_selection=not args.no_event_selection,
 ).run()
 
-NanoWriter(args.output).write(store)
+NanoWriter(args.output, config=config, data_kind=data_kind).write(store)

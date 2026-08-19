@@ -7,29 +7,25 @@ COLLECTIONS = [
     "Muon",
     "PuppiMET",
     "PFMET",
-    "PV",
-    "GenPart",
-    "Flag",
-    "GenVtx",
+    "Flag"
 ]
 
 SCALARS = [
     "run",
     "luminosityBlock",
     "event",
-    "genWeight",
     "Rho_fixedGridRhoFastjetAll",
     "Rho_fixedGridRhoAll",
-    "Pileup_nTrueInt",
-    "Pileup_nPU",
+    # "Pileup_nTrueInt",
+    # "Pileup_nPU",
 ]
 
-HLT = []
+HLT = [
+    "HLT_Ele30_WPTight_Gsf",
+    "HLT_IsoMu24"
+]
 
 WEIGHTS = [
-    "PSWeight",
-    # "LHEScaleWeight",
-    # "LHEPdfWeight",
 ]
 
 DROP_FIELDS = {
@@ -49,16 +45,10 @@ DROP_FIELDS = {
         "PNetRegPtRawCorrNeutrino",
         "rawFactor",
         "muonSubtrDeltaPhi",
-        "electronIdx1",
-        "svIdx2",
-        "electronIdx2",
-        "muonIdx2",
         "hfcentralEtaStripSize",
         "hfsigmaEtaEta",
         "hfsigmaPhiPhi",
-        "hfadjacentEtaStripsSize",
-        "muonIdx1",
-        "muonIdx2"
+        "hfadjacentEtaStripsSize"
     ],
 
     "Photon": [
@@ -77,10 +67,8 @@ DROP_FIELDS = {
         "vidNestedWPBitmap",
         "esEnergyOverRawE",
         "esEffSigmaRR",
-        "jetIdx",
         "haloTaggerMVAVal",
-        "seedGain",
-        "electronIdx"
+        "seedGain"
     ],
 
     "Electron": [
@@ -117,7 +105,6 @@ DROP_FIELDS = {
         "vidNestedWPBitmap",
         "PreshowerEnergy",
         "jetNDauCharged",
-        "photonIdx",
         "mvaNoIso_WP80",
         "mvaNoIso_WP90",
         "mvaIso_WPHZZ",
@@ -125,7 +112,6 @@ DROP_FIELDS = {
         "isPFcand",
         "tightCharge",
         "isEcalDriven",
-        "fsrPhotonIdx",
         "lostHits",
         "pnScore_prompt",
         "seedGain"
@@ -167,7 +153,6 @@ DROP_FIELDS = {
         "dxybsErr",
         "softMvaRun3",
         "softMva",
-        "jetIdx",
         "nTrackerLayers",
         "jetNDauCharged",
         "nStations",
@@ -175,7 +160,6 @@ DROP_FIELDS = {
         "miniIsoId",
         "tuneP_charge",
         "Muon_tkIsoId",
-        "svIdx",
         "multiIsoId",
         "softMvaId",
         "mediumPromptId",
@@ -186,7 +170,6 @@ DROP_FIELDS = {
         "highPurity",
         "tunepRelPt",
         "bestTrackType",
-        "fsrPhotonIdx",
         "tightCharge",
         "inTimeMuon",
     ],
