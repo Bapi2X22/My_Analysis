@@ -1,4 +1,4 @@
-MAX_EVENTS_PER_FILE = 500000
+MAX_EVENTS_PER_FILE = 3000000
 
 COLLECTIONS = [
     "Jet",
@@ -7,7 +7,8 @@ COLLECTIONS = [
     "Muon",
     "PuppiMET",
     "PFMET",
-    "Flag"
+    "Flag",
+    "PV"
 ]
 
 SCALARS = [
@@ -48,7 +49,13 @@ DROP_FIELDS = {
         "hfcentralEtaStripSize",
         "hfsigmaEtaEta",
         "hfsigmaPhiPhi",
-        "hfadjacentEtaStripsSize"
+        "hfadjacentEtaStripsSize",
+        "muonIdx1",
+        "muonIdx2",
+        "btagDeepFlavCvB", 
+        "btagPNetCvB",
+        "btagPNetTauVJet",
+        "genJetIdx"
     ],
 
     "Photon": [
@@ -69,6 +76,8 @@ DROP_FIELDS = {
         "esEffSigmaRR",
         "haloTaggerMVAVal",
         "seedGain"
+        "jetIdx",
+        "electronIdx"
     ],
 
     "Electron": [
@@ -180,6 +189,18 @@ DROP_FIELDS = {
     "PuppiMET": [
         # "ptUnclusteredDown",
         # "ptUnclusteredUp"
+    ],
+    "PV": [
+        "chi2"
+        "ndof"
+        "npvs"
+        "npvsGood"
+        "score"
+        "sumpt2"
+        "sumpx"
+        "sumpy"
+        "x"
+        "y"
     ]
 }
 

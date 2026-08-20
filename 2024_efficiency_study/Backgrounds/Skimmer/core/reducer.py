@@ -126,6 +126,7 @@ class NanoReducer:
         muon_selection=True,
         photon_selection=True,
         event_selection=True,
+        apply_trigger=False,
     ):
 
         self.reader = NanoReader(input_file)
@@ -136,6 +137,7 @@ class NanoReducer:
         self.muon_selection = muon_selection
         self.photon_selection = photon_selection
         self.event_selection = event_selection
+        self.apply_trigger = apply_trigger
 
     def run(self):
 
@@ -217,11 +219,28 @@ class NanoReducer:
 
             collections[collection] = obj
 
+        trigger_mask = None
+
+        if self.apply_trigger:
+
+            trigger_mask = ak.zeros_like(
+                original_index,
+                dtype=bool,
+            )
+
+            for trigger in self.config.HLT:
+
+                print(f"Reading trigger: {trigger}")
+
+                value = self.reader.read_scalar(trigger)
+
+                trigger_mask = trigger_mask | value
+
 
         if self.event_selection:
 
             mask, cut_masks = event_mask(
-                collections
+                collections, trigger_mask = trigger_mask,
             )
 
             for name, cut_mask in cut_masks.items():
@@ -233,10 +252,16 @@ class NanoReducer:
 
         else:
 
-            mask = ak.ones_like(
-                original_index,
-                dtype=bool,
-            )
+            if trigger_mask is not None:
+
+                mask = trigger_mask
+
+            else:
+
+                mask = ak.ones_like(
+                    original_index,
+                    dtype=bool,
+                )
 
         store.add_scalar(
             "__original_index__",

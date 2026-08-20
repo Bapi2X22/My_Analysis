@@ -4,6 +4,9 @@ import argparse
 import csv
 import json
 import subprocess
+import sys
+import tempfile
+import time
 from pathlib import Path
 
 
@@ -12,11 +15,11 @@ from pathlib import Path
 # ============================================================
 
 DATASETS = [
-    # "/TTG-1Jets_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM",
+    "/TTG-1Jets_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM",
 
-    # "/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v3/NANOAODSIM",
+    "/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v3/NANOAODSIM",
 
-    # "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM"
+    "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM"
 
     # "/DYto2E-2Jets_Bin-MLL-10to50_TuneCP5_13p6TeV_amcatnloFXFX-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM",
 
@@ -38,8 +41,8 @@ DATASETS = [
 
     # "/WW_TuneCP5_13p6TeV_pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM",
 
-    "/EGamma0/Run2024E-MINIv6NANOv15-v1/NANOAOD", 
-    "/Muon0/Run2024E-MINIv6NANOv15-v1/NANOAOD"
+    # "/EGamma0/Run2024E-MINIv6NANOv15-v1/NANOAOD", 
+    # "/Muon0/Run2024E-MINIv6NANOv15-v1/NANOAOD"
 ]
 
 
@@ -55,8 +58,7 @@ STAGES = [
             "--no-electron-selection",
             "--no-muon-selection",
             "--no-photon-selection",
-            "--no-event-selection",
-            "--data"
+            "--no-event-selection"
         ],
     ),
 
@@ -88,49 +90,15 @@ STAGES = [
     # ),
 
     (
-        "Branch+Trigger",
-        [
-            "--no-event-selection",
-            "--no-jet-selection",
-            "--no-electron-selection",
-            "--no-muon-selection",
-            "--no-photon-selection",
-            "--apply_trigger",
-            "--data"
-
-        ],
-    ),
-
-    (
         "Branch+Pho+Mu+ele+jets",
         [
             "--no-event-selection",
-            "--data"
-        ],
-    ),
-
-    (
-        "Branch+Pho+Mu+ele+jets+Trigger",
-        [
-            "--no-event-selection",
-            "--apply_trigger",
-            "--data"
         ],
     ),
 
     (
         "Branch+Pho+Mu+ele+jets+event",
-        [
-            "--data"
-        ],
-    ),
-
-    (
-        "Branch+Pho+Mu+ele+jets+Trigger+event",
-        [
-            "--apply_trigger",
-            "--data"
-        ],
+        [],
     ),
 ]
 
@@ -370,7 +338,7 @@ print(f[tree_name].num_entries)
 
     output = run_command(
         [
-            "python3",
+            sys.executable,
             "-c",
             python_code,
             str(filename),
@@ -425,6 +393,106 @@ def format_size(size_bytes):
 # and move to the next dataset.
 # ============================================================
 
+def copy_remote_file(input_file, local_file, max_retries=3):
+    """Copy the selected DAS file locally with retries."""
+    input_url = (
+        "root://xrootd-cms.infn.it//"
+        + input_file.lstrip("/")
+    )
+
+    for copy_attempt in range(1, max_retries + 1):
+        print()
+        print("-" * 100)
+        print(
+            f"Downloading input file "
+            f"(attempt {copy_attempt}/{max_retries})"
+        )
+        print(f"Remote : {input_url}")
+        print(f"Local  : {local_file}")
+        print("-" * 100)
+
+        try:
+            local_file.unlink()
+        except FileNotFoundError:
+            pass
+
+        try:
+            run_command(
+                [
+                    "xrdcp",
+                    "--force",
+                    input_url,
+                    str(local_file),
+                ]
+            )
+
+            if not local_file.exists():
+                raise RuntimeError(
+                    f"xrdcp completed but local file does not exist:\n"
+                    f"{local_file}"
+                )
+
+            local_size = local_file.stat().st_size
+            if local_size == 0:
+                raise RuntimeError(
+                    f"xrdcp produced an empty file:\n{local_file}"
+                )
+
+            value, unit = format_size(local_size)
+            print(f"Download successful: {value:.3f} {unit}")
+            return
+
+        except Exception as error:
+            print(
+                f"xrdcp attempt {copy_attempt} failed: {error}"
+            )
+
+            if copy_attempt < max_retries:
+                sleep_seconds = 5 * copy_attempt
+                print(
+                    f"Retrying xrdcp in {sleep_seconds} seconds..."
+                )
+                time.sleep(sleep_seconds)
+            else:
+                raise
+
+
+def run_stage_with_retries(command, stage_name, max_retries=3):
+    """Retry an individual nano_reduce stage without re-downloading."""
+    for stage_attempt in range(1, max_retries + 1):
+        print()
+        print(
+            f"Running stage '{stage_name}' "
+            f"(attempt {stage_attempt}/{max_retries})"
+        )
+
+        try:
+            run_command(command)
+            return
+
+        except Exception as error:
+            print(
+                f"Stage '{stage_name}' failed on attempt "
+                f"{stage_attempt}: {error}"
+            )
+
+            if stage_attempt < max_retries:
+                sleep_seconds = 5 * stage_attempt
+                print(
+                    f"Retrying stage in {sleep_seconds} seconds..."
+                )
+                time.sleep(sleep_seconds)
+            else:
+                raise
+
+
+# ============================================================
+# PROCESS ONE DATASET
+#
+# DAS -> select third file -> xrdcp once -> run all stages
+# locally -> collect results -> automatically delete local file.
+# ============================================================
+
 def process_dataset(
     dataset,
     dataset_number,
@@ -433,6 +501,8 @@ def process_dataset(
     nano_reduce,
     rows,
     attempt,
+    stage_retries=3,
+    xrdcp_retries=3,
 ):
 
     dataset_name = (
@@ -452,9 +522,7 @@ def process_dataset(
         f"[{dataset_number}/{total_datasets}] "
         f"{dataset_name}"
     )
-    print(
-        f"ATTEMPT: {attempt}"
-    )
+    print(f"ATTEMPT: {attempt}")
     print("=" * 100)
 
     try:
@@ -466,12 +534,11 @@ def process_dataset(
         files = get_files(dataset)
 
         if len(files) < 3:
-
             raise RuntimeError(
                 f"Only {len(files)} files found by DAS"
             )
 
-        # Third file
+        # Keep your original choice: third DAS file.
         input_file = files[2]
 
         print()
@@ -482,9 +549,7 @@ def process_dataset(
         # DATASET EVENTS
         # ====================================================
 
-        total_dataset_events = get_dataset_events(
-            dataset
-        )
+        total_dataset_events = get_dataset_events(dataset)
 
         print()
         print(
@@ -496,231 +561,203 @@ def process_dataset(
         # FILE EVENTS + SIZE
         # ====================================================
 
-        file_events, file_size = get_file_metadata(
-            input_file
-        )
+        file_events, file_size = get_file_metadata(input_file)
 
-        size_value, size_unit = format_size(
-            file_size
-        )
+        size_value, size_unit = format_size(file_size)
 
-        print(
-            f"Third-file events: "
-            f"{file_events:,}"
-        )
-
+        print(f"Third-file events: {file_events:,}")
         print(
             f"Third-file size: "
             f"{size_value:.3f} {size_unit}"
         )
 
         # ====================================================
-        # XROOTD URL
+        # DOWNLOAD ONCE
         # ====================================================
 
-        input_url = (
-            "root://xrootd-cms.infn.it//"
-            + input_file.lstrip("/")
-        )
+        with tempfile.TemporaryDirectory(
+            prefix=f"nano_reduce_{safe_dataset_name}_"
+        ) as temp_dir:
 
-        # ====================================================
-        # SIX STAGES
-        # ====================================================
+            local_input = Path(temp_dir) / "input.root"
 
-        for stage_number, (
-            stage_name,
-            flags,
-        ) in enumerate(
-            STAGES,
-            start=1,
-        ):
-
-            print()
-            print("-" * 100)
-            print(
-                f"Dataset : {dataset_name}"
-            )
-            print(
-                f"Attempt : {attempt}"
-            )
-            print(
-                f"Stage   : {stage_number}/6"
-            )
-            print(
-                f"Name    : {stage_name}"
-            )
-            print("-" * 100)
-
-            output_file = (
-                output_dir
-                / f"{safe_dataset_name}_stage{stage_number}.root"
+            copy_remote_file(
+                input_file=input_file,
+                local_file=local_input,
+                max_retries=xrdcp_retries,
             )
 
-            command = [
-                "python3",
-                nano_reduce,
-                "--input",
-                input_url,
-                "--output",
-                str(output_file),
-            ]
+            # ====================================================
+            # RUN ALL STAGES ON LOCAL FILE
+            # ====================================================
 
-            command.extend(flags)
+            for stage_number, (stage_name, flags) in enumerate(
+                STAGES,
+                start=1,
+            ):
 
-            # ------------------------------------------------
-            # RUN nano_reduce
-            # ------------------------------------------------
+                print()
+                print("-" * 100)
+                print(f"Dataset : {dataset_name}")
+                print(f"Attempt : {attempt}")
+                print(
+                    f"Stage   : {stage_number}/{len(STAGES)}"
+                )
+                print(f"Name    : {stage_name}")
+                print("-" * 100)
 
-            run_command(command)
-
-            # ------------------------------------------------
-            # Check output
-            # ------------------------------------------------
-
-            if not output_file.exists():
-
-                raise RuntimeError(
-                    f"Output file does not exist:\n"
-                    f"{output_file}"
+                output_file = (
+                    output_dir
+                    / f"{safe_dataset_name}_stage{stage_number}.root"
                 )
 
-            # ------------------------------------------------
-            # Output size
-            # ------------------------------------------------
+                # Remove stale output from an earlier attempt.
+                if output_file.exists():
+                    print(
+                        f"Removing existing output: {output_file}"
+                    )
+                    output_file.unlink()
 
-            output_size = (
-                output_file.stat().st_size
-            )
+                command = [
+                    sys.executable,
+                    nano_reduce,
+                    "--input",
+                    str(local_input),
+                    "--output",
+                    str(output_file),
+                ]
+                command.extend(flags)
 
-            # ------------------------------------------------
-            # Output events
-            # ------------------------------------------------
+                run_stage_with_retries(
+                    command=command,
+                    stage_name=stage_name,
+                    max_retries=stage_retries,
+                )
 
-            output_events = get_root_events(
-                output_file
-            )
+                # ------------------------------------------------
+                # Validate output
+                # ------------------------------------------------
 
-            inferred_dataset_events = (
-                output_events
-                * total_dataset_events
-                / file_events
-            )
+                if not output_file.exists():
+                    raise RuntimeError(
+                        f"Output file does not exist:\n"
+                        f"{output_file}"
+                    )
 
-            # ------------------------------------------------
-            # Infer total dataset size
-            # ------------------------------------------------
+                output_size = output_file.stat().st_size
 
-            inferred_dataset_size = (
-                output_size
-                * total_dataset_events
-                / file_events
-            )
+                if output_size == 0:
+                    raise RuntimeError(
+                        f"Output file is empty:\n"
+                        f"{output_file}"
+                    )
 
-            output_value, output_unit = (
-                format_size(output_size)
-            )
+                # ------------------------------------------------
+                # Output events
+                # ------------------------------------------------
 
-            inferred_value, inferred_unit = (
-                format_size(
+                output_events = get_root_events(output_file)
+
+                inferred_dataset_events = (
+                    output_events
+                    * total_dataset_events
+                    / file_events
+                )
+
+                # ------------------------------------------------
+                # Infer total dataset size
+                # ------------------------------------------------
+
+                inferred_dataset_size = (
+                    output_size
+                    * total_dataset_events
+                    / file_events
+                )
+
+                output_value, output_unit = format_size(
+                    output_size
+                )
+
+                inferred_value, inferred_unit = format_size(
                     inferred_dataset_size
                 )
-            )
 
-            # ------------------------------------------------
-            # Print result
-            # ------------------------------------------------
+                print()
+                print(
+                    f"Events after skim : "
+                    f"{output_events:,}"
+                )
+                print(
+                    f"Output size        : "
+                    f"{output_value:.3f} {output_unit}"
+                )
+                print(
+                    f"Inferred dataset events    : "
+                    f"{inferred_dataset_events:,.0f}"
+                )
+                print(
+                    f"Inferred dataset size : "
+                    f"{inferred_value:.3f} {inferred_unit}"
+                )
+
+                # ------------------------------------------------
+                # Save row
+                # ------------------------------------------------
+
+                rows.append(
+                    {
+                        "dataset": dataset_name,
+                        "dataset_path": dataset,
+                        "stage": stage_name,
+                        "stage_number": stage_number,
+                        "input_file": input_file,
+                        "dataset_total_events":
+                            total_dataset_events,
+                        "file_events_before_skim":
+                            file_events,
+                        "file_size_GB":
+                            file_size / 1024**3,
+                        "events_after_skim":
+                            output_events,
+                        "output_file_size_GB":
+                            output_size / 1024**3,
+                        "inferred_dataset_events":
+                            inferred_dataset_events,
+                        "inferred_total_dataset_size_GB":
+                            inferred_dataset_size / 1024**3,
+                        "output_file":
+                            str(output_file),
+                        "attempt":
+                            attempt,
+                    }
+                )
 
             print()
+            print("=" * 100)
+            print(f"SUCCESS: {dataset_name}")
             print(
-                f"Events after skim : "
-                f"{output_events:,}"
+                "All stages completed using the local input file."
             )
+            print("=" * 100)
 
-            print(
-                f"Output size        : "
-                f"{output_value:.3f} "
-                f"{output_unit}"
-            )
-
-            print(
-                f"Inferred dataset events    : "
-                f"{inferred_dataset_events:,.0f}"
-            )
-
-            print(
-                f"Inferred dataset size : "
-                f"{inferred_value:.3f} "
-                f"{inferred_unit}"
-            )
-
-            # ------------------------------------------------
-            # Save row
-            # ------------------------------------------------
-
-            rows.append(
-                {
-                    "dataset": dataset_name,
-                    "dataset_path": dataset,
-                    "stage": stage_name,
-                    "stage_number": stage_number,
-                    "input_file": input_file,
-                    "dataset_total_events":
-                        total_dataset_events,
-                    "file_events_before_skim":
-                        file_events,
-                    "file_size_GB":
-                        file_size / 1024**3,
-                    "events_after_skim":
-                        output_events,
-                    "output_file_size_GB":
-                        output_size / 1024**3,
-                    "inferred_dataset_events":
-                        inferred_dataset_events,
-                    "inferred_total_dataset_size_GB":
-                        inferred_dataset_size / 1024**3,
-                    "output_file":
-                        str(output_file),
-                    "attempt":
-                        attempt,
-                }
-            )
-
-        # ====================================================
-        # DATASET SUCCESS
-        # ====================================================
-
-        print()
-        print("=" * 100)
+        # TemporaryDirectory deletes the downloaded ROOT file here.
         print(
-            f"SUCCESS: {dataset_name}"
+            f"Temporary input deleted for {dataset_name}"
         )
-        print("=" * 100)
 
         return True
 
     except Exception as error:
 
-        # ====================================================
-        # DATASET FAILED
-        #
-        # IMPORTANT:
-        # Do NOT stop the entire script.
-        # ====================================================
-
         print()
         print("!" * 100)
+        print(f"FAILED: {dataset_name}")
+        print(f"Attempt: {attempt}")
+        print(f"Error: {error}")
         print(
-            f"FAILED: {dataset_name}"
+            "Temporary input will be cleaned automatically."
         )
-        print(
-            f"Attempt: {attempt}"
-        )
-        print(
-            f"Error: {error}"
-        )
-        print(
-            "Moving to the next dataset..."
-        )
+        print("Moving to the next dataset...")
         print("!" * 100)
 
         return False
@@ -798,6 +835,26 @@ def main():
         ),
     )
 
+    parser.add_argument(
+        "--stage-retries",
+        type=int,
+        default=3,
+        help=(
+            "Number of attempts for each nano_reduce stage. "
+            "Default: 3"
+        ),
+    )
+
+    parser.add_argument(
+        "--xrdcp-retries",
+        type=int,
+        default=3,
+        help=(
+            "Number of attempts for downloading each input file. "
+            "Default: 3"
+        ),
+    )
+
     args = parser.parse_args()
 
     output_dir = Path(
@@ -835,6 +892,8 @@ def main():
             nano_reduce=args.nano_reduce,
             rows=rows,
             attempt=0,
+            stage_retries=args.stage_retries,
+            xrdcp_retries=args.xrdcp_retries,
         )
 
         if not success:
@@ -897,6 +956,8 @@ def main():
                 nano_reduce=args.nano_reduce,
                 rows=rows,
                 attempt=retry_number,
+                stage_retries=args.stage_retries,
+                xrdcp_retries=args.xrdcp_retries,
             )
 
             if not success:

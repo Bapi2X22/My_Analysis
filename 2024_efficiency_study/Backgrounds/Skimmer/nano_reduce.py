@@ -44,6 +44,12 @@ parser.add_argument(
     help="Process data instead of MC.",
 )
 
+parser.add_argument(
+    "--apply_trigger",
+    action="store_true",
+    help="Apply the configured HLT trigger selection.",
+)
+
 args = parser.parse_args()
 
 if args.data:
@@ -61,6 +67,7 @@ store = NanoReducer(
     muon_selection=not args.no_muon_selection,
     photon_selection=not args.no_photon_selection,
     event_selection=not args.no_event_selection,
+    apply_trigger=args.apply_trigger
 ).run()
 
 NanoWriter(args.output, config=config, data_kind=data_kind).write(store)

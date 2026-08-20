@@ -1,0 +1,16 @@
+
+{
+    "samplejson": "sample_test_skim.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "EGamma-Data-2024E": ["2024"]
+    },
+    "corrections": {
+        "EGamma-Data-2024E": ["Scale", "jec_Data2024"]
+    },
+    "systematics": {
+        "EGamma-Data-2024E": ["Scale", "jec_Data2024"]
+    }
+}

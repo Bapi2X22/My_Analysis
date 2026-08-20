@@ -386,52 +386,20 @@ class NanoWriter:
 
             # Cutflow metadata
 
-            if "cutflow_lepton" in store.temp:
+            for name, cut_mask in store.temp.items():
 
-                cutflow_lepton = store.temp[
-                    "cutflow_lepton"
-                ]
+                if not name.startswith("cutflow_"):
+                    continue
 
-                cutflow_lepton_photon = store.temp[
-                    "cutflow_lepton_photon"
-                ]
-
-                cutflow_final = store.temp[
-                    "cutflow_final"
-                ]
-
-                metadata.update({
-
-                    "cutflow_lepton": np.array([
-                        int(
-                            ak.sum(
-                                cutflow_lepton[
-                                    original_start:original_stop
-                                ]
-                            )
+                metadata[name] = np.array([
+                    int(
+                        ak.sum(
+                            cut_mask[
+                                original_start:original_stop
+                            ]
                         )
-                    ]),
-
-                    "cutflow_lepton_photon": np.array([
-                        int(
-                            ak.sum(
-                                cutflow_lepton_photon[
-                                    original_start:original_stop
-                                ]
-                            )
-                        )
-                    ]),
-
-                    "cutflow_final": np.array([
-                        int(
-                            ak.sum(
-                                cutflow_final[
-                                    original_start:original_stop
-                                ]
-                            )
-                        )
-                    ]),
-                })
+                    )
+                ])
 
             if len(starts) == 1:
 
@@ -447,7 +415,8 @@ class NanoWriter:
 
             with uproot.recreate(
                 outfile,
-                compression=uproot.ZSTD(9),
+                # compression=uproot.ZSTD(9),
+                compression=uproot.LZMA(9),
             ) as fout:
 
                 events = fout.mktree(

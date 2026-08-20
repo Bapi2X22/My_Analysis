@@ -25,7 +25,8 @@ import awkward as ak
 
 #     return mask
 
-def event_mask(collections):
+
+def event_mask(collections, trigger_mask=None):
 
     jets = collections["Jet"]
     electrons = collections["Electron"]
@@ -41,14 +42,31 @@ def event_mask(collections):
     photon_cut = nPho >= 2
     jet_cut = nJet >= 1
 
-    mask_lepton = lepton_cut
-    mask_lepton_photon = lepton_cut & photon_cut
-    mask_final = mask_lepton_photon & jet_cut
+    mask = ak.ones_like(
+        nJet,
+        dtype=bool,
+    )
 
     cut_masks = {
-        "lepton": mask_lepton,
-        "lepton_photon": mask_lepton_photon,
-        "final": mask_final,
+        "all": mask,
     }
 
-    return mask_final, cut_masks
+    if trigger_mask is not None:
+
+        mask = mask & trigger_mask
+
+        cut_masks["trigger"] = mask
+
+    mask = mask & lepton_cut
+
+    cut_masks["lepton"] = mask
+
+    mask = mask & photon_cut
+
+    cut_masks["lepton_photon"] = mask
+
+    mask = mask & jet_cut
+
+    cut_masks["final"] = mask
+
+    return mask, cut_masks

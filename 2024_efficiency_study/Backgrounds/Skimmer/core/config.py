@@ -1,4 +1,4 @@
-MAX_EVENTS_PER_FILE = 500000
+MAX_EVENTS_PER_FILE = 3000000
 
 COLLECTIONS = [
     "Jet",
@@ -58,7 +58,11 @@ DROP_FIELDS = {
         "hfsigmaPhiPhi",
         "hfadjacentEtaStripsSize",
         "muonIdx1",
-        "muonIdx2"
+        "muonIdx2",
+        "btagDeepFlavCvB", 
+        "btagPNetCvB",
+        "btagPNetTauVJet",
+        "genJetIdx"
     ],
 
     "Photon": [
@@ -197,6 +201,18 @@ DROP_FIELDS = {
     "PuppiMET": [
         # "ptUnclusteredDown",
         # "ptUnclusteredUp"
+    ],
+    "PV": [
+        "chi2"
+        "ndof"
+        "npvs"
+        "npvsGood"
+        "score"
+        "sumpt2"
+        "sumpx"
+        "sumpy"
+        "x"
+        "y"
     ]
 }
 
