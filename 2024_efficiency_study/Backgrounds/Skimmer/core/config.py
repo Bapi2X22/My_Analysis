@@ -1,4 +1,11 @@
-MAX_EVENTS_PER_FILE = 3000000
+# ============================================================
+#              Developed by Bapi Basak
+#                    IISER Pune
+#                   August 2026
+# ============================================================
+
+
+MAX_EVENTS_PER_FILE = 500000
 
 COLLECTIONS = [
     "Jet",
@@ -47,7 +54,7 @@ DROP_FIELDS = {
         "PNetRegPtRawCorr",
         "muonSubtrDeltaEta",
         "PNetRegPtRawCorrNeutrino",
-        "rawFactor",
+        # "rawFactor",
         "muonSubtrDeltaPhi",
         "electronIdx1",
         "svIdx2",
@@ -83,7 +90,7 @@ DROP_FIELDS = {
         "esEffSigmaRR",
         "jetIdx",
         "haloTaggerMVAVal",
-        "seedGain",
+        # "seedGain",
         "electronIdx"
     ],
 
@@ -97,7 +104,6 @@ DROP_FIELDS = {
         "eInvMinusPInv",
         "mvaNoIso",
         "ipLengthSig",
-        "deltaEtaSC",
         "miniPFRelIso_all",
         "mvaHZZIso",
         "gsfTrketaMode",
@@ -131,8 +137,8 @@ DROP_FIELDS = {
         "isEcalDriven",
         "fsrPhotonIdx",
         "lostHits",
-        "pnScore_prompt",
-        "seedGain"
+        "pnScore_prompt"
+        # "seedGain"
 
     ],
 
@@ -172,7 +178,6 @@ DROP_FIELDS = {
         "softMvaRun3",
         "softMva",
         "jetIdx",
-        "nTrackerLayers",
         "jetNDauCharged",
         "nStations",
         "puppiIsoId",

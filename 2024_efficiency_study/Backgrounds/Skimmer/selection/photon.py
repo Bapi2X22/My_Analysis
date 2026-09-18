@@ -1,7 +1,5 @@
-def photon_mask(photons):
-
-    return (
-        (photons.pt > 12)
-        &
-        (abs(photons.eta) < 2.5)
-    )
+def photon_mask(photons, apply_pixelSeed=True):
+    mask = ((photons.pt > 12) & (photons.isScEtaEB | photons.isScEtaEE))
+    if apply_pixelSeed:
+        mask = mask & (~photons.pixelSeed)
+    return mask

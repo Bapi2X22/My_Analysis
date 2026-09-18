@@ -1,16 +1,16 @@
 
 {
-    "samplejson": "sample_test_skim.json",
+    "samplejson": "output_Data_skimmed.json",
     "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
     "metaconditions": "Era2022_v1_mine",
     "taggers": [],
     "year": {
-        "EGamma-Data-2024E": ["2024"]
+        "EGamma-Data-2024F": ["2024"],
+        "Muon-Data-2024F": ["2024"]
     },
     "corrections": {
-        "EGamma-Data-2024E": ["Scale", "jec_Data2024"]
+        "EGamma-Data-2024F": ["Scale", "jec_Data2024", "Electron_Scale_EGM", "MuonScaRe"],
+        "Muon-Data-2024F": ["Scale", "jec_Data2024", "Electron_Scale_EGM", "MuonScaRe"]
     },
-    "systematics": {
-        "EGamma-Data-2024E": ["Scale", "jec_Data2024"]
-    }
+    "systematics": {}
 }

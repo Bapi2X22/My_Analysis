@@ -1,0 +1,30 @@
+{
+    "samplejson": "sample_skimmed.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "TTto2L2Nu_24SummerRun3": ["2024"]
+    },
+    "corrections": {
+        "TTto2L2Nu_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "TTG1Jets_24SummerRun3" : ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "TTtoLNu2Q_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "WGtoLNuG_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2E10_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2E50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu10_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
+
+    },
+    "systematics": {
+        "TTto2L2Nu_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "TTG1Jets_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "TTtoLNu2Q_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "WGtoLNuG_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "DYto2E10_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "DYto2E50_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "DYto2Mu10_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"],
+        "DYto2Mu50_24SummerRun3": ["Electron_Scale_EGM", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScale", "MuonResolution", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "energyErrShift", "FNUF", "Material", "Pileup", "PartonShower"]
+}
+}

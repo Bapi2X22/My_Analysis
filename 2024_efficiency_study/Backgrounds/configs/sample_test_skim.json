@@ -1,7 +1,3 @@
 {
-"TTto2L2Nu_24SummerRun3": ["/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_TTto2L2Nu_000.root",
-                           "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_TTto2L2Nu_001.root",
-                           "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_TTto2L2Nu_002.root",
-                           "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_TTto2L2Nu_003.root",
-                           "/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_TTto2L2Nu_004.root"]
+"TTto2L2Nu_24SummerRun3": ["/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/test_skim_TTto2L2Nu_dEtaSC.root"]
 }

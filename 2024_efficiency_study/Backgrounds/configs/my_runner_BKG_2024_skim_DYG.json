@@ -1,0 +1,25 @@
+{
+    "samplejson": "sample_skimmed.json",
+    "workflow": "My_first_processor_WH_Cat1_HDNA_presel",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "DYto2E10_24SummerRun3": ["2024"],
+        "DYto2E50_24SummerRun3": ["2024"],
+        "DYto2Mu10_24SummerRun3": ["2024"],
+        "DYto2Mu50_24SummerRun3": ["2024"],
+        "DYGto2LG4_24SummerRun3": ["2024"],
+        "DYGto2LG50_24SummerRun3": ["2024"]
+
+    },
+    "corrections": {
+        "DYto2E10_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2E50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu10_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYto2Mu50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYGto2LG4_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"],
+        "DYGto2LG50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "Pileup"]
+
+    },
+    "systematics": {}
+}

@@ -1,3 +1,4 @@
 {
-"EGamma-Data-2024E": ["/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/skim_stage_data/EGamma0_stage6.root"]
+"EGamma-Data-2024E": ["/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/ElectronE_skimmed.root"],
+"Muon-Data-2024E": ["/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/MuonE_skimmed.root"]
 }

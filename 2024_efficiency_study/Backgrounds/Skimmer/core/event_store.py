@@ -1,3 +1,10 @@
+# ============================================================
+#              Developed by Bapi Basak
+#                    IISER Pune
+#                   August 2026
+# ============================================================
+
+
 import awkward as ak
 
 class EventStore:
@@ -10,11 +17,9 @@ class EventStore:
         self.temp = {}
 
     def add_collection(self, name, collection):
-
         self.collections[name] = collection
 
     def add_scalar(self, name, value):
-
         self.scalars[name] = value
 
     def add_weight(self, name, value):

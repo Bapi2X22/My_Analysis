@@ -17,7 +17,7 @@ from pathlib import Path
 DATASETS = [
     "/TTG-1Jets_TuneCP5_13p6TeV_amcatnloFXFXold-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM",
 
-    "/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v3/NANOAODSIM",
+    # "/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v3/NANOAODSIM"
 
     "/TTtoLNu2Q_TuneCP5_13p6TeV_powheg-pythia8/RunIII2024Summer24NanoAODv15-150X_mcRun3_2024_realistic_v2-v2/NANOAODSIM"
 
@@ -51,16 +51,16 @@ DATASETS = [
 # ============================================================
 
 STAGES = [
-    (
-        "Branch",
-        [
-            "--no-jet-selection",
-            "--no-electron-selection",
-            "--no-muon-selection",
-            "--no-photon-selection",
-            "--no-event-selection"
-        ],
-    ),
+    # (
+        # "Branch",
+        # [
+        #     "--no-jet-selection",
+        #     "--no-electron-selection",
+        #     "--no-muon-selection",
+        #     "--no-photon-selection",
+        #     "--no-event-selection"
+        # ],
+    # ),
 
     # (
     #     "Branch+Pho",
@@ -89,16 +89,46 @@ STAGES = [
     #     ],
     # ),
 
+    # (
+    #     "Branch+Pho+Mu+ele+jets",
+    #     [
+    #         "--no-event-selection",
+    #         "--apply_kinematic_cuts_jet"
+    #     ],
+    # ),
+
     (
-        "Branch+Pho+Mu+ele+jets",
+        "Branch+Pho+Mu+ele+jets+pixel",
         [
+            "--apply_pixelSeed",
             "--no-event-selection",
+            "--apply_kinematic_cuts_jet"
         ],
     ),
 
     (
-        "Branch+Pho+Mu+ele+jets+event",
-        [],
+        "Branch+Pho+Mu+ele+jets+pixel+event",
+        [
+            "--apply_pixelSeed",
+            "--apply_kinematic_cuts_jet"
+        ],
+    ),
+
+    (
+        "Branch+Pho+Mu+ele+jets+pixel+event+btag",
+        [
+            "--apply_pixelSeed",
+            "--apply_bJet_tagger",
+            "--apply_kinematic_cuts_jet"
+        ],
+    ),
+
+    (
+        "Branch+Pho+Mu+ele+pixel+event+btag+nojetkin",
+        [
+            "--apply_bJet_tagger",
+            "--apply_pixelSeed"
+        ],
     ),
 ]
 

@@ -1,0 +1,6448 @@
+python3 Overlap_removal.py
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: DYGto2LG
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/DYGto2LG50_24SummerRun3
+Number of files selected: 30
+====================================================================================================
+
+Processing file 1/30:
+0004384f-4e92-450a-b581-8e295db4092b_skim.root
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Electron_photonIdx => Photon
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for LowPtElectron_electronIdx => Electron
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for LowPtElectron_genPartIdx => GenPart
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for LowPtElectron_photonIdx => Photon
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for FatJet_genJetAK8Idx => GenJetAK8
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for FatJet_subJetIdx1 => SubJet
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for FatJet_subJetIdx2 => SubJet
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for FsrPhoton_muonIdx => Muon
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for GenVisTau_genPartIdxMother => GenPart
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Jet_electronIdx1 => Electron
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Jet_electronIdx2 => Electron
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Jet_genJetIdx => GenJet
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Jet_muonIdx1 => Muon
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Jet_muonIdx2 => Muon
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Muon_fsrPhotonIdx => FsrPhoton
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Muon_jetIdx => Jet
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Photon_electronIdx => Electron
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Photon_jetIdx => Jet
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Tau_genPartIdx => GenPart
+  warnings.warn(
+/afs/cern.ch/user/b/bbapi/.local/lib/python3.13/site-packages/coffea/nanoevents/schemas/nanoaod.py:283: RuntimeWarning: Missing cross-reference index for Tau_jetIdx => Jet
+  warnings.warn(
+Events: 4434
+Valid photons: 5276
+
+Processing file 2/30:
+00c60914-6fcd-4bd9-a551-e291c29f60f6_skim.root
+Events: 5664
+Valid photons: 6652
+
+Processing file 3/30:
+00faa723-c9fa-4915-be2c-4625d057b580_skim.root
+Events: 1304
+Valid photons: 1555
+
+Processing file 4/30:
+01350ac2-adf9-4e41-80ef-315a7e80187b_skim.root
+Events: 5719
+Valid photons: 6712
+
+Processing file 5/30:
+01dbd91c-e594-4ab6-9f75-baab9718be3d_skim.root
+Events: 4747
+Valid photons: 5644
+
+Processing file 6/30:
+01f30adf-821a-4025-ae7d-f0d778e84e39_skim.root
+Events: 4314
+Valid photons: 5119
+
+Processing file 7/30:
+01f9ea44-173d-4dcd-b379-70dc017d312c_skim.root
+Events: 4933
+Valid photons: 5854
+
+Processing file 8/30:
+0228ffcd-a679-41ca-974f-0776572393c5_skim.root
+Events: 4504
+Valid photons: 5318
+
+Processing file 9/30:
+0281f075-4aed-4bdb-ab96-8324c0836f02_skim.root
+Events: 4310
+Valid photons: 5095
+
+Processing file 10/30:
+029904fa-6245-4790-bc4d-2b1544f78fbb_skim.root
+Events: 4529
+Valid photons: 5399
+
+Processing file 11/30:
+032fdcff-3fde-4779-8909-301f16755acf_skim.root
+Events: 4279
+Valid photons: 5025
+
+Processing file 12/30:
+0339a953-80ec-4636-aa5e-c214c9607b5f_skim.root
+Events: 4933
+Valid photons: 5827
+
+Processing file 13/30:
+03a7ccf6-7ebd-4df5-986e-e0ac0aafe6e3_skim.root
+Events: 4319
+Valid photons: 5132
+
+Processing file 14/30:
+03e43005-59d9-4564-8128-80a91fcd338d_skim.root
+Events: 4148
+Valid photons: 4897
+
+Processing file 15/30:
+03ef6ef6-279d-42eb-a267-0c0b6fbf9070_skim.root
+Events: 4992
+Valid photons: 5914
+
+Processing file 16/30:
+03f4f973-1cc9-467f-a67c-859febc6d84a_skim.root
+Events: 4432
+Valid photons: 5268
+
+Processing file 17/30:
+042c3287-b0c1-4d2e-b501-0d348ce36413_skim.root
+Events: 4509
+Valid photons: 5393
+
+Processing file 18/30:
+043c207a-62ac-455a-9990-c9685609fab9_skim.root
+Events: 6149
+Valid photons: 7327
+
+Processing file 19/30:
+0450e910-7d39-4716-9a7b-76234eedf532_skim.root
+Events: 4268
+Valid photons: 5051
+
+Processing file 20/30:
+04939a2a-7b7e-458e-84ed-dd3296dfb453_skim.root
+Events: 4252
+Valid photons: 5059
+
+Processing file 21/30:
+050d66b2-39d6-4f29-aaec-97a615a9269f_skim.root
+Events: 4567
+Valid photons: 5403
+
+Processing file 22/30:
+055d22f0-62e4-4993-bc6b-bfd8b02d3120_skim.root
+Events: 4554
+Valid photons: 5408
+
+Processing file 23/30:
+0579cf25-7021-49ac-a492-f6a641e53670_skim.root
+Events: 4556
+Valid photons: 5384
+
+Processing file 24/30:
+05c4315e-f8c5-4d48-aa18-dcb1c32d75fc_skim.root
+Events: 5966
+Valid photons: 7040
+
+Processing file 25/30:
+05f37247-b144-4324-bf04-fac126fd5570_skim.root
+Events: 8586
+Valid photons: 10097
+
+Processing file 26/30:
+05f9d7b9-cb56-4a46-b5fc-f02380cee92d_skim.root
+Events: 4346
+Valid photons: 5110
+
+Processing file 27/30:
+05fe8770-549f-4f5d-b7f0-cb556f2f0bbf_skim.root
+Events: 4553
+Valid photons: 5383
+
+Processing file 28/30:
+065e52f1-09ea-47da-a5be-cf27bb77cabf_skim.root
+Events: 4347
+Valid photons: 5106
+
+Processing file 29/30:
+066caf97-e3f8-4f08-86e4-b4acdb24beed_skim.root
+Events: 4525
+Valid photons: 5328
+
+Processing file 30/30:
+06b3006c-1a8e-4447-859d-07da888839d4_skim.root
+Events: 4299
+Valid photons: 5078
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 141038
+Total photons: 166854
+
+================================================================================
+Histogram: DYGto2LG
+================================================================================
+Unweighted integral: 130644.0
+Underflow: 0.0
+Overflow: 36210.0
+Unweighted integral after overflow merge: 166854.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: DYto2E
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/DYto2E50_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+002f6bee-f041-4fea-8847-307c78eba04f_skim.root
+Events: 1250
+Valid photons: 370
+
+Processing file 2/100:
+003f4608-9e50-4815-aaa9-7ec39080a6f1_skim.root
+Events: 1023
+Valid photons: 293
+
+Processing file 3/100:
+00423638-8357-4f7f-8136-8361486a02f2_skim.root
+Events: 1171
+Valid photons: 360
+
+Processing file 4/100:
+00431c4b-9330-49dc-99a7-bcb6250d6284_skim.root
+Events: 755
+Valid photons: 226
+
+Processing file 5/100:
+004540f1-4014-4004-ab88-a40b242a1131_skim.root
+Events: 1423
+Valid photons: 428
+
+Processing file 6/100:
+0075b06d-f7d6-4e1d-9e47-21fbfe50cdaa_skim.root
+Events: 1020
+Valid photons: 307
+
+Processing file 7/100:
+00a26e62-eb51-47c9-aa07-0ed9a163472f_skim.root
+Events: 1305
+Valid photons: 388
+
+Processing file 8/100:
+00cdc59b-1aad-4840-bd4e-d0b6453d06f2_skim.root
+Events: 1258
+Valid photons: 361
+
+Processing file 9/100:
+00ddf6ad-9fbf-42bf-a67b-f5f9c6f10a1c_skim.root
+Events: 1666
+Valid photons: 483
+
+Processing file 10/100:
+00e52662-32a4-406c-a149-372a19e57bc9_skim.root
+Events: 1064
+Valid photons: 334
+
+Processing file 11/100:
+00eeca48-3e18-4241-9ef8-19db90772726_skim.root
+Events: 1029
+Valid photons: 297
+
+Processing file 12/100:
+00f17e00-9809-4e66-9136-6a8025d00600_skim.root
+Events: 633
+Valid photons: 180
+
+Processing file 13/100:
+00f39e5c-eb92-4b2f-b1b8-67a87210afce_skim.root
+Events: 1133
+Valid photons: 360
+
+Processing file 14/100:
+010387f6-59a4-47e8-92a9-02b57098062f_skim.root
+Events: 1398
+Valid photons: 401
+
+Processing file 15/100:
+0113b8e8-6529-420c-bf2b-4ff975f94ac5_skim.root
+Events: 1552
+Valid photons: 435
+
+Processing file 16/100:
+013692d3-fcb7-40f2-9c56-0d60a2248227_skim.root
+Events: 120
+Valid photons: 37
+
+Processing file 17/100:
+014358df-11c8-4ec3-bd06-e33f85324136_skim.root
+Events: 1401
+Valid photons: 404
+
+Processing file 18/100:
+01466011-8ab6-4302-a20e-a1e28aedb5ed_skim.root
+Events: 1021
+Valid photons: 314
+
+Processing file 19/100:
+0153bd19-b5fe-435c-af9a-da7d41daf1e8_skim.root
+Events: 1082
+Valid photons: 342
+
+Processing file 20/100:
+017d188a-12c4-4245-ae0b-70ffe0ed03b6_skim.root
+Events: 1079
+Valid photons: 325
+
+Processing file 21/100:
+0185714b-0f84-408b-abf2-9f9eae54f402_skim.root
+Events: 1024
+Valid photons: 271
+
+Processing file 22/100:
+0199d3ea-6fce-4ad0-b346-141736e7805a_skim.root
+Events: 1143
+Valid photons: 344
+
+Processing file 23/100:
+01b1137b-4ca6-420a-aafc-9396b6735859_skim.root
+Events: 488
+Valid photons: 154
+
+Processing file 24/100:
+01e25c57-8e70-48b6-b469-b3912d8193a5_skim.root
+Events: 1992
+Valid photons: 591
+
+Processing file 25/100:
+01e7611e-08a0-469f-a8d1-a508f148967a_skim.root
+Events: 1095
+Valid photons: 339
+
+Processing file 26/100:
+01eeff18-9adf-4348-a7b6-c09b2eae4aa3_skim.root
+Events: 1111
+Valid photons: 298
+
+Processing file 27/100:
+0203db72-ae05-421e-a2df-a5c03ee9e4cd_skim.root
+Events: 1019
+Valid photons: 281
+
+Processing file 28/100:
+020a396c-97f4-4eb8-8379-40011abffe1a_skim.root
+Events: 1212
+Valid photons: 362
+
+Processing file 29/100:
+020bd08e-a41b-48fd-a063-c02566f5e879_skim.root
+Events: 989
+Valid photons: 279
+
+Processing file 30/100:
+02132c06-2645-49a1-81ee-80e0aa0ae560_skim.root
+Events: 1135
+Valid photons: 342
+
+Processing file 31/100:
+02299c93-0681-41f6-9e62-194e3f522190_skim.root
+Events: 1195
+Valid photons: 355
+
+Processing file 32/100:
+022ce1d2-40c9-4e2d-a502-e49e76aa346b_skim.root
+Events: 126
+Valid photons: 30
+
+Processing file 33/100:
+023ebb86-de50-4dd6-8d84-3e2dc91dffff_skim.root
+Events: 1499
+Valid photons: 433
+
+Processing file 34/100:
+0262a577-c421-4932-b977-c563153a3097_skim.root
+Events: 1047
+Valid photons: 305
+
+Processing file 35/100:
+026b95e1-4d26-4ea3-a71f-7cf74d33a6fb_skim.root
+Events: 1068
+Valid photons: 326
+
+Processing file 36/100:
+027d3c6b-32ef-46ee-8c47-c971c435b286_skim.root
+Events: 1125
+Valid photons: 345
+
+Processing file 37/100:
+02968ed9-5f4b-4c09-b871-88b07c7fab07_skim.root
+Events: 1073
+Valid photons: 333
+
+Processing file 38/100:
+02d8f3f6-8347-4616-9b5f-129941a5a43f_skim.root
+Events: 1383
+Valid photons: 414
+
+Processing file 39/100:
+02dff5ee-d8de-4e38-89f6-ff263d8a2a62_skim.root
+Events: 989
+Valid photons: 317
+
+Processing file 40/100:
+02e838c6-3141-41c7-af9b-1edb42342bf1_skim.root
+Events: 1433
+Valid photons: 406
+
+Processing file 41/100:
+02ec456a-8bad-4ec5-b993-0c7824a3b971_skim.root
+Events: 1165
+Valid photons: 347
+
+Processing file 42/100:
+02fcf998-1b86-4ec1-8f93-20a83618b6e6_skim.root
+Events: 1386
+Valid photons: 431
+
+Processing file 43/100:
+03040326-99e8-4263-b790-501dc0fb2685_skim.root
+Events: 1258
+Valid photons: 357
+
+Processing file 44/100:
+031403e5-697c-46e5-9a13-32e597cdb573_skim.root
+Events: 1229
+Valid photons: 347
+
+Processing file 45/100:
+0317176c-f6d4-4dad-82bc-4fc741a4e357_skim.root
+Events: 1022
+Valid photons: 306
+
+Processing file 46/100:
+031ab61d-cae4-4f46-9c5b-4de01ca8e988_skim.root
+Events: 1023
+Valid photons: 331
+
+Processing file 47/100:
+032426bc-4985-41e5-a32f-06f80b2b52a3_skim.root
+Events: 48
+Valid photons: 20
+
+Processing file 48/100:
+038a9759-3796-4ad5-a9be-25c0c84ca98d_skim.root
+Events: 1064
+Valid photons: 326
+
+Processing file 49/100:
+03a216cc-7783-40a1-9483-01d9f7181f4a_skim.root
+Events: 1072
+Valid photons: 320
+
+Processing file 50/100:
+03bcf345-e1a5-4a3c-8b7d-448faa87512f_skim.root
+Events: 1306
+Valid photons: 384
+
+Processing file 51/100:
+03bd0ad9-ccd9-4a86-b878-8ff577311293_skim.root
+Events: 1095
+Valid photons: 338
+
+Processing file 52/100:
+03cc1f30-c622-4fe8-a4e0-19f6f4cf6e35_skim.root
+Events: 992
+Valid photons: 253
+
+Processing file 53/100:
+03d20b8d-6d3f-4abe-b6f0-3f9a227e698d_skim.root
+Events: 1183
+Valid photons: 369
+
+Processing file 54/100:
+03d51ab1-2d9a-45c2-ad31-8fc5131017bd_skim.root
+Events: 669
+Valid photons: 189
+
+Processing file 55/100:
+03d601e8-7b21-4853-aef0-3833009da3c9_skim.root
+Events: 1468
+Valid photons: 438
+
+Processing file 56/100:
+03e0372a-2c88-4b1f-832d-73badf1fc7e5_skim.root
+Events: 1533
+Valid photons: 421
+
+Processing file 57/100:
+03e9bf7d-9fe8-41a9-a2e4-3d4c8752cbfa_skim.root
+Events: 1057
+Valid photons: 293
+
+Processing file 58/100:
+040f01c8-393b-444b-9e07-1e8dcc431487_skim.root
+Events: 1029
+Valid photons: 290
+
+Processing file 59/100:
+040f055e-0998-4a48-8888-b0f2b48aa881_skim.root
+Events: 1128
+Valid photons: 315
+
+Processing file 60/100:
+040fba51-16c0-4ee5-8f17-6bf7d224d52d_skim.root
+Events: 1063
+Valid photons: 328
+
+Processing file 61/100:
+04191927-99ca-4fa5-8be9-11b4b7cdc261_skim.root
+Events: 1212
+Valid photons: 361
+
+Processing file 62/100:
+041ab329-fa83-441d-a076-2df83348fba4_skim.root
+Events: 1269
+Valid photons: 352
+
+Processing file 63/100:
+04298ff1-6828-4c09-b6b9-c88cf9a69d87_skim.root
+Events: 1034
+Valid photons: 320
+
+Processing file 64/100:
+0438e5dd-42ec-49f8-af2b-fea40a182adb_skim.root
+Events: 1181
+Valid photons: 337
+
+Processing file 65/100:
+04486867-35f6-4a93-bdbd-a29375717cf1_skim.root
+Events: 1070
+Valid photons: 329
+
+Processing file 66/100:
+04787154-608b-4f66-a2f8-5347a54840e3_skim.root
+Events: 1019
+Valid photons: 270
+
+Processing file 67/100:
+048d9d0e-cbb5-4365-9546-4b19583d7651_skim.root
+Events: 1079
+Valid photons: 346
+
+Processing file 68/100:
+049919d8-9542-4618-af86-97209937e11b_skim.root
+Events: 1143
+Valid photons: 328
+
+Processing file 69/100:
+04a7bdff-e0d6-45ea-81a0-d3ecaaff43d8_skim.root
+Events: 1147
+Valid photons: 319
+
+Processing file 70/100:
+04b3b55f-c400-4c6d-81ae-fbca9a8c4852_skim.root
+Events: 1200
+Valid photons: 363
+
+Processing file 71/100:
+04b4779f-dab4-48fc-a56d-4bfd56ec947f_skim.root
+Events: 90
+Valid photons: 30
+
+Processing file 72/100:
+04ba2579-af81-4d10-9da4-62c5398d9a19_skim.root
+Events: 987
+Valid photons: 298
+
+Processing file 73/100:
+04e1bbc5-1d38-4d72-b0a7-6a4ae141edc2_skim.root
+Events: 1023
+Valid photons: 293
+
+Processing file 74/100:
+04ecdb8b-6b8f-40c9-ab02-f514028a567f_skim.root
+Events: 1235
+Valid photons: 372
+
+Processing file 75/100:
+04ffdc12-b9b4-4808-b95d-f70425a18c46_skim.root
+Events: 1518
+Valid photons: 419
+
+Processing file 76/100:
+05271b5f-1935-4b92-ae2b-cea277c13bc5_skim.root
+Events: 772
+Valid photons: 240
+
+Processing file 77/100:
+052cb717-c455-46b6-aa6c-6cdb95140789_skim.root
+Events: 1770
+Valid photons: 523
+
+Processing file 78/100:
+052db55f-b3bb-4fee-a01c-d69c6dbb977f_skim.root
+Events: 1140
+Valid photons: 354
+
+Processing file 79/100:
+052edb2e-ada9-4f15-968d-ac5a48f3f652_skim.root
+Events: 1012
+Valid photons: 312
+
+Processing file 80/100:
+0540e7fa-94dd-4d6d-a748-185d711b2daf_skim.root
+Events: 1149
+Valid photons: 325
+
+Processing file 81/100:
+054c4078-b24e-4b18-a98c-056d4bc42f6c_skim.root
+Events: 1003
+Valid photons: 336
+
+Processing file 82/100:
+05569f88-b491-4493-befb-6d4f83bcd604_skim.root
+Events: 1453
+Valid photons: 453
+
+Processing file 83/100:
+056ce1e7-c56f-4118-9155-88c6974f1b94_skim.root
+Events: 1428
+Valid photons: 457
+
+Processing file 84/100:
+0596db29-17ab-4786-9adf-be58089796a8_skim.root
+Events: 1164
+Valid photons: 323
+
+Processing file 85/100:
+05bbb192-5aec-4ab7-8b98-f14a1ce0b1eb_skim.root
+Events: 1147
+Valid photons: 346
+
+Processing file 86/100:
+05c229e5-b6cc-4ce7-8f23-8763e4ee2d15_skim.root
+Events: 1318
+Valid photons: 411
+
+Processing file 87/100:
+05c748e3-9318-4f61-8b39-a2873c938e56_skim.root
+Events: 1025
+Valid photons: 295
+
+Processing file 88/100:
+05e1814d-1e1f-4759-b5c9-51c261153ce7_skim.root
+Events: 2003
+Valid photons: 614
+
+Processing file 89/100:
+05e4160d-8870-46a8-b236-8a2f4ccb44f0_skim.root
+Events: 1122
+Valid photons: 310
+
+Processing file 90/100:
+0634e475-3a79-41f6-b768-82e5d24e6910_skim.root
+Events: 2012
+Valid photons: 577
+
+Processing file 91/100:
+065e4e0f-3fe8-49f9-9c45-423c8a8a298a_skim.root
+Events: 1574
+Valid photons: 419
+
+Processing file 92/100:
+06654fa1-9940-4818-9888-a6281e927113_skim.root
+Events: 1089
+Valid photons: 332
+
+Processing file 93/100:
+0670d50d-49c7-4e3d-a5b0-68655d5da4b2_skim.root
+Events: 1216
+Valid photons: 357
+
+Processing file 94/100:
+0688d429-e579-4e8d-8551-a954006c13f4_skim.root
+Events: 1117
+Valid photons: 316
+
+Processing file 95/100:
+0699f80e-b023-402f-8acb-0d1ec6cf8bc9_skim.root
+Events: 979
+Valid photons: 315
+
+Processing file 96/100:
+06a31aa7-be84-40d1-86e4-0ba592888d87_skim.root
+Events: 306
+Valid photons: 79
+
+Processing file 97/100:
+06af9a4c-faa6-4cfa-86cd-ececc0986a0f_skim.root
+Events: 1148
+Valid photons: 358
+
+Processing file 98/100:
+06ba294d-ed29-4423-b9da-2934fe386dd6_skim.root
+Events: 1209
+Valid photons: 338
+
+Processing file 99/100:
+06e93ece-9014-4ba1-9a80-3876351f1a6c_skim.root
+Events: 1779
+Valid photons: 533
+
+Processing file 100/100:
+06ef8bdb-c83d-4c0f-9984-e14895d58bf0_skim.root
+Events: 967
+Valid photons: 295
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 113428
+Total photons: 33528
+
+================================================================================
+Histogram: DYto2E
+================================================================================
+Unweighted integral: 30975.0
+Underflow: 0.0
+Overflow: 2553.0
+Unweighted integral after overflow merge: 33528.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: DYto2Mu
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/DYto2Mu50_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+00229bb0-1e83-482b-a6fb-e52e4bec40a1_skim.root
+Events: 29
+Valid photons: 10
+
+Processing file 2/100:
+002bd952-2cf9-49f0-9f42-7aaf087125f6_skim.root
+Events: 1207
+Valid photons: 359
+
+Processing file 3/100:
+005529e4-ecc8-41cd-aff8-c1358a96eedb_skim.root
+Events: 910
+Valid photons: 253
+
+Processing file 4/100:
+005c5bf4-d3d3-4fc1-9df3-99c83183c5f5_skim.root
+Events: 830
+Valid photons: 220
+
+Processing file 5/100:
+00682d1c-a1d4-4ae5-bbe8-df12b09e127a_skim.root
+Events: 1524
+Valid photons: 413
+
+Processing file 6/100:
+00948f15-20c3-4f51-b2f7-3cc5745d5d7a_skim.root
+Events: 1153
+Valid photons: 332
+
+Processing file 7/100:
+009938f6-bad1-4f7a-8e2c-fa790d766f6d_skim.root
+Events: 813
+Valid photons: 225
+
+Processing file 8/100:
+009bf4fc-3fb1-4df1-b96c-1b92f9764cd8_skim.root
+Events: 881
+Valid photons: 268
+
+Processing file 9/100:
+00af8bdc-2e87-4db5-8980-6d8ab52e1ed8_skim.root
+Events: 852
+Valid photons: 225
+
+Processing file 10/100:
+00eb07e2-379d-4b2a-8063-1f393c23c5e2_skim.root
+Events: 811
+Valid photons: 222
+
+Processing file 11/100:
+00f70c56-9518-44d4-ae82-01fd708ccb89_skim.root
+Events: 697
+Valid photons: 168
+
+Processing file 12/100:
+00f83300-e4b9-4e6e-9280-b10659dedf55_skim.root
+Events: 869
+Valid photons: 234
+
+Processing file 13/100:
+0115a364-bdbe-443c-a2f6-63cf214c249f_skim.root
+Events: 845
+Valid photons: 238
+
+Processing file 14/100:
+01414c2f-3b9d-42d6-b9ba-904fc431674f_skim.root
+Events: 909
+Valid photons: 247
+
+Processing file 15/100:
+016348ad-e007-486f-b0a7-d2a4d1e909cc_skim.root
+Events: 858
+Valid photons: 254
+
+Processing file 16/100:
+016f16a1-5632-4520-ae1d-8b1d917c49f2_skim.root
+Events: 778
+Valid photons: 251
+
+Processing file 17/100:
+018d7fbc-3c42-4a24-8f07-0621237f5516_skim.root
+Events: 899
+Valid photons: 254
+
+Processing file 18/100:
+01b269ef-a9c6-460d-a2e5-dfc0ebd21106_skim.root
+Events: 905
+Valid photons: 259
+
+Processing file 19/100:
+01dc6867-3921-44b6-b36d-ae8871c3a56c_skim.root
+Events: 1218
+Valid photons: 336
+
+Processing file 20/100:
+01eff845-1413-41ee-a0b2-bdca592a23d3_skim.root
+Events: 822
+Valid photons: 242
+
+Processing file 21/100:
+01fcb69c-6e46-4b99-bd4c-a82236fdcf50_skim.root
+Events: 816
+Valid photons: 215
+
+Processing file 22/100:
+020d62b1-7e8a-4a9f-96bf-2fb3b7f1c074_skim.root
+Events: 686
+Valid photons: 186
+
+Processing file 23/100:
+023cb1a5-acf2-4b2f-8437-b1e491de5f18_skim.root
+Events: 9
+Valid photons: 1
+
+Processing file 24/100:
+024ee036-f5c7-44c4-8f90-9472a1a5e234_skim.root
+Events: 1112
+Valid photons: 329
+
+Processing file 25/100:
+025394cc-6f40-408a-9584-768e88efe153_skim.root
+Events: 864
+Valid photons: 228
+
+Processing file 26/100:
+029ee216-be61-409e-97cc-554d12c01361_skim.root
+Events: 787
+Valid photons: 242
+
+Processing file 27/100:
+029f2dc9-6682-4214-89b6-68425d2fba88_skim.root
+Events: 829
+Valid photons: 218
+
+Processing file 28/100:
+02da3d97-e119-4d12-91fc-b8b2c3def453_skim.root
+Events: 850
+Valid photons: 245
+
+Processing file 29/100:
+0311030b-647d-470f-b4d0-bf772258e85e_skim.root
+Events: 1028
+Valid photons: 287
+
+Processing file 30/100:
+0318095b-f775-4f0b-a973-3b6ecb46d1a1_skim.root
+Events: 1008
+Valid photons: 305
+
+Processing file 31/100:
+0330815e-24cb-4189-9f27-c5cc7b776400_skim.root
+Events: 794
+Valid photons: 218
+
+Processing file 32/100:
+0366aa04-1707-4e6c-9a60-b1044b669eff_skim.root
+Events: 1301
+Valid photons: 333
+
+Processing file 33/100:
+039f1077-40dd-4f7f-ba74-a11d9ac5cc0d_skim.root
+Events: 861
+Valid photons: 224
+
+Processing file 34/100:
+03a26756-c4cf-4f95-add8-bdd22ac38f96_skim.root
+Events: 844
+Valid photons: 233
+
+Processing file 35/100:
+03ac574a-54f2-4392-9c76-8988369c76ef_skim.root
+Events: 964
+Valid photons: 260
+
+Processing file 36/100:
+03cdad8a-438b-4590-aa0e-a087069a547e_skim.root
+Events: 479
+Valid photons: 150
+
+Processing file 37/100:
+03e8415e-7b33-4d65-9303-ac3f1d2ae513_skim.root
+Events: 1293
+Valid photons: 387
+
+Processing file 38/100:
+040f822d-2f7c-45fa-862e-4ec860f02871_skim.root
+Events: 760
+Valid photons: 230
+
+Processing file 39/100:
+04313296-9ef8-4c6c-a3ca-7cb558278df3_skim.root
+Events: 1176
+Valid photons: 319
+
+Processing file 40/100:
+04336828-dbb1-41b4-8d49-93b8406d4594_skim.root
+Events: 988
+Valid photons: 263
+
+Processing file 41/100:
+0436fb6d-d275-4e75-84a2-52ae8ea5cc8f_skim.root
+Events: 761
+Valid photons: 247
+
+Processing file 42/100:
+04372f8f-a0a8-4ac2-8726-012ad54076a1_skim.root
+Events: 896
+Valid photons: 245
+
+Processing file 43/100:
+046beb6f-1a9b-4ed4-9a00-64cb8f8ca0ac_skim.root
+Events: 416
+Valid photons: 124
+
+Processing file 44/100:
+0496b46b-908f-403c-815a-62ef244988ba_skim.root
+Events: 325
+Valid photons: 91
+
+Processing file 45/100:
+04991aa7-e1b6-4f58-a7de-25c0d9533bee_skim.root
+Events: 807
+Valid photons: 210
+
+Processing file 46/100:
+04b57b4a-eb4a-42af-8eaa-dc23066d4e11_skim.root
+Events: 815
+Valid photons: 221
+
+Processing file 47/100:
+04d169c0-db40-45fb-9d9a-76c1599b9ca7_skim.root
+Events: 874
+Valid photons: 260
+
+Processing file 48/100:
+04f9044c-ff45-4290-8f43-e2aae4fd1e14_skim.root
+Events: 788
+Valid photons: 242
+
+Processing file 49/100:
+04ffc593-9fe9-4b09-bd6b-2708e51e4baa_skim.root
+Events: 58
+Valid photons: 17
+
+Processing file 50/100:
+0506e93d-79c8-4eb8-a1d3-5b93f44abd33_skim.root
+Events: 896
+Valid photons: 275
+
+Processing file 51/100:
+051c90c6-30a5-4641-b26c-31fb68936189_skim.root
+Events: 1623
+Valid photons: 480
+
+Processing file 52/100:
+054f0ba3-8e55-43cb-9011-f70c4db8e9ca_skim.root
+Events: 820
+Valid photons: 223
+
+Processing file 53/100:
+05563aba-3ed2-486f-8ac3-dfc3eb06e610_skim.root
+Events: 1049
+Valid photons: 296
+
+Processing file 54/100:
+055ab9d6-a472-419c-a1f3-affa2237d678_skim.root
+Events: 812
+Valid photons: 220
+
+Processing file 55/100:
+056db551-0205-4b79-9bd2-7fbff937ff5d_skim.root
+Events: 776
+Valid photons: 234
+
+Processing file 56/100:
+05997805-570a-4b62-92ac-24a2c63a548e_skim.root
+Events: 1579
+Valid photons: 454
+
+Processing file 57/100:
+05cae1cf-99ff-4f5a-9655-ade5da286b6e_skim.root
+Events: 790
+Valid photons: 216
+
+Processing file 58/100:
+05e908e0-0715-418a-b68f-70406f062513_skim.root
+Events: 798
+Valid photons: 243
+
+Processing file 59/100:
+05ef737b-8355-47a6-b038-1fa3ecc9c424_skim.root
+Events: 778
+Valid photons: 207
+
+Processing file 60/100:
+05f602b4-3e34-436f-a896-9e13086c2192_skim.root
+Events: 937
+Valid photons: 277
+
+Processing file 61/100:
+05ff1249-fa07-401a-837b-f586cd52d10d_skim.root
+Events: 857
+Valid photons: 237
+
+Processing file 62/100:
+05ff229d-ec31-48fb-8cc8-b12e2af273d7_skim.root
+Events: 801
+Valid photons: 260
+
+Processing file 63/100:
+062607c2-6c75-4632-9678-525a94ce2437_skim.root
+Events: 954
+Valid photons: 283
+
+Processing file 64/100:
+0630ba3e-f909-451d-805f-f46a61d4051e_skim.root
+Events: 971
+Valid photons: 294
+
+Processing file 65/100:
+063e4cf1-e717-4e93-917d-a973dea2aa6a_skim.root
+Events: 669
+Valid photons: 195
+
+Processing file 66/100:
+064e9ed3-647a-428a-990a-f953140024d5_skim.root
+Events: 783
+Valid photons: 212
+
+Processing file 67/100:
+0656040a-022b-4477-86c9-8cb92ad207a0_skim.root
+Events: 846
+Valid photons: 267
+
+Processing file 68/100:
+06858cb8-f6cb-487c-9602-1c686bd4f329_skim.root
+Events: 796
+Valid photons: 201
+
+Processing file 69/100:
+06937452-c662-4eba-989f-6e878b0411dd_skim.root
+Events: 765
+Valid photons: 218
+
+Processing file 70/100:
+0695c73a-af15-427f-8605-d67ea02dc569_skim.root
+Events: 822
+Valid photons: 217
+
+Processing file 71/100:
+0699821c-330c-4f52-8d5c-67a86b69b94c_skim.root
+Events: 899
+Valid photons: 242
+
+Processing file 72/100:
+06a2a343-37ee-4486-a9b2-333cb84c42e6_skim.root
+Events: 494
+Valid photons: 129
+
+Processing file 73/100:
+06b3cdf3-1b91-4751-ac9d-5670a5068a45_skim.root
+Events: 808
+Valid photons: 239
+
+Processing file 74/100:
+06e3f888-bc4c-4ee9-a374-339a019d90c1_skim.root
+Events: 29
+Valid photons: 7
+
+Processing file 75/100:
+06ffd1aa-7f0d-4ff5-af15-cc08ed735ecf_skim.root
+Events: 832
+Valid photons: 257
+
+Processing file 76/100:
+0708a316-26fb-432e-9965-12fb6db71c5c_skim.root
+Events: 901
+Valid photons: 240
+
+Processing file 77/100:
+072a4695-5027-440a-ad4b-68579f501076_skim.root
+Events: 1201
+Valid photons: 338
+
+Processing file 78/100:
+072f5bd4-1a53-40ed-8309-d5664c84921b_skim.root
+Events: 831
+Valid photons: 278
+
+Processing file 79/100:
+074bf2cb-69ee-4bd2-b11a-86eae990af41_skim.root
+Events: 124
+Valid photons: 31
+
+Processing file 80/100:
+075e54d2-aa3e-4b8a-a3ef-821efcd8df63_skim.root
+Events: 1005
+Valid photons: 255
+
+Processing file 81/100:
+07678cf4-7d59-451b-94d9-aa4add269fde_skim.root
+Events: 784
+Valid photons: 248
+
+Processing file 82/100:
+078a25b0-cbb4-4327-b661-ccabf7d0b29f_skim.root
+Events: 1031
+Valid photons: 298
+
+Processing file 83/100:
+07e11f80-e2d6-4d63-910f-156a7ff62703_skim.root
+Events: 374
+Valid photons: 106
+
+Processing file 84/100:
+07e8ae23-9998-4a88-9c31-a6ef9ac783b1_skim.root
+Events: 959
+Valid photons: 292
+
+Processing file 85/100:
+07f2dafc-808e-4623-aae2-c84320498981_skim.root
+Events: 774
+Valid photons: 200
+
+Processing file 86/100:
+08158914-d4fb-4d10-b328-87424cb7fe61_skim.root
+Events: 966
+Valid photons: 266
+
+Processing file 87/100:
+082015ef-322e-4f1d-9743-1456e7993a1f_skim.root
+Events: 846
+Valid photons: 239
+
+Processing file 88/100:
+0823cb2d-b0b4-47c0-96d7-5d3c75fdb2e3_skim.root
+Events: 1139
+Valid photons: 327
+
+Processing file 89/100:
+083c66f1-5710-4eb5-895d-179cbe69b1f3_skim.root
+Events: 852
+Valid photons: 224
+
+Processing file 90/100:
+08688fd6-83bb-4673-aa7a-27de4d88b74f_skim.root
+Events: 878
+Valid photons: 246
+
+Processing file 91/100:
+086aaf6f-170b-437f-a2ba-bc2b7ebb2dfc_skim.root
+Events: 838
+Valid photons: 233
+
+Processing file 92/100:
+086eb72b-3c65-4228-b20f-3953f54ce415_skim.root
+Events: 944
+Valid photons: 273
+
+Processing file 93/100:
+08700cb2-2f00-4390-a719-8cb0b2f1aeea_skim.root
+Events: 839
+Valid photons: 230
+
+Processing file 94/100:
+088fae8c-41fb-4c3a-a9e9-d4b0aa14ad10_skim.root
+Events: 810
+Valid photons: 225
+
+Processing file 95/100:
+0893f35e-ff91-4c18-902f-ca4479a81e2f_skim.root
+Events: 799
+Valid photons: 247
+
+Processing file 96/100:
+08959939-614e-44e5-babd-767b7c8345ca_skim.root
+Events: 1233
+Valid photons: 328
+
+Processing file 97/100:
+08972af5-a33a-499a-a208-66f1ca274e86_skim.root
+Events: 993
+Valid photons: 300
+
+Processing file 98/100:
+089bb430-0f45-43d9-a9d6-2016c7a6c6a9_skim.root
+Events: 950
+Valid photons: 269
+
+Processing file 99/100:
+08b55cdb-3b28-4d4d-ac92-434bd4234302_skim.root
+Events: 639
+Valid photons: 165
+
+Processing file 100/100:
+08c8023a-5940-49cf-b856-71cd53779043_skim.root
+Events: 1147
+Valid photons: 342
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 85040
+Total photons: 24123
+
+================================================================================
+Histogram: DYto2Mu
+================================================================================
+Unweighted integral: 22325.0
+Underflow: 0.0
+Overflow: 1798.0
+Unweighted integral after overflow merge: 24123.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: TTto2L2Nu
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/TTto2L2Nu_24SummerRun3
+Number of files selected: 10
+====================================================================================================
+
+Processing file 1/10:
+005f32fc-87bf-4e66-9375-7106bee9a06b_skim.root
+Events: 65814
+Valid photons: 10046
+
+Processing file 2/10:
+00805a00-395c-42b1-953d-6d4d3101b51c_skim.root
+Events: 66017
+Valid photons: 10161
+
+Processing file 3/10:
+016a8301-8bde-443d-a9f2-9dd5837b3f6d_skim.root
+Events: 66471
+Valid photons: 10024
+
+Processing file 4/10:
+01743145-2606-499c-ad9c-471d912690dd_skim.root
+Events: 27570
+Valid photons: 4093
+
+Processing file 5/10:
+01ea7548-fe6c-47ee-b2e7-ad42525f5657_skim.root
+Events: 40131
+Valid photons: 6115
+
+Processing file 6/10:
+0260d489-f46a-4f55-988e-31bacbc68712_skim.root
+Events: 40116
+Valid photons: 5967
+
+Processing file 7/10:
+02946a49-7b9c-4c67-96fb-7ee3cfa69ea3_skim.root
+Events: 1724
+Valid photons: 249
+
+Processing file 8/10:
+02beef86-47d0-41d2-87c3-be5129e1d207_skim.root
+Events: 57197
+Valid photons: 8694
+
+Processing file 9/10:
+0372c2ef-9f1d-4857-8f94-34692e69e601_skim.root
+Events: 45307
+Valid photons: 6962
+
+Processing file 10/10:
+03a6aabf-20b7-4031-8be0-c33e806f39b2_skim.root
+Events: 66365
+Valid photons: 10147
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 476712
+Total photons: 72458
+
+================================================================================
+Histogram: TTto2L2Nu
+================================================================================
+Unweighted integral: 69454.0
+Underflow: 0.0
+Overflow: 3004.0
+Unweighted integral after overflow merge: 72458.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: TTtoLNu2Q
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/TTtoLNu2Q_24SummerRun3
+Number of files selected: 10
+====================================================================================================
+
+Processing file 1/10:
+004eb958-f042-48a7-b7a3-2f1cd5185215_skim.root
+Events: 65416
+Valid photons: 6168
+
+Processing file 2/10:
+00608b01-069d-4800-ac99-41990d5cafea_skim.root
+Events: 60403
+Valid photons: 5675
+
+Processing file 3/10:
+009865bd-793f-400b-a96e-306a0f310371_skim.root
+Events: 62377
+Valid photons: 5884
+
+Processing file 4/10:
+00fd5aa8-4b0d-4cb0-b643-a87dc1572d8a_skim.root
+Events: 85826
+Valid photons: 8249
+
+Processing file 5/10:
+0199417d-2ce6-4bef-a667-08533082f50d_skim.root
+Events: 85547
+Valid photons: 8023
+
+Processing file 6/10:
+01a94e57-2e13-49f7-8a88-3c43bdb09bf5_skim.root
+Events: 72048
+Valid photons: 6936
+
+Processing file 7/10:
+01db2c0f-49a1-4051-b596-d0c127a1fd51_skim.root
+Events: 85722
+Valid photons: 8116
+
+Processing file 8/10:
+01f3bdc1-ad2b-40ea-95dd-f80a1aa2c888_skim.root
+Events: 85619
+Valid photons: 8186
+
+Processing file 9/10:
+029f24a3-df18-4422-9559-3fc80f6225a9_skim.root
+Events: 57819
+Valid photons: 5520
+
+Processing file 10/10:
+02cecef9-d67b-4b89-b923-9760206e1b02_skim.root
+Events: 86089
+Valid photons: 8119
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 746866
+Total photons: 70876
+
+================================================================================
+Histogram: TTtoLNu2Q
+================================================================================
+Unweighted integral: 67471.0
+Underflow: 0.0
+Overflow: 3405.0
+Unweighted integral after overflow merge: 70876.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: TTG1Jets
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/TTG1Jets_24SummerRun3
+Number of files selected: 10
+====================================================================================================
+
+Processing file 1/10:
+02448d45-f8ac-472d-bf71-cb345290d928_skim.root
+Events: 35833
+Valid photons: 36702
+
+Processing file 2/10:
+0329eaf5-1680-4e07-a021-e99e22a9792c_skim.root
+Events: 36664
+Valid photons: 37658
+
+Processing file 3/10:
+045b8939-1479-403e-9234-de5e5251ee1e_skim.root
+Events: 31378
+Valid photons: 32133
+
+Processing file 4/10:
+06f91363-3f87-457b-ab74-b0decc2c4d5f_skim.root
+Events: 54692
+Valid photons: 56075
+
+Processing file 5/10:
+096a69af-c8f9-42bc-af11-dec8db4d1c42_skim.root
+Events: 61479
+Valid photons: 63013
+
+Processing file 6/10:
+0a293744-d807-487d-b34e-d5c699367f36_skim.root
+Events: 48739
+Valid photons: 50022
+
+Processing file 7/10:
+0eb80bb5-3a27-441c-b90d-a9ea21699f91_skim.root
+Events: 32428
+Valid photons: 33296
+
+Processing file 8/10:
+0fb9ddbd-5aff-48b7-bef9-a0f9d2f8869a_skim.root
+Events: 36742
+Valid photons: 37807
+
+Processing file 9/10:
+100e42da-f820-4ab6-a407-1c3617e964e6_skim.root
+Events: 25715
+Valid photons: 26342
+
+Processing file 10/10:
+1321cf7a-c660-455c-a75c-d6430f3fe4f8_skim.root
+Events: 33258
+Valid photons: 34219
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 396928
+Total photons: 407267
+
+================================================================================
+Histogram: TTG1Jets
+================================================================================
+Unweighted integral: 294656.0
+Underflow: 0.0
+Overflow: 112611.0
+Unweighted integral after overflow merge: 407267.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: WGtoLNuG
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WGtoLNuG_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+000e5053-8f07-4856-876e-3d9e776cc05b_skim.root
+Events: 2093
+Valid photons: 2247
+
+Processing file 2/100:
+00187789-adf4-4d2b-b2f8-17e1515c2d08_skim.root
+Events: 1886
+Valid photons: 2025
+
+Processing file 3/100:
+00324ab1-b380-4d0a-beec-4973ac85c8f6_skim.root
+Events: 1784
+Valid photons: 1928
+
+Processing file 4/100:
+0096b8c1-8904-4b55-8a21-a343a7bad0c0_skim.root
+Events: 1822
+Valid photons: 1974
+
+Processing file 5/100:
+00a532e1-793f-40f3-994d-138a9399c3b6_skim.root
+Events: 1982
+Valid photons: 2160
+
+Processing file 6/100:
+00a6e73e-649e-4eac-beed-1b3c97b3859e_skim.root
+Events: 1838
+Valid photons: 1950
+
+Processing file 7/100:
+00b070b6-a32f-409a-9202-bec30c1849c6_skim.root
+Events: 1820
+Valid photons: 1951
+
+Processing file 8/100:
+00daadda-324b-4150-ae04-6153274f58ea_skim.root
+Events: 1907
+Valid photons: 2041
+
+Processing file 9/100:
+00fcc4e7-ec66-422b-a089-4025b8445a0d_skim.root
+Events: 1938
+Valid photons: 2074
+
+Processing file 10/100:
+01149f1f-52b5-4572-95d0-6ccf3f4dc656_skim.root
+Events: 1773
+Valid photons: 1907
+
+Processing file 11/100:
+011d2a41-389e-4c73-9725-716f8bd58a33_skim.root
+Events: 1763
+Valid photons: 1890
+
+Processing file 12/100:
+011d4ba4-a5a9-4ee2-bfe7-d1abce38259a_skim.root
+Events: 1949
+Valid photons: 2084
+
+Processing file 13/100:
+0169822c-b5ed-462b-9330-4332edd61918_skim.root
+Events: 397
+Valid photons: 421
+
+Processing file 14/100:
+017d5e47-aab2-4dbf-8c74-e5b70e827cb5_skim.root
+Events: 129
+Valid photons: 140
+
+Processing file 15/100:
+017e09ab-72ab-4b40-b5f4-c04e045fc318_skim.root
+Events: 1778
+Valid photons: 1931
+
+Processing file 16/100:
+017f89fa-0701-49af-91c3-459bacd6d225_skim.root
+Events: 103
+Valid photons: 113
+
+Processing file 17/100:
+0188ef00-a777-49fe-ad0a-276027a9b486_skim.root
+Events: 1784
+Valid photons: 1920
+
+Processing file 18/100:
+0191cd5c-e758-4f6d-962b-72256ade3e17_skim.root
+Events: 1964
+Valid photons: 2091
+
+Processing file 19/100:
+01cfb9be-dc26-42c6-9fcb-70ba9dbbe846_skim.root
+Events: 1762
+Valid photons: 1892
+
+Processing file 20/100:
+01de467a-ba9b-4324-9e6f-d9f736836e59_skim.root
+Events: 3655
+Valid photons: 3941
+
+Processing file 21/100:
+01fa41e7-2f69-40e3-a1a8-c198c4109241_skim.root
+Events: 2896
+Valid photons: 3125
+
+Processing file 22/100:
+01ff2283-dc5e-443e-b12a-3e98eaa601dc_skim.root
+Events: 2130
+Valid photons: 2300
+
+Processing file 23/100:
+0217ba4f-d49a-410a-b312-7c9909886a62_skim.root
+Events: 2019
+Valid photons: 2176
+
+Processing file 24/100:
+02391c70-d154-4978-9314-44fa8f0a2ae7_skim.root
+Events: 2352
+Valid photons: 2532
+
+Processing file 25/100:
+026c8a55-ffd7-41f4-a81a-567484ea632e_skim.root
+Events: 1852
+Valid photons: 1988
+
+Processing file 26/100:
+0276f117-6928-42f0-9460-1961a3abde31_skim.root
+Events: 1932
+Valid photons: 2073
+
+Processing file 27/100:
+027722d9-43bf-4bca-8e5d-a6b04c1138de_skim.root
+Events: 1864
+Valid photons: 2004
+
+Processing file 28/100:
+0289cae3-113b-4f54-ad85-82c294177441_skim.root
+Events: 1784
+Valid photons: 1905
+
+Processing file 29/100:
+028ba95a-c7e6-455d-b5dd-28b43604fba9_skim.root
+Events: 1998
+Valid photons: 2181
+
+Processing file 30/100:
+028e5674-2303-4bc7-b33e-c274703801fe_skim.root
+Events: 16
+Valid photons: 17
+
+Processing file 31/100:
+02b29611-1c95-43d9-ab3b-b9423f54971c_skim.root
+Events: 2114
+Valid photons: 2270
+
+Processing file 32/100:
+02f18d22-6343-40f0-8a9f-2bb844d40c4c_skim.root
+Events: 1803
+Valid photons: 1944
+
+Processing file 33/100:
+02fa0bd6-8f8d-44ff-b69f-43a0184b3a3c_skim.root
+Events: 3474
+Valid photons: 3731
+
+Processing file 34/100:
+0331961f-7bac-4bb7-bbbd-58875233dc2a_skim.root
+Events: 1758
+Valid photons: 1876
+
+Processing file 35/100:
+036f5d70-b8f2-4268-a662-48d7e62458eb_skim.root
+Events: 1801
+Valid photons: 1954
+
+Processing file 36/100:
+03a2cd20-bd43-4561-84a8-b1486a224761_skim.root
+Events: 1757
+Valid photons: 1902
+
+Processing file 37/100:
+03dfff53-5bda-49e1-b9b5-60993580915a_skim.root
+Events: 3521
+Valid photons: 3794
+
+Processing file 38/100:
+040b243f-9488-41f2-af2d-df9bf1adb154_skim.root
+Events: 1962
+Valid photons: 2097
+
+Processing file 39/100:
+04146e85-9714-4094-962c-b27c3a43c217_skim.root
+Events: 1922
+Valid photons: 2057
+
+Processing file 40/100:
+04225904-af45-4df9-847c-83caf7f9df62_skim.root
+Events: 975
+Valid photons: 1050
+
+Processing file 41/100:
+043eeb72-4a3b-4526-829c-5d54b6b9e1ba_skim.root
+Events: 1767
+Valid photons: 1915
+
+Processing file 42/100:
+04767f16-2ba8-41fb-ac23-9904a70c97dc_skim.root
+Events: 1778
+Valid photons: 1922
+
+Processing file 43/100:
+04c05448-320d-4459-9b7d-fe22835f32a4_skim.root
+Events: 2083
+Valid photons: 2262
+
+Processing file 44/100:
+04c6ec13-10ad-42d3-8f60-fccf5418eb8a_skim.root
+Events: 322
+Valid photons: 349
+
+Processing file 45/100:
+04cddaea-1147-4351-b34d-5213ec14a574_skim.root
+Events: 2010
+Valid photons: 2166
+
+Processing file 46/100:
+04f5740c-64dd-4173-ab8b-3801bb7bbf08_skim.root
+Events: 2305
+Valid photons: 2482
+
+Processing file 47/100:
+04fc5747-af0f-4bb1-9ef0-34b9a4fd36ba_skim.root
+Events: 1963
+Valid photons: 2119
+
+Processing file 48/100:
+05032b17-45e1-4253-a9ce-4ea7a755f6b8_skim.root
+Events: 3287
+Valid photons: 3534
+
+Processing file 49/100:
+053276fa-a3bf-46c9-b506-23f71fa033df_skim.root
+Events: 1909
+Valid photons: 2057
+
+Processing file 50/100:
+0595fcf5-e920-476d-b012-79c222e96584_skim.root
+Events: 2720
+Valid photons: 2914
+
+Processing file 51/100:
+0597dc9c-f0c0-418c-8e37-45e2b85b1fd4_skim.root
+Events: 2049
+Valid photons: 2222
+
+Processing file 52/100:
+05ab1dcb-46d4-4bae-866d-bd8351863d20_skim.root
+Events: 1848
+Valid photons: 1993
+
+Processing file 53/100:
+05b76217-9be4-4109-aae8-dab9b7b85802_skim.root
+Events: 2014
+Valid photons: 2136
+
+Processing file 54/100:
+05bf13ac-d1fc-4fc6-8f4c-c8b6ea5a919b_skim.root
+Events: 1830
+Valid photons: 1967
+
+Processing file 55/100:
+0645fb9e-e8ac-4717-a837-d88b6b29eda6_skim.root
+Events: 1832
+Valid photons: 1987
+
+Processing file 56/100:
+06647a46-07d1-4d1e-b273-60f36b5b33ce_skim.root
+Events: 1831
+Valid photons: 1978
+
+Processing file 57/100:
+06739d07-9c1e-49a3-b544-1d0da517635f_skim.root
+Events: 1920
+Valid photons: 2077
+
+Processing file 58/100:
+067f1a39-40f6-4c1f-8ea2-3c59a810d762_skim.root
+Events: 1874
+Valid photons: 2013
+
+Processing file 59/100:
+06a1672a-43cb-45c5-9b71-b8319a938c5c_skim.root
+Events: 1778
+Valid photons: 1914
+
+Processing file 60/100:
+06a20790-a066-4879-8932-c4abe138cb3a_skim.root
+Events: 1802
+Valid photons: 1942
+
+Processing file 61/100:
+06aebdab-c6d8-46ac-b2e7-dbe3724ec8c0_skim.root
+Events: 1772
+Valid photons: 1907
+
+Processing file 62/100:
+06b35c1f-d109-48c6-beb2-a25f16528a81_skim.root
+Events: 2635
+Valid photons: 2853
+
+Processing file 63/100:
+06bf4eb0-4110-49bd-991b-add503c5a82d_skim.root
+Events: 1850
+Valid photons: 2012
+
+Processing file 64/100:
+06c2f9be-edb8-4f36-aed2-f8dd72173064_skim.root
+Events: 3533
+Valid photons: 3790
+
+Processing file 65/100:
+06c8eab4-4fa2-4341-8cdb-885b223e49bb_skim.root
+Events: 1832
+Valid photons: 1949
+
+Processing file 66/100:
+0700a0dc-cbfc-4420-bfba-9c0e550190d0_skim.root
+Events: 1922
+Valid photons: 2079
+
+Processing file 67/100:
+070d88eb-60ad-4453-821b-074d81c657cd_skim.root
+Events: 1977
+Valid photons: 2117
+
+Processing file 68/100:
+0739daef-f9a8-4ed0-a4c2-2bc2d5d00ab0_skim.root
+Events: 1775
+Valid photons: 1896
+
+Processing file 69/100:
+073c6b08-643b-405a-b0c9-966acfce3fbe_skim.root
+Events: 1793
+Valid photons: 1922
+
+Processing file 70/100:
+074b85fe-7af6-4c8d-8ee6-0abe4c0cf9cb_skim.root
+Events: 1692
+Valid photons: 1798
+
+Processing file 71/100:
+074f6c03-2a78-40ff-a5d3-de98c7fe7e88_skim.root
+Events: 1860
+Valid photons: 1998
+
+Processing file 72/100:
+077c4ec3-141d-4461-add5-726d2994063f_skim.root
+Events: 1677
+Valid photons: 1799
+
+Processing file 73/100:
+0784d468-0449-497f-83fd-25253bdf20c8_skim.root
+Events: 1992
+Valid photons: 2125
+
+Processing file 74/100:
+07984b92-1a3a-4bcd-98de-fd3f13a89908_skim.root
+Events: 1813
+Valid photons: 1968
+
+Processing file 75/100:
+07bed86d-e445-4386-a30d-276de9c8f7c4_skim.root
+Events: 3360
+Valid photons: 3612
+
+Processing file 76/100:
+0803e421-7d7f-4440-acf0-311feb25957c_skim.root
+Events: 1879
+Valid photons: 2017
+
+Processing file 77/100:
+08079a17-d3d3-4107-a69e-8839f36f808e_skim.root
+Events: 1812
+Valid photons: 1979
+
+Processing file 78/100:
+08361cdd-165a-49ac-9562-d76574ef08fd_skim.root
+Events: 2652
+Valid photons: 2860
+
+Processing file 79/100:
+0861d069-8648-49f2-8cbb-e5944344095a_skim.root
+Events: 1837
+Valid photons: 1985
+
+Processing file 80/100:
+08745e0d-5ebb-4432-acb8-975dfdd37337_skim.root
+Events: 1828
+Valid photons: 1963
+
+Processing file 81/100:
+08784eb3-2887-4aba-94a9-fb037364747c_skim.root
+Events: 1816
+Valid photons: 1930
+
+Processing file 82/100:
+0889ee19-7add-4ade-bdb7-3cbd468a846f_skim.root
+Events: 973
+Valid photons: 1035
+
+Processing file 83/100:
+08d0051a-854c-40be-9827-17b19ce15c67_skim.root
+Events: 1843
+Valid photons: 1981
+
+Processing file 84/100:
+08d308f6-b6ce-4cb0-a066-5b1296261ae5_skim.root
+Events: 1811
+Valid photons: 1931
+
+Processing file 85/100:
+08e28230-5470-4590-ab6c-8c7787d0738e_skim.root
+Events: 2096
+Valid photons: 2257
+
+Processing file 86/100:
+08f50c9f-19b1-4d95-b695-c2806977f05f_skim.root
+Events: 2475
+Valid photons: 2659
+
+Processing file 87/100:
+091d7dc2-8185-4bcd-9b67-394fa84036fe_skim.root
+Events: 1701
+Valid photons: 1842
+
+Processing file 88/100:
+09776197-142e-49ff-b534-e86d53644d4e_skim.root
+Events: 1532
+Valid photons: 1642
+
+Processing file 89/100:
+0980efc0-f2e7-46bd-8beb-4bbe095b5078_skim.root
+Events: 2007
+Valid photons: 2160
+
+Processing file 90/100:
+099fa10e-b366-4e87-b6b5-c5687c8aef24_skim.root
+Events: 2157
+Valid photons: 2297
+
+Processing file 91/100:
+09a50ca0-83b5-4543-b8fd-b616cae3b04a_skim.root
+Events: 2054
+Valid photons: 2195
+
+Processing file 92/100:
+09a628b1-fac8-45f2-ae15-145fd2e92c4d_skim.root
+Events: 1913
+Valid photons: 2033
+
+Processing file 93/100:
+09cec1d0-ae69-46c6-b74c-f6860ed63f80_skim.root
+Events: 2082
+Valid photons: 2241
+
+Processing file 94/100:
+09d3ed31-cab9-45fd-95a6-745f71b56363_skim.root
+Events: 1938
+Valid photons: 2075
+
+Processing file 95/100:
+0a4386e2-240c-4764-b5ef-bf80323e76f4_skim.root
+Events: 2299
+Valid photons: 2460
+
+Processing file 96/100:
+0a62ca02-62f2-4375-8a38-a0a75031dbf5_skim.root
+Events: 2364
+Valid photons: 2559
+
+Processing file 97/100:
+0a6cd9fc-1023-4c46-a0f7-249a43f9953e_skim.root
+Events: 2141
+Valid photons: 2313
+
+Processing file 98/100:
+0a86a774-59be-4f62-bec9-e5ec76736616_skim.root
+Events: 1929
+Valid photons: 2056
+
+Processing file 99/100:
+0a9f99fc-3689-489d-b15e-20653ce38518_skim.root
+Events: 2153
+Valid photons: 2345
+
+Processing file 100/100:
+0aa05823-cb3b-4608-a20d-65778a0086cd_skim.root
+Events: 1956
+Valid photons: 2097
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 193710
+Total photons: 208342
+
+================================================================================
+Histogram: WGtoLNuG
+================================================================================
+Unweighted integral: 148248.0
+Underflow: 0.0
+Overflow: 60094.0
+Unweighted integral after overflow merge: 208342.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: WtoE
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoENu0J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+00e6e17d-18d5-4cc2-8657-92b45f51370f_skim.root
+Events: 498
+Valid photons: 66
+
+Processing file 2/100:
+01016b78-9bb5-4bb1-96aa-32c7ed336552_skim.root
+Events: 335
+Valid photons: 38
+
+Processing file 3/100:
+016e55de-096a-4e4c-9c3e-b45491f933dd_skim.root
+Events: 501
+Valid photons: 68
+
+Processing file 4/100:
+01a21c20-f6f8-4982-9d5a-00b12f3c168c_skim.root
+Events: 234
+Valid photons: 23
+
+Processing file 5/100:
+01cf010b-2a5f-4893-b213-112cba2805aa_skim.root
+Events: 466
+Valid photons: 73
+
+Processing file 6/100:
+02108217-1771-4fc6-9154-133d45409152_skim.root
+Events: 80
+Valid photons: 9
+
+Processing file 7/100:
+0244f18d-d25f-4661-81aa-dac1e4441920_skim.root
+Events: 510
+Valid photons: 72
+
+Processing file 8/100:
+02c53036-834e-4e58-95f9-0d089c0a8ffd_skim.root
+Events: 495
+Valid photons: 74
+
+Processing file 9/100:
+039bc7bf-9886-4b00-9e1f-c359aafe5018_skim.root
+Events: 492
+Valid photons: 75
+
+Processing file 10/100:
+054da8e3-1216-49a8-a2b7-9ea38a85527a_skim.root
+Events: 298
+Valid photons: 37
+
+Processing file 11/100:
+05821cd4-9026-4a2c-be31-bd55f439060a_skim.root
+Events: 470
+Valid photons: 58
+
+Processing file 12/100:
+05a4d58f-bfaf-4ff3-afe4-2f84dcb3476a_skim.root
+Events: 461
+Valid photons: 53
+
+Processing file 13/100:
+05d08b8e-66eb-4acd-9afb-be93b9b17e30_skim.root
+Events: 495
+Valid photons: 59
+
+Processing file 14/100:
+05ed61f7-8821-49d4-9c9b-43fca6669626_skim.root
+Events: 260
+Valid photons: 34
+
+Processing file 15/100:
+0605a71c-b7e0-454c-a9c4-fd676d59f2c3_skim.root
+Events: 280
+Valid photons: 27
+
+Processing file 16/100:
+069cacdb-5172-46d5-bd54-56aba986b61a_skim.root
+Events: 478
+Valid photons: 65
+
+Processing file 17/100:
+06d7aa33-76b2-4be5-b4b9-317ee01b1e50_skim.root
+Events: 498
+Valid photons: 66
+
+Processing file 18/100:
+076ddebc-1030-4ef4-b40f-6324a7666aa1_skim.root
+Events: 361
+Valid photons: 44
+
+Processing file 19/100:
+07eace63-45ed-4d32-96da-1d073f1b10f5_skim.root
+Events: 139
+Valid photons: 14
+
+Processing file 20/100:
+08c5a74a-9b50-4057-a37d-2df26d0c4481_skim.root
+Events: 276
+Valid photons: 40
+
+Processing file 21/100:
+091a7811-a256-4b12-8b13-cc25bced99f4_skim.root
+Events: 249
+Valid photons: 24
+
+Processing file 22/100:
+09b81726-8991-4e68-afa5-8e69cba76dde_skim.root
+Events: 499
+Valid photons: 71
+
+Processing file 23/100:
+0ae6b97d-9138-4cca-a935-d1ba8d930b9e_skim.root
+Events: 433
+Valid photons: 37
+
+Processing file 24/100:
+0b8d0efa-4b14-4227-b06c-9e1ded20cb53_skim.root
+Events: 252
+Valid photons: 30
+
+Processing file 25/100:
+0ba44c22-9865-4f80-bfa6-1e413d5331eb_skim.root
+Events: 520
+Valid photons: 73
+
+Processing file 26/100:
+0bfa24a3-b4b9-40d2-8ec2-1169ec2bdb34_skim.root
+Events: 512
+Valid photons: 72
+
+Processing file 27/100:
+0c22a0bc-9d0a-40bf-a6f1-0481df4a8ab0_skim.root
+Events: 223
+Valid photons: 41
+
+Processing file 28/100:
+0c6fa057-bcad-4453-b967-26e803a567f6_skim.root
+Events: 479
+Valid photons: 62
+
+Processing file 29/100:
+0cd2162b-433c-4e7a-af3e-fc518134b86b_skim.root
+Events: 47
+Valid photons: 4
+
+Processing file 30/100:
+0cd62bed-d3c6-4f6f-9ce9-e11f32240041_skim.root
+Events: 518
+Valid photons: 76
+
+Processing file 31/100:
+0de2f45e-68b7-47a0-b504-cf61b8525249_skim.root
+Events: 254
+Valid photons: 41
+
+Processing file 32/100:
+0e688430-7063-4166-99a8-5b64011af947_skim.root
+Events: 307
+Valid photons: 45
+
+Processing file 33/100:
+0efa6d26-5df8-4d77-8241-ecaa3f41cf17_skim.root
+Events: 513
+Valid photons: 62
+
+Processing file 34/100:
+10b5372d-1035-4981-936a-747d4b4b4db9_skim.root
+Events: 528
+Valid photons: 59
+
+Processing file 35/100:
+10b65b55-7864-4a2d-af7f-3dcf107cc727_skim.root
+Events: 453
+Valid photons: 58
+
+Processing file 36/100:
+1114292c-cd2f-4c99-a4db-36d7bb41cea3_skim.root
+Events: 476
+Valid photons: 58
+
+Processing file 37/100:
+121de2a7-cc54-4859-8747-160de12ce4ab_skim.root
+Events: 427
+Valid photons: 49
+
+Processing file 38/100:
+1372d29b-0742-4dd6-b772-e25834e2f51e_skim.root
+Events: 408
+Valid photons: 53
+
+Processing file 39/100:
+1376ff49-8dcc-4431-9a57-1ba91b55d70b_skim.root
+Events: 511
+Valid photons: 66
+
+Processing file 40/100:
+138a4d80-b031-412c-8cea-db6fe11bf5ea_skim.root
+Events: 480
+Valid photons: 63
+
+Processing file 41/100:
+1399e1c7-6e0f-4bae-8832-c29c4e0ef602_skim.root
+Events: 263
+Valid photons: 39
+
+Processing file 42/100:
+13bdbc3f-fdf7-4330-84cc-f67fc70af3f5_skim.root
+Events: 172
+Valid photons: 27
+
+Processing file 43/100:
+1479c2d4-c91b-403b-847c-f2a3a86d1d75_skim.root
+Events: 506
+Valid photons: 70
+
+Processing file 44/100:
+14c5072d-7443-43d5-a1bb-06627f4ffe82_skim.root
+Events: 508
+Valid photons: 63
+
+Processing file 45/100:
+150dfaf0-0cb4-476c-8cfc-e4c910a28c87_skim.root
+Events: 215
+Valid photons: 42
+
+Processing file 46/100:
+157f3341-025c-4896-b125-fbb155e24046_skim.root
+Events: 457
+Valid photons: 54
+
+Processing file 47/100:
+16ae9c1d-b236-4e74-97d0-54f4c9ca07af_skim.root
+Events: 528
+Valid photons: 73
+
+Processing file 48/100:
+16d8e89e-f87d-42c8-9706-986d226782ad_skim.root
+Events: 495
+Valid photons: 70
+
+Processing file 49/100:
+175f4c1a-59d2-4d56-942d-d6796d936e51_skim.root
+Events: 491
+Valid photons: 67
+
+Processing file 50/100:
+17a56f52-f6cf-4109-a5cb-361c70e81f0c_skim.root
+Events: 271
+Valid photons: 31
+
+Processing file 51/100:
+190f09b4-c0d7-4cd1-92ba-3b98fbd77f63_skim.root
+Events: 548
+Valid photons: 79
+
+Processing file 52/100:
+1ac49548-5f7b-417e-8e05-e0ce06489919_skim.root
+Events: 7
+Valid photons: 0
+
+Processing file 53/100:
+1ac761a4-6d69-4c64-8ab3-e1600890359d_skim.root
+Events: 268
+Valid photons: 31
+
+Processing file 54/100:
+1afe69ae-f493-494f-add7-fc4313e50e9d_skim.root
+Events: 507
+Valid photons: 66
+
+Processing file 55/100:
+1b0c4bae-e778-4d05-bde0-9dfa944c6462_skim.root
+Events: 473
+Valid photons: 70
+
+Processing file 56/100:
+1bcfc4b9-a372-4e07-a51d-aaf49cee81f3_skim.root
+Events: 320
+Valid photons: 50
+
+Processing file 57/100:
+1bd8680b-5d4d-489f-8e26-17dd04000ffa_skim.root
+Events: 45
+Valid photons: 12
+
+Processing file 58/100:
+1c820b0d-4f79-4636-a33e-3239d561651f_skim.root
+Events: 471
+Valid photons: 64
+
+Processing file 59/100:
+1c9f57f1-e820-43ef-ba46-5287843f5cd5_skim.root
+Events: 514
+Valid photons: 69
+
+Processing file 60/100:
+1cf56ba6-a3f9-4c8f-ad79-66564c1de566_skim.root
+Events: 170
+Valid photons: 21
+
+Processing file 61/100:
+1d0c5d41-f3f4-449f-b70e-127f042d84e0_skim.root
+Events: 501
+Valid photons: 70
+
+Processing file 62/100:
+1d67ee4e-28b8-4ff8-9d8c-e61ed282cce1_skim.root
+Events: 492
+Valid photons: 74
+
+Processing file 63/100:
+1dbdc900-4ce9-4db1-b283-220239dd69f8_skim.root
+Events: 495
+Valid photons: 69
+
+Processing file 64/100:
+1e7c6862-f70f-4389-ba8a-7e5b9f9ffab8_skim.root
+Events: 490
+Valid photons: 79
+
+Processing file 65/100:
+1f10550d-7754-4c48-8ebb-47bf997d7ad9_skim.root
+Events: 313
+Valid photons: 41
+
+Processing file 66/100:
+1f19a2cf-a2b0-4ace-8e4d-35fa85de6493_skim.root
+Events: 327
+Valid photons: 46
+
+Processing file 67/100:
+1fc703fe-cfef-4e4a-bf1d-59d18253b544_skim.root
+Events: 518
+Valid photons: 52
+
+Processing file 68/100:
+21bc9e34-bd04-45b6-a17c-2ee192b27ac0_skim.root
+Events: 294
+Valid photons: 39
+
+Processing file 69/100:
+21c54235-db74-4850-8109-dce7bd7b0a8f_skim.root
+Events: 497
+Valid photons: 63
+
+Processing file 70/100:
+21ff0c5d-6940-4638-8321-94ee103c1334_skim.root
+Events: 268
+Valid photons: 34
+
+Processing file 71/100:
+2204f379-4750-4800-bdb7-0e45c389414e_skim.root
+Events: 508
+Valid photons: 66
+
+Processing file 72/100:
+228523b6-2900-4a13-a52d-6c18c0170e35_skim.root
+Events: 517
+Valid photons: 68
+
+Processing file 73/100:
+22925b24-e384-441c-9887-3dc7b3952546_skim.root
+Events: 126
+Valid photons: 13
+
+Processing file 74/100:
+24972a0e-a401-4a44-b21b-6fcbd4535d3e_skim.root
+Events: 539
+Valid photons: 82
+
+Processing file 75/100:
+24ef513b-0078-4907-bd6a-7a00e8a9144e_skim.root
+Events: 22
+Valid photons: 4
+
+Processing file 76/100:
+26150439-19e8-4fb2-a9ac-689e136ffdb4_skim.root
+Events: 427
+Valid photons: 56
+
+Processing file 77/100:
+26196798-fbaa-4c4c-be41-33bced6014d6_skim.root
+Events: 295
+Valid photons: 52
+
+Processing file 78/100:
+273c6113-eb8b-41e4-acee-4209faf4e619_skim.root
+Events: 516
+Valid photons: 80
+
+Processing file 79/100:
+276bdfc8-9f91-4aee-a669-ba76a09fe527_skim.root
+Events: 500
+Valid photons: 61
+
+Processing file 80/100:
+2876550a-696d-4924-973d-f2470e34dfb8_skim.root
+Events: 345
+Valid photons: 56
+
+Processing file 81/100:
+28e3b821-2425-42f0-8201-f85b0df65921_skim.root
+Events: 250
+Valid photons: 34
+
+Processing file 82/100:
+290d6c07-3a3a-4df1-a09b-739cd15bd4e9_skim.root
+Events: 37
+Valid photons: 4
+
+Processing file 83/100:
+2a5f20f7-3562-4081-9233-b3bcb9ca3da4_skim.root
+Events: 518
+Valid photons: 81
+
+Processing file 84/100:
+2a8c8e94-9691-4572-87b9-d7a4b3568de2_skim.root
+Events: 179
+Valid photons: 28
+
+Processing file 85/100:
+2b43e060-84ae-4f1b-a1a6-618ca714575f_skim.root
+Events: 510
+Valid photons: 68
+
+Processing file 86/100:
+2b56887b-3f23-48b2-8d52-637262ecebb6_skim.root
+Events: 505
+Valid photons: 80
+
+Processing file 87/100:
+2d710210-125d-44f7-85cd-145c5fece2b3_skim.root
+Events: 510
+Valid photons: 69
+
+Processing file 88/100:
+2ef9a07b-b665-4e8f-b758-7ede89483988_skim.root
+Events: 464
+Valid photons: 67
+
+Processing file 89/100:
+2fc7ad41-52dd-476d-bf5a-b43e2d24874e_skim.root
+Events: 314
+Valid photons: 49
+
+Processing file 90/100:
+308693fb-e526-4523-8f51-08208f815f20_skim.root
+Events: 475
+Valid photons: 56
+
+Processing file 91/100:
+30b43ae5-0fb4-4f08-ba2d-a069134fcd07_skim.root
+Events: 465
+Valid photons: 45
+
+Processing file 92/100:
+30be12d8-4c2a-49ff-9222-85cd43231960_skim.root
+Events: 136
+Valid photons: 14
+
+Processing file 93/100:
+30c70c16-2065-493a-b29b-ea1347b06c65_skim.root
+Events: 540
+Valid photons: 83
+
+Processing file 94/100:
+327c0ce9-ae2e-40bf-bb33-da50694857ce_skim.root
+Events: 481
+Valid photons: 62
+
+Processing file 95/100:
+330e5304-63d4-4929-8467-879c2c4e2492_skim.root
+Events: 277
+Valid photons: 24
+
+Processing file 96/100:
+34260edb-6c76-433a-b8b3-b0291526db47_skim.root
+Events: 250
+Valid photons: 34
+
+Processing file 97/100:
+34b2a5d4-93c8-4f92-bc48-a871c4fb8d30_skim.root
+Events: 490
+Valid photons: 57
+
+Processing file 98/100:
+35fa1888-ba64-4f1a-b4ef-9935c6eb0b95_skim.root
+Events: 175
+Valid photons: 20
+
+Processing file 99/100:
+35fcf6c8-7102-4d31-ac3c-591449b3c6ea_skim.root
+Events: 278
+Valid photons: 34
+
+Processing file 100/100:
+3691dc83-bda0-4516-be23-b56beac16037_skim.root
+Events: 548
+Valid photons: 84
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoENu1J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+0021085d-ed2c-423b-9796-2f73b29f27a4_skim.root
+Events: 599
+Valid photons: 106
+
+Processing file 2/100:
+00290182-51e4-459a-b544-c7ca1dffde62_skim.root
+Events: 633
+Valid photons: 113
+
+Processing file 3/100:
+00341b6c-5aae-4c05-b94c-c47c29e17b3c_skim.root
+Events: 585
+Valid photons: 108
+
+Processing file 4/100:
+0038afe5-6da7-4cf5-81c6-c1eb8b5ec24d_skim.root
+Events: 661
+Valid photons: 110
+
+Processing file 5/100:
+004c3b2c-4471-4562-80d9-bf7aeccc9a9d_skim.root
+Events: 635
+Valid photons: 101
+
+Processing file 6/100:
+00521df4-0c27-4e5d-a6ec-43c49e0e4e8a_skim.root
+Events: 32
+Valid photons: 9
+
+Processing file 7/100:
+005694cb-b0f6-49f3-9f26-720512c34533_skim.root
+Events: 713
+Valid photons: 138
+
+Processing file 8/100:
+005b6f68-8c72-4ed6-addf-85870722da05_skim.root
+Events: 129
+Valid photons: 15
+
+Processing file 9/100:
+00723ea3-5b4f-4bf0-bcf3-46ee3a0af772_skim.root
+Events: 577
+Valid photons: 98
+
+Processing file 10/100:
+0075a9b6-906f-4bdc-9b2e-4cbf693cb622_skim.root
+Events: 656
+Valid photons: 120
+
+Processing file 11/100:
+009e9b18-db85-49e1-8cd0-57aea7796538_skim.root
+Events: 751
+Valid photons: 116
+
+Processing file 12/100:
+00bc2b7f-2bf0-4d79-9221-21e7a900f076_skim.root
+Events: 745
+Valid photons: 136
+
+Processing file 13/100:
+00dd1d21-3f94-4498-a496-b781aea5dc94_skim.root
+Events: 26
+Valid photons: 6
+
+Processing file 14/100:
+00e2f5d6-dde5-401c-a886-8599354a0ac4_skim.root
+Events: 560
+Valid photons: 106
+
+Processing file 15/100:
+00e8ff83-43ec-4d59-adb7-c629c924329d_skim.root
+Events: 701
+Valid photons: 113
+
+Processing file 16/100:
+00f913c9-947c-4df1-8611-fb923f89316a_skim.root
+Events: 53
+Valid photons: 8
+
+Processing file 17/100:
+0186591f-3321-435b-b1ef-9c11fe1e35a1_skim.root
+Events: 621
+Valid photons: 97
+
+Processing file 18/100:
+01b1301f-fad4-449c-838c-255a7daee71c_skim.root
+Events: 606
+Valid photons: 89
+
+Processing file 19/100:
+01b63b7f-ab73-426b-96c8-ca02dd84253f_skim.root
+Events: 542
+Valid photons: 96
+
+Processing file 20/100:
+01de3fd9-6d51-44d5-81f2-29a17bbfb519_skim.root
+Events: 925
+Valid photons: 138
+
+Processing file 21/100:
+01e9330a-2211-41ce-8fa8-a2c9d77c9730_skim.root
+Events: 649
+Valid photons: 114
+
+Processing file 22/100:
+01ed35e3-0b78-4972-8617-e59b925862a9_skim.root
+Events: 585
+Valid photons: 106
+
+Processing file 23/100:
+02075303-0d87-44dc-b503-fca7fcd7305c_skim.root
+Events: 853
+Valid photons: 135
+
+Processing file 24/100:
+0212a375-17d7-4247-9f3a-3345692bf0f5_skim.root
+Events: 652
+Valid photons: 108
+
+Processing file 25/100:
+021532a2-d589-4135-bd06-676e4138cf76_skim.root
+Events: 776
+Valid photons: 107
+
+Processing file 26/100:
+025cab44-d0b2-4371-a570-2ff2030080e6_skim.root
+Events: 593
+Valid photons: 102
+
+Processing file 27/100:
+02903982-45fd-4259-b8c5-a4ceb4fb7281_skim.root
+Events: 590
+Valid photons: 99
+
+Processing file 28/100:
+02d2e322-de4a-41ad-a2d5-b1d033692166_skim.root
+Events: 600
+Valid photons: 113
+
+Processing file 29/100:
+02efdbb8-a676-468f-9d37-fa026fdf175d_skim.root
+Events: 747
+Valid photons: 143
+
+Processing file 30/100:
+0301b6aa-d49d-4fa2-9c5a-36c59845bade_skim.root
+Events: 573
+Valid photons: 106
+
+Processing file 31/100:
+033fe0e7-548c-4bcb-9ea6-563dba911a4e_skim.root
+Events: 621
+Valid photons: 117
+
+Processing file 32/100:
+0378ef93-f351-4154-907c-390e663ce3cf_skim.root
+Events: 589
+Valid photons: 109
+
+Processing file 33/100:
+037e3140-d10e-4030-a54c-54176c081898_skim.root
+Events: 578
+Valid photons: 87
+
+Processing file 34/100:
+03b7d2a0-4cac-481b-a661-cd0aeaa4c2e3_skim.root
+Events: 695
+Valid photons: 102
+
+Processing file 35/100:
+0433ff91-4151-43f6-8781-c996bc91e788_skim.root
+Events: 764
+Valid photons: 137
+
+Processing file 36/100:
+0455ebdf-4796-4318-9295-513a6e764b15_skim.root
+Events: 577
+Valid photons: 96
+
+Processing file 37/100:
+04739935-29e7-40e1-9dca-aa9157089dfc_skim.root
+Events: 633
+Valid photons: 102
+
+Processing file 38/100:
+04746f50-444a-46e9-942d-7216836fe176_skim.root
+Events: 348
+Valid photons: 60
+
+Processing file 39/100:
+04c9f101-bbb8-4643-a1ac-51198da3ac54_skim.root
+Events: 548
+Valid photons: 86
+
+Processing file 40/100:
+04cce549-e761-495d-b16a-f2b68bd96d10_skim.root
+Events: 921
+Valid photons: 159
+
+Processing file 41/100:
+04eb6eff-73ca-476e-bfab-1b0d6716c79c_skim.root
+Events: 627
+Valid photons: 105
+
+Processing file 42/100:
+04fd6a70-4516-452b-b0c3-636a13086f06_skim.root
+Events: 629
+Valid photons: 107
+
+Processing file 43/100:
+051dd51f-00c5-4dc8-a10a-6abc4dbe635f_skim.root
+Events: 599
+Valid photons: 87
+
+Processing file 44/100:
+051eaba8-99cd-4c60-b213-95bb76787f89_skim.root
+Events: 700
+Valid photons: 123
+
+Processing file 45/100:
+056cb3b8-168b-4288-b509-c6e08df9811c_skim.root
+Events: 625
+Valid photons: 111
+
+Processing file 46/100:
+057cb7ab-5e02-4a87-b631-277208cd84d0_skim.root
+Events: 634
+Valid photons: 107
+
+Processing file 47/100:
+057e4277-077b-4535-ac4c-3118f8d1d9c3_skim.root
+Events: 324
+Valid photons: 58
+
+Processing file 48/100:
+059e5459-dc2f-4aeb-a5ce-d7e68d236124_skim.root
+Events: 105
+Valid photons: 24
+
+Processing file 49/100:
+06072de0-9482-46f9-b8c3-06e4cb1d41e4_skim.root
+Events: 628
+Valid photons: 115
+
+Processing file 50/100:
+061fc6a9-a500-4c8f-89b0-36166b9dbf75_skim.root
+Events: 552
+Valid photons: 108
+
+Processing file 51/100:
+0662dd6b-015a-4a36-af4a-58bfdb392ae7_skim.root
+Events: 706
+Valid photons: 129
+
+Processing file 52/100:
+06b9a483-8d53-45b6-888e-f664b4d6dcb4_skim.root
+Events: 673
+Valid photons: 130
+
+Processing file 53/100:
+06d4f920-7dfb-44bb-82f0-af9d127fb7bb_skim.root
+Events: 583
+Valid photons: 97
+
+Processing file 54/100:
+07558d33-f2f1-4795-af93-e4610fdace6d_skim.root
+Events: 818
+Valid photons: 125
+
+Processing file 55/100:
+077008a0-07c8-4b47-94a3-1a6105c80065_skim.root
+Events: 743
+Valid photons: 146
+
+Processing file 56/100:
+0775276e-d097-48c6-b30f-4f817bb50877_skim.root
+Events: 616
+Valid photons: 106
+
+Processing file 57/100:
+07909d73-4d67-4fa9-a3b4-d4d96333290b_skim.root
+Events: 547
+Valid photons: 75
+
+Processing file 58/100:
+07af3a08-7b74-4d68-ad6b-1185a757e377_skim.root
+Events: 691
+Valid photons: 115
+
+Processing file 59/100:
+07b81405-f151-4b0c-8b64-5619a6af0b15_skim.root
+Events: 560
+Valid photons: 108
+
+Processing file 60/100:
+07e27d6c-2e95-4d28-b1b1-2e0f6e15d359_skim.root
+Events: 856
+Valid photons: 142
+
+Processing file 61/100:
+07ea4a65-5c7c-4031-b505-94b9439a21fc_skim.root
+Events: 606
+Valid photons: 97
+
+Processing file 62/100:
+07f02271-e05c-4ee0-b9cc-188babbb1aa7_skim.root
+Events: 546
+Valid photons: 84
+
+Processing file 63/100:
+08091630-7b70-4670-8d66-596a9fc1d5f1_skim.root
+Events: 676
+Valid photons: 112
+
+Processing file 64/100:
+080925f5-76bf-45f8-a334-0f3982868caa_skim.root
+Events: 623
+Valid photons: 104
+
+Processing file 65/100:
+080d4140-f32a-45a4-96e2-fe2f5bdcfdae_skim.root
+Events: 610
+Valid photons: 107
+
+Processing file 66/100:
+085161e7-9596-4958-93f5-79d08ebd06f0_skim.root
+Events: 5
+Valid photons: 2
+
+Processing file 67/100:
+0852a331-217e-428b-97a3-78caa26f1e21_skim.root
+Events: 610
+Valid photons: 100
+
+Processing file 68/100:
+08616152-b1c5-496a-bb50-b89819355e09_skim.root
+Events: 608
+Valid photons: 100
+
+Processing file 69/100:
+08635706-511f-4526-88a7-264d9415e67d_skim.root
+Events: 644
+Valid photons: 116
+
+Processing file 70/100:
+0881ce19-a8c5-4ac6-ab14-d2772aac58e2_skim.root
+Events: 563
+Valid photons: 100
+
+Processing file 71/100:
+0891dc72-b7f9-4558-a260-480efd0f334a_skim.root
+Events: 638
+Valid photons: 100
+
+Processing file 72/100:
+08cd841d-a5c8-4b19-aa14-cb7acb6ed758_skim.root
+Events: 650
+Valid photons: 110
+
+Processing file 73/100:
+08db7e62-7505-4d3a-9c5c-8e69163d06fc_skim.root
+Events: 621
+Valid photons: 111
+
+Processing file 74/100:
+08e6340a-0f59-4748-92c7-bbda6099021a_skim.root
+Events: 574
+Valid photons: 102
+
+Processing file 75/100:
+09472367-4563-4ca1-8463-9449c10a68c1_skim.root
+Events: 645
+Valid photons: 109
+
+Processing file 76/100:
+094a1cf7-6699-4638-a73c-f26963d99493_skim.root
+Events: 598
+Valid photons: 99
+
+Processing file 77/100:
+094c48d2-3ff6-4ab7-88ef-044c32c16e3d_skim.root
+Events: 626
+Valid photons: 113
+
+Processing file 78/100:
+096b1816-8306-41da-8cd7-76ebdbfdea87_skim.root
+Events: 698
+Valid photons: 132
+
+Processing file 79/100:
+0993d676-4c88-4678-a10d-87ee8e703f7a_skim.root
+Events: 747
+Valid photons: 122
+
+Processing file 80/100:
+09a27522-0c12-4c19-88a6-1c9b33826f5f_skim.root
+Events: 636
+Valid photons: 111
+
+Processing file 81/100:
+09aef63c-54ad-4816-8d27-92aca1d2e3de_skim.root
+Events: 607
+Valid photons: 97
+
+Processing file 82/100:
+09d276b7-def1-4515-b205-558184133b4d_skim.root
+Events: 607
+Valid photons: 114
+
+Processing file 83/100:
+09d56972-6da8-4c71-81aa-4ab17b1108d3_skim.root
+Events: 577
+Valid photons: 91
+
+Processing file 84/100:
+09d6ba26-6dda-40eb-a1bf-579be597b099_skim.root
+Events: 584
+Valid photons: 96
+
+Processing file 85/100:
+09f4f99d-05cd-4ba3-9242-5d883daa8c1b_skim.root
+Events: 578
+Valid photons: 90
+
+Processing file 86/100:
+0a1fabcf-3a3c-4a29-a67a-3d0c98e78df4_skim.root
+Events: 616
+Valid photons: 106
+
+Processing file 87/100:
+0a2e2d6f-cfec-4b81-99fe-b6f3606bbca8_skim.root
+Events: 615
+Valid photons: 97
+
+Processing file 88/100:
+0a458e90-a908-459b-b87e-5782325f2bd8_skim.root
+Events: 592
+Valid photons: 102
+
+Processing file 89/100:
+0a8c9e31-3fbc-4553-b3b4-e945e9ad6710_skim.root
+Events: 618
+Valid photons: 104
+
+Processing file 90/100:
+0ab4e3ff-5f27-4259-951d-dccc36577f79_skim.root
+Events: 584
+Valid photons: 101
+
+Processing file 91/100:
+0ab527fc-70ad-4db7-a6a8-db47a18f2de9_skim.root
+Events: 560
+Valid photons: 93
+
+Processing file 92/100:
+0afd16cf-6940-498f-9f29-266637c6e833_skim.root
+Events: 585
+Valid photons: 100
+
+Processing file 93/100:
+0afe8e03-3ec3-4232-96a5-9b62a5afdb03_skim.root
+Events: 992
+Valid photons: 175
+
+Processing file 94/100:
+0afff033-ce88-4a41-b7e2-d7fd293a7aa3_skim.root
+Events: 652
+Valid photons: 99
+
+Processing file 95/100:
+0b31aaa6-c608-43d4-988f-fc09f3e2e21a_skim.root
+Events: 589
+Valid photons: 109
+
+Processing file 96/100:
+0b3d7b99-f709-4c9b-b09e-867860c8bd4a_skim.root
+Events: 229
+Valid photons: 32
+
+Processing file 97/100:
+0b5d18b3-76ab-4eea-b553-d9e657974fdf_skim.root
+Events: 925
+Valid photons: 144
+
+Processing file 98/100:
+0b6a0f4e-00a9-42f3-8b8b-0cce3404ea36_skim.root
+Events: 577
+Valid photons: 94
+
+Processing file 99/100:
+0b759606-5de7-48ab-987e-1c5ba04112a5_skim.root
+Events: 768
+Valid photons: 144
+
+Processing file 100/100:
+0ba045dd-b3c4-4d6e-aa99-c9930dba3a20_skim.root
+Events: 136
+Valid photons: 22
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoENu2J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+00047372-0386-4062-945e-6709ca822b9f_skim.root
+Events: 2340
+Valid photons: 342
+
+Processing file 2/100:
+0019510c-0601-408b-a015-81e7fa7c06f3_skim.root
+Events: 2313
+Valid photons: 323
+
+Processing file 3/100:
+00306082-0afb-4308-baa4-29fdca9d24cb_skim.root
+Events: 2217
+Valid photons: 284
+
+Processing file 4/100:
+004d23e1-5b3d-4dda-81b4-d08c1d67c9a6_skim.root
+Events: 2451
+Valid photons: 303
+
+Processing file 5/100:
+00515a4b-d288-493a-8d07-ba26af7b8af3_skim.root
+Events: 2407
+Valid photons: 289
+
+Processing file 6/100:
+006d8674-aafb-4533-a420-2be8559614b8_skim.root
+Events: 2423
+Valid photons: 317
+
+Processing file 7/100:
+008fc62d-5dda-4e36-839d-952f9b29cb1b_skim.root
+Events: 2216
+Valid photons: 287
+
+Processing file 8/100:
+008fe0bf-92c7-4c94-b48c-e1392adbd3b6_skim.root
+Events: 2426
+Valid photons: 299
+
+Processing file 9/100:
+00a2cdec-c936-4711-8b7a-a624611df194_skim.root
+Events: 2234
+Valid photons: 307
+
+Processing file 10/100:
+00b6fb26-7a6f-419f-a221-5e0283699e46_skim.root
+Events: 2312
+Valid photons: 317
+
+Processing file 11/100:
+00c0e467-7eec-4fd1-87fc-0689e7347043_skim.root
+Events: 2426
+Valid photons: 308
+
+Processing file 12/100:
+00d87bc8-dc22-42ff-abfb-8ebcee1d3fed_skim.root
+Events: 3387
+Valid photons: 446
+
+Processing file 13/100:
+00f66382-4fc6-4287-80ed-5bcba8bdf2af_skim.root
+Events: 2478
+Valid photons: 349
+
+Processing file 14/100:
+010894cd-11b7-49c7-8520-2d4977416e93_skim.root
+Events: 54
+Valid photons: 8
+
+Processing file 15/100:
+0141f289-e58c-4d9b-9f4d-e96ba87103df_skim.root
+Events: 2369
+Valid photons: 323
+
+Processing file 16/100:
+016dedaa-8dc5-4733-ab7c-11d8db5883cc_skim.root
+Events: 2366
+Valid photons: 326
+
+Processing file 17/100:
+01a057be-34e1-49ea-accd-e4c6f5bf1463_skim.root
+Events: 563
+Valid photons: 69
+
+Processing file 18/100:
+01bec18e-7448-4cce-97a2-c070d9701280_skim.root
+Events: 2547
+Valid photons: 325
+
+Processing file 19/100:
+01e5b364-af30-4696-a9f0-9e4221a64167_skim.root
+Events: 2254
+Valid photons: 285
+
+Processing file 20/100:
+01f550a0-c478-4739-a3c4-368f56a7d44b_skim.root
+Events: 63
+Valid photons: 14
+
+Processing file 21/100:
+021232a2-cd72-4b9b-b953-33030c5ab0da_skim.root
+Events: 2297
+Valid photons: 316
+
+Processing file 22/100:
+02314917-675d-422f-86fd-663c599a8136_skim.root
+Events: 2252
+Valid photons: 305
+
+Processing file 23/100:
+02b24641-3b4e-4860-aec1-c92da0794615_skim.root
+Events: 2390
+Valid photons: 295
+
+Processing file 24/100:
+02e75df8-a239-4d82-842a-2592a1e00407_skim.root
+Events: 2640
+Valid photons: 357
+
+Processing file 25/100:
+0300a465-e9b0-403f-804c-f6c075241314_skim.root
+Events: 2486
+Valid photons: 295
+
+Processing file 26/100:
+0338cb89-ed12-4eca-9b02-ff9838ed325f_skim.root
+Events: 2687
+Valid photons: 352
+
+Processing file 27/100:
+0350a55b-db95-44ea-949f-6e1b8d534a19_skim.root
+Events: 2575
+Valid photons: 362
+
+Processing file 28/100:
+037bc76a-7a28-4a57-baa8-cbada204d408_skim.root
+Events: 2385
+Valid photons: 290
+
+Processing file 29/100:
+03c4a025-a43d-4857-9d3a-d3431fe0411b_skim.root
+Events: 2492
+Valid photons: 363
+
+Processing file 30/100:
+03c5a56a-2c00-4309-97dc-bfe6bae594fe_skim.root
+Events: 2896
+Valid photons: 385
+
+Processing file 31/100:
+03c6f5cd-e68e-4df5-a841-ffd7f596a7bd_skim.root
+Events: 2654
+Valid photons: 339
+
+Processing file 32/100:
+03cae35a-fbdd-4c1c-8bf0-4d82208e68b1_skim.root
+Events: 2420
+Valid photons: 317
+
+Processing file 33/100:
+03d928cf-e1d5-439d-a660-bb6a0046621e_skim.root
+Events: 2309
+Valid photons: 319
+
+Processing file 34/100:
+03ee7cd3-b6f0-4d92-96a0-5246e2feb6d4_skim.root
+Events: 2255
+Valid photons: 325
+
+Processing file 35/100:
+04020d4e-6c8e-4156-99c3-d11dfedd1d2c_skim.root
+Events: 2217
+Valid photons: 286
+
+Processing file 36/100:
+0416fef0-2a29-4288-9fe5-8f8f51526eef_skim.root
+Events: 2440
+Valid photons: 318
+
+Processing file 37/100:
+042aeb25-5c8b-4b92-b0e8-894784ec1850_skim.root
+Events: 2332
+Valid photons: 297
+
+Processing file 38/100:
+04b19bd2-4ce0-4ceb-8697-19b6103bdf97_skim.root
+Events: 2263
+Valid photons: 305
+
+Processing file 39/100:
+04ded514-0e7f-4eef-812b-6627c50dec0a_skim.root
+Events: 2492
+Valid photons: 346
+
+Processing file 40/100:
+04e8b4d9-07d4-49c6-88f3-6aeb6435c0aa_skim.root
+Events: 2335
+Valid photons: 308
+
+Processing file 41/100:
+04ee346e-8088-4b70-bb42-913405105377_skim.root
+Events: 2260
+Valid photons: 293
+
+Processing file 42/100:
+04f63a83-93a0-4de5-9f26-3b6cad264856_skim.root
+Events: 2379
+Valid photons: 320
+
+Processing file 43/100:
+0509e1f3-983d-4f4e-aaa8-2779fc6cc754_skim.root
+Events: 2343
+Valid photons: 298
+
+Processing file 44/100:
+050e607d-6303-436a-804e-96c9c42812d8_skim.root
+Events: 2573
+Valid photons: 353
+
+Processing file 45/100:
+0537f0c7-b16c-434b-837e-1f443da737a5_skim.root
+Events: 1146
+Valid photons: 158
+
+Processing file 46/100:
+055245d9-22e4-4bc5-bee1-547d81291eb4_skim.root
+Events: 2232
+Valid photons: 308
+
+Processing file 47/100:
+05534527-3acf-4eae-90b6-0deb005da57d_skim.root
+Events: 2275
+Valid photons: 329
+
+Processing file 48/100:
+059d4265-0f97-4a4c-a1af-7b325341d693_skim.root
+Events: 2304
+Valid photons: 295
+
+Processing file 49/100:
+05c31631-a324-4fdc-ac67-14e778ea63c1_skim.root
+Events: 2303
+Valid photons: 308
+
+Processing file 50/100:
+05c86908-b7ae-4914-8827-6b2ed717b26c_skim.root
+Events: 2404
+Valid photons: 314
+
+Processing file 51/100:
+05ec1169-bd6a-48bd-b9eb-6489dc06138f_skim.root
+Events: 2450
+Valid photons: 291
+
+Processing file 52/100:
+05f70523-a089-4de6-8b2b-fbde7cb95cea_skim.root
+Events: 2649
+Valid photons: 353
+
+Processing file 53/100:
+06073b67-49f7-4dc4-b2ee-82cdd703b762_skim.root
+Events: 2399
+Valid photons: 294
+
+Processing file 54/100:
+0624664c-0ceb-41a3-922a-056e16e9a53c_skim.root
+Events: 2359
+Valid photons: 315
+
+Processing file 55/100:
+062b852e-d3fe-418f-a234-6c8ed2742c09_skim.root
+Events: 2386
+Valid photons: 344
+
+Processing file 56/100:
+06383f41-7751-4e27-bbe8-e284b9603719_skim.root
+Events: 2245
+Valid photons: 318
+
+Processing file 57/100:
+06411e4a-e22a-459e-ad4f-94833966bd74_skim.root
+Events: 2319
+Valid photons: 331
+
+Processing file 58/100:
+06509751-f86c-4f9e-94e7-fce5ec6ff671_skim.root
+Events: 2298
+Valid photons: 306
+
+Processing file 59/100:
+0669279d-142a-4de5-87f2-83b2286972d4_skim.root
+Events: 2393
+Valid photons: 305
+
+Processing file 60/100:
+066fd428-cde4-41a7-bde1-818374627ff3_skim.root
+Events: 2395
+Valid photons: 309
+
+Processing file 61/100:
+06892dc4-1c94-402b-a65a-414b844c66e5_skim.root
+Events: 2607
+Valid photons: 332
+
+Processing file 62/100:
+068e520f-3388-4bca-a71f-f1991f9baad3_skim.root
+Events: 702
+Valid photons: 109
+
+Processing file 63/100:
+0699bc91-1d25-47af-8858-4a5117465019_skim.root
+Events: 2484
+Valid photons: 349
+
+Processing file 64/100:
+06c557b0-0d41-4ab5-816e-c79866931244_skim.root
+Events: 2336
+Valid photons: 290
+
+Processing file 65/100:
+06caffb8-d767-48c6-aecb-699cab83c518_skim.root
+Events: 2488
+Valid photons: 354
+
+Processing file 66/100:
+06dc58ec-6672-42ab-8033-70da4e68effa_skim.root
+Events: 774
+Valid photons: 100
+
+Processing file 67/100:
+06f93176-33ba-4278-be1f-5ba6ac9180d9_skim.root
+Events: 2558
+Valid photons: 343
+
+Processing file 68/100:
+07038594-fbce-4a38-ab33-98eaf655c23c_skim.root
+Events: 2383
+Valid photons: 303
+
+Processing file 69/100:
+071d795d-ee2b-4aee-b1da-719908a7c8cc_skim.root
+Events: 2390
+Valid photons: 325
+
+Processing file 70/100:
+0728f8f1-b94c-4976-b571-725abb96f954_skim.root
+Events: 2261
+Valid photons: 286
+
+Processing file 71/100:
+075ac3be-b6b7-44f3-bdf1-6445c7757ccf_skim.root
+Events: 2355
+Valid photons: 315
+
+Processing file 72/100:
+075b62a0-92ef-4900-9670-ee1f210677f4_skim.root
+Events: 2482
+Valid photons: 332
+
+Processing file 73/100:
+077ce699-5985-4fbe-afb8-a4c4102d78c1_skim.root
+Events: 2217
+Valid photons: 310
+
+Processing file 74/100:
+0790a9df-395b-4ce0-b331-465f5a5c0744_skim.root
+Events: 2341
+Valid photons: 308
+
+Processing file 75/100:
+07dfc3f6-28b7-44a1-ad76-7fddea2f2fb1_skim.root
+Events: 2482
+Valid photons: 336
+
+Processing file 76/100:
+07e2a5e3-30c0-4fcc-90d6-9b7f156ad227_skim.root
+Events: 2503
+Valid photons: 326
+
+Processing file 77/100:
+07ec4c58-241c-4343-9782-79f5f546d423_skim.root
+Events: 2971
+Valid photons: 379
+
+Processing file 78/100:
+07eed43e-0f1c-4030-af6f-4ef602ef290e_skim.root
+Events: 2325
+Valid photons: 277
+
+Processing file 79/100:
+0802a25e-7d06-4097-88b0-9d5f7a7090d0_skim.root
+Events: 2388
+Valid photons: 316
+
+Processing file 80/100:
+0841a690-73c7-428c-9c31-d313b6b8a2e0_skim.root
+Events: 2314
+Valid photons: 331
+
+Processing file 81/100:
+08464687-3361-438d-93ec-52e0971f49e0_skim.root
+Events: 2431
+Valid photons: 343
+
+Processing file 82/100:
+087d720c-171f-46b2-88bd-9c7319f3f998_skim.root
+Events: 2656
+Valid photons: 348
+
+Processing file 83/100:
+08943920-675d-4492-b492-1355102e4f06_skim.root
+Events: 2601
+Valid photons: 320
+
+Processing file 84/100:
+089ffc7e-d746-478f-b2cf-1a6e3abf141b_skim.root
+Events: 388
+Valid photons: 44
+
+Processing file 85/100:
+08e49aea-fde5-4285-a7e2-e53128799fab_skim.root
+Events: 2288
+Valid photons: 288
+
+Processing file 86/100:
+08fe40be-0ef9-40a5-846d-9ff22cc60b9c_skim.root
+Events: 2387
+Valid photons: 286
+
+Processing file 87/100:
+09008b9b-83f5-49df-a6f4-0106b899097d_skim.root
+Events: 1756
+Valid photons: 241
+
+Processing file 88/100:
+0906afd0-8d89-4d2d-ab7e-c38c75f377c2_skim.root
+Events: 2282
+Valid photons: 324
+
+Processing file 89/100:
+09604fbd-ec1f-4fe0-8e81-e5fd5ea22578_skim.root
+Events: 2307
+Valid photons: 303
+
+Processing file 90/100:
+096c7ee4-ca35-4ba0-9bc3-0c2a4831b2ad_skim.root
+Events: 2429
+Valid photons: 303
+
+Processing file 91/100:
+09953473-c38a-4b4a-8fff-94f94e6f1739_skim.root
+Events: 9
+Valid photons: 3
+
+Processing file 92/100:
+09a42c5f-4984-4ade-946a-60060de35fca_skim.root
+Events: 2352
+Valid photons: 320
+
+Processing file 93/100:
+09b28d51-79b9-452a-98f2-238e424a11a2_skim.root
+Events: 2295
+Valid photons: 320
+
+Processing file 94/100:
+09b4d53e-1bc7-4d4d-82f2-d175324f0ac0_skim.root
+Events: 244
+Valid photons: 32
+
+Processing file 95/100:
+09b576bf-7e8e-4b0c-ba38-421c496adf7c_skim.root
+Events: 2375
+Valid photons: 315
+
+Processing file 96/100:
+09e5522e-0b34-4e7a-acdf-58841652525a_skim.root
+Events: 2391
+Valid photons: 331
+
+Processing file 97/100:
+0a26ade2-80ca-4cbe-9333-0593f214d6b4_skim.root
+Events: 2261
+Valid photons: 286
+
+Processing file 98/100:
+0a4f5bf3-f15b-47e2-8a0f-9ae11550824e_skim.root
+Events: 2385
+Valid photons: 335
+
+Processing file 99/100:
+0a59f649-76a8-4cab-9a14-d9d11164f3f2_skim.root
+Events: 2274
+Valid photons: 277
+
+Processing file 100/100:
+0a9628b5-568c-4b30-a9de-b89cb9174b91_skim.root
+Events: 2399
+Valid photons: 303
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 320756
+Total photons: 44791
+
+================================================================================
+Histogram: WtoE
+================================================================================
+Unweighted integral: 38409.0
+Underflow: 0.0
+Overflow: 6382.0
+Unweighted integral after overflow merge: 44791.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING SAMPLE: WtoMu
+****************************************************************************************************
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoMuNu0J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+0088508d-475a-4c3e-9c13-0a1a4872b774_skim.root
+Events: 290
+Valid photons: 49
+
+Processing file 2/100:
+00af508a-989f-4474-a4de-ffc500db41e8_skim.root
+Events: 474
+Valid photons: 41
+
+Processing file 3/100:
+01b1f2ad-0162-4c9f-97c4-6cad03decb3f_skim.root
+Events: 385
+Valid photons: 43
+
+Processing file 4/100:
+03f7afb5-dabb-4fd4-928b-30a389b7bab1_skim.root
+Events: 446
+Valid photons: 59
+
+Processing file 5/100:
+048bce19-74c3-40f1-a610-04569bbb8c06_skim.root
+Events: 407
+Valid photons: 56
+
+Processing file 6/100:
+049360b0-f03a-4262-9102-60b7c6e65374_skim.root
+Events: 476
+Valid photons: 54
+
+Processing file 7/100:
+049c41e8-84d0-44ce-9f4d-839e3be0728b_skim.root
+Events: 268
+Valid photons: 49
+
+Processing file 8/100:
+04e9b805-87c3-4118-972d-3cb7c9f8b3c5_skim.root
+Events: 471
+Valid photons: 70
+
+Processing file 9/100:
+04f04f35-ad07-47ea-b5d6-545695eeebab_skim.root
+Events: 359
+Valid photons: 48
+
+Processing file 10/100:
+06074bf2-da9f-42c3-abf1-a1e10af53657_skim.root
+Events: 260
+Valid photons: 29
+
+Processing file 11/100:
+0659589b-ba60-410e-91cf-d84c34f28da6_skim.root
+Events: 469
+Valid photons: 59
+
+Processing file 12/100:
+07ea453a-d5a2-48ed-9f2e-0fe869063e37_skim.root
+Events: 266
+Valid photons: 31
+
+Processing file 13/100:
+083fe130-1782-4f5a-8fc0-cf378c32c47c_skim.root
+Events: 280
+Valid photons: 47
+
+Processing file 14/100:
+09603ce0-d22a-4a74-aaa2-c6817e19ecc4_skim.root
+Events: 461
+Valid photons: 67
+
+Processing file 15/100:
+0ab4da94-d685-41cc-8a0a-5682eaf765e9_skim.root
+Events: 460
+Valid photons: 82
+
+Processing file 16/100:
+0ad894be-8e73-49c7-bf93-39a9673630e0_skim.root
+Events: 495
+Valid photons: 52
+
+Processing file 17/100:
+0b7df3ce-2211-4f49-a54b-ba1af9e93655_skim.root
+Events: 490
+Valid photons: 76
+
+Processing file 18/100:
+0c07e102-8f7e-4574-92f2-81fde8ddb7bb_skim.root
+Events: 451
+Valid photons: 54
+
+Processing file 19/100:
+0c18147c-632b-437e-9f32-da26e2feb654_skim.root
+Events: 82
+Valid photons: 12
+
+Processing file 20/100:
+0c518fb0-d816-4bea-98d3-82796143b60d_skim.root
+Events: 33
+Valid photons: 5
+
+Processing file 21/100:
+0c51beed-b3dc-4702-9fc0-7f26e2038202_skim.root
+Events: 116
+Valid photons: 26
+
+Processing file 22/100:
+0cee57b6-581e-4ffb-a670-dc6bbd2e413b_skim.root
+Events: 476
+Valid photons: 83
+
+Processing file 23/100:
+0d470987-881c-4e1a-9e77-2250937e94ca_skim.root
+Events: 471
+Valid photons: 65
+
+Processing file 24/100:
+0f7add01-6b19-4d3e-b3f1-f2785721bf0a_skim.root
+Events: 504
+Valid photons: 72
+
+Processing file 25/100:
+10301f9b-f869-434b-8e56-901bd01a8f62_skim.root
+Events: 417
+Valid photons: 51
+
+Processing file 26/100:
+119c6fa5-428c-4467-9e07-2322613adfc6_skim.root
+Events: 442
+Valid photons: 64
+
+Processing file 27/100:
+127dd346-5055-49fa-87d7-983c5cf494b3_skim.root
+Events: 453
+Valid photons: 65
+
+Processing file 28/100:
+146b8918-5436-45f6-b104-52ba464cd7a9_skim.root
+Events: 258
+Valid photons: 35
+
+Processing file 29/100:
+148c70bd-1e1f-4415-b335-72f0642e0e6f_skim.root
+Events: 276
+Valid photons: 42
+
+Processing file 30/100:
+1621a8d7-1466-4859-a8c0-cc5f45d48e2c_skim.root
+Events: 253
+Valid photons: 35
+
+Processing file 31/100:
+16c3849d-ca1e-41a9-852e-bc92e77ad3cf_skim.root
+Events: 145
+Valid photons: 21
+
+Processing file 32/100:
+176d7f30-44b1-4afa-a1c8-5d9c55b77f7c_skim.root
+Events: 344
+Valid photons: 39
+
+Processing file 33/100:
+177d5e78-0fc4-4ee5-b26a-5e69c5dc57bd_skim.root
+Events: 277
+Valid photons: 37
+
+Processing file 34/100:
+18121378-b8b6-4660-ab44-551367d9eac6_skim.root
+Events: 440
+Valid photons: 68
+
+Processing file 35/100:
+1825f50d-b210-4bef-b7b7-5459050ea2d8_skim.root
+Events: 301
+Valid photons: 39
+
+Processing file 36/100:
+18885207-b86f-4bdf-8951-b5002e186813_skim.root
+Events: 286
+Valid photons: 33
+
+Processing file 37/100:
+1ac85766-7220-4409-b89f-e71fbf7cbb72_skim.root
+Events: 449
+Valid photons: 52
+
+Processing file 38/100:
+1b53ec52-f3e9-4887-99de-1e151e4b7c8a_skim.root
+Events: 362
+Valid photons: 45
+
+Processing file 39/100:
+1cdd6b7c-cb86-4ebb-a1a7-c0c46f77474c_skim.root
+Events: 466
+Valid photons: 65
+
+Processing file 40/100:
+1d046903-d4d3-41d1-9761-72122ba13f90_skim.root
+Events: 489
+Valid photons: 65
+
+Processing file 41/100:
+1d330f1d-a789-48f9-90a5-850992d4683f_skim.root
+Events: 480
+Valid photons: 69
+
+Processing file 42/100:
+1d7d1311-6cf7-481c-b9bc-c4577a979b1b_skim.root
+Events: 465
+Valid photons: 72
+
+Processing file 43/100:
+1e3c0d7f-1e46-4cd1-b93a-ea72734f8a53_skim.root
+Events: 462
+Valid photons: 53
+
+Processing file 44/100:
+1ef2ceaa-8341-446e-8c22-b0eeecf7d555_skim.root
+Events: 245
+Valid photons: 28
+
+Processing file 45/100:
+1f8ec2a2-c65b-4e34-a3a3-045fdc8f444c_skim.root
+Events: 256
+Valid photons: 36
+
+Processing file 46/100:
+1ff5c777-5f10-4665-9015-49075a7b08ed_skim.root
+Events: 24
+Valid photons: 6
+
+Processing file 47/100:
+206e0d6d-a071-4a7f-8ab2-818d9d828a01_skim.root
+Events: 461
+Valid photons: 55
+
+Processing file 48/100:
+209de4ea-f482-4c19-ab79-19440d8b6a9e_skim.root
+Events: 304
+Valid photons: 45
+
+Processing file 49/100:
+20a0d264-863a-4f01-89d4-98bfec1fcb2c_skim.root
+Events: 491
+Valid photons: 60
+
+Processing file 50/100:
+20b52a9b-4c6e-4e90-9657-d3d278df4eb8_skim.root
+Events: 474
+Valid photons: 59
+
+Processing file 51/100:
+20e8c8c1-b3a1-4160-bf3c-6b0e87c39ac6_skim.root
+Events: 107
+Valid photons: 18
+
+Processing file 52/100:
+217cd394-e122-41c0-b037-f58e4853fc6f_skim.root
+Events: 418
+Valid photons: 50
+
+Processing file 53/100:
+227db8da-c7f6-4152-a974-ecf647d42fcb_skim.root
+Events: 456
+Valid photons: 47
+
+Processing file 54/100:
+236bba07-6cb1-4352-b990-1998fd2fef5e_skim.root
+Events: 297
+Valid photons: 37
+
+Processing file 55/100:
+26dfa1f2-fb1a-4961-b64d-4d66bc8c688f_skim.root
+Events: 428
+Valid photons: 55
+
+Processing file 56/100:
+27898c79-3520-4224-902e-0bafc60f1716_skim.root
+Events: 472
+Valid photons: 54
+
+Processing file 57/100:
+2983cf86-6e11-4047-92d0-ca29227ba65a_skim.root
+Events: 463
+Valid photons: 59
+
+Processing file 58/100:
+2a3d8b4f-bb76-4f75-ace7-d367b0823bf7_skim.root
+Events: 493
+Valid photons: 72
+
+Processing file 59/100:
+2a4f832d-5dd7-49b0-926e-35bdf2f6eae7_skim.root
+Events: 288
+Valid photons: 23
+
+Processing file 60/100:
+2a6dddfb-b764-433c-b830-1e72394fd29f_skim.root
+Events: 324
+Valid photons: 48
+
+Processing file 61/100:
+2aa410fc-ab18-4298-8df3-11d5e6d8eb05_skim.root
+Events: 315
+Valid photons: 32
+
+Processing file 62/100:
+2b07b50b-d432-4913-a431-74eef8fe9add_skim.root
+Events: 260
+Valid photons: 30
+
+Processing file 63/100:
+2b3ea014-4473-4b2c-a616-59356d63220e_skim.root
+Events: 509
+Valid photons: 62
+
+Processing file 64/100:
+2cd0a272-b646-4fc7-a547-70e0be9839c2_skim.root
+Events: 481
+Valid photons: 52
+
+Processing file 65/100:
+2d116fe6-d5d6-4468-b82a-fa6068eef98d_skim.root
+Events: 477
+Valid photons: 58
+
+Processing file 66/100:
+2d8fe086-02a7-4d40-b9c8-4a56c8d79202_skim.root
+Events: 345
+Valid photons: 41
+
+Processing file 67/100:
+2e014d7d-3e92-45b2-8065-d1f1841c40e6_skim.root
+Events: 486
+Valid photons: 79
+
+Processing file 68/100:
+2ea17dc9-5c3d-4a8e-ae7e-d3b42d782907_skim.root
+Events: 481
+Valid photons: 64
+
+Processing file 69/100:
+2f9dc8ed-5bd6-450e-8ed0-5a87de26c9b4_skim.root
+Events: 361
+Valid photons: 55
+
+Processing file 70/100:
+2fbaa2f4-74c0-416f-9829-d408e4688e78_skim.root
+Events: 225
+Valid photons: 21
+
+Processing file 71/100:
+2fdfa81e-1137-4964-b391-cbb81b3b97f9_skim.root
+Events: 488
+Valid photons: 57
+
+Processing file 72/100:
+302cb208-8627-4a3e-a63e-f2996376a20e_skim.root
+Events: 227
+Valid photons: 25
+
+Processing file 73/100:
+30c20902-1ec5-43b5-9717-4637fe664215_skim.root
+Events: 466
+Valid photons: 47
+
+Processing file 74/100:
+3197e439-13cf-4b64-b7a9-803bede40899_skim.root
+Events: 428
+Valid photons: 55
+
+Processing file 75/100:
+32826ce7-ee4a-48c8-a228-5b97c25a39af_skim.root
+Events: 480
+Valid photons: 75
+
+Processing file 76/100:
+329124fb-c4e1-48bb-a275-bd476ddd627b_skim.root
+Events: 448
+Valid photons: 64
+
+Processing file 77/100:
+32a0231a-23d2-4029-8159-b8006f5f4429_skim.root
+Events: 326
+Valid photons: 45
+
+Processing file 78/100:
+3342c123-3878-4a59-949a-3daf76ad50be_skim.root
+Events: 474
+Valid photons: 69
+
+Processing file 79/100:
+33599879-a622-4d38-8fd1-6c1a1e664175_skim.root
+Events: 129
+Valid photons: 15
+
+Processing file 80/100:
+34077177-9cd7-42a9-bb54-dc2f4e4e52b4_skim.root
+Events: 458
+Valid photons: 62
+
+Processing file 81/100:
+343aa558-d188-4e1d-9751-9ce60e1829e3_skim.root
+Events: 302
+Valid photons: 34
+
+Processing file 82/100:
+3484e1a3-09be-420c-ad3e-0b17b19a2316_skim.root
+Events: 503
+Valid photons: 56
+
+Processing file 83/100:
+34b646b1-ee3f-4510-a257-27c32185065c_skim.root
+Events: 113
+Valid photons: 16
+
+Processing file 84/100:
+34ed5083-763a-40c3-8a02-1c78030297db_skim.root
+Events: 492
+Valid photons: 67
+
+Processing file 85/100:
+36957f30-c6a4-40f8-9ef7-0afc7412aaee_skim.root
+Events: 460
+Valid photons: 65
+
+Processing file 86/100:
+37535aa7-cf39-47ae-886e-13d0e9f9ae97_skim.root
+Events: 238
+Valid photons: 28
+
+Processing file 87/100:
+3754ed33-a089-4e9e-beb2-4eda12cb31ea_skim.root
+Events: 496
+Valid photons: 80
+
+Processing file 88/100:
+37f272ad-a98b-4235-9ddf-b3a4e26e4a41_skim.root
+Events: 478
+Valid photons: 61
+
+Processing file 89/100:
+3809fd16-a9ba-47f7-8c86-690404ad7f58_skim.root
+Events: 237
+Valid photons: 30
+
+Processing file 90/100:
+39d9ee8d-a067-41fc-9f2d-9f10775d4037_skim.root
+Events: 460
+Valid photons: 64
+
+Processing file 91/100:
+3a7e7e72-3bca-4993-a75b-6e47d56e0909_skim.root
+Events: 272
+Valid photons: 27
+
+Processing file 92/100:
+3a9f2861-e6e7-4ad2-96e7-035ebf1d0858_skim.root
+Events: 258
+Valid photons: 36
+
+Processing file 93/100:
+3ab69c3a-805a-4ed7-85f6-e18edfed63fb_skim.root
+Events: 320
+Valid photons: 40
+
+Processing file 94/100:
+3affa0da-422a-497d-adf5-ca2161e12e47_skim.root
+Events: 369
+Valid photons: 38
+
+Processing file 95/100:
+3b1b6d7f-895f-4eb8-b569-be360d009e16_skim.root
+Events: 318
+Valid photons: 59
+
+Processing file 96/100:
+3b2277ac-99a7-4dc3-b7eb-49e7cba10f9a_skim.root
+Events: 408
+Valid photons: 53
+
+Processing file 97/100:
+3b7ea70e-a6ca-46fb-a0b2-90eec3c17ca2_skim.root
+Events: 490
+Valid photons: 69
+
+Processing file 98/100:
+3ba7ed65-72f4-470a-a9d4-d3dcd7566444_skim.root
+Events: 480
+Valid photons: 70
+
+Processing file 99/100:
+3bb6b60d-da92-4b7e-a37c-dc3ac2a48f25_skim.root
+Events: 463
+Valid photons: 72
+
+Processing file 100/100:
+3bc21c97-bc1e-45b1-8670-be12de5800a6_skim.root
+Events: 500
+Valid photons: 76
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoMuNu1J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+001ae690-5f3b-4b10-8c08-d77534b046c5_skim.root
+Events: 637
+Valid photons: 118
+
+Processing file 2/100:
+00339ae3-57af-492c-a36f-4b2ce2fda574_skim.root
+Events: 1219
+Valid photons: 208
+
+Processing file 3/100:
+006c12a1-b4d5-4ba9-827e-34af8f6c47eb_skim.root
+Events: 183
+Valid photons: 34
+
+Processing file 4/100:
+00cf1be2-6486-48bc-90e1-25f0a7d755b5_skim.root
+Events: 683
+Valid photons: 119
+
+Processing file 5/100:
+00d10fa9-7023-4555-a0ca-c5b42cce8ccc_skim.root
+Events: 640
+Valid photons: 109
+
+Processing file 6/100:
+00d3088a-a3fc-48d2-8718-38e48a524108_skim.root
+Events: 669
+Valid photons: 119
+
+Processing file 7/100:
+00f40653-7b0b-4c12-8b07-419009704902_skim.root
+Events: 739
+Valid photons: 106
+
+Processing file 8/100:
+0109931e-8602-4ea3-8c7c-a5082681b1c0_skim.root
+Events: 662
+Valid photons: 123
+
+Processing file 9/100:
+015e329a-c15e-4507-9b13-9a7c76b8215b_skim.root
+Events: 672
+Valid photons: 111
+
+Processing file 10/100:
+01916172-07ec-4d0e-9434-ecfc5a16c6f2_skim.root
+Events: 900
+Valid photons: 156
+
+Processing file 11/100:
+01b504e3-a4e7-4f75-a0b4-017c1fd80465_skim.root
+Events: 663
+Valid photons: 108
+
+Processing file 12/100:
+01d12f67-c147-43dc-a6a7-8eb63b40a1bd_skim.root
+Events: 982
+Valid photons: 165
+
+Processing file 13/100:
+020191c5-b124-49c8-b257-8332225f36e4_skim.root
+Events: 689
+Valid photons: 139
+
+Processing file 14/100:
+020c5fe2-d5b9-483d-8286-477685e18bf2_skim.root
+Events: 684
+Valid photons: 113
+
+Processing file 15/100:
+021d4574-2246-49c5-8a58-47692ee0d3c8_skim.root
+Events: 529
+Valid photons: 93
+
+Processing file 16/100:
+022ee3c8-7979-40b3-a693-0171e5c4c0d4_skim.root
+Events: 729
+Valid photons: 139
+
+Processing file 17/100:
+0255dfef-d037-42ed-8f79-87259b4b74ec_skim.root
+Events: 665
+Valid photons: 109
+
+Processing file 18/100:
+0265d732-8df2-4311-946a-4c6255b76488_skim.root
+Events: 685
+Valid photons: 125
+
+Processing file 19/100:
+0269fc30-707f-46ee-90dc-bc20a339a94c_skim.root
+Events: 671
+Valid photons: 112
+
+Processing file 20/100:
+029d7d4c-84fa-41a0-9a9d-eaf738fe9b0d_skim.root
+Events: 729
+Valid photons: 130
+
+Processing file 21/100:
+029dfbc5-6923-48dc-a1b6-cfadefdd2092_skim.root
+Events: 1228
+Valid photons: 211
+
+Processing file 22/100:
+03729217-a342-4c82-a828-30ca4796ec9d_skim.root
+Events: 648
+Valid photons: 125
+
+Processing file 23/100:
+0395d033-f58e-48f5-bfe1-cb76f244e773_skim.root
+Events: 655
+Valid photons: 104
+
+Processing file 24/100:
+03cd0cd9-5f82-4470-a37f-95256a66b32b_skim.root
+Events: 241
+Valid photons: 39
+
+Processing file 25/100:
+03f7126c-b31f-4157-b9b8-f15dfec8c5dc_skim.root
+Events: 1230
+Valid photons: 191
+
+Processing file 26/100:
+04236342-4e6b-4d03-b5f7-09293caa9dff_skim.root
+Events: 625
+Valid photons: 129
+
+Processing file 27/100:
+04318672-648e-4da4-877a-fa5193c35d64_skim.root
+Events: 651
+Valid photons: 128
+
+Processing file 28/100:
+0437f737-0e4d-4c6f-b822-8919b3884e96_skim.root
+Events: 241
+Valid photons: 41
+
+Processing file 29/100:
+0440d57d-c8fb-4dac-8c92-1305e58bf8dc_skim.root
+Events: 675
+Valid photons: 136
+
+Processing file 30/100:
+046ed9ad-ad2d-4644-818b-847f50bd5554_skim.root
+Events: 635
+Valid photons: 115
+
+Processing file 31/100:
+0485d905-1a04-4b5d-9013-108588523fbb_skim.root
+Events: 653
+Valid photons: 111
+
+Processing file 32/100:
+049d8d68-ad88-4184-bf20-4bd9c5672cdc_skim.root
+Events: 704
+Valid photons: 136
+
+Processing file 33/100:
+04b6382c-a163-4429-a4e5-f1892205b820_skim.root
+Events: 697
+Valid photons: 130
+
+Processing file 34/100:
+04baeb8a-5993-4f7b-9ca1-a4f0cf4294db_skim.root
+Events: 1253
+Valid photons: 202
+
+Processing file 35/100:
+04bfa440-5bed-4a26-a942-46a5460cf5d0_skim.root
+Events: 635
+Valid photons: 129
+
+Processing file 36/100:
+04d9077f-64c0-486a-b9f4-63961b9f28bc_skim.root
+Events: 762
+Valid photons: 124
+
+Processing file 37/100:
+04e5b262-be5a-4ac9-8329-4314348f7903_skim.root
+Events: 612
+Valid photons: 105
+
+Processing file 38/100:
+04ee8bf4-9295-4a57-bd9d-8d613c6d94bd_skim.root
+Events: 679
+Valid photons: 114
+
+Processing file 39/100:
+05027647-d633-461f-91d7-3efb2766bd9d_skim.root
+Events: 768
+Valid photons: 104
+
+Processing file 40/100:
+050f09de-3bb7-4477-a370-60b487ad0cec_skim.root
+Events: 843
+Valid photons: 135
+
+Processing file 41/100:
+05114b59-5832-4195-b7d5-9fe99c20761f_skim.root
+Events: 680
+Valid photons: 121
+
+Processing file 42/100:
+052c3014-1ac3-430e-89d3-78938964c5be_skim.root
+Events: 678
+Valid photons: 102
+
+Processing file 43/100:
+05364d8c-9064-40d1-8eff-46b562123ddd_skim.root
+Events: 641
+Valid photons: 111
+
+Processing file 44/100:
+0538ef7f-39f9-41ce-ade6-b40adde7556d_skim.root
+Events: 654
+Valid photons: 131
+
+Processing file 45/100:
+054953ec-2356-4a97-98b3-deae770f56eb_skim.root
+Events: 772
+Valid photons: 145
+
+Processing file 46/100:
+05bfe9c5-05b1-492f-9a5f-563fc1e3693e_skim.root
+Events: 802
+Valid photons: 164
+
+Processing file 47/100:
+05d3904c-297b-4252-9236-e0c37559599c_skim.root
+Events: 682
+Valid photons: 123
+
+Processing file 48/100:
+05ff0d7d-5901-4565-bb35-1d2c6b026e96_skim.root
+Events: 668
+Valid photons: 119
+
+Processing file 49/100:
+061991a5-d1d6-498f-858b-ba9f6da8aa8b_skim.root
+Events: 645
+Valid photons: 106
+
+Processing file 50/100:
+06226483-0649-4d64-baf5-f284689143a1_skim.root
+Events: 666
+Valid photons: 106
+
+Processing file 51/100:
+0624407a-fc0b-4d94-80a2-2233c40c011c_skim.root
+Events: 612
+Valid photons: 98
+
+Processing file 52/100:
+0627c75f-8f89-4b01-be25-252105b6c25c_skim.root
+Events: 686
+Valid photons: 115
+
+Processing file 53/100:
+064109a3-7082-4adf-8a57-ae5c3e21cfb0_skim.root
+Events: 660
+Valid photons: 125
+
+Processing file 54/100:
+0671b839-abf0-48d2-820e-831ee68eb4ba_skim.root
+Events: 629
+Valid photons: 105
+
+Processing file 55/100:
+06768a9d-4671-4af0-ba31-81678d0721a6_skim.root
+Events: 656
+Valid photons: 124
+
+Processing file 56/100:
+0678e554-0ae6-4bbd-bbbb-6a71e8d0f848_skim.root
+Events: 757
+Valid photons: 117
+
+Processing file 57/100:
+06918746-9792-49d1-b015-256841748daa_skim.root
+Events: 147
+Valid photons: 20
+
+Processing file 58/100:
+06d1ea2d-3a80-4fbb-b5f1-dbfb112f8010_skim.root
+Events: 760
+Valid photons: 130
+
+Processing file 59/100:
+06d56c22-3bbc-4750-8aa6-aa918e824193_skim.root
+Events: 663
+Valid photons: 107
+
+Processing file 60/100:
+06d6c202-4e88-4f7c-95ff-b19e751817a3_skim.root
+Events: 579
+Valid photons: 110
+
+Processing file 61/100:
+071c748e-5e2e-4eff-a033-6ff3064f5dbe_skim.root
+Events: 696
+Valid photons: 114
+
+Processing file 62/100:
+076a1750-3b90-4c90-b914-2ce0d56d0b8d_skim.root
+Events: 668
+Valid photons: 122
+
+Processing file 63/100:
+0773edcd-5684-4ca1-a1c8-6a117645a6f1_skim.root
+Events: 610
+Valid photons: 94
+
+Processing file 64/100:
+0787106e-8f83-42ae-96e8-d077f6bf379d_skim.root
+Events: 703
+Valid photons: 122
+
+Processing file 65/100:
+07c1ecdf-c9d3-4a2c-8c38-f2734c78c9bf_skim.root
+Events: 730
+Valid photons: 119
+
+Processing file 66/100:
+07dc387a-2a66-417d-a25e-717d91eaece1_skim.root
+Events: 676
+Valid photons: 110
+
+Processing file 67/100:
+07dd50dc-b5b5-405f-ba1f-a8ac2e7bf4ba_skim.root
+Events: 706
+Valid photons: 105
+
+Processing file 68/100:
+07e5abad-766d-409b-bcd2-d061011641df_skim.root
+Events: 626
+Valid photons: 94
+
+Processing file 69/100:
+07ef0335-e69c-4c86-958b-412572f72744_skim.root
+Events: 685
+Valid photons: 118
+
+Processing file 70/100:
+07fb6610-1040-4603-a725-63843fe5dab7_skim.root
+Events: 763
+Valid photons: 136
+
+Processing file 71/100:
+081b3923-eb90-46b3-8ca2-997c6fa84a4d_skim.root
+Events: 689
+Valid photons: 118
+
+Processing file 72/100:
+0835d9a4-bca3-4ae6-9838-ee0adde13b49_skim.root
+Events: 673
+Valid photons: 128
+
+Processing file 73/100:
+087a8682-7779-4571-b116-87fe92ce08b0_skim.root
+Events: 612
+Valid photons: 116
+
+Processing file 74/100:
+087ce279-7c39-4905-bfd4-38dc896f703e_skim.root
+Events: 655
+Valid photons: 108
+
+Processing file 75/100:
+089567f9-839e-4258-9a34-6e5bb8eb1c10_skim.root
+Events: 655
+Valid photons: 119
+
+Processing file 76/100:
+08c92c7d-b740-4a2c-bcb9-395ca99da7be_skim.root
+Events: 645
+Valid photons: 100
+
+Processing file 77/100:
+08cb9fa8-4adc-4954-b032-8565b570f431_skim.root
+Events: 663
+Valid photons: 116
+
+Processing file 78/100:
+08de84ca-4c15-4937-9fe3-a13768d436ef_skim.root
+Events: 676
+Valid photons: 100
+
+Processing file 79/100:
+08e48f98-e7ce-4b22-a225-0667c7e2edc5_skim.root
+Events: 622
+Valid photons: 114
+
+Processing file 80/100:
+08ff0a01-fb0f-4292-82cd-63690e012d50_skim.root
+Events: 765
+Valid photons: 142
+
+Processing file 81/100:
+0973a95c-6df7-4f28-91cf-8ba515b876ac_skim.root
+Events: 76
+Valid photons: 19
+
+Processing file 82/100:
+09a4ae47-8dbd-4f11-b799-7868ffd422cd_skim.root
+Events: 663
+Valid photons: 125
+
+Processing file 83/100:
+09f679ed-204b-41f0-8a40-739ea7ffc0d0_skim.root
+Events: 839
+Valid photons: 144
+
+Processing file 84/100:
+0a18fd31-471c-4267-bf6e-967076599165_skim.root
+Events: 633
+Valid photons: 122
+
+Processing file 85/100:
+0a1c9feb-5d55-4613-bbc7-2d5b555ba104_skim.root
+Events: 672
+Valid photons: 117
+
+Processing file 86/100:
+0a241a6b-6259-41f1-8c9f-2cd00230db91_skim.root
+Events: 12
+Valid photons: 1
+
+Processing file 87/100:
+0a249bb6-2b74-47a3-bfb8-c21fdaef0503_skim.root
+Events: 345
+Valid photons: 58
+
+Processing file 88/100:
+0a29fb43-89a9-4f73-98a2-726c580fde1b_skim.root
+Events: 23
+Valid photons: 5
+
+Processing file 89/100:
+0a32accf-ab62-4ce1-b433-661f2d561eb0_skim.root
+Events: 698
+Valid photons: 120
+
+Processing file 90/100:
+0a3827a0-decc-4506-be23-d0f025e533c2_skim.root
+Events: 723
+Valid photons: 125
+
+Processing file 91/100:
+0ad1377c-891c-4b30-9093-32b4dac7f456_skim.root
+Events: 819
+Valid photons: 149
+
+Processing file 92/100:
+0ae96b2a-e9e8-449f-9aab-392fafb8868a_skim.root
+Events: 703
+Valid photons: 151
+
+Processing file 93/100:
+0aecd2e0-b313-4ee1-8c44-4adc1dc4e520_skim.root
+Events: 650
+Valid photons: 108
+
+Processing file 94/100:
+0b08cd01-894b-4478-8d40-0e2e68c7bd84_skim.root
+Events: 752
+Valid photons: 117
+
+Processing file 95/100:
+0b0a9a52-4c05-4e9d-9c14-d7824f19c658_skim.root
+Events: 767
+Valid photons: 135
+
+Processing file 96/100:
+0b3ead01-0121-475b-8b95-c9d2d95b554b_skim.root
+Events: 628
+Valid photons: 97
+
+Processing file 97/100:
+0b4b33d6-1cb5-4820-b32b-2bcbf680e404_skim.root
+Events: 940
+Valid photons: 159
+
+Processing file 98/100:
+0bca6102-104d-4291-a79a-7e7441c20001_skim.root
+Events: 686
+Valid photons: 128
+
+Processing file 99/100:
+0c1cdd71-f536-48c3-933f-e155414727e7_skim.root
+Events: 1072
+Valid photons: 204
+
+Processing file 100/100:
+0cd9b684-8879-431f-abd3-0105610c1d51_skim.root
+Events: 639
+Valid photons: 99
+
+====================================================================================================
+Directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoMuNu2J_24SummerRun3
+Number of files selected: 100
+====================================================================================================
+
+Processing file 1/100:
+002636ed-1bf7-4ee9-851e-86f6d6d10240_skim.root
+Events: 2836
+Valid photons: 341
+
+Processing file 2/100:
+0040059c-71fc-46cc-9e76-077ec1e6b884_skim.root
+Events: 2657
+Valid photons: 288
+
+Processing file 3/100:
+006f01ba-739f-4fa2-b468-46ff181f78ff_skim.root
+Events: 2764
+Valid photons: 346
+
+Processing file 4/100:
+008261d4-ad73-461a-ae8d-54d3fc8b5562_skim.root
+Events: 3055
+Valid photons: 357
+
+Processing file 5/100:
+009e0584-88d7-4ebb-8771-192ddf241e78_skim.root
+Events: 2757
+Valid photons: 341
+
+Processing file 6/100:
+0108698e-1739-4221-b1e8-801e303874c4_skim.root
+Events: 2719
+Valid photons: 320
+
+Processing file 7/100:
+0123328f-2490-4a89-b2d9-0bdec0700e93_skim.root
+Events: 2625
+Valid photons: 310
+
+Processing file 8/100:
+0153645d-2c30-4951-bf3c-b60b2fcce3f0_skim.root
+Events: 3024
+Valid photons: 347
+
+Processing file 9/100:
+016a4fb4-fa94-4ccb-9eee-cf9168787d74_skim.root
+Events: 2601
+Valid photons: 292
+
+Processing file 10/100:
+01707337-2be8-49ca-adb9-81519a51b46c_skim.root
+Events: 2561
+Valid photons: 318
+
+Processing file 11/100:
+01a5f6dc-0a0c-4957-aca2-156993039024_skim.root
+Events: 2645
+Valid photons: 311
+
+Processing file 12/100:
+01ae12b1-ce20-4557-acd0-655f184797a3_skim.root
+Events: 3243
+Valid photons: 372
+
+Processing file 13/100:
+01ae5b2b-188a-4ef3-bafa-83e59a6a39ea_skim.root
+Events: 2922
+Valid photons: 345
+
+Processing file 14/100:
+01aee65d-a15f-4908-be63-6be4e3595eef_skim.root
+Events: 413
+Valid photons: 47
+
+Processing file 15/100:
+01d212c5-c9e0-422d-bbd4-6d9c86b0dbe1_skim.root
+Events: 3440
+Valid photons: 376
+
+Processing file 16/100:
+01d46c34-e5f7-4ea0-bb3b-7ac71a3edda5_skim.root
+Events: 2772
+Valid photons: 319
+
+Processing file 17/100:
+01f500a8-42e8-4e36-9315-f911c1819409_skim.root
+Events: 3065
+Valid photons: 349
+
+Processing file 18/100:
+0203d9e2-66ef-409b-b75d-c966cffe23c2_skim.root
+Events: 2615
+Valid photons: 319
+
+Processing file 19/100:
+021b2705-d93a-4767-b526-5e179c992f36_skim.root
+Events: 2631
+Valid photons: 366
+
+Processing file 20/100:
+021b3cf1-982a-417b-81ee-07941c8dcb3f_skim.root
+Events: 2675
+Valid photons: 328
+
+Processing file 21/100:
+0228dc00-f70c-4904-92cc-a3dc4cae0fb8_skim.root
+Events: 2856
+Valid photons: 344
+
+Processing file 22/100:
+0230339a-aaa9-45df-92c3-0a6d8d1b4653_skim.root
+Events: 2713
+Valid photons: 320
+
+Processing file 23/100:
+02726ae1-7429-4bc3-8e9e-e8915e4a1f75_skim.root
+Events: 2747
+Valid photons: 345
+
+Processing file 24/100:
+02a9f380-c1f1-476b-8f75-8bd797aa85e2_skim.root
+Events: 3068
+Valid photons: 370
+
+Processing file 25/100:
+02ad4e2c-20f0-4efe-80dd-6e9d500b5a5c_skim.root
+Events: 2867
+Valid photons: 328
+
+Processing file 26/100:
+02ebff5f-88df-4f7a-9aa0-cf028fcc86a2_skim.root
+Events: 2640
+Valid photons: 306
+
+Processing file 27/100:
+030681c9-c1d2-44df-8a5b-d0bfd8c4dc22_skim.root
+Events: 126
+Valid photons: 13
+
+Processing file 28/100:
+03277a1b-268e-4ed4-a38d-0af48ce7e846_skim.root
+Events: 2656
+Valid photons: 318
+
+Processing file 29/100:
+032799f2-4636-497c-9dba-ff2e6d300f87_skim.root
+Events: 2591
+Valid photons: 334
+
+Processing file 30/100:
+032ee5d6-d257-4d0d-850e-ec69bdc32a3b_skim.root
+Events: 2659
+Valid photons: 349
+
+Processing file 31/100:
+03569de9-8f52-4862-93fc-73e2a6325087_skim.root
+Events: 2784
+Valid photons: 313
+
+Processing file 32/100:
+036e0d34-1cc9-42b1-892b-a041173cb788_skim.root
+Events: 1656
+Valid photons: 216
+
+Processing file 33/100:
+039a498a-bfd8-44b7-b06a-5c7f037181da_skim.root
+Events: 4695
+Valid photons: 550
+
+Processing file 34/100:
+03da5b64-ce6e-4e84-9e7f-ebabec1b8a20_skim.root
+Events: 2977
+Valid photons: 357
+
+Processing file 35/100:
+03ea6c1c-861f-41ca-8614-e6cba0dab3e9_skim.root
+Events: 2737
+Valid photons: 310
+
+Processing file 36/100:
+0419b380-d82c-450c-b8b0-153dededb389_skim.root
+Events: 2645
+Valid photons: 339
+
+Processing file 37/100:
+046311df-7858-425b-bace-0538a6f88a1a_skim.root
+Events: 2619
+Valid photons: 314
+
+Processing file 38/100:
+0490b510-f0d6-46f2-9658-b44605aabb37_skim.root
+Events: 2878
+Valid photons: 338
+
+Processing file 39/100:
+049f1c54-a973-489a-9fe9-9728618ba6ac_skim.root
+Events: 3180
+Valid photons: 399
+
+Processing file 40/100:
+04d84ddb-2493-401c-97cb-bae498f98e4b_skim.root
+Events: 2712
+Valid photons: 326
+
+Processing file 41/100:
+04f5fa6e-108a-4be7-ba2c-83e61e7b6c84_skim.root
+Events: 2677
+Valid photons: 310
+
+Processing file 42/100:
+04f919c8-2201-4cf0-8527-9c3c98cbcccd_skim.root
+Events: 3012
+Valid photons: 370
+
+Processing file 43/100:
+0502bbdf-2b31-44cb-a2a9-4f30a4caaa6f_skim.root
+Events: 4181
+Valid photons: 464
+
+Processing file 44/100:
+051139f6-a93c-4c76-bd84-fbd875a5bb89_skim.root
+Events: 1160
+Valid photons: 160
+
+Processing file 45/100:
+0548b205-10f7-4663-a5a9-1dad5f13b8c4_skim.root
+Events: 2687
+Valid photons: 333
+
+Processing file 46/100:
+059c914c-cf2a-4aee-a4e2-e2a2532287a0_skim.root
+Events: 19
+Valid photons: 1
+
+Processing file 47/100:
+05f29d2d-bbb7-4ac1-b2e2-51c9ba0ca4d2_skim.root
+Events: 2659
+Valid photons: 310
+
+Processing file 48/100:
+060f0342-0f83-4275-b029-fc1e04e39de7_skim.root
+Events: 2774
+Valid photons: 354
+
+Processing file 49/100:
+0610de96-95da-407f-b1b5-21ee12888d1f_skim.root
+Events: 3828
+Valid photons: 447
+
+Processing file 50/100:
+0617e396-956c-4517-a00a-e8dc09e03529_skim.root
+Events: 2753
+Valid photons: 327
+
+Processing file 51/100:
+062d4a95-7207-487e-9a90-f229c71df701_skim.root
+Events: 5034
+Valid photons: 600
+
+Processing file 52/100:
+06450233-e522-4b77-9c6c-37fc6b86676c_skim.root
+Events: 2682
+Valid photons: 366
+
+Processing file 53/100:
+067a826a-c3f2-4811-b8f9-ba345f1355df_skim.root
+Events: 3504
+Valid photons: 389
+
+Processing file 54/100:
+069f9e6c-a004-4c04-bb64-4ce7de58b256_skim.root
+Events: 2418
+Valid photons: 290
+
+Processing file 55/100:
+06a73203-8d60-4d38-ac81-59cdb9c9144f_skim.root
+Events: 2672
+Valid photons: 328
+
+Processing file 56/100:
+06aa0105-cb6b-4771-ab70-fc3a7d58c906_skim.root
+Events: 2731
+Valid photons: 345
+
+Processing file 57/100:
+06d3a289-2f90-420c-b148-5df1563b7164_skim.root
+Events: 3410
+Valid photons: 411
+
+Processing file 58/100:
+06efe3bd-e064-4f1b-ab0e-20fc4c9e77ce_skim.root
+Events: 2718
+Valid photons: 320
+
+Processing file 59/100:
+0700a1ec-1c52-407f-9457-8a581c7f02d0_skim.root
+Events: 3340
+Valid photons: 416
+
+Processing file 60/100:
+07176781-35d6-4b82-9f51-6a338a134e1b_skim.root
+Events: 3644
+Valid photons: 432
+
+Processing file 61/100:
+071d8c2e-6db7-4ab4-a0e0-c40b72b9aa8d_skim.root
+Events: 2884
+Valid photons: 325
+
+Processing file 62/100:
+07260f70-1cb4-49f6-a2c8-4e524470599c_skim.root
+Events: 2751
+Valid photons: 328
+
+Processing file 63/100:
+07555394-7000-42d2-8a97-f7d8b28fe4fe_skim.root
+Events: 2687
+Valid photons: 315
+
+Processing file 64/100:
+0777e58c-e7dd-462e-96cd-a9d04b5c0f39_skim.root
+Events: 5235
+Valid photons: 595
+
+Processing file 65/100:
+079af7c4-0834-4fc2-8d81-77fa5dbafa7a_skim.root
+Events: 2653
+Valid photons: 338
+
+Processing file 66/100:
+079c0377-5439-4e16-8248-f08efbb1f168_skim.root
+Events: 2651
+Valid photons: 323
+
+Processing file 67/100:
+07d70801-69c6-4707-b92e-dcc16ab8c2ae_skim.root
+Events: 2660
+Valid photons: 316
+
+Processing file 68/100:
+07f63ce9-d9d0-41d3-8376-3a44cd297747_skim.root
+Events: 3026
+Valid photons: 343
+
+Processing file 69/100:
+080e3e21-bcbf-4e55-bda9-5c606c0b4fae_skim.root
+Events: 2660
+Valid photons: 344
+
+Processing file 70/100:
+081ad5f1-812e-49b4-9c5b-19c1cd5adbad_skim.root
+Events: 877
+Valid photons: 112
+
+Processing file 71/100:
+0847e6c2-1518-48c9-a37e-eefe5bb16757_skim.root
+Events: 2786
+Valid photons: 333
+
+Processing file 72/100:
+085330cb-68d6-4a56-be97-65a894e1fac0_skim.root
+Events: 2764
+Valid photons: 330
+
+Processing file 73/100:
+08589fcc-d877-491a-80af-6d82ced887c3_skim.root
+Events: 2700
+Valid photons: 311
+
+Processing file 74/100:
+088678a9-06c1-4327-a0f6-9425417222e5_skim.root
+Events: 2318
+Valid photons: 290
+
+Processing file 75/100:
+08b7092f-8868-4a1d-acbe-e117cd0fa8c6_skim.root
+Events: 4508
+Valid photons: 556
+
+Processing file 76/100:
+08c063ee-3232-4e09-bbf6-6b316936d916_skim.root
+Events: 2754
+Valid photons: 352
+
+Processing file 77/100:
+08cf6762-7ead-49a1-bfc8-a66138a995c5_skim.root
+Events: 2771
+Valid photons: 335
+
+Processing file 78/100:
+0919291a-ad3d-4941-aec5-b51a31ce6bc6_skim.root
+Events: 2680
+Valid photons: 308
+
+Processing file 79/100:
+093ea9b6-ef67-4176-b42d-8ee70b9408a5_skim.root
+Events: 3132
+Valid photons: 368
+
+Processing file 80/100:
+095a1815-cae3-4153-88cc-2273bb767db9_skim.root
+Events: 2748
+Valid photons: 328
+
+Processing file 81/100:
+0960d316-4740-4e8c-904e-687bb415304c_skim.root
+Events: 3080
+Valid photons: 342
+
+Processing file 82/100:
+096b786a-b99b-4c40-bc20-a003271d3dc2_skim.root
+Events: 10
+Valid photons: 0
+
+Processing file 83/100:
+0acac42f-539c-4d97-b512-741b3fe1893e_skim.root
+Events: 2819
+Valid photons: 317
+
+Processing file 84/100:
+0b08132b-d312-4efc-9ead-265b4ea73a52_skim.root
+Events: 2795
+Valid photons: 327
+
+Processing file 85/100:
+0b3aba4f-8ee9-49a5-9d0c-96b4ebff7153_skim.root
+Events: 2962
+Valid photons: 325
+
+Processing file 86/100:
+0b497bf6-b76c-4dd1-a1ef-214a2192dd0e_skim.root
+Events: 2773
+Valid photons: 320
+
+Processing file 87/100:
+0b50c5a5-5b63-4c46-a94c-a8da89d82a5c_skim.root
+Events: 2612
+Valid photons: 296
+
+Processing file 88/100:
+0b6aa2eb-e375-48f3-a01a-9bce485ee678_skim.root
+Events: 2159
+Valid photons: 234
+
+Processing file 89/100:
+0b7bd854-35de-412a-8da6-076d94364450_skim.root
+Events: 4418
+Valid photons: 511
+
+Processing file 90/100:
+0b801681-e519-4468-93e7-ea4e86e70975_skim.root
+Events: 3828
+Valid photons: 486
+
+Processing file 91/100:
+0bbb28d7-0184-4212-994e-2ebf30aef08a_skim.root
+Events: 2465
+Valid photons: 308
+
+Processing file 92/100:
+0bc2207e-a01b-4cc2-90ca-2b954d5a5a22_skim.root
+Events: 334
+Valid photons: 36
+
+Processing file 93/100:
+0bc7a175-6c49-4f8d-bf57-2e256dc6b4ed_skim.root
+Events: 964
+Valid photons: 109
+
+Processing file 94/100:
+0bdcf0f0-5847-4cad-98d7-cf3cb633c994_skim.root
+Events: 2692
+Valid photons: 311
+
+Processing file 95/100:
+0be62377-76a2-40cc-9c4b-cd5fa83b2a9a_skim.root
+Events: 2647
+Valid photons: 302
+
+Processing file 96/100:
+0bf9eafd-8bdf-41a5-a8e2-8f69658fd39c_skim.root
+Events: 2790
+Valid photons: 344
+
+Processing file 97/100:
+0c13cc0e-c795-4b1a-841b-8d123e15c35a_skim.root
+Events: 2718
+Valid photons: 343
+
+Processing file 98/100:
+0c3e7210-0e69-41df-beba-7dce09b65707_skim.root
+Events: 42
+Valid photons: 4
+
+Processing file 99/100:
+0c65eeb6-acdd-45ef-9faa-e8771b47a77a_skim.root
+Events: 3009
+Valid photons: 390
+
+Processing file 100/100:
+0c8afbb3-a93d-4d1e-b048-15c43da653a4_skim.root
+Events: 2694
+Valid photons: 345
+
+####################################################################################################
+FINAL SAMPLE SUMMARY
+####################################################################################################
+Total events: 375622
+Total photons: 49036
+
+================================================================================
+Histogram: WtoMu
+================================================================================
+Unweighted integral: 42075.0
+Underflow: 0.0
+Overflow: 6961.0
+Unweighted integral after overflow merge: 49036.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 0.0
+Weighted integral: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_normalized.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING DYGto2LG
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYGto2LG50_24SummerRun3_selected
+Number of Parquet files: 4
+Cross section [pb]: 126.7
+Sum genWeight: 64119121380.0
+====================================================================================================
+Normalization factor: 0.00021538504743621927
+
+[1/4] part_00000.parquet
+Selected events: 8685
+Selected photons: 14229
+Weighted yield: 703.61743
+
+[2/4] part_00001.parquet
+Selected events: 8365
+Selected photons: 13719
+Weighted yield: 695.93787
+
+[3/4] part_00002.parquet
+Selected events: 9001
+Selected photons: 14770
+Weighted yield: 733.63025
+
+[4/4] part_00003.parquet
+Selected events: 495
+Selected photons: 826
+Weighted yield: 39.65145
+
+Total weighted yield:
+2172.8372
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYGto2LG50_24SummerRun3_selected
+Total fake events:  5555
+
+================================================================================
+Histogram: DYGto2LG
+================================================================================
+Unweighted integral: 31723.0
+Underflow: 0.0
+Overflow: 11821.0
+Unweighted integral after overflow merge: 43544.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 2172.8369059562683
+Weighted integral: 2172.8369059562683
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYGto2LG_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING DYto2E
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYto2E50_24SummerRun3_selected
+Number of Parquet files: 6
+Cross section [pb]: 2124.08
+Sum genWeight: 8687530658000.0
+====================================================================================================
+Normalization factor: 2.6650233433915786e-05
+
+[1/6] part_00000.parquet
+Selected events: 250
+Selected photons: 275
+Weighted yield: 72.083046
+
+[2/6] part_00001.parquet
+Selected events: 304
+Selected photons: 339
+Weighted yield: 87.7843
+
+[3/6] part_00002.parquet
+Selected events: 264
+Selected photons: 295
+Weighted yield: 79.219986
+
+[4/6] part_00003.parquet
+Selected events: 294
+Selected photons: 340
+Weighted yield: 119.9005
+
+[5/6] part_00004.parquet
+Selected events: 304
+Selected photons: 320
+Weighted yield: 114.19097
+
+[6/6] part_00005.parquet
+Selected events: 290
+Selected photons: 308
+Weighted yield: 119.90051
+
+Total weighted yield:
+593.07935
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYto2E50_24SummerRun3_selected
+Total fake events:  527
+
+================================================================================
+Histogram: DYto2E
+================================================================================
+Unweighted integral: 1596.0
+Underflow: 0.0
+Overflow: 281.0
+Unweighted integral after overflow merge: 1877.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 593.0793476700783
+Weighted integral: 593.0793476700783
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2E_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING DYto2Mu
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYto2Mu50_24SummerRun3_selected
+Number of Parquet files: 6
+Cross section [pb]: 2124.08
+Sum genWeight: 8752983300000.0
+====================================================================================================
+Normalization factor: 2.6450949586525544e-05
+
+[1/6] part_00000.parquet
+Selected events: 245
+Selected photons: 380
+Weighted yield: 147.33821
+
+[2/6] part_00001.parquet
+Selected events: 249
+Selected photons: 386
+Weighted yield: 137.4212
+
+[3/6] part_00002.parquet
+Selected events: 273
+Selected photons: 414
+Weighted yield: 164.33878
+
+[4/6] part_00003.parquet
+Selected events: 222
+Selected photons: 335
+Weighted yield: 122.54572
+
+[5/6] part_00004.parquet
+Selected events: 251
+Selected photons: 389
+Weighted yield: 116.87886
+
+[6/6] part_00005.parquet
+Selected events: 225
+Selected photons: 347
+Weighted yield: 128.21257
+
+Total weighted yield:
+816.73535
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/DYto2Mu50_24SummerRun3_selected
+Total fake events:  501
+
+================================================================================
+Histogram: DYto2Mu
+================================================================================
+Unweighted integral: 1857.0
+Underflow: 0.0
+Overflow: 394.0
+Unweighted integral after overflow merge: 2251.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 816.735319018364
+Weighted integral: 816.735319018364
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/DYto2Mu_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING TTto2L2Nu
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTto2L2Nu_24SummerRun3_selected
+Number of Parquet files: 8
+Cross section [pb]: 98.04
+Sum genWeight: 37820106990.0
+====================================================================================================
+Normalization factor: 0.00028255763535585914
+
+[1/8] part_00000.parquet
+Selected events: 4810
+Selected photons: 5798
+Weighted yield: 131.72417
+
+[2/8] part_00001.parquet
+Selected events: 4662
+Selected photons: 5583
+Weighted yield: 127.39295
+
+[3/8] part_00002.parquet
+Selected events: 4506
+Selected photons: 5470
+Weighted yield: 124.57422
+
+[4/8] part_00003.parquet
+Selected events: 4365
+Selected photons: 5280
+Weighted yield: 120.174255
+
+[5/8] part_00004.parquet
+Selected events: 4374
+Selected photons: 5330
+Weighted yield: 121.09091
+
+[6/8] part_00005.parquet
+Selected events: 4619
+Selected photons: 5540
+Weighted yield: 125.99504
+
+[7/8] part_00006.parquet
+Selected events: 4687
+Selected photons: 5580
+Weighted yield: 126.45337
+
+[8/8] part_00007.parquet
+Selected events: 3615
+Selected photons: 4371
+Weighted yield: 99.66396
+
+Total weighted yield:
+977.069
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTto2L2Nu_24SummerRun3_selected
+Total fake events:  20611
+
+================================================================================
+Histogram: TTto2L2Nu
+================================================================================
+Unweighted integral: 38761.0
+Underflow: 0.0
+Overflow: 4191.0
+Unweighted integral after overflow merge: 42952.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 977.0689061656594
+Weighted integral: 977.0689061656594
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTto2L2Nu_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING TTtoLNu2Q
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTtoLNu2Q_24SummerRun3_selected2
+Number of Parquet files: 79
+Cross section [pb]: 405.87
+Sum genWeight: 161967437200.0
+====================================================================================================
+Normalization factor: 0.00027314027291406695
+
+[1/79] part_00000.parquet
+Selected events: 141
+Selected photons: 174
+Weighted yield: 16.018631
+
+[2/79] part_00001.parquet
+Selected events: 148
+Selected photons: 178
+Weighted yield: 16.386877
+
+[3/79] part_00002.parquet
+Selected events: 142
+Selected photons: 162
+Weighted yield: 14.913898
+
+[4/79] part_00003.parquet
+Selected events: 120
+Selected photons: 157
+Weighted yield: 14.26947
+
+[5/79] part_00004.parquet
+Selected events: 139
+Selected photons: 163
+Weighted yield: 15.0059595
+
+[6/79] part_00005.parquet
+Selected events: 113
+Selected photons: 130
+Weighted yield: 11.967943
+
+[7/79] part_00006.parquet
+Selected events: 133
+Selected photons: 173
+Weighted yield: 15.926571
+
+[8/79] part_00007.parquet
+Selected events: 122
+Selected photons: 143
+Weighted yield: 13.164738
+
+[9/79] part_00008.parquet
+Selected events: 127
+Selected photons: 150
+Weighted yield: 13.809165
+
+[10/79] part_00009.parquet
+Selected events: 138
+Selected photons: 169
+Weighted yield: 15.558327
+
+[11/79] part_00010.parquet
+Selected events: 114
+Selected photons: 141
+Weighted yield: 12.980616
+
+[12/79] part_00011.parquet
+Selected events: 128
+Selected photons: 149
+Weighted yield: 13.532982
+
+[13/79] part_00012.parquet
+Selected events: 107
+Selected photons: 136
+Weighted yield: 12.520309
+
+[14/79] part_00013.parquet
+Selected events: 122
+Selected photons: 149
+Weighted yield: 13.717104
+
+[15/79] part_00014.parquet
+Selected events: 127
+Selected photons: 155
+Weighted yield: 14.26947
+
+[16/79] part_00015.parquet
+Selected events: 157
+Selected photons: 210
+Weighted yield: 19.33283
+
+[17/79] part_00016.parquet
+Selected events: 138
+Selected photons: 171
+Weighted yield: 15.742449
+
+[18/79] part_00017.parquet
+Selected events: 140
+Selected photons: 182
+Weighted yield: 16.755121
+
+[19/79] part_00018.parquet
+Selected events: 136
+Selected photons: 160
+Weighted yield: 14.729776
+
+[20/79] part_00019.parquet
+Selected events: 147
+Selected photons: 178
+Weighted yield: 16.386877
+
+[21/79] part_00020.parquet
+Selected events: 123
+Selected photons: 135
+Weighted yield: 12.428248
+
+[22/79] part_00021.parquet
+Selected events: 106
+Selected photons: 130
+Weighted yield: 11.967943
+
+[23/79] part_00022.parquet
+Selected events: 114
+Selected photons: 150
+Weighted yield: 13.809165
+
+[24/79] part_00023.parquet
+Selected events: 126
+Selected photons: 158
+Weighted yield: 14.545654
+
+[25/79] part_00024.parquet
+Selected events: 126
+Selected photons: 170
+Weighted yield: 15.282144
+
+[26/79] part_00025.parquet
+Selected events: 123
+Selected photons: 141
+Weighted yield: 12.980616
+
+[27/79] part_00026.parquet
+Selected events: 116
+Selected photons: 140
+Weighted yield: 12.888554
+
+[28/79] part_00027.parquet
+Selected events: 114
+Selected photons: 141
+Weighted yield: 12.980616
+
+[29/79] part_00028.parquet
+Selected events: 125
+Selected photons: 154
+Weighted yield: 14.17741
+
+[30/79] part_00029.parquet
+Selected events: 128
+Selected photons: 160
+Weighted yield: 14.729776
+
+[31/79] part_00030.parquet
+Selected events: 151
+Selected photons: 179
+Weighted yield: 16.47894
+
+[32/79] part_00031.parquet
+Selected events: 135
+Selected photons: 161
+Weighted yield: 14.821837
+
+[33/79] part_00032.parquet
+Selected events: 110
+Selected photons: 148
+Weighted yield: 13.625043
+
+[34/79] part_00033.parquet
+Selected events: 137
+Selected photons: 162
+Weighted yield: 14.545654
+
+[35/79] part_00034.parquet
+Selected events: 127
+Selected photons: 146
+Weighted yield: 13.072676
+
+[36/79] part_00035.parquet
+Selected events: 133
+Selected photons: 156
+Weighted yield: 14.361532
+
+[37/79] part_00036.parquet
+Selected events: 126
+Selected photons: 148
+Weighted yield: 13.625043
+
+[38/79] part_00037.parquet
+Selected events: 142
+Selected photons: 180
+Weighted yield: 15.650388
+
+[39/79] part_00038.parquet
+Selected events: 133
+Selected photons: 157
+Weighted yield: 14.453592
+
+[40/79] part_00039.parquet
+Selected events: 129
+Selected photons: 160
+Weighted yield: 14.361532
+
+[41/79] part_00040.parquet
+Selected events: 129
+Selected photons: 158
+Weighted yield: 14.545654
+
+[42/79] part_00041.parquet
+Selected events: 157
+Selected photons: 203
+Weighted yield: 18.50428
+
+[43/79] part_00042.parquet
+Selected events: 111
+Selected photons: 134
+Weighted yield: 12.336187
+
+[44/79] part_00043.parquet
+Selected events: 152
+Selected photons: 208
+Weighted yield: 18.780464
+
+[45/79] part_00044.parquet
+Selected events: 141
+Selected photons: 170
+Weighted yield: 15.650388
+
+[46/79] part_00045.parquet
+Selected events: 127
+Selected photons: 159
+Weighted yield: 14.637714
+
+[47/79] part_00046.parquet
+Selected events: 142
+Selected photons: 175
+Weighted yield: 16.110693
+
+[48/79] part_00047.parquet
+Selected events: 167
+Selected photons: 200
+Weighted yield: 18.043976
+
+[49/79] part_00048.parquet
+Selected events: 130
+Selected photons: 146
+Weighted yield: 13.440921
+
+[50/79] part_00049.parquet
+Selected events: 119
+Selected photons: 156
+Weighted yield: 14.361532
+
+[51/79] part_00050.parquet
+Selected events: 152
+Selected photons: 191
+Weighted yield: 17.583672
+
+[52/79] part_00051.parquet
+Selected events: 131
+Selected photons: 154
+Weighted yield: 14.17741
+
+[53/79] part_00052.parquet
+Selected events: 125
+Selected photons: 161
+Weighted yield: 13.901227
+
+[54/79] part_00053.parquet
+Selected events: 139
+Selected photons: 164
+Weighted yield: 15.098021
+
+[55/79] part_00054.parquet
+Selected events: 176
+Selected photons: 216
+Weighted yield: 19.701075
+
+[56/79] part_00055.parquet
+Selected events: 145
+Selected photons: 170
+Weighted yield: 15.650388
+
+[57/79] part_00056.parquet
+Selected events: 121
+Selected photons: 147
+Weighted yield: 13.532982
+
+[58/79] part_00057.parquet
+Selected events: 133
+Selected photons: 167
+Weighted yield: 15.374204
+
+[59/79] part_00058.parquet
+Selected events: 138
+Selected photons: 175
+Weighted yield: 16.110693
+
+[60/79] part_00059.parquet
+Selected events: 167
+Selected photons: 183
+Weighted yield: 16.478937
+
+[61/79] part_00060.parquet
+Selected events: 114
+Selected photons: 145
+Weighted yield: 12.980616
+
+[62/79] part_00061.parquet
+Selected events: 133
+Selected photons: 156
+Weighted yield: 14.361532
+
+[63/79] part_00062.parquet
+Selected events: 128
+Selected photons: 156
+Weighted yield: 14.17741
+
+[64/79] part_00063.parquet
+Selected events: 157
+Selected photons: 179
+Weighted yield: 16.47894
+
+[65/79] part_00064.parquet
+Selected events: 162
+Selected photons: 209
+Weighted yield: 18.872524
+
+[66/79] part_00065.parquet
+Selected events: 138
+Selected photons: 159
+Weighted yield: 14.637714
+
+[67/79] part_00066.parquet
+Selected events: 127
+Selected photons: 158
+Weighted yield: 14.545654
+
+[68/79] part_00067.parquet
+Selected events: 122
+Selected photons: 144
+Weighted yield: 13.256799
+
+[69/79] part_00068.parquet
+Selected events: 118
+Selected photons: 149
+Weighted yield: 13.717104
+
+[70/79] part_00069.parquet
+Selected events: 143
+Selected photons: 165
+Weighted yield: 15.0059595
+
+[71/79] part_00070.parquet
+Selected events: 132
+Selected photons: 162
+Weighted yield: 14.729776
+
+[72/79] part_00071.parquet
+Selected events: 122
+Selected photons: 133
+Weighted yield: 11.875882
+
+[73/79] part_00072.parquet
+Selected events: 145
+Selected photons: 174
+Weighted yield: 16.018631
+
+[74/79] part_00073.parquet
+Selected events: 107
+Selected photons: 133
+Weighted yield: 12.244126
+
+[75/79] part_00074.parquet
+Selected events: 99
+Selected photons: 110
+Weighted yield: 10.12672
+
+[76/79] part_00075.parquet
+Selected events: 145
+Selected photons: 177
+Weighted yield: 16.294815
+
+[77/79] part_00076.parquet
+Selected events: 131
+Selected photons: 167
+Weighted yield: 14.821836
+
+[78/79] part_00077.parquet
+Selected events: 111
+Selected photons: 136
+Weighted yield: 12.520309
+
+[79/79] part_00078.parquet
+Selected events: 98
+Selected photons: 121
+Weighted yield: 10.771148
+
+Total weighted yield:
+1159.2333
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTtoLNu2Q_24SummerRun3_selected2
+Total fake events:  8258
+
+================================================================================
+Histogram: TTtoLNu2Q
+================================================================================
+Unweighted integral: 11096.0
+Underflow: 0.0
+Overflow: 1580.0
+Unweighted integral after overflow merge: 12676.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 1159.233401298523
+Weighted integral: 1159.233401298523
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTtoLNu2Q_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING TTG1Jets
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTG1Jets_24SummerRun3_selected
+Number of Parquet files: 1
+Cross section [pb]: 4.634
+Sum genWeight: 164785934.4
+====================================================================================================
+Normalization factor: 0.003065225207716515
+
+[1/1] part_00000.parquet
+Selected events: 28317
+Selected photons: 47692
+Weighted yield: 1302.4943
+
+Total weighted yield:
+1302.4943
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTG1Jets_24SummerRun3_selected
+Total fake events:  19787
+
+================================================================================
+Histogram: TTG1Jets
+================================================================================
+Unweighted integral: 33835.0
+Underflow: 0.0
+Overflow: 13857.0
+Unweighted integral after overflow merge: 47692.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 1302.4942606687546
+Weighted integral: 1302.4942606687546
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/TTG1Jets_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+
+****************************************************************************************************
+PROCESSING WGtoLNuG
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WGtoLNuG_24SummerRun3_selected
+Number of Parquet files: 5
+Cross section [pb]: 671.5
+Sum genWeight: 562746909900.0
+====================================================================================================
+Normalization factor: 0.0001300646857625686
+
+[1/5] part_00000.parquet
+Selected events: 410
+Selected photons: 733
+Weighted yield: 115.779305
+
+[2/5] part_00001.parquet
+Selected events: 441
+Selected photons: 793
+Weighted yield: 126.94461
+
+[3/5] part_00002.parquet
+Selected events: 416
+Selected photons: 727
+Weighted yield: 108.49759
+
+[4/5] part_00003.parquet
+Selected events: 454
+Selected photons: 787
+Weighted yield: 124.517365
+
+[5/5] part_00004.parquet
+Selected events: 342
+Selected photons: 607
+Weighted yield: 97.33228
+
+Total weighted yield:
+573.07117
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WGtoLNuG_24SummerRun3_selected
+Total fake events:  949
+
+================================================================================
+Histogram: WGtoLNuG
+================================================================================
+Unweighted integral: 2371.0
+Underflow: 0.0
+Overflow: 1276.0
+Unweighted integral after overflow merge: 3647.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 573.0711210519075
+Weighted integral: 573.0711210519075
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WGtoLNuG_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+****************************************************************************************************
+PROCESSING WtoE 0J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu0J_24SummerRun3_selected
+Number of Parquet files: 1
+Cross section [pb]: 55850
+Sum genWeight: 29859358910000.0
+====================================================================================================
+Normalization factor: 0.00020387745156716093
+
+[1/1] part_00000.parquet
+Selected events: 8
+Selected photons: 6
+Weighted yield: 95.70071
+
+Total weighted yield:
+95.70071
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu0J_24SummerRun3_selected
+Total fake events:  0
+
+
+****************************************************************************************************
+PROCESSING WtoE 1J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu1J_24SummerRun3_selected
+Number of Parquet files: 5
+Cross section [pb]: 9177
+Sum genWeight: 18160215100000.0
+====================================================================================================
+Normalization factor: 5.508156123106714e-05
+
+[1/5] part_00000.parquet
+Selected events: 6
+Selected photons: 9
+Weighted yield: 16.29369
+
+[2/5] part_00001.parquet
+Selected events: 6
+Selected photons: 8
+Weighted yield: 32.58738
+
+[3/5] part_00002.parquet
+Selected events: 5
+Selected photons: 7
+Weighted yield: 38.018604
+
+[4/5] part_00003.parquet
+Selected events: 7
+Selected photons: 9
+Weighted yield: 5.4312296
+
+[5/5] part_00004.parquet
+Selected events: 14
+Selected photons: 19
+Weighted yield: 59.74353
+
+Total weighted yield:
+152.07443
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu1J_24SummerRun3_selected
+Total fake events:  18
+
+
+****************************************************************************************************
+PROCESSING WtoE 2J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu2J_24SummerRun3_selected
+Number of Parquet files: 4
+Cross section [pb]: 3474
+Sum genWeight: 7039157502000.0
+====================================================================================================
+Normalization factor: 5.379422180742675e-05
+
+[1/4] part_00000.parquet
+Selected events: 41
+Selected photons: 61
+Weighted yield: 130.64577
+
+[2/4] part_00001.parquet
+Selected events: 35
+Selected photons: 47
+Weighted yield: 76.58546
+
+[3/4] part_00002.parquet
+Selected events: 34
+Selected photons: 48
+Weighted yield: 36.04021
+
+[4/4] part_00003.parquet
+Selected events: 32
+Selected photons: 45
+Weighted yield: 67.57539
+
+Total weighted yield:
+310.8468
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoENu2J_24SummerRun3_selected
+Total fake events:  95
+
+================================================================================
+Histogram: WtoE
+================================================================================
+Unweighted integral: 195.0
+Underflow: 0.0
+Overflow: 64.0
+Unweighted integral after overflow merge: 259.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 457.77204036712646
+Weighted integral: 457.77204036712646
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoE_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/
+
+
+****************************************************************************************************
+PROCESSING WtoMu 0J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu0J_24SummerRun3_selected
+Number of Parquet files: 1
+Cross section [pb]: 55920
+Sum genWeight: 28968171490000.0
+====================================================================================================
+Normalization factor: 0.0002104130045662057
+
+[1/1] part_00000.parquet
+Selected events: 6
+Selected photons: 3
+Weighted yield: 16.46142
+
+Total weighted yield:
+16.46142
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu0J_24SummerRun3_selected
+Total fake events:  0
+
+
+****************************************************************************************************
+PROCESSING WtoMu 1J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu1J_24SummerRun3_selected
+Number of Parquet files: 4
+Cross section [pb]: 9202
+Sum genWeight: 15875265900000.0
+====================================================================================================
+Normalization factor: 6.318117796061608e-05
+
+[1/4] part_00000.parquet
+Selected events: 13
+Selected photons: 12
+Weighted yield: 24.919518
+
+[2/4] part_00001.parquet
+Selected events: 13
+Selected photons: 16
+Weighted yield: 62.298794
+
+[3/4] part_00002.parquet
+Selected events: 7
+Selected photons: 9
+Weighted yield: 6.2298794
+
+[4/4] part_00003.parquet
+Selected events: 12
+Selected photons: 16
+Weighted yield: 24.919518
+
+Total weighted yield:
+118.367714
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu1J_24SummerRun3_selected
+Total fake events:  16
+
+
+****************************************************************************************************
+PROCESSING WtoMu 2J
+****************************************************************************************************
+
+====================================================================================================
+Selected directory:
+/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu2J_24SummerRun3_selected
+Number of Parquet files: 5
+Cross section [pb]: 3490
+Sum genWeight: 7709247872000.0
+====================================================================================================
+Normalization factor: 4.9344632098502074e-05
+
+[1/5] part_00000.parquet
+Selected events: 63
+Selected photons: 86
+Weighted yield: 82.64787
+
+[2/5] part_00001.parquet
+Selected events: 43
+Selected photons: 58
+Weighted yield: 99.17744
+
+[3/5] part_00002.parquet
+Selected events: 55
+Selected photons: 76
+Weighted yield: 132.2366
+
+[4/5] part_00003.parquet
+Selected events: 49
+Selected photons: 59
+Weighted yield: 152.89856
+
+[5/5] part_00004.parquet
+Selected events: 2
+Selected photons: 2
+Weighted yield: 8.264787
+
+Total weighted yield:
+475.22525
+Sample:  /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/WtoMuNu2J_24SummerRun3_selected
+Total fake events:  146
+
+================================================================================
+Histogram: WtoMu
+================================================================================
+Unweighted integral: 254.0
+Underflow: 0.0
+Overflow: 83.0
+Unweighted integral after overflow merge: 337.0
+Weighted integral before overflow merge: 0.0
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+Weighted integral after overflow merge: 436.2379541397095
+Weighted integral: 436.2379541397095
+Weighted underflow: 0.0
+Weighted overflow: 0.0
+
+ROOT file saved to:
+/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/ROOT/photon_min_dr_test.root
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_weighted.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_normalized.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_normalized.pdf has been created
+Info in <TCanvas::Print>: png file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_weighted.png has been created
+Info in <TCanvas::Print>: pdf file /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/PNG/WtoMu_npho_weighted.pdf has been created
+PNG/PDF plots saved in: /eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/final/

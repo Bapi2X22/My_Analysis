@@ -36,5 +36,5 @@ merged = ak.concatenate(normed)
 
 print("Final sum =", ak.sum(merged["evt_wgt"]))
 
-with uproot.recreate("merged_signal.root") as fout:
+with uproot.recreate("merged_signal_withMET.root") as fout:
     fout["DiphotonTree"] = merged
