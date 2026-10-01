@@ -13,8 +13,8 @@ ROOT.gROOT.ForceStyle()
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check/After_BDT/"
 
-Plot_dir_ele = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/Cutflow/Overlap_removed_btag/ele/"
-Plot_dir_mu = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/Cutflow/Overlap_removed_btag/mu/"
+Plot_dir_ele = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/Cutflow/Overlap_removed_btag/TTbar_treatment/ele/"
+Plot_dir_mu = "/eos/user/b/bbapi/www/Analysis_plots/DATA_MC_validation/Cutflow/Overlap_removed_btag/TTbar_treatment/mu/"
 
 # Plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/Before_BDT/"
 # Plot_dir_BDT = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_without_DY/After_BDT/"
@@ -179,6 +179,43 @@ def draw_statbox_manual_small(hist, x1, y1, x2, y2, color, label=None):
 
     stats.AddText(f"Entries = {int(hist.GetEntries())}")
     stats.AddText(f"Integral = {integral:.2f}")
+
+    stats.Draw()
+
+    return stats
+
+def draw_statbox_combined(hist_list, x1, y1, x2, y2, color, label=None):
+
+    stats = ROOT.TPaveText(x1, y1, x2, y2, "NDC")
+    stats.SetFillColor(0)
+    stats.SetBorderSize(1)
+    stats.SetTextColor(color)
+    stats.SetTextFont(42)
+    stats.SetTextSize(0.02)
+
+    nbins = hist.GetNbinsX()
+
+    # underflow = hist.GetBinContent(0)
+    # overflow  = hist.GetBinContent(nbins + 1)
+
+    # integral = hist.Integral(1, nbins)
+
+    underflow = 0
+    overflow = 0
+    Integral = 0
+    Entries = 0
+
+    for h in hist_list:
+        underflow += h.GetBinContent(0)
+        overflow += h.GetBinContent(nbins + 1)
+        Integral += h.Integral(1, nbins)
+        Entries += h.GetEntries()
+
+    if label is not None:
+        stats.AddText(label)
+
+    stats.AddText(f"Entries = {int(Entries)}")
+    stats.AddText(f"Integral = {Integral:.2f}")
 
     stats.Draw()
 
@@ -712,6 +749,12 @@ lumi = 39.05  # fb^-1
 # Cross sections in pb
 xsecs = {
     "WGtoLNuG": 671.5,
+    "WtoENu0J": 55850,
+    "WtoENu1J": 9177,
+    "WtoENu2J": 3474,
+    "WtoMuNu0J": 55920,
+    "WtoMuNu1J": 9202,
+    "WtoMuNu2J": 3490,
     "TTG1Jets": 4.634,
     "TTto2L2Nu": 98.04,
     "TTtoLNu2Q": 405.87,
@@ -773,7 +816,7 @@ plot_config = {
 bkg_base = (
     "/eos/user/b/bbapi/"
     "My_Analysis/2024_efficiency_study/"
-    "Backgrounds/NTuples_2024_BKG_btag/merged"
+    "Backgrounds/NTuples_2024_BKG_overlap_removal_final/merged"
 )
 
 data_base = (
@@ -806,7 +849,13 @@ background_colors = {
     "TTto2L2Nu": ROOT.kBlue + 1,
     "TTtoLNu2Q": ROOT.kGreen + 2,
     "DYGto2LG4": ROOT.kViolet + 1,
-    "DYGto2LG50": ROOT.kGray + 1
+    "DYGto2LG50": ROOT.kViolet + 1,
+    "WtoENu0J": ROOT.kGray + 1,
+    "WtoENu1J": ROOT.kGray + 1,
+    "WtoENu2J": ROOT.kGray + 1,
+    "WtoMuNu0J": ROOT.kPink + 1,
+    "WtoMuNu1J": ROOT.kPink + 1,
+    "WtoMuNu2J": ROOT.kPink + 1
 }
 
 
@@ -1232,6 +1281,12 @@ def draw_plot(
 
     box_top = y_top - 2 * height - gap
 
+    h_WtoE = []
+    h_WtoMu = []
+    h_DYG = []
+    h_DYE = []
+    h_DYMu = []
+
     for i in range(hists.GetSize()):
 
         h = hists.At(i)
@@ -1240,21 +1295,40 @@ def draw_plot(
         suffix = f"_{channel}_{obs_name}_{category}"
         label = h.GetName().replace(suffix, "")
 
+        if label in ["WtoENu0J", "WtoENu1J", "WtoENu2J"]:
+            h_WtoE.append(h)
+        if label in ["WtoMuNu0J", "WtoMuNu1J", "WtoMuNu2J"]:
+            h_WtoMu.append(h)
+        if label in ["DYto2E10", "DYto2E50"]:
+            h_DYE.append(h)
+        if label in ["DYto2Mu10", "DYto2Mu50"]:
+            h_DYMu.append(h)
+        if label in ["DYGto2LG4", "DYGto2LG50"]:
+            h_DYG.append(h)
+
         box_bottom = box_top - component_height
 
-        stat_boxes.append(
-            draw_statbox_manual_small(
-                h,
-                0.85,
-                box_bottom,
-                0.99,
-                box_top,
-                h.GetFillColor(),
-                label=label,
-            )
-        )
+        if label in ["WGtoLNuG", "TTto2L2Nu", "TTtoLNu2Q", "TTG1Jets"]:
 
-        box_top = box_bottom - gap
+            stat_boxes.append(
+                draw_statbox_manual_small(
+                    h,
+                    0.85,
+                    box_bottom,
+                    0.99,
+                    box_top,
+                    h.GetFillColor(),
+                    label=label,
+                )
+            )
+
+            box_top = box_bottom - gap
+
+    stat_boxes.append(draw_statbox_combined(h_WtoE, 0.85, box_bottom, 0.99, box_top, ROOT.kGray + 1, label="WtoE2J"))
+    stat_boxes.append(draw_statbox_combined(h_WtoMu, 0.85, box_bottom-component_height, 0.99, box_bottom, ROOT.kPink + 1, label="WtoMu2J"))
+    stat_boxes.append(draw_statbox_combined(h_DYG, 0.85, box_bottom-2*component_height, 0.99, box_bottom-component_height, ROOT.kViolet + 1, label="DYGto2LG"))
+    stat_boxes.append(draw_statbox_combined(h_DYE, 0.85, box_bottom-3*component_height, 0.99, box_bottom-2*component_height, ROOT.kOrange + 7, label="DYto2E2J"))
+    stat_boxes.append(draw_statbox_combined(h_DYMu, 0.85, box_bottom-4*component_height, 0.99, box_bottom-3*component_height, ROOT.kCyan + 1, label="DYto2Mu2J"))
 
     legend = ROOT.TLegend(
         0.64,

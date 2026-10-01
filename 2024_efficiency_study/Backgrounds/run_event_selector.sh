@@ -66,6 +66,10 @@ if [ "${NFILES}" -eq 0 ]; then
     exit 1
 fi
 
+DATASET_NAME=$(basename "$(dirname "$(head -n 1 "${FILE_LIST}")")")
+
+echo "Dataset name : ${DATASET_NAME}"
+
 # ------------------------------------------------------------
 # Run event selector
 #
@@ -81,10 +85,11 @@ echo "------------------------------------------------------------"
 echo "Running event_selector.py"
 echo "------------------------------------------------------------"
 
-python3 event_selector.py \
+python3 event_selector_with_corrections.py \
     --worker \
     --file-list "${FILE_LIST}" \
-    --worker-output "${LOCAL_OUTPUT}"
+    --worker-output "${LOCAL_OUTPUT}" \
+    --dataset-name "${DATASET_NAME}"
 
 # ------------------------------------------------------------
 # Check output

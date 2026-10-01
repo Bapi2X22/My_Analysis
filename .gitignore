@@ -108,5 +108,9 @@ NTuples_pretest_full_copy/
 2024_efficiency_study/Backgrounds/TTtoLNu2Q_24SummerRun3_selected2/
 2024_efficiency_study/Backgrounds/Skimmer/condor_DYto2E10_24SummerRun3/
 2024_efficiency_study/NTuples_WH_2024_with_MET/
+2024_efficiency_study/Backgrounds/NTuples_BKG_overlap_removed/
+2024_efficiency_study/Backgrounds/NTuples_2024_BKG_overlap_removal_final/
+NanoSkimmer_new/
+condor_logs/
 
 

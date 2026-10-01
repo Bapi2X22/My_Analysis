@@ -51,12 +51,15 @@ def print_genpart_tree(genPart, event_idx):
 
 def main():
     parser = argparse.ArgumentParser(description="Print GenPart trees from a ROOT file")
-    parser.add_argument("--input-file", required=True, help="Path to the input ROOT file")
+    parser.add_argument("--input-file", required=True, help="Path to the input ROOT file or Parquet file")
     parser.add_argument("--n-events", type=int, default=20, help="Number of events to print")
     args = parser.parse_args()
 
-    factory = NanoEventsFactory.from_root(f"{args.input_file}:Events", schemaclass=NanoAODSchema)
-    events = factory.events()
+    if ".root" in args.input_file:
+        factory = NanoEventsFactory.from_root(f"{args.input_file}:Events", schemaclass=NanoAODSchema)
+        events = factory.events()
+    else:
+        events = ak.from_parquet(args.input_file)
 
     for i in range(min(args.n_events, len(events))):
         print(f"\n{'-' * 80}")
