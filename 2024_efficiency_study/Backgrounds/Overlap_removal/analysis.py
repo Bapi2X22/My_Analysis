@@ -23,6 +23,18 @@ class AnalysisResult:
     gen_photon_pt_after_dr_high_weight: np.ndarray
     gen_photon_pt_after_dr_low: np.ndarray
     gen_photon_pt_after_dr_low_weight: np.ndarray
+    n_reco_photons: np.ndarray
+    n_reco_photons_weight: np.ndarray
+    n_reco_photons_high: np.ndarray
+    n_reco_photons_high_weight: np.ndarray
+    n_reco_photons_low: np.ndarray
+    n_reco_photons_low_weight: np.ndarray
+    reco_photon_pt: np.ndarray
+    reco_photon_pt_weight: np.ndarray
+    reco_photon_pt_after_dr_high: np.ndarray
+    reco_photon_pt_after_dr_high_weight: np.ndarray
+    reco_photon_pt_after_dr_low: np.ndarray
+    reco_photon_pt_after_dr_low_weight: np.ndarray
 
     @classmethod
     def merge(cls, results):
@@ -37,36 +49,32 @@ class AnalysisResult:
             }
         )
 
+def per_photon_weights(weights, pho_pt):
+    counts = ak.to_numpy(ak.num(pho_pt, axis=1))
+    w = np.divide(weights, counts, out=np.zeros_like(weights, dtype=float), where=counts > 0)
+    return np.repeat(w, counts)
+
+
 def analyze_events(events,weights,photon_pt_min,photon_eta_max,other_pt_min,parentage_func):
-
     min_dr, gen_pho_pt = photon_min_dr(events, photon_pt_min=photon_pt_min, photon_eta_max=photon_eta_max, other_pt_min=other_pt_min, parentage_func=parentage_func)
-
     min_dr_tmp = ak.fill_none(min_dr, np.inf)
-
     pass_dr_high = min_dr_tmp > DR_CUT
     pass_dr_low = min_dr_tmp < DR_CUT
-
     n_pho = ak.num(gen_pho_pt, axis=1)
-
     n_pho_after_dr_high = ak.sum(pass_dr_high, axis=1)
     n_pho_after_dr_low = ak.sum(pass_dr_low, axis=1)
-
-    keep_high = (n_pho == 0) | (n_pho_after_dr_high > 0)
+    # keep_high = (n_pho == 0) | (n_pho_after_dr_high > 0)
+    keep_high = (n_pho_after_dr_high > 0)
     keep_low = (n_pho == 0) | (n_pho_after_dr_low > 0)
-
     gen_pho_pt_after_dr_high = gen_pho_pt[pass_dr_high]
     gen_pho_pt_after_dr_low = gen_pho_pt[pass_dr_low]
-
     n_pho_high = n_pho_after_dr_high[keep_high]
     n_pho_low = n_pho_after_dr_low[keep_low]
-
     weights = np.asarray(weights)
-
     photon_counts = ak.to_numpy(ak.num(gen_pho_pt, axis=1))
     photon_counts_after_dr_high = ak.to_numpy(ak.num(gen_pho_pt_after_dr_high, axis=1))
     photon_counts_after_dr_low = ak.to_numpy(ak.num(gen_pho_pt_after_dr_low, axis=1))
     photon_weight = np.divide(weights, photon_counts, out=np.zeros_like(weights, dtype=float), where=photon_counts > 0)
-
     min_dr_flat = ak.to_numpy(ak.flatten(min_dr_tmp))
     gen_photon_pt_flat = ak.to_numpy(ak.flatten(gen_pho_pt))
     gen_photon_pt_after_dr_high_flat = ak.to_numpy(ak.flatten(gen_pho_pt_after_dr_high))
@@ -75,6 +83,30 @@ def analyze_events(events,weights,photon_pt_min,photon_eta_max,other_pt_min,pare
     gen_photon_pt_weight = np.repeat(photon_weight, photon_counts)
     gen_photon_pt_after_dr_high_weight = np.repeat(photon_weight,photon_counts_after_dr_high)
     gen_photon_pt_after_dr_low_weight = np.repeat(photon_weight,photon_counts_after_dr_low)
+
+    # Reco photon quantities
+    reco_pho = events.Photon
+    reco_pho_pt = reco_pho.pt
+    reco_pho_counts = ak.to_numpy(ak.num(reco_pho, axis=1))
+    reco_pho_pt_flat = ak.to_numpy(ak.flatten(reco_pho_pt))
+    # reco_pho_weights = np.divide(weights,reco_pho_counts,out=np.zeros_like(weights, dtype=float),where=reco_pho_counts > 0)
+    # reco_pho_pt_weight = np.repeat(reco_pho_weights,reco_pho_counts)
+    reco_pho_pt_after_dr_high = reco_pho_pt[keep_high]
+    reco_pho_counts_after_dr_high = ak.to_numpy(ak.num(reco_pho_pt_after_dr_high, axis=1))
+    reco_pho_pt_after_dr_high_flat = ak.to_numpy(ak.flatten(reco_pho_pt_after_dr_high))
+    # weights_high = weights[keep_high]
+    # reco_pho_weights_high = np.repeat(weights_high,reco_pho_counts_after_dr_high)
+    reco_pho_pt_after_dr_low = reco_pho_pt[keep_low]
+    reco_pho_counts_after_dr_low = ak.to_numpy(ak.num(reco_pho_pt_after_dr_low, axis=1))
+    reco_pho_pt_after_dr_low_flat = ak.to_numpy(ak.flatten(reco_pho_pt_after_dr_low))
+    # weights_low = weights[keep_low]
+    # reco_pho_weights_low = np.repeat(weights_low,reco_pho_counts_after_dr_low)
+    reco_pho_pt_weight    = per_photon_weights(weights, reco_pho_pt)
+    reco_pho_weights_high = per_photon_weights(weights[keep_high], reco_pho_pt[keep_high])
+    reco_pho_weights_low  = per_photon_weights(weights[keep_low], reco_pho_pt[keep_low])
+    reco_pho_counts = ak.to_numpy(ak.num(reco_pho, axis=1))
+    reco_pho_counts_after_dr_high = ak.to_numpy(ak.num(reco_pho_pt_after_dr_high, axis=1))
+    reco_pho_counts_after_dr_low = ak.to_numpy(ak.num(reco_pho_pt_after_dr_low, axis=1))
 
     return AnalysisResult(
         min_dr=min_dr_flat,
@@ -90,7 +122,19 @@ def analyze_events(events,weights,photon_pt_min,photon_eta_max,other_pt_min,pare
         gen_photon_pt_after_dr_high=gen_photon_pt_after_dr_high_flat,
         gen_photon_pt_after_dr_high_weight=gen_photon_pt_after_dr_high_weight,
         gen_photon_pt_after_dr_low=gen_photon_pt_after_dr_low_flat,
-        gen_photon_pt_after_dr_low_weight=gen_photon_pt_after_dr_low_weight
+        gen_photon_pt_after_dr_low_weight=gen_photon_pt_after_dr_low_weight,   
+        n_reco_photons=reco_pho_counts,
+        n_reco_photons_weight=weights,
+        n_reco_photons_high=reco_pho_counts_after_dr_high,
+        n_reco_photons_high_weight=weights[ak.to_numpy(keep_high)],
+        n_reco_photons_low=reco_pho_counts_after_dr_low,
+        n_reco_photons_low_weight=weights[ak.to_numpy(keep_low)],
+        reco_photon_pt=reco_pho_pt_flat,
+        reco_photon_pt_weight=reco_pho_pt_weight,
+        reco_photon_pt_after_dr_high=reco_pho_pt_after_dr_high_flat,
+        reco_photon_pt_after_dr_high_weight=reco_pho_weights_high,
+        reco_photon_pt_after_dr_low=reco_pho_pt_after_dr_low_flat,
+        reco_photon_pt_after_dr_low_weight=reco_pho_weights_low
     )
 
 def run_process(filename,xsec_pb,lumi_fb,photon_pt_min,photon_eta_max,other_pt_min,parentage_func):

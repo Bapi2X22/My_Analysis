@@ -1,0 +1,19 @@
+{
+    "samplejson": "sample_skimmed.json",
+    "workflow": "HtoAAtoBBGG_WH_processor",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "TTto2L2Nu_24SummerRun3": ["2024"],
+        "TTG1Jets_24SummerRun3": ["2024"],
+        "TTtoLNu2Q_24SummerRun3" : ["2024"]
+
+    },
+    "corrections": {
+        "TTto2L2Nu_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "TTG1Jets_24SummerRun3" : ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "TTtoLNu2Q_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"]
+
+    },
+    "systematics": {}
+}

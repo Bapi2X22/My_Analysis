@@ -27,25 +27,21 @@ from plotting import (
     plot_single,
     plot_overlay,
     plot_stack,
-    plot_stack_comparison
+    plot_stack_comparison,
+    plot_stack_comparison_swap
 )
 
 from physics import is_allowed_parent, is_allowed_parent_TT
 
 
 def main():
-
     results = {}
     results_root = {}
-
-
     print("=" * 70)
     print("Running analysis")
     print("=" * 70)
-
     root_output = os.path.join(OUTPUT_DIR, "Overlap_removal.root")
     root_file = ROOT.TFile(root_output, "UPDATE")
-
     # for process, config in PROCESSES.items():
     #     filename = os.path.join(BACKGROUND_DIR, config["files"],)
     #     print(f"\nProcessing: {process}")
@@ -53,7 +49,6 @@ def main():
     #     print(f"Xsec:      {config['xsec']} pb")
     #     result = run_process(filename=filename, xsec_pb=config["xsec"], lumi_fb=LUMI_FB, photon_pt_min=PHOTON_PT_MIN, photon_eta_max=PHOTON_ETA_MAX, other_pt_min=OTHER_PT_MIN, high_dr_cut=HIGH_DR_CUT)
     #     results[process] = result
-
     for process, config in PROCESSES.items():
         if process in {"TTto2L2Nu", "TTtoLNu2Q", "TTG1Jets"}:
             parentage_func = is_allowed_parent_TT
@@ -117,6 +112,16 @@ def main():
         available_processes = [process for process in processes if process in results]
         plot_stack_comparison(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group)
 
+    print("\n" + "=" * 70)
+    print("Creating stack comparison swap plots")
+    print("=" * 70)
+
+    for job in STACK_COMPARISONS:
+        plot_name = job["plot"]
+        group = job["group"]
+        processes = PROCESS_GROUPS[group]
+        available_processes = [process for process in processes if process in results]
+        plot_stack_comparison_swap(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group)
 
     print("\n" + "=" * 70)
     print("Creating Plots before selection")
@@ -161,6 +166,17 @@ def main():
         processes = PROCESS_GROUPS[group]
         available_processes = [process for process in processes if process in results_root]
         plot_stack_comparison(results=results_root, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group, is_root_file = True)
+
+    print("\n" + "=" * 70)
+    print("Creating stack comparison swap plots")
+    print("=" * 70)
+
+    for job in STACK_COMPARISONS:
+        plot_name = job["plot"]
+        group = job["group"]
+        processes = PROCESS_GROUPS[group]
+        available_processes = [process for process in processes if process in results_root]
+        plot_stack_comparison_swap(results=results_root, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group, is_root_file = True)
 
     print("\n" + "=" * 70)
     print("Analysis completed")

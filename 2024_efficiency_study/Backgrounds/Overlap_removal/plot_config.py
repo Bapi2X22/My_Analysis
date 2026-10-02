@@ -75,19 +75,83 @@ PLOTS = {
         bins=50,
         range=(0.0, 200.0),
         xlabel=r"Gen photon p_{T} after #Delta R < 0.15 [GeV]",
+    ),
+    "reco_photon_pt": PlotSpec(
+        name="reco_photon_pt",
+        data="reco_photon_pt",
+        weight="reco_photon_pt_weight",
+        bins=50,
+        range=(0.0, 200.0),
+        xlabel=r"Reco photon p_{T} [GeV]",
+    ),
+
+    "reco_photon_pt_after_dr_high": PlotSpec(
+        name="reco_photon_pt_after_dr_high",
+        data="reco_photon_pt_after_dr_high",
+        weight="reco_photon_pt_after_dr_high_weight",
+        bins=50,
+        range=(0.0, 200.0),
+        xlabel=r"Reco photon p_{T} after #Delta R > 0.15 [GeV]",
+    ),
+
+    "reco_photon_pt_after_dr_low": PlotSpec(
+        name="reco_photon_pt_after_dr_low",
+        data="reco_photon_pt_after_dr_low",
+        weight="reco_photon_pt_after_dr_low_weight",
+        bins=50,
+        range=(0.0, 200.0),
+        xlabel=r"Reco photon p_{T} after #Delta R < 0.15 [GeV]",
+    ),
+    "n_reco_photons": PlotSpec(
+        name="n_reco_photons",
+        data="n_reco_photons",
+        weight="n_reco_photons_weight",
+        bins=6,
+        range=(0.0, 6.0),
+        xlabel="Number of reconstructed photons",
+    ),
+
+    "n_reco_photons_high": PlotSpec(
+        name="n_reco_photons_high",
+        data="n_reco_photons_high",
+        weight="n_reco_photons_high_weight",
+        bins=6,
+        range=(0.0, 6.0),
+        xlabel=r"Number of reconstructed photons with #Delta R > 0.15",
+    ),
+
+    "n_reco_photons_low": PlotSpec(
+        name="n_reco_photons_low",
+        data="n_reco_photons_low",
+        weight="n_reco_photons_low_weight",
+        bins=6,
+        range=(0.0, 6.0),
+        xlabel=r"Number of reconstructed photons with #Delta R < 0.15",
     )
 }
+
+# PROCESS_COLORS = {
+#     "DYGto2LG": ROOT.kRed + 1,
+#     "DYto2E": ROOT.kBlue + 1,
+#     "DYto2Mu": ROOT.kGreen + 2,
+#     "TTto2L2Nu": ROOT.kOrange + 1,
+#     "TTtoLNu2Q": ROOT.kMagenta + 1,
+#     "TTG1Jets": ROOT.kCyan + 1,
+#     "WGtoLNuG": ROOT.kViolet + 1,
+#     "WtoENu": ROOT.kAzure + 1,
+#     "WtoMuNu": ROOT.kTeal + 1,
+# }
 
 PROCESS_COLORS = {
     "DYGto2LG": ROOT.kRed + 1,
     "DYto2E": ROOT.kBlue + 1,
     "DYto2Mu": ROOT.kGreen + 2,
-    "TTto2L2Nu": ROOT.kOrange + 1,
-    "TTtoLNu2Q": ROOT.kMagenta + 1,
-    "TTG1Jets": ROOT.kCyan + 1,
-    "WGtoLNuG": ROOT.kViolet + 1,
-    "WtoENu": ROOT.kAzure + 1,
-    "WtoMuNu": ROOT.kTeal + 1,
+    "TTto2L2Nu": ROOT.kBlue + 1,
+    "TTtoLNu2Q": ROOT.kGreen + 2,
+    "TTG1Jets": ROOT.kRed + 1,
+    "WGtoLNuG": ROOT.kRed + 1,
+    "WtoENu": ROOT.kBlue + 1,
+    "WtoMuNu": ROOT.kGreen + 2,
 }
 
 
@@ -166,6 +230,36 @@ STACK_PLOTS = [
         "name": "genPhoPt_WJETS_stack",
         "plot": "gen_photon_pt",
         "group": "WJetsG",
+    },
+    {
+        "name": "nRecoPho_DY_stack",
+        "plot": "n_reco_photons",
+        "group": "DY",
+    },
+    {
+        "name": "nRecoPho_TOP_stack",
+        "plot": "n_reco_photons",
+        "group": "TOP",
+    },
+    {
+        "name": "nRecoPho_WJETS_stack",
+        "plot": "n_reco_photons",
+        "group": "WJetsG",
+    },
+    {
+        "name": "recoPhoPt_DY_stack",
+        "plot": "reco_photon_pt",
+        "group": "DY",
+    },
+    {
+        "name": "recoPhoPt_TOP_stack",
+        "plot": "reco_photon_pt",
+        "group": "TOP",
+    },
+    {
+        "name": "recoPhoPt_WJETS_stack",
+        "plot": "reco_photon_pt",
+        "group": "WJetsG",
     }
 ]
 
@@ -214,6 +308,49 @@ STACK_COMPARISONS = [
         "plot": "gen_photon_pt",
         "high": "gen_photon_pt_after_dr_high",
         "low": "gen_photon_pt_after_dr_low",
+        "group": "WJetsG",
+    },
+    {
+        "name": "nRecoPho_DY_stack",
+        "plot": "n_reco_photons",
+        "high": "n_reco_photons_high",
+        "low": "n_reco_photons_low",
+        "group": "DY",
+    },
+    {
+        "name": "nRecoPho_TOP_stack",
+        "plot": "n_reco_photons",
+        "high": "n_reco_photons_high",
+        "low": "n_reco_photons_low",
+        "group": "TOP",
+    },
+    {
+        "name": "nRecoPho_WJETS_stack",
+        "plot": "n_reco_photons",
+        "high": "n_reco_photons_high",
+        "low": "n_reco_photons_low",
+        "group": "WJetsG",
+    },
+
+    {
+        "name": "recoPhoPtAfterDR_DY_stack",
+        "plot": "reco_photon_pt",
+        "high": "reco_photon_pt_after_dr_high",
+        "low": "reco_photon_pt_after_dr_low",
+        "group": "DY",
+    },
+    {
+        "name": "recoPhoPtAfterDR_TOP_stack",
+        "plot": "reco_photon_pt",
+        "high": "reco_photon_pt_after_dr_high",
+        "low": "reco_photon_pt_after_dr_low",
+        "group": "TOP",
+    },
+    {
+        "name": "recoPhoPtAfterDR_WJETS_stack",
+        "plot": "reco_photon_pt",
+        "high": "reco_photon_pt_after_dr_high",
+        "low": "reco_photon_pt_after_dr_low",
         "group": "WJetsG",
     }
 

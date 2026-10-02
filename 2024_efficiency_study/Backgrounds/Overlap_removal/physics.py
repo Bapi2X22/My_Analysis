@@ -77,55 +77,32 @@ def photon_parentage_ok(gen_pho, gen, parentage_func=is_allowed_parent, max_dept
 def photon_min_dr(events, photon_pt_min=PHOTON_PT_MIN, photon_eta_max=PHOTON_ETA_MAX, other_pt_min=OTHER_PT_MIN, parentage_func=is_allowed_parent):
     gen = events.GenPart
     apdg = abs(gen.pdgId)
-
     is_photon = apdg == 22
     photon_kin = (gen.pt > photon_pt_min) & (abs(gen.eta) < photon_eta_max)
-
     gen_idx = ak.local_index(gen, axis=1)
-
     photon_daughter_matrix = gen.genPartIdxMother[:, :, None] == gen_idx[:, None, :]
-
     daughter_is_photon = apdg[:, None, :] == 22
-
     has_photon_daughter = ak.any(photon_daughter_matrix & daughter_is_photon, axis=2)
-
     is_last_photon = is_photon & ~has_photon_daughter
-
     gen_pho = gen[is_last_photon & photon_kin]
-
     pho_history = photon_parentage_ok(gen_pho, gen, parentage_func=parentage_func)
     gen_pho = gen_pho[pho_history]
-
     gen_pho_pt = gen_pho.pt
-
     n_pho = ak.num(gen_pho)
-
     is_quark = (apdg >= 1) & (apdg <= 6)
-
     is_gluon = apdg == 21
-
     is_lepton = ((apdg == 11) | (apdg == 13) | (apdg == 15))
-
     is_boson = ((apdg == 23) | (apdg == 24) | (apdg == 25))
-
     is_other = is_quark | is_gluon | is_lepton | is_boson
-
     other_kin = gen.pt > other_pt_min
     other = gen[is_other & other_kin]
-
     pairs = ak.cartesian({"pho": gen_pho, "part": other}, axis=1, nested=True)
-
     pho = pairs["pho"]
     part = pairs["part"]
-
     deta = pho.eta - part.eta
-
     dphi = np.arctan2(np.sin(pho.phi - part.phi), np.cos(pho.phi - part.phi))
-
     dr = np.sqrt(deta**2 + dphi**2)
-
     min_dr = ak.min(dr, axis=2)
-
     return min_dr, gen_pho_pt
 
 

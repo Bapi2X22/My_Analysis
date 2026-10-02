@@ -32,6 +32,17 @@ def set_overlay_ymax_1p4_log(histograms):
         for hist in histograms:
             hist.SetMaximum(ymax)
 
+def set_stack_comparison_ymax(stack, cumulative_histograms, linear=True):
+    stack_max = stack.GetMaximum()
+    cumulative_max = max((hist.GetMaximum() for hist in cumulative_histograms),default=0.0)
+    ymax = max(stack_max, cumulative_max)
+    if ymax <= 0:
+        return
+    if linear:
+        stack.SetMaximum(1.4 * ymax)
+    else:
+        stack.SetMaximum(ymax * 1000.0)
+
 def CMS_label(pad,
             #   lumi="39.05 fb^{-1}",
               lumi=109.0,
@@ -87,7 +98,7 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None, show_mean=True)
     stats.SetBorderSize(1)
     stats.SetTextColor(color)
     stats.SetTextFont(42)
-    stats.SetTextSize(0.02)
+    stats.SetTextSize(0.03)
 
     nbins = hist.GetNbinsX()
     mean = hist.GetMean()
@@ -96,47 +107,23 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None, show_mean=True)
 
     integral = hist.Integral(1, nbins)
 
+    if integral > 1e5:
+        integral_text = f"{integral:.2e}"
+    else:
+        integral_text = f"{integral:.2f}"
+
     if label is not None:
         stats.AddText(label)
 
     stats.AddText(f"Entries = {int(hist.GetEntries())}")
     if show_mean:
         stats.AddText(f"Mean = {mean:.2f}")
-    stats.AddText(f"Overflow = {overflow:.2f}")
-    stats.AddText(f"Integral = {integral:.2f}")
+    # stats.AddText(f"Overflow = {overflow:.2f}")
+    stats.AddText(f"Integral = {integral_text}")
 
     stats.Draw()
 
     return stats
-
-# def draw_statboxes_horizontal( histograms, processes, x1=0.32, x2=0.88, y1=0.72, y2=0.88, show_mean=True, label_suffix1=None, label_suffix2=False):
-#     statboxes = []
-#     n = len(histograms)
-#     if n == 0:
-#         return statboxes
-#     x_start = x1
-#     x_end = x2
-#     total_width = x_end - x_start
-#     gap = 0.01
-#     box_width = (total_width - (n - 1) * gap) / n
-#     for i, (hist, process) in enumerate(zip(histograms, processes)):
-#         Label_suffix2 = ""
-#         if label_suffix2:
-#             if process in HIGH_CUT_PROCESSES:
-#                 Label_suffix2 = f"After dR > {DR_CUT}"
-#             else:
-#                 Label_suffix2 = f"After dR < {DR_CUT}"
-#         box_x1 = x_start + i * (box_width + gap)
-#         box_x2 = box_x1 + box_width
-#         color = PROCESS_COLORS.get( process, ROOT.kBlack)
-#         label = process
-#         if label_suffix2:
-#             label = f"{process} {label_suffix1} + {Label_suffix2}"
-#         else:
-#             label = f"{process} {label_suffix1}"
-#         stats = draw_statbox_manual( hist, box_x1, y1, box_x2, y2, color, label=label, show_mean=show_mean)
-#         statboxes.append(stats)
-#     return statboxes
 
 # def draw_statboxes_horizontal(histograms,processes,x1=0.32,x2=0.88,y1=0.72,y2=0.88,show_mean=True,label_suffix1=None,label_suffix2=False):
 #     statboxes = []
@@ -155,91 +142,55 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None, show_mean=True)
 #                 label_suffix2_text = f"dR > {DR_CUT}"
 #             else:
 #                 label_suffix2_text = f"dR < {DR_CUT}"
+#             # No process name when label_suffix2=True
+#             label_parts = []
+#             if label_suffix1:
+#                 label_parts.append(label_suffix1)
+#             if label_suffix2_text:
+#                 label_parts.append(label_suffix2_text)
+#         else:
+#             # Include process name normally
+#             label_parts = [process]
+#             if label_suffix1:
+#                 label_parts.append(label_suffix1)
 #         box_x1 = x_start + i * (box_width + gap)
 #         box_x2 = box_x1 + box_width
 #         color = PROCESS_COLORS.get(process, ROOT.kBlack)
-#         if label_suffix2:
-#             label_parts = []
-#         # label_parts = [process]
-#         if label_suffix1:
-#             label_parts.append(label_suffix1)
-#         if label_suffix2_text:
-#             label_parts.append(label_suffix2_text)
 #         label = " + ".join(label_parts)
 #         stats = draw_statbox_manual(hist,box_x1,y1,box_x2,y2,color,label=label,show_mean=show_mean)
 #         statboxes.append(stats)
 #     return statboxes
 
-def draw_statboxes_horizontal(
-    histograms,
-    processes,
-    x1=0.32,
-    x2=0.88,
-    y1=0.72,
-    y2=0.88,
-    show_mean=True,
-    label_suffix1=None,
-    label_suffix2=False,
-):
+def draw_statboxes_horizontal(histograms,processes,x1=0.32,x2=0.88,y1=0.72,y2=0.88,show_mean=True,show_selection=False,show_dr=False, is_root_file=False):
     statboxes = []
     n = len(histograms)
-
     if n == 0:
         return statboxes
-
     x_start = x1
     x_end = x2
     total_width = x_end - x_start
-
     gap = 0.01
     box_width = (total_width - (n - 1) * gap) / n
-
     for i, (hist, process) in enumerate(zip(histograms, processes)):
-
-        label_suffix2_text = ""
-
-        if label_suffix2:
-            if process in HIGH_CUT_PROCESSES:
-                label_suffix2_text = f"dR > {DR_CUT}"
+        label_parts = []
+        # Skimmed / Selection
+        if show_selection:
+            if is_root_file:
+                label_parts.append("Skimmed")
             else:
-                label_suffix2_text = f"dR < {DR_CUT}"
-
-            # No process name when label_suffix2=True
-            label_parts = []
-
-            if label_suffix1:
-                label_parts.append(label_suffix1)
-
-            if label_suffix2_text:
-                label_parts.append(label_suffix2_text)
-
-        else:
-            # Include process name normally
-            label_parts = [process]
-
-            if label_suffix1:
-                label_parts.append(label_suffix1)
-
+                label_parts.append("Selection")
+        # dR information
+        if show_dr:
+            if process in HIGH_CUT_PROCESSES:
+                label_parts.append(f"dR > {DR_CUT}")
+            else:
+                label_parts.append(f"dR < {DR_CUT}")
+        label = " + ".join(label_parts)
         box_x1 = x_start + i * (box_width + gap)
         box_x2 = box_x1 + box_width
-
-        color = PROCESS_COLORS.get(process, ROOT.kBlack)
-
-        label = " + ".join(label_parts)
-
-        stats = draw_statbox_manual(
-            hist,
-            box_x1,
-            y1,
-            box_x2,
-            y2,
-            color,
-            label=label,
-            show_mean=show_mean,
-        )
-
+        color = PROCESS_COLORS.get(process,ROOT.kBlack)
+        stats = draw_statbox_manual(hist,box_x1,y1,box_x2,y2,color,label=label,show_mean=show_mean)
         statboxes.append(stats)
-
     return statboxes
 
 def make_cumulative_histograms(histograms,processes,group_name,plot_name):
@@ -264,6 +215,32 @@ def make_cumulative_histograms(histograms,processes,group_name,plot_name):
         cumulative_hist.SetFillStyle(0)
         cumulative_hist.SetLineColor(color)
         cumulative_hist.SetLineStyle(line_styles[i % len(line_styles)])
+        cumulative_hist.SetLineWidth(3)
+        cumulative_histograms.append(cumulative_hist)
+    return cumulative_histograms
+
+def make_cumulative_histograms_solid(histograms, processes, group_name, plot_name):
+    cumulative_histograms = []
+    if not histograms:
+        return cumulative_histograms
+    nbins = histograms[0].GetNbinsX()
+    cumulative = np.zeros(nbins, dtype=float)
+    for i, (hist, process) in enumerate(zip(histograms, processes)):
+        color = PROCESS_COLORS.get(process, ROOT.kBlack)
+        cumulative_hist = hist.Clone(f"{process}_{plot_name}_cumulative_{group_name}_{i}")
+        cumulative_hist.SetDirectory(0)
+        cumulative_hist.Reset("ICES")
+        for ibin in range(1, nbins + 1):
+            current = hist.GetBinContent(ibin)
+            cumulative[ibin - 1] += current
+            if current > 0:
+                cumulative_hist.SetBinContent(ibin,cumulative[ibin - 1])
+            else:
+                cumulative_hist.SetBinContent(ibin, 0.0)
+        # Solid cumulative boundary
+        cumulative_hist.SetFillStyle(0)
+        cumulative_hist.SetLineColor(color)
+        cumulative_hist.SetLineStyle(ROOT.kSolid)
         cumulative_hist.SetLineWidth(3)
         cumulative_histograms.append(cumulative_hist)
     return cumulative_histograms

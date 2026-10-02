@@ -6,7 +6,7 @@ BACKGROUND_DIR = "../Backgrounds_merged"
 
 OUTPUT_DIR = (
     "/eos/user/b/bbapi/www/Analysis_plots/"
-    "Overlap_removal/Final/"
+    "Overlap_removal/FINAL2/"
 )
 
 LUMI_FB = 109.0
@@ -105,7 +105,7 @@ ROOT_PROCESSES = {
             "DYGto2LG4_24SummerRun3",
             "DYGto2LG50_24SummerRun3",
         ],
-        "n_files": [10, 5],
+        "n_files": [20, 10],
         "xsec": [88.13, 126.7],
     },
 
@@ -131,7 +131,7 @@ ROOT_PROCESSES = {
         "directories": [
             "TTto2L2Nu_24SummerRun3",
         ],
-        "n_files": [2],
+        "n_files": [5],
         "xsec": [98.04],
     },
 
@@ -139,7 +139,7 @@ ROOT_PROCESSES = {
         "directories": [
             "TTtoLNu2Q_24SummerRun3",
         ],
-        "n_files": [2],
+        "n_files": [5],
         "xsec": [405.87],
     },
 
@@ -147,7 +147,7 @@ ROOT_PROCESSES = {
         "directories": [
             "TTG1Jets_24SummerRun3",
         ],
-        "n_files": [2],
+        "n_files": [5],
         "xsec": [4.634],
     },
 
@@ -155,7 +155,7 @@ ROOT_PROCESSES = {
         "directories": [
             "WGtoLNuG_24SummerRun3",
         ],
-        "n_files": [5],
+        "n_files": [20],
         "xsec": [671.5],
     },
 
@@ -165,7 +165,7 @@ ROOT_PROCESSES = {
             "WtoENu1J_24SummerRun3",
             "WtoENu2J_24SummerRun3",
         ],
-        "n_files": [100, 100, 100],
+        "n_files": [200, 200, 200],
         "xsec": [55850, 9177, 3474],
     },
 
@@ -175,7 +175,7 @@ ROOT_PROCESSES = {
             "WtoMuNu1J_24SummerRun3",
             "WtoMuNu2J_24SummerRun3",
         ],
-        "n_files": [100, 100, 100],
+        "n_files": [200, 200, 200],
         "xsec": [55920, 9202, 3490],
     },
 }
