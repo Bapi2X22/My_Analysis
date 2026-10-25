@@ -1,0 +1,19 @@
+
+{
+    "samplejson": "sample_WH_v15.json",
+    "workflow": "HtoAAtoBBGG_WH_processor",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WH-2024M20": ["2024"],
+        "WH-2024M12": ["2024"]
+    },
+    "corrections": {
+        "WH-2024M20": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M12": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"]
+    },
+    "systematics": {
+        "WH-2024M20": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "ScaleEB_EGM", "ScaleEE_EGM", "Electron_Smearing_EGM",  "MuonResolution", "TriggerSF_singleLep", "MuonIdMediumSF", "MuonIsoMediumSF_IdMedium", "ElectronIdSFWP80iso", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower", "bTagFixedWP_UParTAK4Medium_bbgg"],
+        "WH-2024M12": ["ScaleEB_Zmmg", "ScaleEE_Zmmg", "Smearing", "ScaleEB_EGM", "ScaleEE_EGM", "Electron_Smearing_EGM",  "MuonResolution", "TriggerSF_singleLep", "MuonIdMediumSF", "MuonIsoMediumSF_IdMedium", "ElectronIdSFWP80iso", "energyErrShift", "FNUF", "Material", "Pileup", "AlphaS", "PartonShower", "bTagFixedWP_UParTAK4Medium_bbgg"]
+    }
+}

@@ -20,7 +20,7 @@ PLOTS = {
         weight="min_dr_weight",
         bins=30,
         range=(0.0, 2.0),
-        xlabel=r"Minimum #Delta R(#gamma, GenPart)",
+        xlabel=r"Minimum #Delta R(#gamma, GenPart)"
     ),
 
     "n_photons": PlotSpec(
@@ -29,7 +29,7 @@ PLOTS = {
         weight="n_photons_weight",
         bins=4,
         range=(0.0, 4.0),
-        xlabel="Number of gen prompt photons",
+        xlabel="Number of gen prompt photons"
     ),
 
     "n_photons_high": PlotSpec(
@@ -38,7 +38,7 @@ PLOTS = {
         weight="n_photons_high_weight",
         bins=4,
         range=(0.0, 4.0),
-        xlabel=r"Number of gen prompt photons with #Delta R > 0.15",
+        xlabel=r"Number of gen prompt photons with #Delta R > 0.15"
     ),
 
     "n_photons_low": PlotSpec(
@@ -47,7 +47,7 @@ PLOTS = {
         weight="n_photons_low_weight",
         bins=4,
         range=(0.0, 4.0),
-        xlabel=r"Number of gen prompt photons with #Delta R < 0.15",
+        xlabel=r"Number of gen prompt photons with #Delta R < 0.15"
     ),
 
     "gen_photon_pt": PlotSpec(
@@ -56,7 +56,7 @@ PLOTS = {
         weight="gen_photon_pt_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Gen photon p_{T} [GeV]",
+        xlabel=r"Gen photon p_{T} [GeV]"
     ),
 
     "gen_photon_pt_after_dr_high": PlotSpec(
@@ -65,7 +65,7 @@ PLOTS = {
         weight="gen_photon_pt_after_dr_high_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Gen photon p_{T} after #Delta R > 0.15 [GeV]",
+        xlabel=r"Gen photon p_{T} after #Delta R > 0.15 [GeV]"
     ),
 
     "gen_photon_pt_after_dr_low": PlotSpec(
@@ -74,7 +74,7 @@ PLOTS = {
         weight="gen_photon_pt_after_dr_low_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Gen photon p_{T} after #Delta R < 0.15 [GeV]",
+        xlabel=r"Gen photon p_{T} after #Delta R < 0.15 [GeV]"
     ),
     "reco_photon_pt": PlotSpec(
         name="reco_photon_pt",
@@ -82,7 +82,7 @@ PLOTS = {
         weight="reco_photon_pt_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Reco photon p_{T} [GeV]",
+        xlabel=r"Reco photon p_{T} [GeV]"
     ),
 
     "reco_photon_pt_after_dr_high": PlotSpec(
@@ -91,7 +91,7 @@ PLOTS = {
         weight="reco_photon_pt_after_dr_high_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Reco photon p_{T} after #Delta R > 0.15 [GeV]",
+        xlabel=r"Reco photon p_{T} after #Delta R > 0.15 [GeV]"
     ),
 
     "reco_photon_pt_after_dr_low": PlotSpec(
@@ -100,7 +100,7 @@ PLOTS = {
         weight="reco_photon_pt_after_dr_low_weight",
         bins=50,
         range=(0.0, 200.0),
-        xlabel=r"Reco photon p_{T} after #Delta R < 0.15 [GeV]",
+        xlabel=r"Reco photon p_{T} after #Delta R < 0.15 [GeV]"
     ),
     "n_reco_photons": PlotSpec(
         name="n_reco_photons",
@@ -108,7 +108,7 @@ PLOTS = {
         weight="n_reco_photons_weight",
         bins=6,
         range=(0.0, 6.0),
-        xlabel="Number of reconstructed photons",
+        xlabel="Number of reconstructed photons"
     ),
 
     "n_reco_photons_high": PlotSpec(
@@ -117,7 +117,7 @@ PLOTS = {
         weight="n_reco_photons_high_weight",
         bins=6,
         range=(0.0, 6.0),
-        xlabel=r"Number of reconstructed photons with #Delta R > 0.15",
+        xlabel=r"Number of reconstructed photons with #Delta R > 0.15"
     ),
 
     "n_reco_photons_low": PlotSpec(
@@ -126,7 +126,7 @@ PLOTS = {
         weight="n_reco_photons_low_weight",
         bins=6,
         range=(0.0, 6.0),
-        xlabel=r"Number of reconstructed photons with #Delta R < 0.15",
+        xlabel=r"Number of reconstructed photons with #Delta R < 0.15"
     )
 }
 

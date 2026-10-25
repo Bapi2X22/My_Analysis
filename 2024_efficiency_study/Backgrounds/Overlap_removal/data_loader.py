@@ -28,6 +28,7 @@ def get_sum_genweight(files):
     for filename in files:
         events = NanoEventsFactory.from_root(filename,treepath="Events",schemaclass=NanoAODSchema).events()
         sum_genweight += ak.sum(events.genWeight)
+        del events
     return float(sum_genweight)
 
 def load_root_file(filename):
@@ -59,7 +60,6 @@ def load_root_process(directories,n_files,xsecs,background_dir,lumi_fb):
             weights = (genweight/ sum_genweight* xsec_pb* lumi_fb* 1000.0)
             results.append((events, weights))
     return results
-
 
 def get_expected_weight(events, xsec_pb, lumi_fb):
     return events.weight * xsec_pb * lumi_fb * 1000.0

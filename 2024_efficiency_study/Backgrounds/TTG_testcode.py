@@ -5,6 +5,7 @@ from higgs_dna.systematics import weight_corrections as available_weight_correct
 from higgs_dna.tools.SC_eta import add_photon_SC_eta
 from higgs_dna.tools.jetID import add_jetId
 from coffea.analysis_tools import Weights
+from decay_tree import print_genpart_tree
 
 def is_allowed_parent(pdgId):
     apdg = abs(pdgId)
@@ -15,7 +16,20 @@ def is_allowed_parent(pdgId):
     # Gluon
     is_gluon = apdg == 21
 
-    return is_quark | is_gluon 
+    # Leptons: e, mu, tau
+    is_lepton = (
+        (apdg == 11) |
+        (apdg == 13) 
+    )
+
+    # Bosons: W, Z, Higgs
+    is_boson = (
+        (apdg == 24) |
+        (apdg == 23) |
+        (apdg == 25)
+    )
+
+    return is_quark | is_gluon | is_lepton | is_boson
 
 def photon_parentage_ok(gen_pho, gen, max_depth=30):
 
@@ -174,12 +188,14 @@ def photon_isolation_ok(events, photon_pt_min=10.0, photon_eta_max = 3.0,  dr_mi
 
     print("min_dr: ", min_dr)
 
-    return min_dr, is_isolated, is_nonisolated
+    return gen_pho, min_dr, is_isolated, is_nonisolated
 
 
 # file = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTto2L2Nu_24SummerRun3_selected/part_00000.parquet'
-file = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTG1Jets_24SummerRun3_selected/part_00000.parquet'
+# file = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTG1Jets_24SummerRun3_selected/part_00000.parquet'
 # file = 'root://xrootd-cms.infn.it///store/mc/RunIII2024Summer24NanoAODv15/TTto2L2Nu_TuneCP5_13p6TeV_powheg-pythia8/NANOAODSIM/150X_mcRun3_2024_realistic_v2-v3/2810000/f60b4a6c-2801-43b0-b542-6d933a71a396.root'
+# file = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/TTG1Jets_24SummerRun3_selected/part_00000.parquet'
+file = '/eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Skimmer/WtoENu2J_24SummerRun3/ec89ea24-c41b-4788-818f-4f5bb469d0d8_skim.root'
 
 if ".root" in file:
     factory = NanoEventsFactory.from_root(f"{file}:Events", schemaclass=NanoAODSchema)
@@ -259,7 +275,17 @@ allowed_mask = ak.any([abs(gen_pho_mother) == pdg for pdg in allowed_pdg], axis=
 
 event_mask = ak.any(allowed_mask, axis=1)
 
-mdr, is_iso, is_noniso = photon_isolation_ok(events)
+gen_ph, mdr, is_iso, is_noniso = photon_isolation_ok(events)
+
+from contextlib import redirect_stdout
+
+with open("/eos/user/b/bbapi/www/Analysis_plots/Overlap_removal/genpart_trees_high_multiplicity_gen_photons_WtoE.txt", "w") as f:
+    with redirect_stdout(f):
+        for i in ak.where(ak.num(gen_ph) >= 2)[0]:
+            print(f"\n{'='*80}")
+            print(f"Event index: {i}")
+            print(f"{'='*80}")
+            print_genpart_tree(gen, i)
 
 print("event_mask: ", event_mask)
 print("mdr: ", mdr)

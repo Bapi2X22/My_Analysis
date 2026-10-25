@@ -96,6 +96,7 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None, show_mean=True)
     stats.SetName(f"stat_{hist.GetName()}")
     stats.SetFillColor(0)
     stats.SetBorderSize(1)
+    stats.SetLineColor(color)
     stats.SetTextColor(color)
     stats.SetTextFont(42)
     stats.SetTextSize(0.03)
@@ -112,10 +113,17 @@ def draw_statbox_manual(hist, x1, y1, x2, y2, color, label=None, show_mean=True)
     else:
         integral_text = f"{integral:.2f}"
 
+    Entries = hist.GetEntries()
+
+    if Entries > 1e5:
+        Entries_text = f"{Entries:.2e}"
+    else:
+        Entries_text = f"{Entries:.2f}"
+
     if label is not None:
         stats.AddText(label)
 
-    stats.AddText(f"Entries = {int(hist.GetEntries())}")
+    stats.AddText(f"Entries = {Entries_text}")
     if show_mean:
         stats.AddText(f"Mean = {mean:.2f}")
     # stats.AddText(f"Overflow = {overflow:.2f}")

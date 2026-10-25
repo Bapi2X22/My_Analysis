@@ -3,6 +3,7 @@ import numpy as np
 import ROOT
 from plot_config import PROCESS_COLORS 
 from config import DR_CUT
+import awkward as ak
 from utils import darker_color, set_stack_comparison_ymax, set_stack_ymax_log, merge_overflow_into_last_bin, make_cumulative_histograms, make_cumulative_histograms_solid, set_ymax_1p4, set_overlay_ymax_1p4,set_overlay_ymax_1p4_log,set_stack_ymax_1p4, CMS_label, draw_statboxes_horizontal
 ROOT.gROOT.ProcessLine(".L /eos/user/b/bbapi/My_Analysis/2024_efficiency_study/Backgrounds/Overlap_removal/live_stats.C")
 
@@ -11,6 +12,51 @@ HIGH_CUT_PROCESSES = {
     "WGtoLNuG",
     "DYGto2LG",
 }
+
+def get_cut_values(result, process, plot_name, spec, high_spec, low_spec):
+
+    # Event-level count plots
+    if plot_name in ["n_photons", "n_reco_photons"]:
+
+        # Compact-Parquet workflow
+        if hasattr(result, "keep_high") and hasattr(result, "keep_low"):
+
+            values = getattr(result, spec.data)
+            weights = getattr(result, spec.weight)
+
+            if process in HIGH_CUT_PROCESSES:
+                keep = np.asarray(result.keep_high, dtype=bool)
+            else:
+                keep = np.asarray(result.keep_low, dtype=bool)
+
+            values = np.asarray(values)[keep]
+            weights = np.asarray(weights)[keep]
+
+            cut_spec = spec
+
+        # Selected-Parquet workflow
+        else:
+
+            if process in HIGH_CUT_PROCESSES:
+                cut_spec = high_spec
+            else:
+                cut_spec = low_spec
+
+            values = getattr(result, cut_spec.data)
+            weights = getattr(result, cut_spec.weight)
+
+    # Photon-level quantities
+    else:
+
+        if process in HIGH_CUT_PROCESSES:
+            cut_spec = high_spec
+        else:
+            cut_spec = low_spec
+
+        values = getattr(result, cut_spec.data)
+        weights = getattr(result, cut_spec.weight)
+
+    return values, weights, cut_spec
 
 # def attach_live_stats(canvas, cut_histograms):
 #     canvas.cd()
@@ -45,19 +91,64 @@ def attach_live_stats(canvas, cut_histograms=None):
     keep.append(live)
     return keep
 
+# def make_histogram(values, weights, spec, name):
+#     hist = ROOT.TH1D(name, "", spec.bins, spec.range[0], spec.range[1])
+#     values = np.asarray(values)
+#     weights = np.asarray(weights)
+#     for value, weight in zip(values, weights):
+#         hist.Fill(float(value), float(weight))
+#         merge_overflow_into_last_bin(hist)
+#     if spec.normalize:
+#         integral = hist.Integral()
+#         if integral > 0:
+#             hist.Scale(1.0 / integral)
+#     hist.SetDirectory(0)
+#     return hist
+
 def make_histogram(values, weights, spec, name):
-    hist = ROOT.TH1D(name, "", spec.bins, spec.range[0], spec.range[1])
-    values = np.asarray(values)
-    weights = np.asarray(weights)
+
+    # Handle Awkward arrays
+    if isinstance(values, ak.Array):
+
+        if values.ndim > 1:
+            values = ak.flatten(values)
+            weights = ak.flatten(weights)
+
+        values = ak.to_numpy(values)
+        weights = ak.to_numpy(weights)
+
+    else:
+        values = np.asarray(values)
+        weights = np.asarray(weights)
+
+    # Create histogram
+    hist = ROOT.TH1D(
+        name,
+        "",
+        spec.bins,
+        spec.range[0],
+        spec.range[1]
+    )
+
+    # Fill
     for value, weight in zip(values, weights):
         hist.Fill(float(value), float(weight))
-        merge_overflow_into_last_bin(hist)
+
+    # Overflow → last bin
+    merge_overflow_into_last_bin(hist)
+
+    # Normalize if requested
     if spec.normalize:
         integral = hist.Integral()
+
         if integral > 0:
             hist.Scale(1.0 / integral)
+
     hist.SetDirectory(0)
+
     return hist
+
+
 
 def save_canvas(canvas, root_file, output_dir, directory, name):
     png_dir = os.path.join(output_dir, "PNG")
@@ -318,12 +409,13 @@ def plot_stack(results, processes, plot_name, spec, root_file, output_dir, group
     canvas.Close()
 
 def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_spec, root_file, output_dir, group_name, is_root_file = False):
+    plot_processes = (processes if is_root_file else list(reversed(processes)))
     canvas = ROOT.TCanvas(f"canvas_stack_comparison_{group_name}_{plot_name}", "", 800, 600)
     stack = ROOT.THStack(f"stackcomp_{plot_name}_{group_name}", "")
     cut_histograms = []
     histograms = []
     # Normal stack
-    for process in processes:
+    for process in plot_processes:
         result = results[process]
         values = getattr(result, spec.data)
         weights = getattr(result, spec.weight)
@@ -341,30 +433,60 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
         histograms.append(hist)
         stack.Add(hist)
     # Stack after additional cut
-    for process in processes:
+    # for process in processes:
+    #     result = results[process]
+    #     if process in HIGH_CUT_PROCESSES:
+    #         cut_spec = high_spec
+    #     else:
+    #         cut_spec = low_spec
+    #     values = getattr(result, cut_spec.data)
+    #     weights = getattr(result, cut_spec.weight)
+
+    # Stack after additional cut
+    for process in plot_processes:
+
         result = results[process]
-        if process in HIGH_CUT_PROCESSES:
-            cut_spec = high_spec
-        else:
-            cut_spec = low_spec
-        values = getattr(result, cut_spec.data)
-        weights = getattr(result, cut_spec.weight)
+
+        values, weights, cut_spec = get_cut_values(
+            result,
+            process,
+            plot_name,
+            spec,
+            high_spec,
+            low_spec
+        )
+
         color = PROCESS_COLORS.get(process, ROOT.kBlack)
+
         if is_root_file:
-            hist = make_histogram( values, weights, cut_spec, f"{process}_{plot_name}_cut_{group_name}_before_sel")
+            hist = make_histogram(
+                values,
+                weights,
+                cut_spec,
+                f"{process}_{plot_name}_cut_{group_name}_before_sel"
+            )
         else:
-            hist = make_histogram( values, weights, cut_spec, f"{process}_{plot_name}_cut_{group_name}")
+            hist = make_histogram(
+                values,
+                weights,
+                cut_spec,
+                f"{process}_{plot_name}_cut_{group_name}"
+            )
+
+        # This hist is now the CUT histogram
         hist.SetFillStyle(0)
-        hist.SetLineColor(color+2)
+        hist.SetLineColor(color + 2)
         hist.SetLineStyle(ROOT.kDashed)
         hist.SetLineWidth(3)
+
         cut_histograms.append(hist)
+
     set_stack_ymax_1p4(stack, histograms)
     stack.Draw("HIST")
     stack.GetXaxis().SetTitle(spec.xlabel)
     stack.GetYaxis().SetTitle(spec.ylabel)
-    cumulative_cut_histograms = make_cumulative_histograms(cut_histograms,processes,group_name,plot_name)
-    for hist, process in zip(cumulative_cut_histograms,processes):
+    cumulative_cut_histograms = make_cumulative_histograms(cut_histograms,plot_processes,group_name,plot_name)
+    for hist, process in zip(cumulative_cut_histograms,plot_processes):
         hist.Draw("HIST SAME")
     # legend = ROOT.TLegend(0.13, 0.68, 0.38, 0.90)
     # legend.SetFillStyle(0)
@@ -398,7 +520,7 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
     process_legend.SetFillStyle(0)
     process_legend.SetBorderSize(0)
     process_legend.SetTextSize(0.028)
-    for hist, process in zip(histograms, processes):
+    for hist, process in zip(histograms, plot_processes):
         process_legend.AddEntry(hist, process, "f")
     process_legend.Draw()
     style_legend = ROOT.TLegend(0.13, 0.68, 0.40, 0.78)
@@ -421,7 +543,7 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
     #     statboxes = draw_statboxes_horizontal( histograms, processes, x1=0.38, x2=0.88, y1 = 0.80, y2 = 0.90, show_mean=False, label_suffix1="Skimmed")
     # else:
     #     statboxes = draw_statboxes_horizontal( histograms, processes, x1=0.38, x2=0.88, y1 = 0.80, y2 = 0.90, show_mean=False, label_suffix1="selection")
-    statboxes = draw_statboxes_horizontal(histograms,processes,x1=0.30,x2=0.90,y1=0.80,y2=0.90,show_mean=False,show_selection=True, is_root_file=is_root_file)
+    statboxes = draw_statboxes_horizontal(histograms,plot_processes,x1=0.30,x2=0.90,y1=0.80,y2=0.90,show_mean=False,show_selection=True, is_root_file=is_root_file)
     # statboxes = draw_statboxes_horizontal( histograms, processes, x1=0.42, x2=0.88, y1 = 0.80, y2 = 0.90, show_mean=False)
     live_keep = attach_live_stats(canvas, cut_histograms)
     # cut_statboxes = draw_statboxes_horizontal(cut_histograms, processes, x1=0.42, x2=0.88, y1 = 0.70, y2 = 0.80, show_mean=False, label_suffix="after cut")
@@ -429,7 +551,7 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
     #     cut_statboxes = draw_statboxes_horizontal(cut_histograms, processes, x1=0.38, x2=0.88, y1 = 0.70, y2 = 0.80, show_mean=False, label_suffix1="Skimmed", label_suffix2=True)
     # else:
     #     cut_statboxes = draw_statboxes_horizontal(cut_histograms, processes, x1=0.38, x2=0.88, y1 = 0.70, y2 = 0.80, show_mean=False, label_suffix1="selection", label_suffix2=True)
-    cut_statboxes = draw_statboxes_horizontal(cut_histograms,processes,x1=0.30,x2=0.90,y1=0.70,y2=0.80,show_mean=False, show_dr = True, is_root_file=is_root_file)
+    cut_statboxes = draw_statboxes_horizontal(cut_histograms,plot_processes,x1=0.30,x2=0.90,y1=0.70,y2=0.80,show_mean=False, show_dr = True, is_root_file=is_root_file)
     canvas.Modified()
     canvas.Update()
     if is_root_file:
@@ -460,6 +582,7 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
         statbox.Draw()
     for statbox in cut_statboxes:
         statbox.Draw()
+
     if is_root_file:
         CMS_label(canvas,lumi=109.0,year="2024",energy="13.6 TeV",status="Simulation Preliminary", x=0.16)
     else:
@@ -474,10 +597,11 @@ def plot_stack_comparison( results, processes, plot_name, spec, high_spec, low_s
     canvas.Close()
 
 def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_spec,root_file,output_dir,group_name,is_root_file=False):
+    plot_processes = (processes if is_root_file else list(reversed(processes)))
     canvas = ROOT.TCanvas(f"canvas_stack_comparison_swap_{group_name}_{plot_name}","",800,600)
     normal_histograms = []
     cut_histograms = []
-    for process in processes:
+    for process in plot_processes:
         result = results[process]
         values = getattr(result, spec.data)
         weights = getattr(result, spec.weight)
@@ -492,19 +616,50 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
         hist.SetLineStyle(ROOT.kSolid)
         hist.SetLineWidth(2)
         normal_histograms.append(hist)
-    for process in processes:
+    # for process in processes:
+    #     result = results[process]
+    #     if process in HIGH_CUT_PROCESSES:
+    #         cut_spec = high_spec
+    #     else:
+    #         cut_spec = low_spec
+    #     values = getattr(result, cut_spec.data)
+    #     weights = getattr(result, cut_spec.weight)
+    #     if is_root_file:
+    #         hist = make_histogram(values,weights,cut_spec,f"{process}_{plot_name}_cut_{group_name}_before_sel_swap")
+    #     else:
+    #         hist = make_histogram(values,weights,cut_spec,f"{process}_{plot_name}_cut_{group_name}_swap")
+
+    for process in plot_processes:
+
         result = results[process]
-        if process in HIGH_CUT_PROCESSES:
-            cut_spec = high_spec
-        else:
-            cut_spec = low_spec
-        values = getattr(result, cut_spec.data)
-        weights = getattr(result, cut_spec.weight)
-        if is_root_file:
-            hist = make_histogram(values,weights,cut_spec,f"{process}_{plot_name}_cut_{group_name}_before_sel_swap")
-        else:
-            hist = make_histogram(values,weights,cut_spec,f"{process}_{plot_name}_cut_{group_name}_swap")
+
+        values, weights, cut_spec = get_cut_values(
+            result,
+            process,
+            plot_name,
+            spec,
+            high_spec,
+            low_spec
+        )
+
         color = PROCESS_COLORS.get(process, ROOT.kBlack)
+
+        if is_root_file:
+            hist = make_histogram(
+                values,
+                weights,
+                cut_spec,
+                f"{process}_{plot_name}_cut_{group_name}_before_sel_swap"
+            )
+        else:
+            hist = make_histogram(
+                values,
+                weights,
+                cut_spec,
+                f"{process}_{plot_name}_cut_{group_name}_swap"
+            )
+
+        # color = PROCESS_COLORS.get(process, ROOT.kBlack)
         # Filled stack
         hist.SetFillColor(color)
         hist.SetFillStyle(1001)
@@ -512,9 +667,9 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
         hist.SetLineColor(color)
         hist.SetLineWidth(1)
         cut_histograms.append(hist)
-    cumulative_normal_histograms = make_cumulative_histograms_solid(normal_histograms,processes,group_name,plot_name)
+    cumulative_normal_histograms = make_cumulative_histograms_solid(normal_histograms,plot_processes,group_name,plot_name)
     # Make sure cumulative normal histograms are solid boundaries
-    for hist, process in zip(cumulative_normal_histograms, processes):
+    for hist, process in zip(cumulative_normal_histograms, plot_processes):
         color = PROCESS_COLORS.get(process, ROOT.kBlack)
         hist.SetFillStyle(0)
         hist.SetLineColor(color)
@@ -569,7 +724,7 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
     process_legend.SetFillStyle(0)
     process_legend.SetBorderSize(0)
     process_legend.SetTextSize(0.028)
-    for hist, process in zip(cut_histograms, processes):
+    for hist, process in zip(cut_histograms, plot_processes):
         process_legend.AddEntry(hist, process, "f")
     process_legend.Draw()
     style_legend = ROOT.TLegend(0.13, 0.68, 0.40, 0.78)
@@ -590,13 +745,13 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
     #     statboxes = draw_statboxes_horizontal(normal_histograms,processes,x1=0.38,x2=0.88,y1=0.80,y2=0.90,show_mean=False,label_suffix1="Skimmed")
     # else:
     #     statboxes = draw_statboxes_horizontal(normal_histograms,processes,x1=0.38,x2=0.88,y1=0.80,y2=0.90,show_mean=False,label_suffix1="selection")
-    statboxes = draw_statboxes_horizontal(normal_histograms,processes,x1=0.30,x2=0.90,y1=0.80,y2=0.90,show_mean=False,show_selection=True, is_root_file=is_root_file)
+    statboxes = draw_statboxes_horizontal(normal_histograms,plot_processes,x1=0.30,x2=0.90,y1=0.80,y2=0.90,show_mean=False,show_selection=True, is_root_file=is_root_file)
     live_keep = attach_live_stats(canvas, cut_histograms)
     # if is_root_file:
     #     cut_statboxes = draw_statboxes_horizontal(cut_histograms,processes,x1=0.38,x2=0.88,y1=0.70,y2=0.80,show_mean=False,label_suffix1="Skimmed",label_suffix2=True)
     # else:
     #     cut_statboxes = draw_statboxes_horizontal(cut_histograms,processes,x1=0.38,x2=0.88,y1=0.70,y2=0.80,show_mean=False,label_suffix1="selection",label_suffix2=True)
-    cut_statboxes = draw_statboxes_horizontal(cut_histograms,processes,x1=0.30,x2=0.90,y1=0.70,y2=0.80,show_mean=False, show_dr=True, is_root_file=is_root_file)
+    cut_statboxes = draw_statboxes_horizontal(cut_histograms,plot_processes,x1=0.30,x2=0.90,y1=0.70,y2=0.80,show_mean=False, show_dr=True, is_root_file=is_root_file)
     canvas.Modified()
     canvas.Update()
     if is_root_file:

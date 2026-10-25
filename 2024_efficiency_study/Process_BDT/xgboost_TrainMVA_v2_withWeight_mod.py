@@ -47,7 +47,7 @@ def loadSignal(inputVars):
     vars.insert(0,'evt_wgt')
     
   # dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars,library='pd')
-  dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars)
+  dataset_Sig = uproot.open("merged_signal_with_allCorr_uniform_mass_weight.root")['DiphotonTree'].arrays(inputVars)
   df_sig = ak.to_dataframe(dataset_Sig)
   # df_sig = dataset_Sig[vars]
 
@@ -60,7 +60,7 @@ def loadMCBackground(inputVars, inputVarsMC):
     vars.insert(0,'evt_wgt')
    
   # dataset_Bkg = uproot.open('merged_bkg_withMass.root')['DiphotonTree'].arrays(inputVars,library='pd')
-  dataset_Bkg = uproot.open('merged_bkg_withMass.root')['DiphotonTree'].arrays(inputVars)
+  dataset_Bkg = uproot.open('merged_bkg_with_allCorr_uniform_mass_weight.root')['DiphotonTree'].arrays(inputVars)
 
   df_bkg = ak.to_dataframe(dataset_Bkg)
   # df_bkg = dataset_Bkg
@@ -209,8 +209,12 @@ if __name__ == '__main__':
   # inputVars =   ["leppt","lepeta","b1eta","b2eta","pT1_by_mbb","pT2_by_mbb","Njets","pho1eta","pho2eta","pT1_by_mgg","pT2_by_mgg","leadbdeepjet","subleadbdeepjet","leadgMVA","subleadgMVA","delphi_gg","delphi_bb","delphi_bbgg","delphi_ggMET","true_mass"]
   # inputVarsMC = ["leppt","lepeta","b1eta","b2eta","pT1_by_mbb","pT2_by_mbb","Njets","pho1eta","pho2eta","pT1_by_mgg","pT2_by_mgg","leadbdeepjet","subleadbdeepjet","leadgMVA","subleadgMVA","delphi_gg","delphi_bb","delphi_bbgg","delphi_ggMET","true_mass"]
   
-  inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "mass_point", "evt_wgt"]
-  inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "mass_point", "evt_wgt"]
+  # inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
+  # inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
+
+  inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
+  inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
+
 
   print("Loading Signal...")
   df_sig = loadSignal(inputVars)
@@ -218,7 +222,7 @@ if __name__ == '__main__':
   print("Loading MC Bkgs...")
   if useMC:
     df_bkg = loadMCBackground(inputVars,inputVarsMC)
-    df_bkg = df_bkg.sample(frac=1/5.0, random_state=12345)
+    # df_bkg = df_bkg.sample(frac=1/5.0, random_state=12345)
 
   #Add target for signal (1)
   df_sig['target'] = np.ones(len(df_sig.index))
@@ -248,6 +252,7 @@ if __name__ == '__main__':
 #  df_bkg['evt_wgt'] = df_bkg['evt_wgt'].apply(lambda x: x*(sig_sum/bkg_sum))
   df_sig['evt_wgt'] = df_sig['evt_wgt'].apply(lambda x: x*(bkg_sum/sig_sum))
   print(df_bkg['evt_wgt'])
+  print(df_sig.sum(0)['evt_wgt'])
   print(bkg_sum)
 
   #Deal with negative weights (set to 1 and rescale accordingly)
@@ -292,7 +297,7 @@ if __name__ == '__main__':
   ])
   Y = pd.concat((df_sig['target'] ,df_bkg['target'] ))
 
-  test_size = 0.33
+  test_size = 0.2
 #  test_size = 0.001
   X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=seed, shuffle=True)
   
@@ -306,14 +311,25 @@ if __name__ == '__main__':
   print("W_train :",W_train)
   print("W_test :",W_test)
 
+  #Ref: Anirban Bala
+  # params = {
+  #   'booster': 'gbtree',
+  #   'eval_metric': 'auc',
+  #   'learning_rate': 0.5,
+  #   'max_depth': 3,
+  #   'gamma': 0.1,
+  #   'objective': 'binary:logistic',
+  # }
+
+  #Testing
   params = {
     'booster': 'gbtree',
     'eval_metric': 'auc',
-    'learning_rate': 0.5,
-    'max_depth': 3,
+    'learning_rate': 0.3,
+    'max_depth': 9,
     'gamma': 0.1,
     'objective': 'binary:logistic',
-  }
+}
 
   
   training = xgb.DMatrix(X_train,label=Y_train, weight=W_train,feature_names=inputVars)
@@ -336,7 +352,7 @@ if __name__ == '__main__':
     print("Model exported to : ",export)
     modelDict={
         'xgbModel' : model,
-        'modelName' : 'HtoAATo2b2g',
+        'modelName' : 'HtoAATo2b2g_Oct23_26_wo_pt_over_mgg_uni_mass_weight',
     }
     with open(export,'wb') as f:
         pickle.dump(modelDict,f)
