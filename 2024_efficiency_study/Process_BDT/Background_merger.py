@@ -2,7 +2,23 @@ import uproot
 import awkward as ak
 import numpy as np
 import glob
+import argparse
 
+
+
+parser = argparse.ArgumentParser(
+    description=(
+        "Merge signal ROOT files of various mass points for training BDT"
+    )
+)
+
+parser.add_argument(
+    "-o", "--output",
+    required=True,
+    help="Output ROOT file name",
+)
+
+args = parser.parse_args()
 
 def add_features(arr):
     """
@@ -12,6 +28,8 @@ def add_features(arr):
 
     # Example: ratio of two existing features
     arr["pt_ratio"] = ak.where(arr["pholead_pt"] != 0,arr["phosublead_pt"] / arr["pholead_pt"],-999.0)
+    arr["energy_resol_lead"] = ak.where(arr["pholead_energyRaw"] != 0,arr["pholead_energyErr"] / arr["pholead_energyRaw"],-999.0)
+    arr["energy_resol_sublead"] = ak.where(arr["phosublead_energyRaw"] != 0,arr["phosublead_energyErr"] / arr["phosublead_energyRaw"],-999.0)
     # Add more derived features here
 
     return arr
@@ -49,14 +67,92 @@ process_map = {
     "TTtoLNu2Q": 10
 }
 
-all_arrays = []
-total_sumw = 0.0
+# all_arrays = []
+# total_sumw = 0.0
+
+# files = sorted(glob.glob("Background/output_*root"))
+
+# print(files)
+
+# # ---------------- first pass ----------------
+# for fname in files:
+
+#     process = None
+
+#     for key in xsecs:
+#         if key in fname:
+#             process = key
+#             break
+
+#     if process is None:
+#         print(f"Skipping {fname}")
+#         continue
+
+#     xsec = xsecs[process]
+
+#     f = uproot.open(fname)
+
+#     print(f.keys())
+
+#     # Get nominal CAT1 tree automatically
+#     tree_keys = [
+#         k for k in f.keys(recursive=True)
+#         if ("Resolved" in k) and ("sigma" not in k)
+#     ]
+
+#     if not tree_keys:
+#         print(f"  No Resolved tree found, skipping {fname}")
+#         continue
+
+#     tree_key = tree_keys[0]
+#     tree = f[tree_key]
+
+#     arr = tree.arrays(library="ak")
+
+#     arr = add_features(arr)
+
+#     phys_wgt = arr["weight"] * xsec
+
+#     total_sumw += ak.sum(phys_wgt)
+
+#     arr["phys_wgt"] = phys_wgt
+#     arr["process_id"] = process_map[process]
+
+#     all_arrays.append(arr)
+
+# # ---------------- second pass ----------------
+# normed_arrays = []
+
+# for arr in all_arrays:
+
+#     arr["evt_wgt"] = arr["phys_wgt"] / total_sumw
+
+#     normed_arrays.append(arr)
+
+# merged = ak.concatenate(normed_arrays)
+
+# print("Final sum =", ak.sum(merged["evt_wgt"]))
+
+# with uproot.recreate(args.output) as fout:
+#     fout["DiphotonTree"] = merged
+
+
+# Replace with your actual tree names
+tree_names = [
+    "Resolved",
+    "Inclusive",
+    "1-bJet"
+]
+
+all_arrays = {name: [] for name in tree_names}
+total_sumws = {name: 0.0 for name in tree_names}
 
 files = sorted(glob.glob("Background/output_*root"))
 
 print(files)
 
 # ---------------- first pass ----------------
+
 for fname in files:
 
     process = None
@@ -76,47 +172,69 @@ for fname in files:
 
     print(f.keys())
 
-    # Get nominal CAT1 tree automatically
-    tree_keys = [
-        k for k in f.keys(recursive=True)
-        if ("Resolved" in k) and ("sigma" not in k)
-    ]
+    # Find all three nominal trees
+    for tree_name in tree_names:
 
-    if not tree_keys:
-        print(f"  No Resolved tree found, skipping {fname}")
-        continue
+        tree_keys = [
+            k for k in f.keys(recursive=True)
+            if tree_name in k and "sigma" not in k
+        ]
 
-    tree_key = tree_keys[0]
-    tree = f[tree_key]
+        if not tree_keys:
+            print(f"  No {tree_name} tree found in {fname}")
+            continue
 
-    arr = tree.arrays(library="ak")
+        tree_key = tree_keys[0]
 
-    arr = add_features(arr)
+        tree = f[tree_key]
 
-    phys_wgt = arr["weight"] * xsec
+        arr = tree.arrays(library="ak")
 
-    total_sumw += ak.sum(phys_wgt)
+        arr = add_features(arr)
 
-    arr["phys_wgt"] = phys_wgt
-    arr["process_id"] = process_map[process]
+        phys_wgt = arr["weight"] * xsec
 
-    all_arrays.append(arr)
+        total_sumws[tree_name] += ak.sum(phys_wgt)
+
+        arr["phys_wgt"] = phys_wgt
+        arr["process_id"] = process_map[process]
+
+        all_arrays[tree_name].append(arr)
+
 
 # ---------------- second pass ----------------
-normed_arrays = []
 
-for arr in all_arrays:
+merged_arrays = {}
 
-    arr["evt_wgt"] = arr["phys_wgt"] / total_sumw
+for tree_name in tree_names:
 
-    normed_arrays.append(arr)
+    normed_arrays = []
 
-merged = ak.concatenate(normed_arrays)
+    for arr in all_arrays[tree_name]:
 
-print("Final sum =", ak.sum(merged["evt_wgt"]))
+        arr["evt_wgt"] = arr["phys_wgt"] / total_sumws[tree_name]
 
-with uproot.recreate("merged_bkg_with_allCorr_uniform_mass_weight.root") as fout:
-    fout["DiphotonTree"] = merged
+        normed_arrays.append(arr)
+
+    if not normed_arrays:
+        print(f"No arrays available for {tree_name}")
+        continue
+
+    merged_arrays[tree_name] = ak.concatenate(normed_arrays)
+
+    print(
+        f"{tree_name}: Final sum =",
+        ak.sum(merged_arrays[tree_name]["evt_wgt"])
+    )
+
+
+# ---------------- write output ----------------
+
+with uproot.recreate(args.output) as fout:
+
+    for tree_name, merged in merged_arrays.items():
+
+        fout[f"DiphotonTree/{tree_name}"] = merged
 
 
 # # ============================================================

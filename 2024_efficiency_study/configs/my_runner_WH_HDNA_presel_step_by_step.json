@@ -1,0 +1,34 @@
+
+{
+    "samplejson": "signal_skimmed.json",
+    "workflow": "HtoAAtoBBGG_WH_processor_step_by_step_bool_cumulative",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WH-2024M60": ["2024"],
+        "WH-2024M55": ["2024"],
+        "WH-2024M50": ["2024"],
+        "WH-2024M45": ["2024"],
+        "WH-2024M40": ["2024"],
+        "WH-2024M35": ["2024"],
+        "WH-2024M30": ["2024"],
+        "WH-2024M25": ["2024"],
+        "WH-2024M20": ["2024"],
+        "WH-2024M15": ["2024"],
+        "WH-2024M12": ["2024"]
+    },
+    "corrections": {
+        "WH-2024M60": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M55": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M50": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M45": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M40": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M35": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M30": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M25": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M20": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M15": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WH-2024M12": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"]
+    },
+    "systematics": {}
+}

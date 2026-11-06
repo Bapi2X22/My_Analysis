@@ -1,0 +1,16 @@
+{
+    "samplejson": "sample_skimmed.json",
+    "workflow": "HtoAAtoBBGG_WH_processor_step_by_step_bool_cumulative",
+    "metaconditions": "Era2022_v1_mine",
+    "taggers": [],
+    "year": {
+        "WtoENu2J_24SummerRun3": ["2024"],
+        "WGtoLNuG_24SummerRun3": ["2024"]
+
+    },
+    "corrections": {
+        "WtoENu2J_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"],
+        "WGtoLNuG_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "energyErrShift", "FNUF", "Material", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup"]
+    },
+    "systematics": {}
+}

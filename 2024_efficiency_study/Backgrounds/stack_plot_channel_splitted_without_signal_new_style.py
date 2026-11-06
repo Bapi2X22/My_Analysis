@@ -295,7 +295,8 @@ variables_list = [
     "PuppiMET_sumEt",
     "PuppiMET_pt",
     "PuppiMET_phi",
-    "delphi_ggMET_Puppi"
+    "delphi_ggMET_Puppi",
+    "mass"
 ]
 
 plot_config = {
@@ -423,6 +424,11 @@ plot_config = {
         "range": (0, 3.2),
         "nbins": 16,
         "xlabel": "#Delta#phi between #gamma#gamma and MET",
+    },
+    "mass": {
+        "range": (10, 80),
+        "nbins": 70,
+        "xlabel": "Diphoton invariant mass (m_{#gamma#gamma})",
     }
 }
 
@@ -823,7 +829,9 @@ def draw_plot(
         f"hBkg_{channel}_{obs_name}_{category}"
     )
 
-    h_data.Draw("PE SAME")
+    # h_data.Draw("PE SAME")
+    if obs_name.lower() != "mass":
+        h_data.Draw("PE SAME")
 
     for mass, h_sig in signal_hists.items():
 
@@ -940,12 +948,47 @@ def draw_plot(
         lumi=lumi,
     )
 
+    # pad2.cd()
+
+    # line = draw_ratio(
+    #     ratio,
+    #     obs_name,
+    # )
+
+    line = None
     pad2.cd()
 
-    line = draw_ratio(
-        ratio,
-        obs_name,
-    )
+    if obs_name.lower() != "mass":
+        line = draw_ratio(
+            ratio,
+            obs_name,
+        )
+    else:
+        # Keep the ratio panel empty for mass
+        pad2.Clear()
+        pad2.SetGridy()
+        pad2.SetLeftMargin(0.12)
+        pad2.SetTopMargin(0.05)
+        pad2.SetBottomMargin(0.35)
+
+        # Keep the x-axis range consistent with the mass histogram
+        frame = pad2.DrawFrame(
+            plot_config[obs_name]["range"][0],
+            0.0,
+            plot_config[obs_name]["range"][1],
+            2.0,
+        )
+        frame.GetXaxis().SetTitle(plot_config[obs_name]["xlabel"])
+        frame.GetYaxis().SetTitle("Data/MC")
+        frame.GetYaxis().CenterTitle()
+        frame.GetYaxis().SetNdivisions(505)
+        frame.GetYaxis().SetTitleSize(0.09)
+        frame.GetYaxis().SetTitleOffset(0.45)
+        frame.GetYaxis().SetLabelSize(0.08)
+        frame.GetXaxis().SetTitleSize(0.12)
+        frame.GetXaxis().SetLabelSize(0.10)
+
+        line = None
 
     canvas._stat_boxes = stat_boxes
     canvas._line = line

@@ -1,0 +1,9 @@
+{
+    "best_validation_auc": 0.9706690812356833,
+    "best_iteration": 627,
+    "best_params": {
+        "learning_rate": 0.06186878435310086,
+        "max_depth": 6,
+        "gamma": 1.2165102589419217
+    }
+}

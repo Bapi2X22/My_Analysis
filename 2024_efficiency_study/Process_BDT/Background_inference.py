@@ -17,11 +17,11 @@ from sklearn import metrics
 # Configuration
 # --------------------------------------------------
 
-model_file = "HtoAATo2b2g_Oct23_26_wo_pt_over_mgg_uni_mass_weight.pkl"
+model_file = "Models/optimized_model_with_pt_ratio_291026.pkl"
 output_signal = "signal_scored.parquet"
 output_background = "background_scored.parquet"
-sig_file_name = "merged_signal_with_allCorr_uniform_mass_weight.root"
-bkg_file_name = "merged_bkg_with_allCorr_uniform_mass_weight.root"
+sig_file_name = "Merged_Inputs/merged_signal_equalized_weight.root"
+bkg_file_name = "Merged_Inputs/merged_background.root"
 
 mass_grid = np.array(
     [12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
@@ -34,15 +34,29 @@ inputVars = [
     "leppt", "lepeta",
     "first_jet_eta", "second_jet_eta",
     "pT1_by_mbb", "pT2_by_mbb",
-    "n_bJets",
+    "Njets",
     "pholead_eta", "phosublead_eta",
     "first_jet_B", "second_jet_B",
     "pholead_mvaID", "phosublead_mvaID",
-    # "pT1_by_mgg", "pT2_by_mgg",
+    "pT1_by_mgg", "pT2_by_mgg",
     "delphi_gg", "delphi_bb", "delphi_bbgg",
     "delphi_ggMET_Puppi", "pt_ratio",
     "mass_point",
 ]
+
+# inputVars = [
+#     "leppt", "lepeta",
+#     "first_jet_eta", "second_jet_eta",
+#     "pT1_by_mbb", "pT2_by_mbb",
+#     "Njets",
+#     "pholead_eta", "phosublead_eta",
+#     "first_jet_B", "second_jet_B",
+#     "pholead_mvaID", "phosublead_mvaID",
+#     "pT1_by_mgg", "pT2_by_mgg",
+#     "delphi_gg", "delphi_bb", "delphi_bbgg",
+#     "delphi_ggMET_Puppi",
+#     "mass_point",
+# ]
 
 # -----------------------------------------------
 # Input scored Parquet files
@@ -387,7 +401,7 @@ def draw_statbox_combined(hist_list, x1, y1, x2, y2, color, label=None):
     return stats
 
 
-plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/After_BDT_0p8_pt_ratio_wo_pt_over_mgg_uni_mass_weight/"
+plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/optimized_BDT_pt_ratio/"
 os.makedirs(plot_dir, exist_ok=True)
 
 # Load the complete scored datasets.
@@ -485,11 +499,11 @@ def drawROCOverlay(
             np.isclose(df_sig["mass_point"], mass)
         ]
 
-        sig_scores = sig["BDT_score"].to_numpy(dtype=float)
+        sig_scores = sig["bdt_score"].to_numpy(dtype=float)
         sig_weights = sig[weight_col].to_numpy(dtype=float)
 
         # Background evaluated at this mass hypothesis
-        bkg_scores = df_bkg[f"BDT_{mass}"].to_numpy(dtype=float)
+        bkg_scores = df_bkg[f"bdt_{mass}"].to_numpy(dtype=float)
         bkg_weights = df_bkg[weight_col].to_numpy(dtype=float)
 
         # Remove invalid scores and weights
@@ -576,8 +590,8 @@ def drawROCOverlay(
     )
 
     fig.tight_layout()
-    fig.savefig(name + ".png", dpi=300)
-    fig.savefig(name + ".pdf", dpi=300)
+    fig.savefig(plot_dir +  name + ".png", dpi=300)
+    fig.savefig(plot_dir + name + ".pdf", dpi=300)
     plt.close(fig)
 
     print("\nAUC summary:")
@@ -666,7 +680,7 @@ def make_stack_after_bdt_cut(
     score_col = f"bdt_{mass}"
 
     required_sig = [
-        obs_name, "mass_point", "BDT_score", "weight"
+        obs_name, "mass_point", "bdt_score", "weight"
     ]
     required_bkg = [
         obs_name, "process_id", score_col, "weight"
@@ -706,7 +720,7 @@ def make_stack_after_bdt_cut(
         pd.to_numeric(df_sig["mass_point"], errors="coerce"),
         mass,
     )
-    sig_mask = sig_mass & compare(df_sig["BDT_score"], bdt_cut)
+    sig_mask = sig_mass & compare(df_sig["bdt_score"], bdt_cut)
     sig = df_sig.loc[sig_mask].copy()
 
     # Background selection
@@ -825,7 +839,7 @@ def make_stack_after_bdt_cut(
     for value, weight in zip(values, weights):
         h_sig.Fill(float(value), float(weight * signal_scale))
 
-    h_sig.SetLineColor(ROOT.kBlack)
+    h_sig.SetLineColor(ROOT.kYellow)
     h_sig.SetLineWidth(3)
     h_sig.SetFillStyle(0)
 
@@ -1054,8 +1068,8 @@ def drawScoresInference(
 
     bkg = df_bkg.copy()
 
-    sig_scores = sig["BDT_score"].to_numpy(dtype=float)
-    bkg_scores = bkg[f"BDT_{mass}"].to_numpy(dtype=float)
+    sig_scores = sig["bdt_score"].to_numpy(dtype=float)
+    bkg_scores = bkg[f"bdt_{mass}"].to_numpy(dtype=float)
 
     sig_weights = sig[weight_col].to_numpy(dtype=float)
     bkg_weights = bkg[weight_col].to_numpy(dtype=float)
@@ -1151,14 +1165,14 @@ def drawScoresInference(
     ax.legend()
     fig.tight_layout()
 
-    fig.savefig(name + ".png", dpi=300)
-    fig.savefig(name + ".pdf", dpi=300)
+    fig.savefig(plot_dir + name + ".png", dpi=300)
+    fig.savefig(plot_dir + name + ".pdf", dpi=300)
     plt.close(fig)
 
     # --------------------------------------------------
     # Save ROOT histograms with sum-of-weights-squared errors
     # --------------------------------------------------
-    fout = ROOT.TFile(name + "_hists.root", "RECREATE")
+    fout = ROOT.TFile( plot_dir + name + "_hists.root", "RECREATE")
 
     for hist_name, values, errors in [
         ("signal", h_sig, err_sig),
@@ -1187,13 +1201,13 @@ def drawScoresInference(
     exportTree(
         {"BDT": sig_scores},
         "Tree",
-        export_filename=name + "_trees_sig.root",
+        export_filename=plot_dir + name + "_trees_sig.root",
     )
 
     exportTree(
         {"BDT": bkg_scores},
         "Tree",
-        export_filename=name + "_trees_bkg.root",
+        export_filename=plot_dir + name + "_trees_bkg.root",
     )
 
     print(f"Mass hypothesis: {mass} GeV")
@@ -1221,8 +1235,8 @@ def drawROCInference(
         np.isclose(df_sig["mass_point"], mass)
     ].copy()
 
-    sig_scores = sig["BDT_score"].to_numpy(dtype=float)
-    bkg_scores = df_bkg[f"BDT_{mass}"].to_numpy(dtype=float)
+    sig_scores = sig["bdt_score"].to_numpy(dtype=float)
+    bkg_scores = df_bkg[f"bdt_{mass}"].to_numpy(dtype=float)
 
     sig_weights = sig[weight_col].to_numpy(dtype=float)
     bkg_weights = df_bkg[weight_col].to_numpy(dtype=float)
@@ -1279,8 +1293,8 @@ def drawROCInference(
     ax.legend(loc="lower left")
     fig.tight_layout()
 
-    fig.savefig(name + ".png", dpi=300)
-    fig.savefig(name + ".pdf", dpi=300)
+    fig.savefig(plot_dir + name + ".png", dpi=300)
+    fig.savefig(plot_dir + name + ".pdf", dpi=300)
     plt.close(fig)
 
     print(f"Mass hypothesis: {mass} GeV")
