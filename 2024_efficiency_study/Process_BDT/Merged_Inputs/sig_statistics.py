@@ -56,18 +56,22 @@ with uproot.open(filename) as f:
         )
 
         # Event fraction
-        stats["EventFraction (%)"] = (
+        stats["EventPercentage (%)"] = (
             100 * stats["Events"] / stats["Events"].sum()
         )
 
         # Weight fraction
         total_weight = stats["SumWeights"].sum()
 
-        stats["WeightFraction (%)"] = (
+        stats["WeightPercentage (%)"] = (
             100 * stats["SumWeights"] / total_weight
             if total_weight != 0 else np.nan
         )
+
         stats.index.name = "Mass Point"
+
+        # Round all floating-point columns to 2 decimal places
+        stats = stats.round(2)
 
         all_stats[tree_name] = stats
 
@@ -75,9 +79,9 @@ with uproot.open(filename) as f:
         print(stats.to_string())
 
         print("\nTotal events:", stats["Events"].sum())
-        print("Total weight:", stats["SumWeights"].sum())
+        print(f"Total weight: {stats['SumWeights'].sum():.2f}")
 
-        stats.to_csv(f"signal_statistics_{tree_name}.csv")
+        stats.to_csv(f"signal_statistics_{tree_name}.csv", float_format="%.2f")
 
 
 # Combined CSV

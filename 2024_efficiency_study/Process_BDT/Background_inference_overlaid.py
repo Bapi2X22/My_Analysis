@@ -17,11 +17,14 @@ from sklearn import metrics
 # Configuration
 # --------------------------------------------------
 
-model_file = "Models/BDT_reference_model_resol_061126.pkl"
+model_file = "Models/BDT_reference_model_061126.pkl"
 output_signal = "signal_scored.parquet"
 output_background = "background_scored.parquet"
-sig_file_name = "Merged_Inputs/merged_signal_allCat.root"
-bkg_file_name = "Merged_Inputs/merged_bkg_allCat.root"
+sig_file_name = "Merged_Inputs/merged_signal.root"
+bkg_file_name = "Merged_Inputs/merged_background.root"
+
+plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/reference_BDT_overlaid/"
+os.makedirs(plot_dir, exist_ok=True)
 
 mass_grid = np.array(
     [12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
@@ -30,20 +33,6 @@ mass_grid = np.array(
 lumi = 36.33  # fb^-1
 
 # Exact feature names and order used during training.
-inputVars = [
-    "leppt", "lepeta",
-    "first_jet_eta", "second_jet_eta",
-    "pT1_by_mbb", "pT2_by_mbb",
-    "Njets",
-    "pholead_eta", "phosublead_eta",
-    "first_jet_B", "second_jet_B",
-    "pholead_mvaID", "phosublead_mvaID",
-    "pT1_by_mgg", "pT2_by_mgg",
-    "delphi_gg", "delphi_bb", "delphi_bbgg",
-    "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead",
-    "mass_point",
-]
-
 # inputVars = [
 #     "leppt", "lepeta",
 #     "first_jet_eta", "second_jet_eta",
@@ -54,9 +43,23 @@ inputVars = [
 #     "pholead_mvaID", "phosublead_mvaID",
 #     "pT1_by_mgg", "pT2_by_mgg",
 #     "delphi_gg", "delphi_bb", "delphi_bbgg",
-#     "delphi_ggMET_Puppi",
+#     "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead",
 #     "mass_point",
 # ]
+
+inputVars = [
+    "leppt", "lepeta",
+    "first_jet_eta", "second_jet_eta",
+    "pT1_by_mbb", "pT2_by_mbb",
+    "Njets",
+    "pholead_eta", "phosublead_eta",
+    "first_jet_B", "second_jet_B",
+    "pholead_mvaID", "phosublead_mvaID",
+    "pT1_by_mgg", "pT2_by_mgg",
+    "delphi_gg", "delphi_bb", "delphi_bbgg",
+    "delphi_ggMET_Puppi",
+    "mass_point",
+]
 
 # -----------------------------------------------
 # Input scored Parquet files
@@ -100,6 +103,37 @@ process_map = {
     "TTG1Jets": 8,
     "TTto2L2Nu": 9,
     "TTtoLNu2Q": 10,
+}
+
+background_groups = {
+    "W#gamma + jets": {
+        "processes": [
+            "WGtoLNuG",
+            "WtoENu0J",
+            "WtoENu2J",
+            "WtoMuNu2J",
+        ],
+        "color": ROOT.kGreen + 2,
+    },
+
+    "Z#gamma + jets": {
+        "processes": [
+            "DYto2Mu50",
+            "DYto2E50",
+            "DYGto2LG4",
+            "DYGto2LG50",
+        ],
+        "color": ROOT.kBlue + 1,
+    },
+
+    "t#bar{t}#gamma + jets": {
+        "processes": [
+            "TTG1Jets",
+            "TTto2L2Nu",
+            "TTtoLNu2Q",
+        ],
+        "color": ROOT.kRed + 1,
+    },
 }
 
 # Distinguishable colors for the individual stack components.
@@ -155,8 +189,8 @@ variables_list = [
     "delphi_bbgg",
     "delphi_ggMET_Puppi",
     "pt_ratio",
-    "energy_resol_lead",
-    "energy_resol_sublead",
+    # "energy_resol_lead",
+    # "energy_resol_sublead",
     "CMS_hgg_mass"
 ]
 
@@ -453,6 +487,57 @@ def draw_statbox_combined(hist_list, x1, y1, x2, y2, color, label=None):
     return stats
 
 
+def draw_all_statboxes(
+    h_sig,
+    h_components,
+    mass,
+    signal_color,
+    stat_boxes,
+):
+    # Signal
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            h_sig,
+            0.34, 0.78, 0.69, 0.88,
+            signal_color,
+            label=f"Signal (M_{{A}} = {mass} GeV)",
+            is_signal=True,
+        )
+    )
+
+    # Wgamma + jets
+    stat_boxes.append(
+        draw_statbox_combined(
+            [h_components["W#gamma + jets"]],
+            0.18, 0.66, 0.40, 0.76,
+            ROOT.kGreen + 2,
+            label="W#gamma + jets",
+        )
+    )
+
+    # Zgamma + jets
+    stat_boxes.append(
+        draw_statbox_combined(
+            [h_components["Z#gamma + jets"]],
+            0.40, 0.66, 0.62, 0.76,
+            ROOT.kBlue + 1,
+            label="Z#gamma + jets",
+        )
+    )
+
+    # ttbar gamma + jets
+    stat_boxes.append(
+        draw_statbox_combined(
+            [h_components["t#bar{t}#gamma + jets"]],
+            0.62, 0.66, 0.84, 0.76,
+            ROOT.kRed + 1,
+            label="t#bar{t}#gamma + jets",
+        )
+    )
+
+    return stat_boxes
+
+
 def combine_hists(hist_dict, process_names, name, color):
 
     h_combined = None
@@ -472,9 +557,6 @@ def combine_hists(hist_dict, process_names, name, color):
     h_combined.SetLineWidth(3)
 
     return h_combined
-
-plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/reference_BDT_resol_overlaid/"
-os.makedirs(plot_dir, exist_ok=True)
 
 # Load the complete scored datasets.
 df_sig = pd.read_parquet(output_signal)
@@ -675,7 +757,8 @@ def drawROCOverlay(
 
 
 def loadSignal(filename, inputVars):
-    tree_name = "DiphotonTree/Resolved"
+    # tree_name = "DiphotonTree/Resolved"
+    tree_name = "DiphotonTree"
 
     # Read all branches from the signal tree.
     with uproot.open(filename) as f:
@@ -696,7 +779,8 @@ def loadSignal(filename, inputVars):
 
 
 def loadMCBackground(filename, inputVars, inputVarsMC):
-    tree_name = "DiphotonTree/Resolved"
+    # tree_name = "DiphotonTree/Resolved"
+    tree_name = "DiphotonTree"
 
     # Read all branches from the background tree.
     with uproot.open(filename) as f:
@@ -878,41 +962,6 @@ def make_stack_after_bdt_cut_with_overlay(
             hist.Fill(float(value), float(weight * scale))
 
         return hist
-
-    # ------------------------------------------------
-    # Define the 3 background groups
-    # ------------------------------------------------
-
-    background_groups = {
-        "W#gamma + jets": {
-            "processes": [
-                "WGtoLNuG",
-                "WtoENu0J",
-                "WtoENu2J",
-                "WtoMuNu2J",
-            ],
-            "color": ROOT.kGreen + 2,
-        },
-
-        "Z#gamma + jets": {
-            "processes": [
-                "DYto2Mu50",
-                "DYto2E50",
-                "DYGto2LG4",
-                "DYGto2LG50",
-            ],
-            "color": ROOT.kBlue + 1,
-        },
-
-        "t#bar{t}#gamma + jets": {
-            "processes": [
-                "TTG1Jets",
-                "TTto2L2Nu",
-                "TTtoLNu2Q",
-            ],
-            "color": ROOT.kRed + 1,
-        },
-    }
 
     # ------------------------------------------------
     # Create the two stacks
@@ -1734,6 +1783,417 @@ def drawScoresInference(
     print(f"Signal weighted yield: {sig_weights.sum():.6g}")
     print(f"Background weighted yield: {bkg_weights.sum():.6g}")
 
+def drawScoresInferenceROOT(
+    df_sig,
+    df_bkg,
+    mass,
+    name,
+    nBins=25,
+    c_min=0.0,
+    c_max=1.0,
+    weight_col="weight",
+    process_col="process_id",
+    process_map=None,
+):
+
+    ROOT.gStyle.SetOptStat(0)
+    """
+    Produce:
+      1. Normalized signal/background overlay
+      2. Absolute-yield stacked background with signal overlay
+      3. Normalized stacked background with signal overlay
+
+    Save:
+      name_normalized.root
+      name_stack.root
+      name_normalized.png/pdf
+      name_stack.png/pdf
+      name_normalized_stack.png/pdf
+    """
+
+    if process_map is None:
+        process_map = {}
+
+    # --------------------------------------------------
+    # Select events
+    # --------------------------------------------------
+
+    sig = df_sig.loc[
+        np.isclose(df_sig["mass_point"], mass)
+    ].copy()
+
+    bkg = df_bkg.copy()
+
+    sig_scores = sig["bdt_score"].to_numpy(dtype=float)
+    sig_weights = sig[weight_col].to_numpy(dtype=float)
+
+    bkg_scores = bkg[f"bdt_{mass}"].to_numpy(dtype=float)
+    bkg_weights = bkg[weight_col].to_numpy(dtype=float)
+
+    sig_mask = (
+        np.isfinite(sig_scores) &
+        np.isfinite(sig_weights)
+    )
+
+    bkg_mask = (
+        np.isfinite(bkg_scores) &
+        np.isfinite(bkg_weights)
+    )
+
+    sig_scores = sig_scores[sig_mask]
+    sig_weights = sig_weights[sig_mask]
+
+    bkg = bkg.loc[bkg_mask].copy()
+
+    bkg_scores = bkg_scores[bkg_mask]
+    bkg_weights = bkg_weights[bkg_mask]
+
+    sig_weights*= signal_xsec * lumi * 1000.0
+
+    process_id_to_name = {
+        process_id: process_name
+        for process_name, process_id in process_map.items()
+    }
+
+    # Map process IDs to process names
+    bkg["Process"] = bkg[process_col].map(process_id_to_name)
+
+    # Map process names to cross sections
+    bkg_xsecs = bkg["Process"].map(xsecs).to_numpy(dtype=float)
+
+    # Check missing cross sections
+    if not np.all(np.isfinite(bkg_xsecs)):
+        missing_processes = bkg.loc[
+            ~np.isfinite(bkg_xsecs), "Process"
+        ].unique()
+
+        raise ValueError(
+            f"Missing cross sections for: {missing_processes}"
+        )
+
+    # Apply cross-section and luminosity scaling
+    bkg_weights *= bkg_xsecs * lumi * 1000.0
+
+    # if np.any(sig_weights < 0) or np.any(bkg_weights < 0):
+    #     raise ValueError("Negative event weights found.")
+
+    # --------------------------------------------------
+    # Histogram creation
+    # --------------------------------------------------
+
+    def make_hist(hist_name, title):
+        hist = ROOT.TH1D(
+            hist_name,
+            title,
+            nBins,
+            c_min,
+            c_max
+        )
+        hist.Sumw2()
+        hist.SetDirectory(0)
+        return hist
+
+    h_sig = make_hist(
+        f"h_signal_m{mass}",
+        ";BDT output;Weighted events"
+    )
+
+    h_bkg = make_hist(
+        f"h_background_m{mass}",
+        "Background;BDT output;Weighted events"
+    )
+
+    # Fill signal
+    for score, weight in zip(sig_scores, sig_weights):
+        h_sig.Fill(float(score), float(weight))
+
+    # Fill total background
+    for score, weight in zip(bkg_scores, bkg_weights):
+        h_bkg.Fill(float(score), float(weight))
+
+    # --------------------------------------------------
+    # Grouped background components
+    # --------------------------------------------------
+
+    h_components = {}
+
+    for group_name, group_info in background_groups.items():
+
+        hist = make_hist(
+            f"h_group_{len(h_components)}_m{mass}",
+            f"{group_name};BDT output;Weighted events"
+        )
+
+        # Convert process names to integer IDs
+        process_ids = [
+            process_map[p]
+            for p in group_info["processes"]
+        ]
+
+        mask = bkg[process_col].isin(process_ids).to_numpy()
+
+        for score, weight in zip(
+            bkg_scores[mask],
+            bkg_weights[mask]
+        ):
+            hist.Fill(float(score), float(weight))
+
+        hist.SetFillColor(group_info["color"])
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        h_components[group_name] = hist
+
+    # --------------------------------------------------
+    # Process labels
+    # --------------------------------------------------
+
+    def process_label(process):
+        return process_map.get(process, str(process))
+
+    # --------------------------------------------------
+    # 1. Normalized overlay
+    # --------------------------------------------------
+
+    h_sig_norm = h_sig.Clone(f"h_signal_norm_m{mass}")
+    h_bkg_norm = h_bkg.Clone(f"h_background_norm_m{mass}")
+
+    h_sig_norm.SetDirectory(0)
+    h_bkg_norm.SetDirectory(0)
+
+    if h_sig_norm.Integral() > 0:
+        h_sig_norm.Scale(1.0 / h_sig_norm.Integral())
+
+    if h_bkg_norm.Integral() > 0:
+        h_bkg_norm.Scale(1.0 / h_bkg_norm.Integral())
+
+    h_sig_norm.SetLineColor(ROOT.kBlue)
+    h_sig_norm.SetLineWidth(2)
+    h_sig_norm.SetFillColorAlpha(ROOT.kBlue, 0.25)
+
+    h_bkg_norm.SetLineColor(ROOT.kRed)
+    h_bkg_norm.SetLineWidth(2)
+    h_bkg_norm.SetFillColorAlpha(ROOT.kRed, 0.25)
+
+    c1 = ROOT.TCanvas(
+        f"c_normalized_{mass}", "", 1000, 700
+    )
+
+    h_sig_norm.GetXaxis().SetTitle("BDT output")
+    h_sig_norm.GetYaxis().SetTitle("Normalized weighted events")
+
+    h_sig_norm.SetMaximum(
+        1.25 * max(
+            h_sig_norm.GetMaximum(),
+            h_bkg_norm.GetMaximum()
+        )
+    )
+
+    h_sig_norm.Draw("HIST")
+    h_bkg_norm.Draw("HIST SAME")
+
+    # 1. Normalized overlay
+    stat_boxes_overlay = draw_all_statboxes(
+        h_sig_norm, h_components,
+        mass, ROOT.kBlack, []
+    )
+
+    CMS_label(c1, lumi=lumi, y=0.92)
+
+    c1.SaveAs(plot_dir + name + "_normalized.png")
+    c1.SaveAs(plot_dir + name + "_normalized.pdf")
+
+    # --------------------------------------------------
+    # 2. Absolute-yield stacked background
+    # --------------------------------------------------
+
+    stack = ROOT.THStack(
+        f"stack_{mass}",
+        f";BDT output;Weighted events"
+    )
+
+    for group_name, hist in h_components.items():
+
+        hist.SetFillColor(
+            background_groups[group_name]["color"]
+        )
+
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        stack.Add(hist)
+
+    h_sig.SetLineColor(ROOT.kBlack)
+    h_sig.SetLineWidth(3)
+    h_sig.SetFillStyle(0)
+
+    c2 = ROOT.TCanvas(
+        f"c_stack_{mass}", "", 1000, 700
+    )
+
+    c2.SetLogy()
+
+    stack.Draw("HIST")
+    stack.GetXaxis().SetTitle("BDT output")
+    stack.GetYaxis().SetTitle("Weighted events")
+
+    stack.SetMinimum(0.001)
+
+    stack.SetMaximum(
+        100 * max(
+            stack.GetMaximum(),
+            h_sig.GetMaximum()
+        )
+    )
+
+    h_sig.Draw("HIST SAME")
+
+    # 2. Absolute-yield stack
+    stat_boxes_stack = draw_all_statboxes(
+        h_sig, h_components,
+        mass, ROOT.kBlack, []
+    )
+
+    CMS_label(c2, lumi=lumi, y=0.92)
+
+    c2.SaveAs(plot_dir + name + "_stack.png")
+    c2.SaveAs(plot_dir + name + "_stack.pdf")
+
+    # --------------------------------------------------
+    # 3. Normalized stacked background
+    # --------------------------------------------------
+
+    h_components_norm = {}
+
+    total_bkg = sum(
+        hist.Integral()
+        for hist in h_components.values()
+    )
+
+    for group_name, hist in h_components.items():
+
+        h_norm = hist.Clone(
+            f"h_group_{len(h_components_norm)}_norm_m{mass}"
+        )
+
+        h_norm.SetDirectory(0)
+
+        if total_bkg > 0:
+            h_norm.Scale(1.0 / total_bkg)
+
+        h_components_norm[group_name] = h_norm
+
+    h_sig_unit = h_sig.Clone(
+        f"h_signal_unit_m{mass}"
+    )
+
+    h_sig_unit.SetDirectory(0)
+
+    if h_sig_unit.Integral() > 0:
+        h_sig_unit.Scale(1.0 / h_sig_unit.Integral())
+
+    stack_norm = ROOT.THStack(
+        f"stack_norm_{mass}",
+        f";BDT output;Normalized weighted events"
+    )
+
+    for group_name, hist in h_components_norm.items():
+
+        hist.SetFillColor(
+            background_groups[group_name]["color"]
+        )
+
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        stack_norm.Add(hist)
+
+    h_sig_unit.SetLineColor(ROOT.kBlack)
+    h_sig_unit.SetLineWidth(3)
+    h_sig_unit.SetFillStyle(0)
+
+    c3 = ROOT.TCanvas(
+        f"c_normalized_stack_{mass}", "", 1000, 700
+    )
+
+    stack_norm.Draw("HIST")
+    stack_norm.GetXaxis().SetTitle("BDT output")
+    stack_norm.GetYaxis().SetTitle("Normalized weighted events")
+
+    # 3. Normalized stack
+    stat_boxes_norm_stack = draw_all_statboxes(
+        h_sig_unit, h_components_norm,
+        mass, ROOT.kBlack, []
+    )
+
+    stack_norm.SetMaximum(
+        1.25 * max(
+            stack_norm.GetMaximum(),
+            h_sig_unit.GetMaximum()
+        )
+    )
+
+    h_sig_unit.Draw("HIST SAME")
+
+    CMS_label(c3, lumi=lumi, y=0.92)
+
+    c3.SaveAs(plot_dir + name + "_normalized_stack.png")
+    c3.SaveAs(plot_dir + name + "_normalized_stack.pdf")
+
+    # --------------------------------------------------
+    # Save ROOT histograms
+    # --------------------------------------------------
+
+    fout = ROOT.TFile(
+        plot_dir + name + "_normalized.root",
+        "RECREATE"
+    )
+
+    h_sig_norm.Write()
+    h_bkg_norm.Write()
+
+    fout.Close()
+
+    fout = ROOT.TFile(
+        plot_dir + name + "_stack.root",
+        "RECREATE"
+    )
+
+    h_sig.Write()
+    h_bkg.Write()
+
+    for process, hist in h_components.items():
+        hist.Write()
+
+    for process, hist in h_components_norm.items():
+        hist.Write()
+
+    h_sig_unit.Write()
+
+    fout.Close()
+
+    # --------------------------------------------------
+    # Print yields
+    # --------------------------------------------------
+
+    print(f"\nMass hypothesis: {mass} GeV")
+
+    print(f"Signal events: {len(sig_scores)}")
+    print(f"Background events: {len(bkg_scores)}")
+
+    print(f"Signal weighted yield: {h_sig.Integral():.6g}")
+    print(f"Background weighted yield: {h_bkg.Integral():.6g}")
+
+    print("\nBackground components:")
+
+    for process, hist in h_components.items():
+        print(
+            f"{process_label(process):25s} "
+            f"{hist.Integral():.6g}"
+        )
+
+    print("\nAll plots and ROOT histograms saved.")
+
 
 def drawROCInference(
     df_sig,
@@ -1965,6 +2425,19 @@ for mass in mass_grid:
         nBins=25,
         c_min=0.0,
         c_max=1.0,
+    )
+
+    id_to_process = {
+        v: k for k, v in process_map.items()
+    }
+
+    drawScoresInferenceROOT(
+        df_sig,
+        df_bkg,
+        mass=mass,
+        name=name,
+        process_col="process_id",
+        process_map=process_map
     )
 
     auc_results[mass] = drawROCInference(

@@ -91,16 +91,18 @@ with uproot.open(filename) as f:
         # Preserve process ordering
         stats = stats.reindex(process_map.keys(), fill_value=0)
 
+        # Round floating-point columns to 2 decimal places
+        stats = stats.round(2)
+
         all_stats[tree_name] = stats
 
         print(f"\nBackground composition: {tree_name}")
         print(stats.to_string())
 
-        print("Total events:", len(df_bkg))
+        print("\nTotal events:", len(df_bkg))
 
         if weight_branch in df_bkg.columns:
-            print("Total weight:", df_bkg[weight_branch].sum())
-
+            print(f"Total weight: {df_bkg[weight_branch].sum():.2f}")
 
 # --------------------------------------------------
 # Save separate CSV files for each category
