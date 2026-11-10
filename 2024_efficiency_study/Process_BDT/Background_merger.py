@@ -18,7 +18,28 @@ parser.add_argument(
     help="Output ROOT file name",
 )
 
+parser.add_argument(
+    "-N", "--downsample",
+    type=int,
+    default=1,
+    help="Keep 1/N fraction of background events (default: 1)"
+)
+
+parser.add_argument(
+    "--seed",
+    type=int,
+    default=12345,
+    help="Random seed for reproducible event selection"
+)
+
+
 args = parser.parse_args()
+
+
+if args.downsample < 1:
+    parser.error("--downsample must be >= 1")
+
+rng = np.random.default_rng(args.seed)
 
 def add_features(arr):
     """
@@ -172,7 +193,6 @@ for fname in files:
 
     print(f.keys())
 
-    # Find all three nominal trees
     for tree_name in tree_names:
 
         tree_keys = [
@@ -185,19 +205,43 @@ for fname in files:
             continue
 
         tree_key = tree_keys[0]
-
         tree = f[tree_key]
 
         arr = tree.arrays(library="ak")
-
         arr = add_features(arr)
 
         phys_wgt = arr["weight"] * xsec
 
+        # IMPORTANT: Calculate normalization using ALL events
         total_sumws[tree_name] += ak.sum(phys_wgt)
 
         arr["phys_wgt"] = phys_wgt
         arr["process_id"] = process_map[process]
+
+        # ------------------------------------------
+        # Randomly select 1/N background events
+        # ------------------------------------------
+
+        n_events = len(arr)
+        n_selected = n_events // args.downsample
+
+        if args.downsample > 1:
+
+            selected_indices = rng.choice(
+                n_events,
+                size=n_selected,
+                replace=False
+            )
+
+            selected_indices.sort()
+
+            arr = arr[selected_indices]
+
+        print(
+            f"{tree_name}: "
+            f"Original = {n_events}, "
+            f"Selected = {len(arr)}"
+        )
 
         all_arrays[tree_name].append(arr)
 
@@ -212,7 +256,8 @@ for tree_name in tree_names:
 
     for arr in all_arrays[tree_name]:
 
-        arr["evt_wgt"] = arr["phys_wgt"] / total_sumws[tree_name]
+        # arr["evt_wgt"] = arr["phys_wgt"] / total_sumws[tree_name]
+        arr["evt_wgt"] = (args.downsample * arr["phys_wgt"] / total_sumws[tree_name])
 
         normed_arrays.append(arr)
 
@@ -222,11 +267,17 @@ for tree_name in tree_names:
 
     merged_arrays[tree_name] = ak.concatenate(normed_arrays)
 
+    selected_sumw = ak.sum(merged_arrays[tree_name]["phys_wgt"])
+
+    merged_arrays[tree_name]["evt_wgt"] = (
+        merged_arrays[tree_name]["phys_wgt"]
+        / selected_sumw
+    )
+
     print(
         f"{tree_name}: Final sum =",
         ak.sum(merged_arrays[tree_name]["evt_wgt"])
     )
-
 
 # ---------------- write output ----------------
 

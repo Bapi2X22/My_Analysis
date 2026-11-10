@@ -71,7 +71,7 @@ with uproot.open(filename) as f:
             Events=("Process", "size"),
         )
 
-        stats["EventFraction (%)"] = (
+        stats["EventPercentage (%)"] = (
             100 * stats["Events"] / stats["Events"].sum()
         )
 
@@ -83,7 +83,7 @@ with uproot.open(filename) as f:
 
             total_weight = stats["SumWeights"].sum()
 
-            stats["WeightFraction (%)"] = (
+            stats["WeightPercentage (%)"] = (
                 100 * stats["SumWeights"] / total_weight
                 if total_weight != 0 else np.nan
             )
@@ -122,6 +122,6 @@ combined_stats = pd.concat(
     names=["Category", "Process"]
 )
 
-combined_stats.to_csv("background_statistics_all_categories.csv")
+combined_stats.to_csv("background_statistics_all_categories_DS11.csv")
 
 print("\nSaved all background statistics.")

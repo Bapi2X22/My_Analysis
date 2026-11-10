@@ -47,7 +47,7 @@ def getTH1FromNumpHist(nph):
     hist.ResetStats() 	
     return hist
 #########################################################
-mass_value = 55.0
+mass_value = 15.0
 def loadSignal(inputVars):
 
   vars = inputVars
@@ -55,7 +55,7 @@ def loadSignal(inputVars):
     vars.insert(0,'evt_wgt')
 
   # dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars,library='pd')
-#   dataset_Sig = uproot.open(f"Merged_Inputs/M{int(mass_value)}_merged.root")['DiphotonTree/Resolved'].arrays(inputVars)
+#   dataset_Sig = uproot.open(f"Merged_Inputs/M{int(mass_value)}_merged.root")['DiphotonTree'].arrays(inputVars)
   dataset_Sig = uproot.open(f"Merged_Inputs/merged_signal_allCat.root")['DiphotonTree/Resolved'].arrays(inputVars)
   df_sig = ak.to_dataframe(dataset_Sig)
   # df_sig = dataset_Sig[vars]
@@ -683,11 +683,11 @@ if __name__ == '__main__':
 #   inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
 #   inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
 
-#   inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "mass_point", "evt_wgt"]
-#   inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "mass_point", "evt_wgt"]
+  inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "mass_point", "evt_wgt"]
+  inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "mass_point", "evt_wgt"]
 
-  inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead", "mass_point", "evt_wgt"]
-  inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead", "mass_point", "evt_wgt"]
+#   inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead", "mass_point", "evt_wgt"]
+#   inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead", "mass_point", "evt_wgt"]
 
 #   inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "evt_wgt"]
 #   inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "Njets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "evt_wgt"]
@@ -815,6 +815,8 @@ if __name__ == '__main__':
   W_train = X_train["evt_wgt"].to_numpy() * (10**6)
   W_val = X_val["evt_wgt"].to_numpy() * (10**6)
   W_test = X_test["evt_wgt"].to_numpy() * (10**6)
+
+  print("W_train: ", W_train)
 
   # Remove weights from input features
   X_train_features = X_train.drop("evt_wgt", axis=1).to_numpy()

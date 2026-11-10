@@ -1150,14 +1150,14 @@ def make_stack_after_bdt_cut_with_overlay(
     h_after_legend = ROOT.TH1D("h_after_legend", "", 1, 0, 1)
 
     # Before BDT: filled box
-    h_before_legend.SetFillColor(ROOT.kGray + 1)
-    h_before_legend.SetFillStyle(1001)
-    h_before_legend.SetLineColor(ROOT.kGray + 1)
+    h_after_legend.SetFillColor(ROOT.kGray + 1)
+    h_after_legend.SetFillStyle(1001)
+    h_after_legend.SetLineColor(ROOT.kGray + 1)
 
     # After BDT: line
-    h_after_legend.SetFillStyle(0)
-    h_after_legend.SetLineColor(ROOT.kBlack)
-    h_after_legend.SetLineWidth(2)
+    h_before_legend.SetFillStyle(0)
+    h_before_legend.SetLineColor(ROOT.kBlack)
+    h_before_legend.SetLineWidth(2)
 
     output_hists.extend([h_sig_before, h_sig_after, h_before_legend, h_after_legend])
 
@@ -1405,13 +1405,13 @@ def make_stack_after_bdt_cut_with_overlay(
     bdt_legend.AddEntry(
         h_before_legend,
         "B: Before BDT",
-        "f",
+        "l",
     )
 
     bdt_legend.AddEntry(
         h_after_legend,
         "A: After BDT",
-        "l",
+        "f",
     )
 
     bdt_legend.Draw()
@@ -2279,8 +2279,6 @@ def drawROCInference(
     print(f"Weighted AUC: {auc:.5f}")
 
     return auc
-
-
 
 
 with open(model_file, "rb") as f:
