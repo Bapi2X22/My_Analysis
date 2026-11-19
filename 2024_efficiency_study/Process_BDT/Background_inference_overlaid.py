@@ -9,6 +9,9 @@ import awkward as ak
 import os
 import matplotlib.pyplot as plt
 import ROOT
+from glob import glob 
+import pyarrow.parquet as pq
+import pyarrow as pa
 
 from sklearn import metrics
 
@@ -17,13 +20,19 @@ from sklearn import metrics
 # Configuration
 # --------------------------------------------------
 
-model_file = "Models/BDT_reference_model_061126.pkl"
+model_file = "Model_output/BDT_optimized_reference_model_equalized_weight_181126/BDT_optimized_reference_model_equalized_weight_181126.pkl"
 output_signal = "signal_scored.parquet"
 output_background = "background_scored.parquet"
-sig_file_name = "Merged_Inputs/merged_signal.root"
-bkg_file_name = "Merged_Inputs/merged_background.root"
+output_data = "data_scored.parquet"
+sig_file_name = "Merged_Inputs/merged_signal_allCat_equalized_weight.root"
+bkg_file_name = "Merged_Inputs/merged_bkg_allCat.root"
+data_base = (
+    "/eos/user/b/bbapi/"
+    "My_Analysis/2024_efficiency_study/"
+    "Data/NTuples_2024_Data_skim_lepCorr/merged"
+)
 
-plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/reference_BDT_overlaid/"
+plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/reference_optimized_BDT_equalized_weight_overlaid_withDATA/"
 os.makedirs(plot_dir, exist_ok=True)
 
 mass_grid = np.array(
@@ -67,6 +76,7 @@ inputVars = [
 
 # Only the resolved category is used.
 category = "Resolved"
+tree_name = f"DiphotonTree/Resolved"
 
 # BDT threshold: change as needed.
 bdt_cut = 0.80
@@ -159,7 +169,7 @@ process_colors = {
 
 signal_colors = {
     signal_mass_points[0]: ROOT.kMagenta + 1,
-    signal_mass_points[1]: ROOT.kOrange + 7,
+    signal_mass_points[1]: ROOT.kOrange+2 + 7,
     signal_mass_points[2]: ROOT.kCyan + 1,
 }
 
@@ -489,21 +499,39 @@ def draw_statbox_combined(hist_list, x1, y1, x2, y2, color, label=None):
 
 def draw_all_statboxes(
     h_sig,
+    h_data,
     h_components,
     mass,
     signal_color,
     stat_boxes,
 ):
     # Signal
+    if h_data is not None:
+        signal_coordinate = [0.18, 0.78, 0.51, 0.88]
+    else: 
+        signal_coordinate = [0.34, 0.78, 0.67, 0.88]
+
     stat_boxes.append(
         draw_statbox_manual_small(
             h_sig,
-            0.34, 0.78, 0.69, 0.88,
+            *signal_coordinate,
             signal_color,
             label=f"Signal (M_{{A}} = {mass} GeV)",
             is_signal=True,
         )
     )
+
+    # Data
+    if h_data is not None:
+        stat_boxes.append(
+            draw_statbox_manual_small(
+                h_data,
+                0.51, 0.78, 0.84, 0.88,
+                ROOT.kBlack,
+                label=f"Data",
+                is_signal=False,
+            )
+        )
 
     # Wgamma + jets
     stat_boxes.append(
@@ -558,14 +586,14 @@ def combine_hists(hist_dict, process_names, name, color):
 
     return h_combined
 
-# Load the complete scored datasets.
-df_sig = pd.read_parquet(output_signal)
-df_bkg = pd.read_parquet(output_background)
+# # Load the complete scored datasets.
+# df_sig = pd.read_parquet(output_signal)
+# df_bkg = pd.read_parquet(output_background)
 
-print("Signal events:", len(df_sig))
-print("Background events:", len(df_bkg))
-print("Background process IDs:")
-print(df_bkg["process_id"].value_counts().sort_index())
+# print("Signal events:", len(df_sig))
+# print("Background events:", len(df_bkg))
+# print("Background process IDs:")
+# print(df_bkg["process_id"].value_counts().sort_index())
 
 
 
@@ -757,9 +785,6 @@ def drawROCOverlay(
 
 
 def loadSignal(filename, inputVars):
-    # tree_name = "DiphotonTree/Resolved"
-    tree_name = "DiphotonTree"
-
     # Read all branches from the signal tree.
     with uproot.open(filename) as f:
         tree = f[tree_name]
@@ -779,9 +804,6 @@ def loadSignal(filename, inputVars):
 
 
 def loadMCBackground(filename, inputVars, inputVarsMC):
-    # tree_name = "DiphotonTree/Resolved"
-    tree_name = "DiphotonTree"
-
     # Read all branches from the background tree.
     with uproot.open(filename) as f:
         tree = f[tree_name]
@@ -811,6 +833,58 @@ def loadMCBackground(filename, inputVars, inputVarsMC):
         raise KeyError(f"Missing background branches after renaming: {missing}")
 
     return df_bkg
+
+
+
+def make_ratio_histogram(h_data, h_bkg, name="h_ratio"):
+    """
+    Create Data / MC ratio histogram and MC statistical uncertainty band.
+    """
+
+    h_ratio = h_data.Clone(name)
+    h_ratio.SetDirectory(0)
+    h_ratio.Reset()
+
+    h_unc = h_bkg.Clone(name + "_unc")
+    h_unc.SetDirectory(0)
+
+    for i in range(1, h_data.GetNbinsX() + 1):
+
+        data = h_data.GetBinContent(i)
+        bkg = h_bkg.GetBinContent(i)
+
+        data_err = h_data.GetBinError(i)
+        bkg_err = h_bkg.GetBinError(i)
+
+        if bkg > 0:
+
+            ratio = data / bkg
+
+            ratio_err = data_err / bkg
+
+            h_ratio.SetBinContent(i, ratio)
+            h_ratio.SetBinError(i, ratio_err)
+
+            h_unc.SetBinContent(i, 1.0)
+            h_unc.SetBinError(i, bkg_err / bkg)
+
+        else:
+            h_ratio.SetBinContent(i, 0)
+            h_ratio.SetBinError(i, 0)
+
+            h_unc.SetBinContent(i, 0)
+            h_unc.SetBinError(i, 0)
+
+    h_ratio.SetMarkerStyle(20)
+    h_ratio.SetMarkerSize(0.9)
+    h_ratio.SetMarkerColor(ROOT.kBlack)
+    h_ratio.SetLineColor(ROOT.kBlack)
+
+    h_unc.SetFillColorAlpha(ROOT.kGray + 1, 0.35)
+    h_unc.SetFillStyle(3004)
+    h_unc.SetLineColor(ROOT.kGray + 2)
+
+    return h_ratio, h_unc
 
 
 def make_stack_after_bdt_cut_with_overlay(
@@ -1132,7 +1206,7 @@ def make_stack_after_bdt_cut_with_overlay(
         is_signal=True,
     )
 
-    signal_color = ROOT.kOrange + 7
+    signal_color = ROOT.kOrange+2 + 7
 
     # Before BDT: dashed
     h_sig_before.SetLineColor(signal_color)
@@ -2195,6 +2269,689 @@ def drawScoresInferenceROOT(
     print("\nAll plots and ROOT histograms saved.")
 
 
+def drawScoresInferenceROOTwithDATA(
+    df_sig,
+    df_bkg,
+    df_data,
+    mass,
+    name,
+    nBins=25,
+    c_min=0.0,
+    c_max=1.0,
+    weight_col="weight",
+    process_col="process_id",
+    process_map=None,
+):
+
+    ROOT.gStyle.SetOptStat(0)
+    """
+    Produce:
+      1. Normalized signal/background overlay
+      2. Absolute-yield stacked background with signal overlay
+      3. Normalized stacked background with signal overlay
+
+    Save:
+      name_normalized.root
+      name_stack.root
+      name_normalized.png/pdf
+      name_stack.png/pdf
+      name_normalized_stack.png/pdf
+    """
+
+    if process_map is None:
+        process_map = {}
+
+    # --------------------------------------------------
+    # Select events
+    # --------------------------------------------------
+
+    sig = df_sig.loc[
+        np.isclose(df_sig["mass_point"], mass)
+    ].copy()
+
+    bkg = df_bkg.copy()
+
+    sig_scores = sig["bdt_score"].to_numpy(dtype=float)
+    sig_weights = sig[weight_col].to_numpy(dtype=float)
+
+    bkg_scores = bkg[f"bdt_{mass}"].to_numpy(dtype=float)
+    bkg_weights = bkg[weight_col].to_numpy(dtype=float)
+
+    sig_mask = (
+        np.isfinite(sig_scores) &
+        np.isfinite(sig_weights)
+    )
+
+    bkg_mask = (
+        np.isfinite(bkg_scores) &
+        np.isfinite(bkg_weights)
+    )
+
+    sig_scores = sig_scores[sig_mask]
+    sig_weights = sig_weights[sig_mask]
+
+    bkg = bkg.loc[bkg_mask].copy()
+
+    bkg_scores = bkg_scores[bkg_mask]
+    bkg_weights = bkg_weights[bkg_mask]
+
+    sig_weights*= signal_xsec * lumi * 1000.0
+
+    process_id_to_name = {
+        process_id: process_name
+        for process_name, process_id in process_map.items()
+    }
+
+    # Map process IDs to process names
+    bkg["Process"] = bkg[process_col].map(process_id_to_name)
+
+    # Map process names to cross sections
+    bkg_xsecs = bkg["Process"].map(xsecs).to_numpy(dtype=float)
+
+    # Check missing cross sections
+    if not np.all(np.isfinite(bkg_xsecs)):
+        missing_processes = bkg.loc[
+            ~np.isfinite(bkg_xsecs), "Process"
+        ].unique()
+
+        raise ValueError(
+            f"Missing cross sections for: {missing_processes}"
+        )
+
+    # Apply cross-section and luminosity scaling
+    bkg_weights *= bkg_xsecs * lumi * 1000.0
+
+    # if np.any(sig_weights < 0) or np.any(bkg_weights < 0):
+    #     raise ValueError("Negative event weights found.")
+
+    # --------------------------------------------------
+    # Select data events
+    # --------------------------------------------------
+
+    data = df_data.copy()
+
+    data_scores = data[f"bdt_{mass}"].to_numpy(dtype=float)
+
+    data_mask = np.isfinite(data_scores)
+    data_scores = data_scores[data_mask]
+
+    print("Selected data events:", len(data_scores))
+
+    def make_hist(hist_name, title):
+        hist = ROOT.TH1D(
+            hist_name,
+            title,
+            nBins,
+            c_min,
+            c_max
+        )
+        hist.Sumw2()
+        hist.SetDirectory(0)
+        return hist
+
+    h_sig = make_hist(
+        f"h_signal_m{mass}",
+        ";BDT output;Weighted events"
+    )
+
+    h_bkg = make_hist(
+        f"h_background_m{mass}",
+        "Background;BDT output;Weighted events"
+    )
+
+    h_data = make_hist(
+        f"h_data_m{mass}",
+        "Data;BDT output;Events"
+    )
+
+    # Fill signal
+    for score, weight in zip(sig_scores, sig_weights):
+        h_sig.Fill(float(score), float(weight))
+
+    # Fill total background
+    for score, weight in zip(bkg_scores, bkg_weights):
+        h_bkg.Fill(float(score), float(weight))
+
+    # Fill data with unit weight
+    for score in data_scores:
+        h_data.Fill(float(score))
+
+    h_data.SetMarkerStyle(20)
+    h_data.SetMarkerSize(1.0)
+    h_data.SetMarkerColor(ROOT.kBlack)
+    h_data.SetLineColor(ROOT.kBlack)
+
+    # --------------------------------------------------
+    # Grouped background components
+    # --------------------------------------------------
+
+    h_components = {}
+
+    for group_name, group_info in background_groups.items():
+
+        hist = make_hist(
+            f"h_group_{len(h_components)}_m{mass}",
+            f"{group_name};BDT output;Weighted events"
+        )
+
+        # Convert process names to integer IDs
+        process_ids = [
+            process_map[p]
+            for p in group_info["processes"]
+        ]
+
+        mask = bkg[process_col].isin(process_ids).to_numpy()
+
+        for score, weight in zip(
+            bkg_scores[mask],
+            bkg_weights[mask]
+        ):
+            hist.Fill(float(score), float(weight))
+
+        hist.SetFillColor(group_info["color"])
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        h_components[group_name] = hist
+
+    # --------------------------------------------------
+    # Process labels
+    # --------------------------------------------------
+
+    def process_label(process):
+        return process_map.get(process, str(process))
+
+    # --------------------------------------------------
+    # 1. Normalized overlay
+    # --------------------------------------------------
+
+    h_sig_norm = h_sig.Clone(f"h_signal_norm_m{mass}")
+    h_bkg_norm = h_bkg.Clone(f"h_background_norm_m{mass}")
+
+    h_sig_norm.SetDirectory(0)
+    h_bkg_norm.SetDirectory(0)
+
+    if h_sig_norm.Integral() > 0:
+        h_sig_norm.Scale(1.0 / h_sig_norm.Integral())
+
+    if h_bkg_norm.Integral() > 0:
+        h_bkg_norm.Scale(1.0 / h_bkg_norm.Integral())
+
+    h_sig_norm.SetLineColor(ROOT.kBlue)
+    h_sig_norm.SetLineWidth(2)
+    h_sig_norm.SetFillColorAlpha(ROOT.kBlue, 0.25)
+
+    h_bkg_norm.SetLineColor(ROOT.kRed)
+    h_bkg_norm.SetLineWidth(2)
+    h_bkg_norm.SetFillColorAlpha(ROOT.kRed, 0.25)
+
+    c1 = ROOT.TCanvas(
+        f"c_normalized_{mass}", "", 1000, 700
+    )
+
+    h_sig_norm.GetXaxis().SetTitle("BDT output")
+    h_sig_norm.GetYaxis().SetTitle("Normalized weighted events")
+
+    h_sig_norm.SetMaximum(
+        1.25 * max(
+            h_sig_norm.GetMaximum(),
+            h_bkg_norm.GetMaximum()
+        )
+    )
+
+    h_sig_norm.Draw("HIST")
+    h_bkg_norm.Draw("HIST SAME")
+
+    # 1. Normalized overlay
+    stat_boxes_overlay = draw_all_statboxes(
+        h_sig_norm, None, h_components,
+        mass, ROOT.kBlack, []
+    )
+
+    CMS_label(c1, lumi=lumi, y=0.92)
+
+    c1.SaveAs(plot_dir + name + "_normalized.png")
+    c1.SaveAs(plot_dir + name + "_normalized.pdf")
+
+    # --------------------------------------------------
+    # 2. Absolute-yield stacked background
+    # --------------------------------------------------
+
+    stack = ROOT.THStack(
+        f"stack_{mass}",
+        f";BDT output;Weighted events"
+    )
+
+    for group_name, hist in h_components.items():
+
+        hist.SetFillColor(
+            background_groups[group_name]["color"]
+        )
+
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        stack.Add(hist)
+
+    h_sig.SetLineColor(ROOT.kOrange+2)
+    h_sig.SetLineWidth(3)
+    h_sig.SetFillStyle(0)
+
+    # --------------------------------------------------
+    # 2. Absolute-yield stacked background + data
+    # --------------------------------------------------
+
+    # c2 = ROOT.TCanvas(
+    #     f"c_stack_{mass}", "", 1000, 700
+    # )
+
+    # c2.SetLogy()
+
+    # stack.Draw("HIST")
+
+    # stack.GetXaxis().SetTitle("BDT output")
+    # stack.GetYaxis().SetTitle("Weighted events")
+
+    # stack.SetMinimum(0.001)
+
+    # stack.SetMaximum(
+    #     100 * max(
+    #         stack.GetMaximum(),
+    #         h_sig.GetMaximum(),
+    #         h_data.GetMaximum()
+    #     )
+    # )
+
+    # # Signal overlay
+    # h_sig.Draw("HIST SAME")
+
+    # # Data overlay
+    # h_data.Draw("E1 SAME")
+
+    # stat_boxes_stack = draw_all_statboxes(
+    #     h_sig, h_data, h_components,
+    #     mass, ROOT.kBlack, []
+    # )
+
+    # CMS_label(c2, lumi=lumi, y=0.92)
+
+    # c2.SaveAs(plot_dir + name + "_stack.png")
+    # c2.SaveAs(plot_dir + name + "_stack.pdf")
+
+
+    # --------------------------------------------------
+    # 2. Absolute-yield stacked background + data
+    #    with Data / MC ratio pad
+    # --------------------------------------------------
+
+    c2 = ROOT.TCanvas(
+        f"c_stack_{mass}", "", 1000, 850
+    )
+
+    pad1 = ROOT.TPad("pad1", "Main plot", 0, 0.30, 1, 1)
+    pad2 = ROOT.TPad("pad2", "Ratio plot", 0, 0.0, 1, 0.30)
+
+    pad1.SetBottomMargin(0.03)
+    pad1.SetLeftMargin(0.13)
+    pad1.SetRightMargin(0.05)
+
+    pad2.SetTopMargin(0.03)
+    pad2.SetBottomMargin(0.32)
+    pad2.SetLeftMargin(0.13)
+    pad2.SetRightMargin(0.05)
+
+    pad1.SetLogy()
+
+    pad1.Draw()
+    pad2.Draw()
+
+    # ---------------- Main pad ----------------
+
+    pad1.cd()
+
+    stack.Draw("HIST")
+
+    stack.GetXaxis().SetLabelSize(0)
+    stack.GetXaxis().SetTitleSize(0)
+
+    stack.GetYaxis().SetTitle("Weighted events")
+    stack.GetYaxis().SetTitleSize(0.045)
+    stack.GetYaxis().SetTitleOffset(1.25)
+
+    stack.SetMinimum(0.001)
+
+    stack.SetMaximum(
+        100 * max(
+            stack.GetMaximum(),
+            h_sig.GetMaximum(),
+            h_data.GetMaximum()
+        )
+    )
+
+    h_sig.Draw("HIST SAME")
+    h_data.Draw("E1 SAME")
+
+    # for group_name, hist in h_components.items():
+    #     legend.AddEntry(hist, group_name, "f")
+
+    # legend.Draw()
+
+    stat_boxes_stack = draw_all_statboxes(
+        h_sig, h_data, h_components,
+        mass, ROOT.kOrange+2, []
+    )
+
+    CMS_label(c2, lumi=lumi, y=0.95)
+
+    # ---------------- Ratio pad ----------------
+
+    pad2.cd()
+
+    h_ratio, h_ratio_unc = make_ratio_histogram(
+        h_data,
+        h_bkg,
+        f"h_data_mc_ratio_m{mass}"
+    )
+
+    h_ratio_unc.GetXaxis().SetTitle("BDT output")
+    h_ratio_unc.GetYaxis().SetTitle("Data / MC")
+
+    h_ratio_unc.GetXaxis().SetTitleSize(0.12)
+    h_ratio_unc.GetXaxis().SetLabelSize(0.10)
+    h_ratio_unc.GetXaxis().SetTitleOffset(1.05)
+
+    h_ratio_unc.GetYaxis().SetTitleSize(0.10)
+    h_ratio_unc.GetYaxis().SetLabelSize(0.085)
+    h_ratio_unc.GetYaxis().SetTitleOffset(0.55)
+
+    h_ratio_unc.GetYaxis().SetNdivisions(505)
+    h_ratio_unc.SetMinimum(0.0)
+    h_ratio_unc.SetMaximum(2.0)
+
+    h_ratio_unc.Draw("E2")
+
+    h_ratio.Draw("E1 SAME")
+
+    line = ROOT.TLine(c_min, 1.0, c_max, 1.0)
+    line.SetLineColor(ROOT.kRed + 1)
+    line.SetLineStyle(2)
+    line.SetLineWidth(2)
+    line.Draw("SAME")
+
+    c2.cd()
+
+    c2.SaveAs(plot_dir + name + "_stack.png")
+    c2.SaveAs(plot_dir + name + "_stack.pdf")
+
+
+    # --------------------------------------------------
+    # 3. Normalized stacked background
+    # --------------------------------------------------
+
+    h_components_norm = {}
+
+    total_bkg = sum(
+        hist.Integral()
+        for hist in h_components.values()
+    )
+
+    for group_name, hist in h_components.items():
+
+        h_norm = hist.Clone(
+            f"h_group_{len(h_components_norm)}_norm_m{mass}"
+        )
+
+        h_norm.SetDirectory(0)
+
+        if total_bkg > 0:
+            h_norm.Scale(1.0 / total_bkg)
+
+        h_components_norm[group_name] = h_norm
+
+    h_sig_unit = h_sig.Clone(
+        f"h_signal_unit_m{mass}"
+    )
+
+    h_sig_unit.SetDirectory(0)
+
+    if h_sig_unit.Integral() > 0:
+        h_sig_unit.Scale(1.0 / h_sig_unit.Integral())
+
+    stack_norm = ROOT.THStack(
+        f"stack_norm_{mass}",
+        f";BDT output;Normalized weighted events"
+    )
+
+    for group_name, hist in h_components_norm.items():
+
+        hist.SetFillColor(
+            background_groups[group_name]["color"]
+        )
+
+        hist.SetLineColor(ROOT.kBlack)
+        hist.SetLineWidth(1)
+
+        stack_norm.Add(hist)
+
+    h_sig_unit.SetLineColor(ROOT.kOrange+2)
+    h_sig_unit.SetLineWidth(3)
+    h_sig_unit.SetFillStyle(0)
+
+    # --------------------------------------------------
+    # Normalize data
+    # --------------------------------------------------
+
+    h_data_unit = h_data.Clone(
+        f"h_data_unit_m{mass}"
+    )
+
+    h_data_unit.SetDirectory(0)
+
+    if h_data_unit.Integral() > 0:
+        h_data_unit.Scale(
+            1.0 / h_data_unit.Integral()
+        )
+
+    h_data_unit.SetMarkerStyle(20)
+    h_data_unit.SetMarkerSize(1.0)
+    h_data_unit.SetMarkerColor(ROOT.kBlack)
+    h_data_unit.SetLineColor(ROOT.kBlack)
+
+    # --------------------------------------------------
+    # 3. Normalized stacked background + data
+    # --------------------------------------------------
+
+    # c3 = ROOT.TCanvas(
+    #     f"c_normalized_stack_{mass}", "", 1000, 700
+    # )
+
+    # stack_norm.Draw("HIST")
+
+    # stack_norm.GetXaxis().SetTitle("BDT output")
+    # stack_norm.GetYaxis().SetTitle("Normalized weighted events")
+
+    # stack_norm.SetMaximum(
+    #     1.25 * max(
+    #         stack_norm.GetMaximum(),
+    #         h_sig_unit.GetMaximum(),
+    #         h_data_unit.GetMaximum()
+    #     )
+    # )
+
+    # # Signal overlay
+    # h_sig_unit.Draw("HIST SAME")
+
+    # # Data overlay
+    # h_data_unit.Draw("E1 SAME")
+
+    # stat_boxes_norm_stack = draw_all_statboxes(
+    #     h_sig_unit, h_data_unit, h_components_norm,
+    #     mass, ROOT.kBlack, []
+    # )
+
+    # CMS_label(c3, lumi=lumi, y=0.92)
+
+    # c3.SaveAs(plot_dir + name + "_normalized_stack.png")
+    # c3.SaveAs(plot_dir + name + "_normalized_stack.pdf")
+
+
+    # --------------------------------------------------
+    # 3. Normalized stacked background + data
+    #    with Data / MC ratio pad
+    # --------------------------------------------------
+
+    c3 = ROOT.TCanvas(
+        f"c_normalized_stack_{mass}", "", 1000, 850
+    )
+
+    pad1_norm = ROOT.TPad(
+        "pad1_norm", "Main plot", 0, 0.30, 1, 1
+    )
+
+    pad2_norm = ROOT.TPad(
+        "pad2_norm", "Ratio plot", 0, 0.0, 1, 0.30
+    )
+
+    pad1_norm.SetBottomMargin(0.03)
+    pad1_norm.SetLeftMargin(0.13)
+    pad1_norm.SetRightMargin(0.05)
+
+    pad2_norm.SetTopMargin(0.03)
+    pad2_norm.SetBottomMargin(0.32)
+    pad2_norm.SetLeftMargin(0.13)
+    pad2_norm.SetRightMargin(0.05)
+
+    pad1_norm.Draw()
+    pad2_norm.Draw()
+
+    # ---------------- Main pad ----------------
+
+    pad1_norm.cd()
+
+    stack_norm.Draw("HIST")
+
+    stack_norm.GetXaxis().SetLabelSize(0)
+    stack_norm.GetXaxis().SetTitleSize(0)
+
+    stack_norm.GetYaxis().SetTitle("Normalized weighted events")
+    stack_norm.GetYaxis().SetTitleSize(0.045)
+    stack_norm.GetYaxis().SetTitleOffset(1.25)
+
+    stack_norm.SetMaximum(
+        1.25 * max(
+            stack_norm.GetMaximum(),
+            h_sig_unit.GetMaximum(),
+            h_data_unit.GetMaximum()
+        )
+    )
+
+    h_sig_unit.Draw("HIST SAME")
+    h_data_unit.Draw("E1 SAME")
+
+    stat_boxes_norm_stack = draw_all_statboxes(
+        h_sig_unit, h_data_unit, h_components_norm,
+        mass, ROOT.kOrange+2, []
+    )
+
+    CMS_label(c3, lumi=lumi, y=0.95)
+
+    # ---------------- Ratio pad ----------------
+
+    pad2_norm.cd()
+
+    h_ratio_norm, h_ratio_unc_norm = make_ratio_histogram(
+        h_data_unit,
+        stack_norm.GetStack().Last(),
+        f"h_data_mc_ratio_norm_m{mass}"
+    )
+
+    h_ratio_unc_norm.GetXaxis().SetTitle("BDT output")
+    h_ratio_unc_norm.GetYaxis().SetTitle("Data / MC")
+
+    h_ratio_unc_norm.GetXaxis().SetTitleSize(0.12)
+    h_ratio_unc_norm.GetXaxis().SetLabelSize(0.10)
+    h_ratio_unc_norm.GetXaxis().SetTitleOffset(1.05)
+
+    h_ratio_unc_norm.GetYaxis().SetTitleSize(0.10)
+    h_ratio_unc_norm.GetYaxis().SetLabelSize(0.085)
+    h_ratio_unc_norm.GetYaxis().SetTitleOffset(0.55)
+
+    h_ratio_unc_norm.GetYaxis().SetNdivisions(505)
+    h_ratio_unc_norm.SetMinimum(0.0)
+    h_ratio_unc_norm.SetMaximum(2.0)
+
+    h_ratio_unc_norm.Draw("E2")
+    h_ratio_norm.Draw("E1 SAME")
+
+    line_norm = ROOT.TLine(c_min, 1.0, c_max, 1.0)
+    line_norm.SetLineColor(ROOT.kRed + 1)
+    line_norm.SetLineStyle(2)
+    line_norm.SetLineWidth(2)
+    line_norm.Draw("SAME")
+
+    c3.cd()
+
+    c3.SaveAs(plot_dir + name + "_normalized_stack.png")
+    c3.SaveAs(plot_dir + name + "_normalized_stack.pdf")
+
+
+    # --------------------------------------------------
+    # Save ROOT histograms
+    # --------------------------------------------------
+
+    fout = ROOT.TFile(
+        plot_dir + name + "_normalized.root",
+        "RECREATE"
+    )
+
+    h_sig_norm.Write()
+    h_bkg_norm.Write()
+
+    fout.Close()
+
+    fout = ROOT.TFile(
+        plot_dir + name + "_stack.root",
+        "RECREATE"
+    )
+
+    h_sig.Write()
+    h_bkg.Write()
+    h_data.Write()
+
+    for process, hist in h_components.items():
+        hist.Write()
+
+    for process, hist in h_components_norm.items():
+        hist.Write()
+
+    h_sig_unit.Write()
+    h_data_unit.Write()
+
+    fout.Close()
+
+    # --------------------------------------------------
+    # Print yields
+    # --------------------------------------------------
+
+    print(f"\nMass hypothesis: {mass} GeV")
+
+    print(f"Signal events: {len(sig_scores)}")
+    print(f"Background events: {len(bkg_scores)}")
+
+    print(f"Signal weighted yield: {h_sig.Integral():.6g}")
+    print(f"Background weighted yield: {h_bkg.Integral():.6g}")
+
+    print("\nBackground components:")
+
+    for process, hist in h_components.items():
+        print(
+            f"{process_label(process):25s} "
+            f"{hist.Integral():.6g}"
+        )
+
+    print("\nAll plots and ROOT histograms saved.")
+
+
 def drawROCInference(
     df_sig,
     df_bkg,
@@ -2308,6 +3065,86 @@ df_bkg = loadMCBackground(bkg_file_name,
 df_sig = df_sig.copy()
 df_bkg = df_bkg.copy()
 
+
+# ////////////////////////////////////////////////////////////////////////// Data loading and inference ////////////////////////////////////////////////////////////////////////////////////////////
+
+def get_data_files(category):
+    """Combine EGamma and Muon data files from all eras."""
+
+    all_files = []
+
+    for channel_name in ["EGamma", "Muon"]:
+
+        pattern = (
+            f"{data_base}/Data_{channel_name}-Data-2024*/"
+            f"{channel_name}-Data-2024*"
+            f"_{category}_merged.parquet"
+        )
+
+        all_files.extend(glob(pattern))
+
+    return sorted(set(all_files))
+
+def get_random_indices(filenames, fraction=1/3, seed=12345):
+    rng = np.random.default_rng(seed)
+    selected_indices = {}
+    for filename in filenames:
+        pf = pq.ParquetFile(filename)
+        n_events = pf.metadata.num_rows
+        n_keep = int(n_events * fraction)
+        selected_indices[filename] = np.sort(
+            rng.choice(
+                n_events,
+                size=n_keep,
+                replace=False,
+            )
+        )
+    return selected_indices
+
+data_files = {
+    "Resolved": get_data_files("Resolved")
+}
+
+data_selected_indices = {
+    "Resolved": get_random_indices(
+        data_files["Resolved"],
+        fraction=1/3,
+        seed=12345
+    )
+}
+
+def load_selected_data(files, selected_indices, columns):
+
+    dfs = []
+
+    for filename in files:
+
+        indices = selected_indices[filename]
+
+        if len(indices) == 0:
+            continue
+
+        print(
+            f"Loading {filename}: "
+            f"{len(indices)} selected events"
+        )
+
+        table = pq.read_table(
+            filename,
+            columns=columns
+        )
+
+        df = table.take(
+            pa.array(indices, type=pa.int64())
+        ).to_pandas()
+
+        dfs.append(df)
+
+    if not dfs:
+        return pd.DataFrame(columns=columns)
+
+    return pd.concat(dfs, ignore_index=True)
+
 # --------------------------------------------------
 # Common inference function
 # --------------------------------------------------
@@ -2390,7 +3227,50 @@ for mass in mass_grid:
 
 df_bkg.to_parquet(output_background, index=False)
 
+# --------------------------------------------------
+# 3. Data inference: Resolved category only
+# --------------------------------------------------
 
+category = "Resolved"
+
+print("\n" + "=" * 60)
+print(f"Processing DATA: {category}")
+print("=" * 60)
+
+# output_data = os.path.join(
+#     output_dir,
+#     "Data_Resolved_BDT_scored.parquet"
+# )
+
+# Load randomly selected data events
+df_data = load_selected_data(
+    data_files[category],
+    data_selected_indices[category],
+    inputVars
+)
+
+print("Selected data events:", len(df_data))
+
+# BDT inference for every mass hypothesis
+for mass in mass_grid:
+
+    column = f"bdt_{mass}"
+
+    print(f"Evaluating data at mass = {mass} GeV")
+
+    df_data[column] = predict_bdt(
+        df_data,
+        mass_point=mass
+    )
+
+# Save scored data
+df_data.to_parquet(
+    output_data,
+    index=False
+)
+
+print("Data events:", len(df_data))
+print("Data output:", output_data)
 
 # Load the inference outputs
 df_sig = pd.read_parquet("signal_scored.parquet")
@@ -2429,13 +3309,27 @@ for mass in mass_grid:
         v: k for k, v in process_map.items()
     }
 
-    drawScoresInferenceROOT(
-        df_sig,
-        df_bkg,
+    # drawScoresInferenceROOT(
+    #     df_sig,
+    #     df_bkg,
+    #     mass=mass,
+    #     name=name,
+    #     process_col="process_id",
+    #     process_map=process_map
+    # )
+
+    drawScoresInferenceROOTwithDATA(
+        df_sig=df_sig,
+        df_bkg=df_bkg,
+        df_data=df_data,
         mass=mass,
         name=name,
+        nBins=25,
+        c_min=0,
+        c_max=1,
+        weight_col="weight",
         process_col="process_id",
-        process_map=process_map
+        process_map=process_map,
     )
 
     auc_results[mass] = drawROCInference(

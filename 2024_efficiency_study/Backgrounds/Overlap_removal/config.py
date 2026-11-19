@@ -8,7 +8,7 @@ PARQUET_BACKGROUND_DIR = "../merged_compact_parquet"
 
 OUTPUT_DIR = (
     "/eos/user/b/bbapi/www/Analysis_plots/"
-    "Overlap_removal/FINAL6/"
+    "Overlap_removal/FINAL7/"
 )
 
 LUMI_FB = 109.0

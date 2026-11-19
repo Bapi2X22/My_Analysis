@@ -70,10 +70,10 @@ def main():
     print("Creating single plots")
     print("=" * 70)
 
-    for process, result in results.items():
-        for plot_name in SINGLE_PLOTS:
-            spec = PLOTS[plot_name]
-            plot_single(result=result, process=process, plot_name=plot_name, spec=spec, root_file = root_file, output_dir=OUTPUT_DIR)
+    # for process, result in results.items():
+    #     for plot_name in SINGLE_PLOTS:
+    #         spec = PLOTS[plot_name]
+    #         plot_single(result=result, process=process, plot_name=plot_name, spec=spec, root_file = root_file, output_dir=OUTPUT_DIR)
 
 
 
@@ -81,35 +81,35 @@ def main():
     print("Creating overlay plots")
     print("=" * 70)
 
-    for job in OVERLAY_PLOTS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results]
-        plot_overlay(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group)
+    # for job in OVERLAY_PLOTS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results]
+    #     plot_overlay(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group)
 
     print("\n" + "=" * 70)
     print("Creating stack plots")
     print("=" * 70)
 
-    for job in STACK_PLOTS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results]
-        plot_stack(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group)
+    # for job in STACK_PLOTS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results]
+    #     plot_stack(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group)
 
 
     print("\n" + "=" * 70)
     print("Creating stack comparison plots")
     print("=" * 70)
 
-    for job in STACK_COMPARISONS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results]
-        plot_stack_comparison(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group)
+    # for job in STACK_COMPARISONS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results]
+    #     plot_stack_comparison(results=results, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group)
 
     print("\n" + "=" * 70)
     print("Creating stack comparison swap plots")
@@ -151,34 +151,34 @@ def main():
     print("Creating overlay plots")
     print("=" * 70)
 
-    for job in OVERLAY_PLOTS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results_parquet]
-        plot_overlay(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group, is_root_file = True)
+    # for job in OVERLAY_PLOTS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results_parquet]
+    #     plot_overlay(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group, is_root_file = True)
 
     print("\n" + "=" * 70)
     print("Creating stack plots")
     print("=" * 70)
 
-    for job in STACK_PLOTS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results_parquet]
-        plot_stack(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group, is_root_file = True)
+    # for job in STACK_PLOTS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results_parquet]
+    #     plot_stack(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[plot_name], root_file = root_file, output_dir=OUTPUT_DIR, group_name = group, is_root_file = True)
 
     print("\n" + "=" * 70)
     print("Creating stack comparison plots")
     print("=" * 70)
 
-    for job in STACK_COMPARISONS:
-        plot_name = job["plot"]
-        group = job["group"]
-        processes = PROCESS_GROUPS[group]
-        available_processes = [process for process in processes if process in results_parquet]
-        plot_stack_comparison(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group, is_root_file = True)
+    # for job in STACK_COMPARISONS:
+    #     plot_name = job["plot"]
+    #     group = job["group"]
+    #     processes = PROCESS_GROUPS[group]
+    #     available_processes = [process for process in processes if process in results_parquet]
+    #     plot_stack_comparison(results=results_parquet, processes=available_processes, plot_name=plot_name, spec=PLOTS[job["plot"]], high_spec=PLOTS[job["high"]], low_spec=PLOTS[job["low"]], root_file=root_file, output_dir=OUTPUT_DIR, group_name=group, is_root_file = True)
 
     print("\n" + "=" * 70)
     print("Creating stack comparison swap plots")

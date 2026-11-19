@@ -56,7 +56,7 @@ def loadSignal(inputVars):
 
   # dataset_Sig = uproot.open("merged_signal.root")['DiphotonTree'].arrays(inputVars,library='pd')
 #   dataset_Sig = uproot.open(f"Merged_Inputs/M{int(mass_value)}_merged.root")['DiphotonTree'].arrays(inputVars)
-  dataset_Sig = uproot.open(f"Merged_Inputs/merged_signal_allCat.root")['DiphotonTree/Resolved'].arrays(inputVars)
+  dataset_Sig = uproot.open(f"Merged_Inputs/merged_signal_allCat_equalized_weight.root")['DiphotonTree/Resolved'].arrays(inputVars)
   df_sig = ak.to_dataframe(dataset_Sig)
   # df_sig = dataset_Sig[vars]
 

@@ -13,6 +13,20 @@ HIGH_CUT_PROCESSES = {
     "DYGto2LG",
 }
 
+def get_light_color(color, fraction=0.55):
+
+    rgb = ROOT.gROOT.GetColor(color)
+
+    r = rgb.GetRed()
+    g = rgb.GetGreen()
+    b = rgb.GetBlue()
+
+    r = r + fraction * (1.0 - r)
+    g = g + fraction * (1.0 - g)
+    b = b + fraction * (1.0 - b)
+
+    return ROOT.TColor.GetColor(r, g, b)
+
 def get_cut_values(result, process, plot_name, spec, high_spec, low_spec):
 
     # Event-level count plots
@@ -384,7 +398,7 @@ def plot_stack(results, processes, plot_name, spec, root_file, output_dir, group
     stack.GetXaxis().SetTitle(spec.xlabel)
     stack.GetYaxis().SetTitle(spec.ylabel)
     if is_root_file:
-        stack.SetMinimum(1000)
+        stack.SetMinimum(10)
     else:
         stack.SetMinimum(0.1)
     # legend.Draw()
@@ -661,11 +675,12 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
 
         # color = PROCESS_COLORS.get(process, ROOT.kBlack)
         # Filled stack
-        hist.SetFillColor(color)
+        light_color = get_light_color(color, fraction=0.55)
+        hist.SetFillColor(light_color)
         hist.SetFillStyle(1001)
         # Optional thin boundary
-        hist.SetLineColor(color)
-        hist.SetLineWidth(1)
+        # hist.SetLineColor(color)
+        # hist.SetLineWidth(1)
         cut_histograms.append(hist)
     cumulative_normal_histograms = make_cumulative_histograms_solid(normal_histograms,plot_processes,group_name,plot_name)
     # Make sure cumulative normal histograms are solid boundaries
@@ -675,6 +690,9 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
         hist.SetLineColor(color)
         hist.SetLineStyle(ROOT.kSolid)
         hist.SetLineWidth(2)
+        # hist.SetMarkerStyle(20)
+        # hist.SetMarkerColor(ROOT.kBlack)
+        # hist.SetMarkerSize(0.7)
     stack = ROOT.THStack(f"stackcomp_swap_{plot_name}_{group_name}","")
     for hist in cut_histograms:
         stack.Add(hist)
@@ -687,6 +705,8 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
     # Draw normal cumulative boundaries
     for hist in cumulative_normal_histograms:
         hist.Draw("HIST SAME")
+    # for hist in cumulative_normal_histograms:
+    #     hist.Draw("P SAME")
     # ============================================================
     # Legend
     # ============================================================
@@ -720,6 +740,9 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
     legend_line.SetLineColor(ROOT.kBlack)
     legend_line.SetLineStyle(ROOT.kSolid)
     legend_line.SetLineWidth(2)
+    # legend_line.SetMarkerStyle(20)
+    # legend_line.SetMarkerColor(ROOT.kBlack)
+    # legend_line.SetMarkerSize(0.7)
     process_legend = ROOT.TLegend(0.13, 0.78, 0.40, 0.90)
     process_legend.SetFillStyle(0)
     process_legend.SetBorderSize(0)
@@ -773,6 +796,8 @@ def plot_stack_comparison_swap(results,processes,plot_name,spec,high_spec,low_sp
     # Redraw NORMAL cumulative solid boundaries
     for hist in cumulative_normal_histograms:
         hist.Draw("HIST SAME")
+    # for hist in cumulative_normal_histograms:
+    #     hist.Draw("P SAME")
     # Redraw legend
     # legend.Draw()
     process_legend.Draw()

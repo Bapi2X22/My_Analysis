@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import xgboost as xgb
 
-with open("Models/BDT_reference_model_resol_061126.pkl", "rb") as f:
+with open("Models/BDT_reference_model_equalized_weight_121126.pkl", "rb") as f:
     model = pickle.load(f)
 
 print(type(model))
@@ -22,7 +22,7 @@ feature_names = [
     "first_jet_B", "second_jet_B",
     "pholead_mvaID", "phosublead_mvaID",
     "pT1_by_mgg", "pT2_by_mgg",
-    "delphi_gg", "delphi_bb", "delphi_bbgg", "delphi_ggMET_Puppi", "energy_resol_lead", "energy_resol_sublead",
+    "delphi_gg", "delphi_bb", "delphi_bbgg", "delphi_ggMET_Puppi",
     "mass_point"
 ]
 
@@ -66,5 +66,5 @@ plt.ylabel("Features")
 plt.title("XGBoost BDT Feature Importance (Gain)")
 plt.gca().invert_yaxis()
 plt.tight_layout()
-plt.savefig("BDT_feature_importance_reference_resol.png", dpi=300)
+plt.savefig("reference_model_equalized_weight_121126.png", dpi=300)
 plt.show()
