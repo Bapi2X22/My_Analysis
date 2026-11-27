@@ -79,7 +79,8 @@ class NanoWriter:
                 base, ext = os.path.splitext(self.filename)
                 outfile = f"{base}_{i:03d}{ext}"
 
-            with uproot.recreate(outfile, compression=uproot.LZMA(9)) as fout:
+            with uproot.recreate(outfile, compression=None) as fout:
+            # with uproot.recreate(outfile, compression=uproot.LZMA(9)) as fout:
                 events = fout.mktree("Events", {name: array.type for name, array in branches.items()})
                 events.extend(branches)
 

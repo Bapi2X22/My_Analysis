@@ -1,0 +1,17 @@
+{
+    "samplejson": "sample_skimmed.json",
+    "workflow": "HtoAAtoBBGG_WH_processor",
+    "metaconditions": "Era2023_postBPix_v1_mine",
+    "taggers": [],
+    "year": {
+        "DYto2Mu50_24SummerRun3": ["2024"],
+        "WtoMuNu2J_24SummerRun3": ["2024"]
+
+    },
+    "corrections": {
+        "DYto2Mu50_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg","Pileup", "SF_photon_ID_bbgg", "SF_photon_PixVeto_bbgg"],
+        "WtoMuNu2J_24SummerRun3": ["Smearing", "TriggerSF_singleLep", "Electron_Smearing_EGM", "MuonScaRe", "MuonIdMediumSF", "ElectronIdSFWP80iso", "MuonIsoMediumSF_IdMedium", "jec_jet_syst", "bTagFixedWP_UParTAK4Medium_bbgg", "Pileup", "SF_photon_ID_bbgg", "SF_photon_PixVeto_bbgg"]
+
+    },
+    "systematics": {}
+}

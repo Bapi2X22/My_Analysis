@@ -184,33 +184,47 @@ def drawScores(predY_train,predY_test,W_train,W_test,nBins,c_min,c_max,name):
   plt.savefig(filename_pdf,dpi=300)  
 
 
-def drawROC(Y_train,Y_test,predY_train,predY_test,W_train,W_test,name):
+def drawROC(Y_train, Y_test, predY_train, predY_test,
+            W_train, W_test, name):
 
-  f,ax = plt.subplots(figsize=(8,8))
+    f, ax = plt.subplots(figsize=(8, 8))
 
-  fpr, tpr, threshold = metrics.roc_curve(Y_train,  predY_train, sample_weight=W_train)
-  train_auc = metrics.auc(fpr, tpr)
-#  ax.plot(fpr, tpr,label=f'Train:  AUC = {round(train_auc,3)}')
-  ax.plot(tpr, fpr,label=f'Train:  AUC = {round(train_auc,3)}')
+    fpr, tpr, threshold = metrics.roc_curve(
+        Y_train, predY_train, sample_weight=W_train
+    )
+    train_auc = metrics.auc(fpr, tpr)
 
-  fpr, tpr, threshold = metrics.roc_curve(Y_test,  predY_test, sample_weight=W_test)
-  test_auc = metrics.auc(fpr, tpr)
-#  ax.plot(fpr, tpr,label=f'Test:  AUC = {round(test_auc,3)}')
-  ax.plot(tpr, fpr,label=f'Test:  AUC = {round(test_auc,3)}')
+    ax.plot(tpr, 1-fpr,
+            label=f'Train: AUC = {train_auc:.3f}')
 
-  plt.legend(loc='lower right')
-  plt.title("ROC")
-  plt.xlabel('Signal Efficiency')
-  plt.ylabel('1 - Background Efficiency')
-#  plt.ylabel('True Positive Rate')
-#  plt.xlabel('False Positive Rate')
-  filename_png = os.path.join(output_dir, name + '.png')
-  filename_pdf = os.path.join(output_dir, name + '.pdf')
-  plt.savefig(filename_png,dpi=300)
-  plt.savefig(filename_pdf,dpi=300)  
-  
-  print('AUC for training = %1.3f'%(train_auc) )
-  print('AUC for test     = %1.3f'%(test_auc) )  
+    fpr, tpr, threshold = metrics.roc_curve(
+        Y_test, predY_test, sample_weight=W_test
+    )
+    test_auc = metrics.auc(fpr, tpr)
+
+    ax.plot(tpr, 1-fpr,
+            label=f'Test: AUC = {test_auc:.3f}')
+
+    ax.plot([0, 1], [1, 0], '--', color='gray', alpha=0.5)
+
+    ax.legend(loc='lower left')
+    ax.set_title("ROC")
+    ax.set_xlabel('Signal Efficiency')
+    ax.set_ylabel('1 - Background Efficiency')
+
+    ax.set_xlim(0, 1)
+    ax.set_ylim(0, 1)
+
+    filename_png = os.path.join(output_dir, name + '.png')
+    filename_pdf = os.path.join(output_dir, name + '.pdf')
+
+    f.savefig(filename_png, dpi=300, bbox_inches='tight')
+    f.savefig(filename_pdf, dpi=300, bbox_inches='tight')
+
+    print(f'AUC for training = {train_auc:.3f}')
+    print(f'AUC for test     = {test_auc:.3f}')
+
+    plt.close(f)
 
 
 
@@ -690,7 +704,7 @@ if __name__ == '__main__':
   mass_value = options.mass_value
   tree_name = None
   if options.mass_value is not None:
-    tree_name = f"DiphotonTree"
+    tree_name = f"DiphotonTree/Resolved"
   else:
     tree_name = "DiphotonTree/Resolved"
   optimize = options.optimize
@@ -721,6 +735,8 @@ if __name__ == '__main__':
   # inputVars =   ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
   # inputVarsMC = ["leppt","lepeta", "first_jet_eta","second_jet_eta", "pT1_by_mbb","pT2_by_mbb", "n_bJets","pholead_eta","phosublead_eta","first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
 
+#   inputVars =   ["pT1_by_mbb","pT2_by_mbb", "Njets", "first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
+#   inputVarsMC = ["pT1_by_mbb","pT2_by_mbb", "Njets", "first_jet_B","second_jet_B","pholead_mvaID","phosublead_mvaID", "pT1_by_mgg","pT2_by_mgg", "delphi_gg","delphi_bb","delphi_bbgg", "delphi_ggMET_Puppi", "pt_ratio", "mass_point", "evt_wgt"]
 
   print("Loading Signal...")
   df_sig = loadSignal(inputVars, options.signal_path, tree_name)
@@ -978,11 +994,19 @@ if __name__ == '__main__':
       "objective": "binary:logistic",
       "eval_metric": "auc",
       "tree_method": "hist",
-      "learning_rate": 0.5,
-      "max_depth": 3,
+      "learning_rate": 0.4,
+      "max_depth": 5,
       "gamma": 0.1,
       "seed": seed,
   }
+
+#   params = {
+#     "booster": "gbtree",
+#     "objective": "binary:logistic",
+#     "eval_metric": "auc",
+#     "tree_method": "hist",
+#     "seed": seed,
+#   }
 
   # --------------------------------------------------
   # Load an existing model, optimise, or train normally
@@ -1001,42 +1025,68 @@ if __name__ == '__main__':
 
       def objective(trial):
 
-          trial_params = {
-              **params,
-              "learning_rate": trial.suggest_float(
-                  "learning_rate", 0.01, 0.5, log=True
-              ),
-              "max_depth": trial.suggest_int(
-                  "max_depth", 2, 12
-              ),
-              "gamma": trial.suggest_float(
-                  "gamma", 0.0, 5.0
-              )
-          }
+        trial_params = {
+            **params,
 
-          trial_model = xgb.train(
-              params=trial_params,
-              dtrain=training,
-              num_boost_round=1000,
-              evals=[(validation, "validation")],
-              early_stopping_rounds=50,
-              verbose_eval=False,
-          )
+            "learning_rate": trial.suggest_float(
+                "learning_rate", 0.05, 0.1, log=True
+            ),
 
-          best_iteration = trial_model.best_iteration
-          best_auc = float(trial_model.best_score)
+            "max_depth": trial.suggest_int(
+                "max_depth", 2, 3
+            ),
 
-          trial.set_user_attr(
-              "best_iteration", best_iteration
-          )
+            "gamma": trial.suggest_float(
+                "gamma", 2.0, 10.0
+            ),
 
-          print(
-              f"Trial {trial.number}: "
-              f"AUC={best_auc:.6f}, "
-              f"best_iteration={best_iteration}"
-          )
+            "min_child_weight": trial.suggest_float(
+                "min_child_weight", 1.0, 30.0, log=True
+            ),
 
-          return best_auc
+            "subsample": trial.suggest_float(
+                "subsample", 0.6, 1.0
+            ),
+
+            "colsample_bytree": trial.suggest_float(
+                "colsample_bytree", 0.6, 1.0
+            ),
+
+            "reg_lambda": trial.suggest_float(
+                "reg_lambda", 0.1, 100.0, log=True
+            ),
+
+            "reg_alpha": trial.suggest_float(
+                "reg_alpha", 1e-5, 10.0, log=True
+            ),
+        }
+
+        trial_model = xgb.train(
+            params=trial_params,
+            dtrain=training,
+            num_boost_round=3000,
+            evals=[
+                (training, "train"),
+                (validation, "validation"),
+            ],
+            early_stopping_rounds=50,
+            verbose_eval=False,
+        )
+
+        best_iteration = trial_model.best_iteration
+        best_auc = float(trial_model.best_score)
+
+        trial.set_user_attr(
+            "best_iteration", best_iteration
+        )
+
+        print(
+            f"Trial {trial.number}: "
+            f"AUC={best_auc:.6f}, "
+            f"best_iteration={best_iteration}"
+        )
+
+        return best_auc
 
       study = optuna.create_study(
           direction="maximize",

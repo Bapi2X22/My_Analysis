@@ -59,33 +59,70 @@ def add_features(arr):
 # ============================================================
 # Cross sections in pb
 # ============================================================
+# xsecs = {
+#     "WGtoLNuG": 671.5,
+#     "WtoENu0J": 55850,
+#     "WtoENu2J": 3474,
+#     "WtoMuNu2J": 3490,
+#     "DYto2Mu50": 2124.08,
+#     "DYto2E50": 2124.08,
+#     "DYGto2LG4": 88.13,
+#     "DYGto2LG50": 126.7,
+#     "TTG1Jets": 4.634,
+#     "TTto2L2Nu": 98.04,
+#     "TTtoLNu2Q": 405.87
+# }
+
 xsecs = {
     "WGtoLNuG": 671.5,
     "WtoENu0J": 55850,
+    "WtoENu1J": 9177,
     "WtoENu2J": 3474,
+    "WtoMuNu0J": 55920,
+    "WtoMuNu1J": 9202,
     "WtoMuNu2J": 3490,
+    "DYto2Mu10": 21190.0,
     "DYto2Mu50": 2124.08,
+    "DYto2E10": 21140.0,
     "DYto2E50": 2124.08,
     "DYGto2LG4": 88.13,
     "DYGto2LG50": 126.7,
     "TTG1Jets": 4.634,
     "TTto2L2Nu": 98.04,
     "TTtoLNu2Q": 405.87
-
 }
+
+# process_map = {
+#     "WGtoLNuG": 0,
+#     "WtoENu0J": 1,
+#     "WtoENu2J": 2,
+#     "WtoMuNu2J": 3,
+#     "DYto2Mu50": 4,
+#     "DYto2E50":  5,
+#     "DYGto2LG4": 6,
+#     "DYGto2LG50": 7,
+#     "TTG1Jets": 8,
+#     "TTto2L2Nu": 9,
+#     "TTtoLNu2Q": 10
+# }
 
 process_map = {
     "WGtoLNuG": 0,
     "WtoENu0J": 1,
-    "WtoENu2J": 2,
-    "WtoMuNu2J": 3,
-    "DYto2Mu50": 4,
-    "DYto2E50":  5,
-    "DYGto2LG4": 6,
-    "DYGto2LG50": 7,
-    "TTG1Jets": 8,
-    "TTto2L2Nu": 9,
-    "TTtoLNu2Q": 10
+    "WtoENu1J": 2,
+    "WtoENu2J": 3,
+    "WtoMuNu0J": 4,
+    "WtoMuNu1J": 5,
+    "WtoMuNu2J": 6,
+    "DYto2Mu10": 7,
+    "DYto2Mu50": 8,
+    "DYto2E10": 9,
+    "DYto2E50": 10,
+    "DYGto2LG4": 11,
+    "DYGto2LG50": 12,
+    "TTG1Jets": 13,
+    "TTto2L2Nu": 14,
+    "TTtoLNu2Q": 15
 }
 
 # all_arrays = []

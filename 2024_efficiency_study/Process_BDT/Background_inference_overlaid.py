@@ -20,19 +20,21 @@ from sklearn import metrics
 # Configuration
 # --------------------------------------------------
 
-model_file = "Model_output/BDT_optimized_reference_model_equalized_weight_181126/BDT_optimized_reference_model_equalized_weight_181126.pkl"
+# model_file = "Model_output/BDT_reference_model_equalized_weight_261126_v4/BDT_reference_model_equalized_weight_261126_v4.pkl"
+model_file = "Model_output/BDT_reference_model_m20_271126/BDT_reference_model_m20_271126.pkl"
 output_signal = "signal_scored.parquet"
 output_background = "background_scored.parquet"
 output_data = "data_scored.parquet"
-sig_file_name = "Merged_Inputs/merged_signal_allCat_equalized_weight.root"
-bkg_file_name = "Merged_Inputs/merged_bkg_allCat.root"
+# sig_file_name = "Merged_Inputs/signal_merged_equalized_weight_allCat.root"
+sig_file_name = "Merged_Inputs/signal_M20_allCat.root"
+bkg_file_name = "Merged_Inputs/backgrounds_merged_allCat.root"
 data_base = (
     "/eos/user/b/bbapi/"
     "My_Analysis/2024_efficiency_study/"
     "Data/NTuples_2024_Data_skim_lepCorr/merged"
 )
 
-plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/reference_optimized_BDT_equalized_weight_overlaid_withDATA/"
+plot_dir = "/eos/user/b/bbapi/www/Analysis_plots/BDT/variables_check_pBDT/BDT_reference_model_m20_271126/"
 os.makedirs(plot_dir, exist_ok=True)
 
 mass_grid = np.array(
@@ -79,8 +81,8 @@ category = "Resolved"
 tree_name = f"DiphotonTree/Resolved"
 
 # BDT threshold: change as needed.
-bdt_cut = 0.80
-bdt_operator = ">"
+bdt_cut = 0.1
+bdt_operator = "<"
 setmax_factor = 100
 
 signal_mass_points = [12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
@@ -88,39 +90,51 @@ signal_mass_points = [12, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 xsecs = {
     "WGtoLNuG": 671.5,
     "WtoENu0J": 55850,
+    "WtoENu1J": 9177,
     "WtoENu2J": 3474,
+    "WtoMuNu0J": 55920,
+    "WtoMuNu1J": 9202,
     "WtoMuNu2J": 3490,
+    "DYto2Mu10": 21190.0,
     "DYto2Mu50": 2124.08,
+    "DYto2E10": 21140.0,
     "DYto2E50": 2124.08,
     "DYGto2LG4": 88.13,
     "DYGto2LG50": 126.7,
     "TTG1Jets": 4.634,
     "TTto2L2Nu": 98.04,
     "TTtoLNu2Q": 405.87
-
 }
 
-# process_map insertion order determines stack order.
 process_map = {
     "WGtoLNuG": 0,
     "WtoENu0J": 1,
-    "WtoENu2J": 2,
-    "WtoMuNu2J": 3,
-    "DYto2Mu50": 4,
-    "DYto2E50": 5,
-    "DYGto2LG4": 6,
-    "DYGto2LG50": 7,
-    "TTG1Jets": 8,
-    "TTto2L2Nu": 9,
-    "TTtoLNu2Q": 10,
+    "WtoENu1J": 2,
+    "WtoENu2J": 3,
+    "WtoMuNu0J": 4,
+    "WtoMuNu1J": 5,
+    "WtoMuNu2J": 6,
+    "DYto2Mu10": 7,
+    "DYto2Mu50": 8,
+    "DYto2E10": 9,
+    "DYto2E50": 10,
+    "DYGto2LG4": 11,
+    "DYGto2LG50": 12,
+    "TTG1Jets": 13,
+    "TTto2L2Nu": 14,
+    "TTtoLNu2Q": 15
 }
+
 
 background_groups = {
     "W#gamma + jets": {
         "processes": [
             "WGtoLNuG",
             "WtoENu0J",
+            "WtoENu1J",
             "WtoENu2J",
+            "WtoMuNu0J",
+            "WtoMuNu1J",
             "WtoMuNu2J",
         ],
         "color": ROOT.kGreen + 2,
@@ -128,7 +142,9 @@ background_groups = {
 
     "Z#gamma + jets": {
         "processes": [
+            "DYto2Mu10",
             "DYto2Mu50",
+            "DYto2E10",
             "DYto2E50",
             "DYGto2LG4",
             "DYGto2LG50",
@@ -198,7 +214,7 @@ variables_list = [
     "delphi_bb",
     "delphi_bbgg",
     "delphi_ggMET_Puppi",
-    "pt_ratio",
+    # "pt_ratio",
     # "energy_resol_lead",
     # "energy_resol_sublead",
     "CMS_hgg_mass"
@@ -936,11 +952,28 @@ def make_stack_after_bdt_cut_with_overlay(
     # BDT comparison
     # ------------------------------------------------
 
+    # operators = {
+    #     ">":  lambda x, cut: x > cut,
+    #     "<":  lambda x, cut: x < cut,
+    #     ">=": lambda x, cut: x >= cut,
+    #     "<=": lambda x, cut: x <= cut,
+    # }
+
+    # if bdt_operator not in operators:
+    #     raise ValueError(
+    #         f"Invalid bdt_operator: {bdt_operator!r}. "
+    #         f"Choose one of {list(operators)}."
+    #     )
+
+    # compare = operators[bdt_operator]
+
+
     operators = {
-        ">":  lambda x, cut: x > cut,
-        "<":  lambda x, cut: x < cut,
+        ">": lambda x, cut: x > cut,
+        "<": lambda x, cut: x < cut,
         ">=": lambda x, cut: x >= cut,
         "<=": lambda x, cut: x <= cut,
+        "interval": lambda x, cut: (x >= cut[0]) & (x < cut[1]),
     }
 
     if bdt_operator not in operators:
@@ -948,6 +981,20 @@ def make_stack_after_bdt_cut_with_overlay(
             f"Invalid bdt_operator: {bdt_operator!r}. "
             f"Choose one of {list(operators)}."
         )
+
+    if bdt_operator == "interval":
+        if not isinstance(bdt_cut, (tuple, list)) or len(bdt_cut) != 2:
+            raise ValueError(
+                "For bdt_operator='interval', "
+                "bdt_cut must be a tuple/list: (low, high)."
+            )
+
+        low, high = bdt_cut
+
+        if low >= high:
+            raise ValueError(
+                f"Invalid interval: low ({low}) must be smaller than high ({high})."
+            )
 
     compare = operators[bdt_operator]
 
@@ -974,9 +1021,19 @@ def make_stack_after_bdt_cut_with_overlay(
         compare(bkg_before[score_col], bdt_cut)
     ].copy()
 
+    # print(
+    #     f"\nObservable: {obs_name} | "
+    #     f"mA = {mass} GeV | BDT {bdt_operator} {bdt_cut}"
+    # )
+
+    if bdt_operator == "interval":
+        bdt_label = f"{bdt_cut[0]:.2f} <= BDT < {bdt_cut[1]:.2f}"
+    else:
+        bdt_label = f"BDT {bdt_operator} {bdt_cut:.2f}"
+
     print(
         f"\nObservable: {obs_name} | "
-        f"mA = {mass} GeV | BDT {bdt_operator} {bdt_cut}"
+        f"mA = {mass} GeV | {bdt_label}"
     )
 
     print("Signal before BDT:", len(sig_before))
@@ -1019,9 +1076,9 @@ def make_stack_after_bdt_cut_with_overlay(
         ).to_numpy(dtype=float)
 
         valid = (
-            np.isfinite(values)
-            & np.isfinite(weights)
-            & (values != -999)
+            # np.isfinite(values)
+            # & np.isfinite(weights)
+            (values != -999)
         )
 
         values = values[valid]
@@ -1504,10 +1561,17 @@ def make_stack_after_bdt_cut_with_overlay(
         f"Category {category}",
     )
 
-    latex.DrawLatex(
-        0.80, 0.85,
-        f"BDT {bdt_operator} {bdt_cut:.2f}",
-    )
+    # latex.DrawLatex(
+    #     0.80, 0.85,
+    #     f"BDT {bdt_operator} {bdt_cut:.2f}",
+    # )
+
+    if bdt_operator == "interval":
+        bdt_label = f"{bdt_cut[0]:.2f} #leq BDT < {bdt_cut[1]:.2f}"
+    else:
+        bdt_label = f"BDT {bdt_operator} {bdt_cut:.2f}"
+
+    latex.DrawLatex(0.80, 0.85, bdt_label)
 
     bin_width = (xmax - xmin) / nbins
     latex.DrawLatex(
@@ -1622,9 +1686,19 @@ def make_stack_after_bdt_cut_with_overlay(
     # Save outputs
     # ------------------------------------------------
 
+    # stem = (
+    #     f"{plot_dir}/overlay_{obs_name}"
+    #     f"_m{mass}_BDT{bdt_cut:.2f}"
+    # )
+
+    if bdt_operator == "interval":
+        cut_label = f"{bdt_cut[0]:.2f}_{bdt_cut[1]:.2f}"
+    else:
+        cut_label = f"{bdt_operator}{bdt_cut:.2f}"
+
     stem = (
         f"{plot_dir}/overlay_{obs_name}"
-        f"_m{mass}_BDT{bdt_cut:.2f}"
+        f"_m{mass}_BDT{cut_label}"
     )
 
     canvas.cd()
@@ -1670,6 +1744,646 @@ def make_stack_after_bdt_cut_with_overlay(
         legend,
         latex,
         *cumulative_before.values(),
+        *stat_boxes,
+        *signal_stat_boxes,
+    ]
+
+    canvas.Close()
+
+
+def make_stack_after_bdt_with_data(
+    obs_name,
+    mass,
+    df_sig,
+    df_bkg,
+    df_data,
+    bdt_cut,
+    bdt_operator=">",
+):
+
+    """
+    Overlay after-BDT distributions.
+
+    After BDT:
+        Signal and background events passing the BDT cut.
+        Background drawn as a filled stack.
+
+    Ratio:
+        Total data after BDT / total background after BDT.
+    """
+
+    data_obs_name = None
+
+    if obs_name == "CMS_hgg_mass":
+        data_obs_name = "mass"
+    else:
+        data_obs_name = obs_name
+
+    score_col = f"bdt_{mass}"
+
+    required_sig = [
+        obs_name, "mass_point", "bdt_score", "weight"
+    ]
+    required_bkg = [
+        obs_name, "process_id", score_col, "weight"
+    ]
+
+    missing_sig = [
+        c for c in required_sig if c not in df_sig.columns
+    ]
+    missing_bkg = [
+        c for c in required_bkg if c not in df_bkg.columns
+    ]
+
+    if missing_sig or missing_bkg:
+        raise KeyError(
+            f"Missing signal columns: {missing_sig}; "
+            f"missing background columns: {missing_bkg}"
+        )
+
+    # ------------------------------------------------
+    # BDT comparison
+    # ------------------------------------------------
+
+    # operators = {
+    #     ">":  lambda x, cut: x > cut,
+    #     "<":  lambda x, cut: x < cut,
+    #     ">=": lambda x, cut: x >= cut,
+    #     "<=": lambda x, cut: x <= cut,
+    # }
+
+    # if bdt_operator not in operators:
+    #     raise ValueError(
+    #         f"Invalid bdt_operator: {bdt_operator!r}. "
+    #         f"Choose one of {list(operators)}."
+    #     )
+
+    # compare = operators[bdt_operator]
+
+    operators = {
+        ">": lambda x, cut: x > cut,
+        "<": lambda x, cut: x < cut,
+        ">=": lambda x, cut: x >= cut,
+        "<=": lambda x, cut: x <= cut,
+        "interval": lambda x, cut: (x >= cut[0]) & (x < cut[1]),
+    }
+
+    if bdt_operator not in operators:
+        raise ValueError(
+            f"Invalid bdt_operator: {bdt_operator!r}. "
+            f"Choose one of {list(operators)}."
+        )
+
+    if bdt_operator == "interval":
+        if not isinstance(bdt_cut, (tuple, list)) or len(bdt_cut) != 2:
+            raise ValueError(
+                "For bdt_operator='interval', "
+                "bdt_cut must be a tuple/list: (low, high)."
+            )
+
+        low, high = bdt_cut
+
+        if low >= high:
+            raise ValueError(
+                f"Invalid interval: low ({low}) must be smaller than high ({high})."
+            )
+
+    compare = operators[bdt_operator]
+
+    # print(
+    #     f"\nObservable: {obs_name} | "
+    #     f"mA = {mass} GeV | BDT {bdt_operator} {bdt_cut}"
+    # )
+
+    if bdt_operator == "interval":
+        bdt_label = f"{bdt_cut[0]:.2f} <= BDT < {bdt_cut[1]:.2f}"
+    else:
+        bdt_label = f"BDT {bdt_operator} {bdt_cut:.2f}"
+
+    print(
+        f"\nObservable: {obs_name} | "
+        f"mA = {mass} GeV | {bdt_label}"
+    )
+
+    # ------------------------------------------------
+    # Event selection
+    # ------------------------------------------------
+
+    # Signal: select requested mass and apply BDT
+    sig_after = df_sig.loc[
+        np.isclose(
+            pd.to_numeric(df_sig["mass_point"], errors="coerce"),
+            mass,
+        )
+    ].copy()
+
+    sig_after = sig_after.loc[
+        compare(sig_after["bdt_score"], bdt_cut)
+    ].copy()
+
+
+    # Background: apply BDT directly
+    bkg_after = df_bkg.loc[
+        compare(df_bkg[score_col], bdt_cut)
+    ].copy()
+
+
+    # Data: apply the same BDT selection
+    data_after = df_data.loc[
+        compare(df_data[score_col], bdt_cut)
+    ].copy()
+
+
+    print(f"\nObservable: {obs_name} | "
+        f"mA = {mass} GeV | BDT {bdt_operator} {bdt_cut}")
+
+    print("Signal after BDT    :", len(sig_after))
+    print("Background after BDT:", len(bkg_after))
+    print("Data after BDT      :", len(data_after))
+
+    # ------------------------------------------------
+    # Histogram configuration
+    # ------------------------------------------------
+
+    config = plot_config[obs_name]
+
+    nbins = config["nbins"]
+    xmin, xmax = config["range"]
+    xlabel = config.get("xlabel", obs_name)
+
+    def make_hist(name, events, process_name=None, is_signal=False):
+
+        hist = ROOT.TH1D(
+            name,
+            f";{xlabel};Events",
+            nbins,
+            xmin,
+            xmax,
+        )
+
+        hist.Sumw2()
+
+        values = pd.to_numeric(
+            events[obs_name], errors="coerce"
+        ).to_numpy(dtype=float)
+
+        weights = pd.to_numeric(
+            events["weight"], errors="coerce"
+        ).to_numpy(dtype=float)
+
+        valid = (
+            # np.isfinite(values)
+            # & np.isfinite(weights)
+             (values != -999)
+        )
+
+        values = values[valid]
+        weights = weights[valid]
+
+        if is_signal:
+            scale = signal_xsec * lumi * 1000.0
+        else:
+            scale = xsecs[process_name] * lumi * 1000.0
+
+        for value, weight in zip(values, weights):
+            hist.Fill(float(value), float(weight * scale))
+
+        return hist
+
+    def make_data_hist(name, events):
+        hist = ROOT.TH1D(
+            name,
+            f";{xlabel};Events",
+            nbins,
+            xmin,
+            xmax,
+        )
+
+        hist.Sumw2()
+
+        values = pd.to_numeric(
+            events[data_obs_name], errors="coerce"
+        ).to_numpy(dtype=float)
+
+        valid = np.isfinite(values) & (values != -999)
+
+        for value in values[valid]:
+            hist.Fill(float(value))
+
+        hist.SetMarkerStyle(20)
+        hist.SetMarkerSize(0.9)
+        hist.SetMarkerColor(ROOT.kBlack)
+        hist.SetLineColor(ROOT.kBlack)
+
+        return hist
+
+    stack_after = ROOT.THStack(
+        f"stack_after_{obs_name}_m{mass}",
+        f";{xlabel};Events",
+    )
+
+    background_after = {}
+
+    output_hists = []
+
+    # ------------------------------------------------
+    # Create individual process histograms
+    # ------------------------------------------------
+
+    for process_name, process_id in process_map.items():
+
+        events_after = bkg_after.loc[
+            bkg_after["process_id"] == process_id
+        ]
+
+        h_after = make_hist(
+            f"h_after_{process_name}_{obs_name}_m{mass}",
+            events_after,
+            process_name=process_name,
+        )
+
+        background_after[process_name] = h_after
+
+        output_hists.extend([h_after])
+
+    # ------------------------------------------------
+    # Combine individual processes into 3 groups
+    # ------------------------------------------------
+    group_after = {}
+
+    for group_name, group_info in background_groups.items():
+
+        processes = group_info["processes"]
+        color = group_info["color"]
+
+        h_after_group = None
+
+        for process_name in processes:
+
+            # After BDT
+            if h_after_group is None:
+
+                h_after_group = background_after[
+                    process_name
+                ].Clone(
+                    f"h_after_{group_name}_{obs_name}_m{mass}"
+                )
+
+                h_after_group.SetDirectory(0)
+
+            else:
+                h_after_group.Add(
+                    background_after[process_name]
+                )
+
+        # After BDT: filled group stack
+        h_after_group.SetFillStyle(1001)
+        h_after_group.SetFillColor(color)
+        h_after_group.SetLineColor(color)
+        h_after_group.SetLineWidth(1)
+
+        group_after[group_name] = h_after_group
+
+        stack_after.Add(h_after_group)
+
+        output_hists.extend([
+            h_after_group,
+        ])
+
+        print(
+            f"{group_name:20s}: "
+            f"after = {h_after_group.Integral():.6g}"
+        )
+
+    # ------------------------------------------------
+    # Calculate total background explicitly
+    # ------------------------------------------------
+
+    h_bkg_after = None
+
+    for group_name in background_groups:
+
+        if h_bkg_after is None:
+
+            h_bkg_after = group_after[group_name].Clone(
+                f"total_background_after_{obs_name}_m{mass}"
+            )
+            h_bkg_after.SetDirectory(0)
+
+        else:
+
+            h_bkg_after.Add(group_after[group_name])
+    # ------------------------------------------------
+    # Signal histograms: before and after BDT
+    # ------------------------------------------------
+
+    h_data = make_data_hist(
+        f"h_data_{data_obs_name}_m{mass}",
+        data_after,
+    )
+
+    h_sig_after = make_hist(
+        f"h_signal_after_{obs_name}_m{mass}",
+        sig_after,
+        is_signal=True,
+    )
+
+    signal_color = ROOT.kOrange+2 + 7
+
+    # After BDT: solid
+    h_sig_after.SetLineColor(signal_color)
+    h_sig_after.SetLineWidth(3)
+    h_sig_after.SetLineStyle(1)
+    h_sig_after.SetFillStyle(0)
+
+    output_hists.extend([h_sig_after])
+
+    h_bkg_after.SetDirectory(0)
+
+    # ------------------------------------------------
+    # Canvas and pads
+    # ------------------------------------------------
+
+    canvas = ROOT.TCanvas(
+        f"c_{obs_name}_m{mass}",
+        "",
+        1000,
+        850,
+    )
+
+    # Upper pad
+    pad_top = ROOT.TPad(
+        f"pad_top_{obs_name}_m{mass}",
+        "",
+        0.0, 0.30,
+        1.0, 1.0,
+    )
+
+    # Lower ratio pad
+    pad_ratio = ROOT.TPad(
+        f"pad_ratio_{obs_name}_m{mass}",
+        "",
+        0.0, 0.0,
+        1.0, 0.30,
+    )
+
+    pad_top.SetLeftMargin(0.12)
+    pad_top.SetRightMargin(0.05)
+    pad_top.SetTopMargin(0.08)
+    pad_top.SetBottomMargin(0.02)
+    pad_top.SetLogy()
+
+    pad_ratio.SetLeftMargin(0.12)
+    pad_ratio.SetRightMargin(0.05)
+    pad_ratio.SetTopMargin(0.03)
+    pad_ratio.SetBottomMargin(0.35)
+
+    pad_top.Draw()
+    pad_ratio.Draw()
+
+    pad_top.cd()
+
+    ymax = max(
+        stack_after.GetMaximum(),
+        h_data.GetMaximum(),
+        h_sig_after.GetMaximum(),
+    )
+
+    stack_after.SetMinimum(0.03)
+    stack_after.SetMaximum(ymax * setmax_factor)
+
+    # 1. Background stack
+    stack_after.Draw("HIST")
+
+    # 2. Signal after BDT
+    h_sig_after.Draw("HIST SAME")
+
+    # 3. Observed data
+    h_data.Draw("E1 SAME")
+
+    stat_boxes = []
+
+    bottom_y2 = 0.76
+    bottom_y1 = 0.66
+
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            group_after["W#gamma + jets"],
+            0.24, 0.66, 0.46, 0.76,
+            ROOT.kGreen + 2,
+            label="W#gamma + jets",
+        )
+    )
+
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            group_after["Z#gamma + jets"],
+            0.46, 0.66, 0.68, 0.76,
+            ROOT.kBlue + 1,
+            label="Z#gamma + jets",
+        )
+    )
+
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            group_after["t#bar{t}#gamma + jets"],
+            0.68, 0.66, 0.90, 0.76,
+            ROOT.kRed + 1,
+            label="t#bar{t}#gamma + jets",
+        )
+    )
+
+
+    top_y2 = 0.88
+    top_y1 = 0.76
+
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            h_bkg_after,
+            0.39, 0.76, 0.57, 0.88,
+            ROOT.kBlack,
+            label="Background",
+        )
+    )
+
+    stat_boxes.append(
+        draw_statbox_manual_small(
+            h_data,
+            0.57, 0.76, 0.75, 0.88,
+            ROOT.kBlack,
+            label="Data",
+        )
+    )
+
+    # ------------------------------------------------
+    # Signal stat box (upper pad)
+    # ------------------------------------------------
+
+    signal_stat_boxes = []
+
+
+    signal_stat_boxes.append(
+        draw_statbox_manual_small(
+            h_sig_after,
+            0.15, 0.76, 0.38, 0.88,
+            signal_color,
+            label=f"Signal (M_{{A}} = {mass} GeV)",
+        )
+    )
+
+    stack_after.GetYaxis().SetTitle("Events")
+    stack_after.GetXaxis().SetLabelSize(0)
+
+    latex = ROOT.TLatex()
+    latex.SetNDC()
+    latex.SetTextFont(42)
+    latex.SetTextSize(0.030)
+
+    latex.DrawLatex(
+        0.80, 0.89,
+        f"Category {category}",
+    )
+
+    if bdt_operator == "interval":
+        bdt_label = f"{bdt_cut[0]:.2f} #leq BDT < {bdt_cut[1]:.2f}"
+    else:
+        bdt_label = f"BDT {bdt_operator} {bdt_cut:.2f}"
+
+    latex.DrawLatex(0.80, 0.85, bdt_label)
+
+    # latex.DrawLatex(
+    #     0.80, 0.85,
+    #     f"BDT {bdt_operator} {bdt_cut:.2f}",
+    # )
+
+    bin_width = (xmax - xmin) / nbins
+    latex.DrawLatex(
+        0.66, 0.89,
+        f"Bin width = {bin_width:.2f}",
+    )
+
+
+    CMS_label(canvas, lumi=lumi)
+
+
+    pad_ratio.cd()
+
+    h_ratio = h_data.Clone(
+        f"ratio_data_over_bkg_{obs_name}_m{mass}"
+    )
+
+    h_ratio.SetDirectory(0)
+    h_ratio.Reset("ICES")
+
+    for ibin in range(1, nbins + 1):
+
+        data = h_data.GetBinContent(ibin)
+        bkg = h_bkg_after.GetBinContent(ibin)
+
+        data_err = h_data.GetBinError(ibin)
+        bkg_err = h_bkg_after.GetBinError(ibin)
+
+        if bkg <= 0:
+            continue
+
+        ratio = data / bkg
+
+        variance = (
+            (data_err / bkg) ** 2
+            + (data * bkg_err / bkg**2) ** 2
+        )
+
+        h_ratio.SetBinContent(ibin, ratio)
+        h_ratio.SetBinError(ibin, np.sqrt(variance))
+
+    h_ratio.SetMarkerStyle(20)
+    h_ratio.SetMarkerSize(0.8)
+    h_ratio.SetMarkerColor(ROOT.kBlack)
+    h_ratio.SetLineColor(ROOT.kBlack)
+
+    h_ratio.SetTitle("")
+    h_ratio.SetStats(0)
+
+    h_ratio.GetYaxis().SetTitle("Data / Bkg")
+    h_ratio.GetXaxis().SetTitle(xlabel)
+
+    h_ratio.GetYaxis().SetNdivisions(505)
+    h_ratio.GetYaxis().SetTitleSize(0.08)
+    h_ratio.GetYaxis().SetTitleOffset(0.48)
+    h_ratio.GetYaxis().SetLabelSize(0.09)
+
+    h_ratio.GetXaxis().SetTitleSize(0.13)
+    h_ratio.GetXaxis().SetTitleOffset(1.05)
+    h_ratio.GetXaxis().SetLabelSize(0.10)
+
+    h_ratio.SetMinimum(0.0)
+    h_ratio.SetMaximum(2.0)
+
+    h_ratio.Draw("E1")
+
+    unity = ROOT.TLine(xmin, 1.0, xmax, 1.0)
+    unity.SetLineColor(ROOT.kRed + 1)
+    unity.SetLineStyle(2)
+    unity.SetLineWidth(2)
+    unity.Draw("SAME")
+
+
+    # ------------------------------------------------
+    # Save outputs
+    # ------------------------------------------------
+
+    after_bdt_dir = os.path.join(plot_dir, "After_BDT")
+    os.makedirs(after_bdt_dir, exist_ok=True)
+
+    # stem = (
+    #     f"{after_bdt_dir}/after_bdt_{obs_name}"
+    #     f"_m{mass}_BDT{bdt_cut:.2f}"
+    # )
+
+    if bdt_operator == "interval":
+        cut_label = f"{bdt_cut[0]:.2f}_{bdt_cut[1]:.2f}"
+    else:
+        cut_label = f"{bdt_operator}{bdt_cut:.2f}"
+
+    stem = (
+        f"{after_bdt_dir}/after_bdt_{obs_name}"
+        f"_m{mass}_BDT{cut_label}"
+    )
+
+    canvas.cd()
+    canvas.Modified()
+    canvas.Update()
+
+    canvas.SaveAs(stem + ".png")
+    canvas.SaveAs(stem + ".pdf")
+
+    fout = ROOT.TFile(stem + ".root", "RECREATE")
+
+    for hist in output_hists:
+        hist.Write()
+
+    h_bkg_after.Write("total_background_after")
+    h_sig_after.Write("signal_after")
+    h_ratio.Write("data_over_background_ratio_after_bdt")
+
+    canvas.Write("canvas")
+
+    fout.Close()
+
+    print("Total background after BDT :", h_bkg_after.Integral())
+    print("Signal after BDT :", h_sig_after.Integral())
+    print("Saved:", stem)
+
+    # Keep ROOT objects alive until the canvas is saved.
+    canvas._keepalive = [
+        pad_top,
+        pad_ratio,
+        stack_after,
+        h_sig_after,
+        h_bkg_after,
+        h_ratio,
+        unity,
+        latex,
         *stat_boxes,
         *signal_stat_boxes,
     ]
@@ -2068,7 +2782,7 @@ def drawScoresInferenceROOT(
 
     # 1. Normalized overlay
     stat_boxes_overlay = draw_all_statboxes(
-        h_sig_norm, h_components,
+        h_sig_norm, None, h_components,
         mass, ROOT.kBlack, []
     )
 
@@ -2097,7 +2811,7 @@ def drawScoresInferenceROOT(
 
         stack.Add(hist)
 
-    h_sig.SetLineColor(ROOT.kBlack)
+    h_sig.SetLineColor(ROOT.kOrange+2)
     h_sig.SetLineWidth(3)
     h_sig.SetFillStyle(0)
 
@@ -2124,8 +2838,8 @@ def drawScoresInferenceROOT(
 
     # 2. Absolute-yield stack
     stat_boxes_stack = draw_all_statboxes(
-        h_sig, h_components,
-        mass, ROOT.kBlack, []
+        h_sig, None, h_components,
+        mass, ROOT.kOrange+2, []
     )
 
     CMS_label(c2, lumi=lumi, y=0.92)
@@ -2182,7 +2896,7 @@ def drawScoresInferenceROOT(
 
         stack_norm.Add(hist)
 
-    h_sig_unit.SetLineColor(ROOT.kBlack)
+    h_sig_unit.SetLineColor(ROOT.kOrange+2)
     h_sig_unit.SetLineWidth(3)
     h_sig_unit.SetFillStyle(0)
 
@@ -2196,8 +2910,8 @@ def drawScoresInferenceROOT(
 
     # 3. Normalized stack
     stat_boxes_norm_stack = draw_all_statboxes(
-        h_sig_unit, h_components_norm,
-        mass, ROOT.kBlack, []
+        h_sig_unit, None, h_components_norm,
+        mass, ROOT.kOrange+2, []
     )
 
     stack_norm.SetMaximum(
@@ -3246,7 +3960,7 @@ print("=" * 60)
 df_data = load_selected_data(
     data_files[category],
     data_selected_indices[category],
-    inputVars
+    inputVars+["mass"]
 )
 
 print("Selected data events:", len(df_data))
@@ -3368,6 +4082,16 @@ for mass in signal_mass_points:
             df_sig=df_sig,
             df_bkg=df_bkg,
             bdt_cut=bdt_cut, bdt_operator=bdt_operator
+        )
+
+        make_stack_after_bdt_with_data(
+            obs_name=obs_name,
+            mass=mass,
+            df_sig=df_sig,
+            df_bkg=df_bkg,
+            df_data=df_data,
+            bdt_cut=bdt_cut,
+            bdt_operator=bdt_operator
         )
 
 

@@ -396,7 +396,8 @@ plot_config = {
 bkg_base = (
     "/eos/user/b/bbapi/"
     "My_Analysis/2024_efficiency_study/"
-    "Backgrounds/NTuples_2024_BKG_overlap_removal_final/merged_all_cat"
+    # "Backgrounds/NTuples_2024_BKG_overlap_removal_final/merged_all_cat"
+    "Backgrounds/NTuples_2024_BKG_rem_corr/merged"
 )
 
 data_base = (

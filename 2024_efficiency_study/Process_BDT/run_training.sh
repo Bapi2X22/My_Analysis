@@ -116,8 +116,8 @@ echo "============================================================"
 CMD=(
     python3 xgboost_TrainMVA_v2_withWeight_mod_condor.py
     --useMC
-    --optimize
-    --trials 100
+    # --optimize
+    # --trials 100
     -m "${LOCAL_OUTPUT_DIR}/${BDT_Folder}.pkl"
     --signal_path "$Signal_File"
     --background_path "$Background_File"

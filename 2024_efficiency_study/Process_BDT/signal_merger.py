@@ -140,6 +140,7 @@ total_sumws = {name: [] for name in tree_names}
 # --------------------------------------------------
 
 for fname in sorted(glob.glob("Signal/output_WHM*root")):
+# for fname in sorted(glob.glob("Signal/output_WHM20*root")):
 
     mass = int(fname.split("_M")[1].split("_")[0])
 
